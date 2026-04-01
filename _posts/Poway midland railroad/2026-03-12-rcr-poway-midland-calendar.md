@@ -15,8 +15,13 @@ permalink: /railroad/calendar
     --text:      #2c1f0e;
     --subtext:   #7a6a58;
   }
+html, body {
+    background: #ede7db;
+    margin: 0;
+    padding: 0;
+}
 
-  .cal-wrap { max-width:1000px; margin:0 auto; padding:28px 16px 60px; background:var(--light-bg); min-height:100vh; }
+.cal-wrap { max-width:1000px; margin:0 auto; padding:28px 16px 60px; background:var(--white); min-height:100vh; }
 
   .cal-header { display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:14px; margin-bottom:24px; }
   .cal-header-left { display:flex; align-items:center; gap:12px; }
