@@ -444,6 +444,9 @@ permalink: /railroad/home
 <!-- HERO -->
 <div class="rr-hero">
   <span class="rr-hero-icon">🚂</span>
+
+  <div class="rr-hero-badge">Since 1987 · Heritage Rail · Old Poway Park</div>
+
   
   <!-- 新的双行彩色标题 -->
   <div class="rr-main-title">
@@ -451,7 +454,6 @@ permalink: /railroad/home
     <span class="orange-part">Railroad</span>
   </div>
   
-  <div class="rr-hero-badge">Since 1987 · Heritage Rail · Old Poway Park</div>
   <p class="rr-hero-sub">Your digital depot for steam, steel, and stories. Explore vintage locomotives, real-time schedules, and the volunteers who keep the iron horse alive every weekend in Poway, CA.</p>
   <div class="rr-hero-btns">
     <a href="{{ "/railroad/calendar" | relative_url }}" class="rr-btn-primary">🎟 Book a Ride</a>
