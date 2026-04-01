@@ -232,7 +232,8 @@ permalink: /railroad/book
     bkRideTime = params.get('time') || '';
     bkRideType = params.get('type') || '';
 
-    const backUrl = bkRideDate ? `/railroad/schedule?date=${bkRideDate}` : '/railroad/schedule';
+    const scheduleBase = '{{ "/railroad/schedule" | relative_url }}';
+    const backUrl = bkRideDate ? `${scheduleBase}?date=${bkRideDate}` : scheduleBase;
     document.getElementById('bkBackBtn').href = backUrl;
 
     document.getElementById('bkTime').textContent = bkRideTime || '--:--';

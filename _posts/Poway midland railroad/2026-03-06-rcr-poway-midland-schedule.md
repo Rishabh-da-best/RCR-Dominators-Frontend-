@@ -347,7 +347,8 @@ permalink: /railroad/schedule
       const cfg = SC[r.status];
       const pct = Math.round((r.taken / r.total) * 100);
       const canBook = r.status !== 'full';
-      const bookUrl = `/railroad/book?date=${r.dateStr}&time=${encodeURIComponent(r.time)}&type=${encodeURIComponent(r.trainType)}&seats=${r.seats}`;
+      const bookBase = '{{ "/railroad/book" | relative_url }}';
+      const bookUrl = `${bookBase}?date=${r.dateStr}&time=${encodeURIComponent(r.time)}&type=${encodeURIComponent(r.trainType)}&seats=${r.seats}`;
       const card = document.createElement('div');
       card.className = 'rr-card';
       card.innerHTML = `

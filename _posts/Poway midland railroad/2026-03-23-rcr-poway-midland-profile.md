@@ -319,7 +319,7 @@ permalink: /railroad/profile
 
   async function pfLogout() {
     try { await fetch(`${BACKEND}/api/auth/logout`, { method: 'POST', credentials: 'include' }); } catch {}
-    window.location.href = '/railroad/login';
+    window.location.href = '{{ "/railroad/login" | relative_url }}';
   }
 
   pfInit();

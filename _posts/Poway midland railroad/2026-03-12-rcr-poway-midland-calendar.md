@@ -165,6 +165,7 @@ permalink: /railroad/calendar
   };
 
   let calYear, calMonth;
+  const calScheduleBase = '{{ "/railroad/schedule" | relative_url }}';
 
   function calInit() {
     const now = new Date();
@@ -253,7 +254,7 @@ permalink: /railroad/calendar
       // Attach click AFTER innerHTML is fully set — avoids listener being wiped
       if (isOp && !isPast) {
         cell.addEventListener('click', () => {
-          window.location.href = `/railroad/schedule?date=${dateStr}`;
+          window.location.href = `${calScheduleBase}?date=${dateStr}`;
         });
       }
 
