@@ -153,7 +153,7 @@
                 <div class="rr-nav">
 
                     <div class="rr-item">
-                        <a href="/railroad/home" class="rr-link">🏠 Home</a>
+                        <a href="{{ "/railroad/home" | relative_url }}" class="rr-link">🏠 Home</a>
                     </div>
 
                     <div class="rr-item" id="rrSched">
@@ -161,9 +161,9 @@
                             📅 Schedule <span class="rr-arr">▼</span>
                         </button>
                         <div class="rr-drop">
-                            <a href="/railroad/schedule">🚂 Train Schedule</a>
-                            <a href="/railroad/volunteer-schedule">👷 Volunteer Schedule</a>
-                            <a href="/railroad/calendar">🎟 Book a Ride</a>
+                            <a href="{{ "/railroad/schedule" | relative_url }}">🚂 Train Schedule</a>
+                            <a href="{{ "/railroad/volunteer-schedule" | relative_url }}">👷 Volunteer Schedule</a>
+                            <a href="{{ "/railroad/calendar" | relative_url }}">🎟 Book a Ride</a>
                         </div>
                     </div>
 
@@ -172,8 +172,8 @@
                             ℹ️ About Us <span class="rr-arr">▼</span>
                         </button>
                         <div class="rr-drop">
-                            <a href="/railroad/trains">🚂 Our Trains</a>
-                            <a href="/railroad/history">📖 History</a>
+                            <a href="{{ "/railroad/trains" | relative_url }}">🚂 Our Trains</a>
+                            <a href="{{ "/railroad/history" | relative_url }}">📖 History</a>
                         </div>
                     </div>
 
@@ -182,16 +182,16 @@
                             🗺 Explore <span class="rr-arr">▼</span>
                         </button>
                         <div class="rr-drop">
-                            <a href="/railroad/events">🎪 Events</a>
-                            <a href="/railroad/camera">🎥 Live Camera</a>
-                            <a href="/railroad/assistant">🤖 AI Assistant</a>
-                            <a href="/railroad/forecast">📊 Visitor Forecast</a>
-                            <a href="/railroad/contact">📬 Contact</a>
+                            <a href="{{ "/railroad/events" | relative_url }}">🎪 Events</a>
+                            <a href="{{ "/railroad/camera" | relative_url }}">🎥 Live Camera</a>
+                            <a href="{{ "/railroad/assistant" | relative_url }}">🤖 AI Assistant</a>
+                            <a href="{{ "/railroad/forecast" | relative_url }}">📊 Visitor Forecast</a>
+                            <a href="{{ "/railroad/contact" | relative_url }}">📬 Contact</a>
                         </div>
                     </div>
 
                     <div id="rrAuthArea">
-                        <a id="rrLoginLink" href="/railroad/login">🔑 Login</a>
+                        <a id="rrLoginLink" href="{{ "/railroad/login" | relative_url }}">🔑 Login</a>
 
                         <div class="rr-item" id="rrProfileItem">
                             <button id="rrProfileBtn" onclick="toggleRR('rrProfileItem')">
@@ -204,7 +204,7 @@
                                     Loading...
                                     <span id="rrDropEmail"></span>
                                 </div>
-                                <a href="/railroad/profile">👤 My Profile</a>
+                                <a href="{{ "/railroad/profile" | relative_url }}">👤 My Profile</a>
                                 <button id="rrLogoutBtn" onclick="rrNavLogout()">🚪 Logout</button>
                             </div>
                         </div>

@@ -341,7 +341,7 @@ AI: true
         <p>Poway–Midland Railroad · Operations Sign-up</p>
       </div>
     </div>
-    <a href="/railroad/calendar" class="vol-back">← Back to Calendar</a>
+    <a href="{{ "/railroad/calendar" | relative_url }}" class="vol-back">← Back to Calendar</a>
   </div>
 
   <!-- stats summary (dynamic JS fill) -->

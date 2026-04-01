@@ -90,7 +90,7 @@ permalink: /railroad/calendar
         <div class="cal-subtitle">Poway–Midland Railroad · Old Poway Park</div>
       </div>
     </div>
-    <a href="/railroad/schedule" class="cal-back">← Schedule &amp; Tracker</a>
+    <a href="{{ "/railroad/schedule" | relative_url }}" class="cal-back">← Schedule &amp; Tracker</a>
   </div>
 
   <div class="cal-nav">

@@ -106,7 +106,7 @@ permalink: /railroad/notes
         <div class="nt-subtitle">Poway–Midland Railroad · Share Your Experience</div>
       </div>
     </div>
-    <a href="/railroad/schedule" class="nt-back">← Schedule</a>
+    <a href="{{ "/railroad/schedule" | relative_url }}" class="nt-back">← Schedule</a>
   </div>
 
   <!-- Compose -->

@@ -213,7 +213,7 @@ permalink: /railroad/book
     <div class="bk-confirm-sub">Your spot has been reserved. Please pay at the depot on the day of your ride.</div>
     <div class="bk-confirm-code" id="bkConfirmCode">PMR-000000</div>
     <div class="bk-confirm-details" id="bkConfirmDetails"></div>
-    <a href="/railroad/schedule" class="bk-confirm-back">← Back to Schedule</a>
+    <a href="{{ "/railroad/schedule" | relative_url }}" class="bk-confirm-back">← Back to Schedule</a>
   </div>
 
 </div>

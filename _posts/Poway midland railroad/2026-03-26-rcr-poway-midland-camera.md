@@ -114,7 +114,7 @@ permalink: /railroad/camera
       <div style="font-size:40px;margin-bottom:12px;">📖</div>
       <div style="font-family:'Courier New',monospace;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:8px;">Explore the Full Story</div>
       <p style="font-size:14px;color:var(--smoke);margin-bottom:20px;line-height:1.7;">Discover the rich history of the Poway Midland Railroad — from the 1880s valley settlers to the volunteers who keep the iron horse alive today.</p>
-      <a href="/railroad/history" style="display:inline-block;padding:12px 28px;background:var(--rust);color:#fff;text-decoration:none;border-radius:6px;font-family:'Courier New',monospace;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;transition:background 0.2s;" onmouseover="this.style.background='#e8621a'" onmouseout="this.style.background='#b94a1c'">View Full History →</a>
+      <a href="{{ "/railroad/history" | relative_url }}" style="display:inline-block;padding:12px 28px;background:var(--rust);color:#fff;text-decoration:none;border-radius:6px;font-family:'Courier New',monospace;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;transition:background 0.2s;" onmouseover="this.style.background='#e8621a'" onmouseout="this.style.background='#b94a1c'">View Full History →</a>
     </div>
   </div>
 
