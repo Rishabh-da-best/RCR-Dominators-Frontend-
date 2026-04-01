@@ -84,6 +84,11 @@ app.get("/auth/check", (req, res) => {
   res.status(401).json({ authenticated: false });
 });
 
+// Health endpoint used by container/orchestrator checks.
+app.get("/health", (_req, res) => {
+  res.json({ ok: true });
+});
+
 const httpServer = http.createServer(app);
 
 const io = new Server(httpServer, { cors: { origin: true, credentials: true } });
@@ -188,4 +193,7 @@ io.on("connection", (socket) => {
   })
 });
 
-httpServer.listen(3000);
+const PORT = Number(process.env.PORT) || 3000;
+httpServer.listen(PORT, () => {
+  console.log(`Backend listening on port ${PORT}`);
+});

@@ -1,7 +1,17 @@
-version: '3'
+version: '3.8'
 services:
   web_t4:
     image: multiplayergame
     build: .
+    restart: unless-stopped
     ports:
       - "3000:3000"
+    environment:
+      - NODE_ENV=production
+      - SESSION_SECRET=${SESSION_SECRET:-change-me-before-deploying}
+    healthcheck:
+      test: ["CMD", "wget", "-qO-", "http://localhost:3000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 10s
