@@ -19,7 +19,7 @@ permalink: /railroad/home
     min-height: 100vh;
     display: flex;
     flex-direction: column;
-    padding-top: 56px;
+    padding-top: 0px;
   }
 
   /* ── TRAIN BACKGROUND ── */
@@ -255,6 +255,8 @@ permalink: /railroad/home
   .rr-main-title {
     margin: 8px 0 12px 0;
     line-height: 1.2;
+    font-family: "Goudy Old Style", "Goudy Bold", "Goudy", Georgia, serif;
+
   }
   .rr-main-title .white-part {
     color: white;
@@ -269,6 +271,7 @@ permalink: /railroad/home
     font-weight: 700;
     display: block;
     letter-spacing: -0.01em;
+    font-style: italic;
   }
   .rr-hero-badge {
     font-family:'Courier New',monospace; font-size:10px;
@@ -496,10 +499,10 @@ permalink: /railroad/home
     </div>
   </div>
 
-  <div class="rr-section-title">Contact Us</div>
+  <div class="rr-section-title">Information</div>
   <div class="rr-contact">
     <div>
-      <h2>🚉 Get in Touch</h2>
+      <h2>🚉 Information</h2>
       <p>
         <span>📞</span> (858) 748-0379<br>
         <span>📧</span> info@powaymidlandrr.org<br>

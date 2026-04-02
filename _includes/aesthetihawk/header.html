@@ -39,11 +39,12 @@
             display: flex; align-items: center; gap: 6px;
             color: #e8e0d0 !important; text-decoration: none !important;
             font-family: 'Courier New', monospace;
-            font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase;
+            font-size: 15px; letter-spacing: 0.12em; text-transform: uppercase;
             padding: 0 18px; height: 54px; line-height: 54px;
             border-bottom: 3px solid transparent;
             transition: all 0.2s; cursor: pointer; white-space: nowrap;
             background: none; border-top: none; border-left: none; border-right: none;
+            font-weight: normal;
         }
         .rr-link:hover { color: #c9943a !important; border-bottom-color: #c9943a; }
         .rr-arr { font-size: 8px; transition: transform 0.2s; }
@@ -64,7 +65,7 @@
             display: block; padding: 12px 20px;
             color: #8c7f6e !important; text-decoration: none !important;
             font-family: 'Courier New', monospace;
-            font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase;
+            font-size: 13px; letter-spacing: 0.1em; text-transform: uppercase;
             transition: all 0.15s; white-space: nowrap;
             border-bottom: 1px solid rgba(255,255,255,0.05);
         }
@@ -77,10 +78,11 @@
             display: flex; align-items: center; gap: 6px;
             color: #e8e0d0 !important; text-decoration: none !important;
             font-family: 'Courier New', monospace;
-            font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase;
+            font-size: 15px; letter-spacing: 0.12em; text-transform: uppercase;
             padding: 0 18px; height: 54px;
             border-bottom: 3px solid transparent;
             transition: all 0.2s; white-space: nowrap;
+            font-weight: normal;
         }
         #rrLoginLink:hover { color: #c9943a !important; border-bottom-color: #c9943a; }
 
@@ -95,7 +97,7 @@
             cursor: pointer; transition: background 0.2s;
             color: #c9943a;
             font-family: 'Courier New', monospace;
-            font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase;
+            font-size: 13px; letter-spacing: 0.1em; text-transform: uppercase;
         }
         #rrProfileBtn:hover { background: rgba(201,148,58,0.25); }
         .rr-avatar {
@@ -117,7 +119,7 @@
         #rrProfileItem.open #rrProfileDrop { display: block; animation: rrIn 0.2s ease; }
         .rr-profile-name {
             padding: 14px 20px 10px;
-            font-family: 'Courier New', monospace; font-size: 12px;
+            font-family: 'Courier New', monospace; font-size: 13px;
             color: #e8e0d0;
             border-bottom: 1px solid rgba(255,255,255,0.08);
         }
@@ -127,7 +129,7 @@
             padding: 11px 20px;
             color: #8c7f6e !important; text-decoration: none !important;
             font-family: 'Courier New', monospace;
-            font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase;
+            font-size: 13px; letter-spacing: 0.1em; text-transform: uppercase;
             transition: all 0.15s; white-space: nowrap;
             border-bottom: 1px solid rgba(255,255,255,0.05);
             background: none; border-left: none; border-right: none; border-top: none;
@@ -172,8 +174,9 @@
                             ℹ️ About Us <span class="rr-arr">▼</span>
                         </button>
                         <div class="rr-drop">
-                            <a href="{{ "/railroad/trains" | relative_url }}">🚂 Our Trains</a>
-                            <a href="{{ "/railroad/history" | relative_url }}">📖 History</a>
+                            <a href="{{ site.baseurl }}/railroad/trains">🚂 Our Trains</a>
+                            <a href="{{ site.baseurl }}/railroad/history">📖 History</a>
+                            <a href="{{ site.baseurl }}/railroad/contact">📬 Contact</a>
                         </div>
                     </div>
 
@@ -182,16 +185,15 @@
                             🗺 Explore <span class="rr-arr">▼</span>
                         </button>
                         <div class="rr-drop">
-                            <a href="{{ "/railroad/events" | relative_url }}">🎪 Events</a>
-                            <a href="{{ "/railroad/camera" | relative_url }}">🎥 Live Camera</a>
-                            <a href="{{ "/railroad/assistant" | relative_url }}">🤖 AI Assistant</a>
-                            <a href="{{ "/railroad/forecast" | relative_url }}">📊 Visitor Forecast</a>
-                            <a href="{{ "/railroad/contact" | relative_url }}">📬 Contact</a>
+                            <a href="{{ site.baseurl }}/railroad/events">🎪 Events</a>
+                            <a href="{{ site.baseurl }}/railroad/camera">🎥 Live Camera</a>
+                            <a href="{{ site.baseurl }}/railroad/assistant">🤖 AI Assistant</a>
+                            <a href="{{ site.baseurl }}/railroad/forecast">📊 Visitor Forecast</a>
                         </div>
                     </div>
 
                     <div id="rrAuthArea">
-                        <a id="rrLoginLink" href="{{ "/railroad/login" | relative_url }}">🔑 Login</a>
+                        <a id="rrLoginLink" href="{{ site.baseurl }}/railroad/login">🔑 Login</a>
 
                         <div class="rr-item" id="rrProfileItem">
                             <button id="rrProfileBtn" onclick="toggleRR('rrProfileItem')">
@@ -204,7 +206,7 @@
                                     Loading...
                                     <span id="rrDropEmail"></span>
                                 </div>
-                                <a href="{{ "/railroad/profile" | relative_url }}">👤 My Profile</a>
+                                <a href="{{ site.baseurl }}/railroad/profile">👤 My Profile</a>
                                 <button id="rrLogoutBtn" onclick="rrNavLogout()">🚪 Logout</button>
                             </div>
                         </div>
@@ -258,7 +260,7 @@
         async function rrNavLogout() {
             try { await fetch(`${RR_BACKEND}/api/auth/logout`, { method: 'POST', credentials: 'include' }); } catch {}
             rrShowGuest();
-            if (window.location.pathname === '/railroad/profile') window.location.href = '/railroad/login';
+            if (window.location.pathname === '{{ site.baseurl }}/railroad/profile') window.location.href = '{{ site.baseurl }}/railroad/login';
         }
 
         rrCheckAuth();
