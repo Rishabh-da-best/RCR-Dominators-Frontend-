@@ -9,18 +9,24 @@ permalink: /railroad/book
     --rust:     #b94a1c;
     --gold:     #c9943a;
     --green:    #2d6a4f;
-    --light-bg: #faf8f5;
-    --white:    #ffffff;
-    --border:   #e8e0d0;
-    --text:     #2c1f0e;
-    --subtext:  #7a6a58;
-    --input-bg: #f5f0e8;
+    --coal:     #1a1410;
+    --iron:     #2e2620;
+    --iron2:    #3a2e28;
+    --steam:    #e8e0d0;
+    --smoke:    #8c7f6e;
+    --light-bg: #1a1410;
+    --white:    #2e2620;
+    --border:   rgba(255,255,255,0.1);
+    --text:     #e8e0d0;
+    --subtext:  #8c7f6e;
+    --input-bg: #3a2e28;
   }
 
   * { box-sizing: border-box; }
 
   .bk-wrap { max-width: 680px; margin: 0 auto; padding: 28px 16px 60px; background: var(--light-bg); min-height: 100vh; }
 
+  /* Header */
   .bk-header { display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:14px; margin-bottom:28px; }
   .bk-header-left { display:flex; align-items:center; gap:12px; }
   .bk-logo { font-size:26px; background:var(--rust); border-radius:10px; width:46px; height:46px; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
@@ -29,6 +35,7 @@ permalink: /railroad/book
   .bk-back { display:flex; align-items:center; gap:6px; padding:8px 16px; background:var(--white); border:1px solid var(--border); border-radius:8px; color:var(--rust); text-decoration:none; font-size:13px; font-weight:600; transition:background 0.2s; }
   .bk-back:hover { background:#fff0ea; }
 
+  /* Ride summary card */
   .bk-ride-card { background:var(--white); border:1px solid var(--border); border-radius:14px; padding:22px 24px; margin-bottom:24px; border-top:4px solid var(--rust); }
   .bk-ride-label { font-size:10px; font-weight:700; letter-spacing:0.2em; text-transform:uppercase; color:var(--subtext); margin-bottom:12px; }
   .bk-ride-main { display:flex; align-items:center; gap:18px; flex-wrap:wrap; }
@@ -40,6 +47,7 @@ permalink: /railroad/book
   .bk-detail { font-size:12px; color:var(--subtext); }
   .bk-detail strong { display:block; font-size:14px; color:var(--text); margin-bottom:1px; }
 
+  /* Form */
   .bk-form { background:var(--white); border:1px solid var(--border); border-radius:14px; padding:24px; }
   .bk-form-title { font-size:16px; font-weight:700; color:var(--text); margin-bottom:20px; padding-bottom:12px; border-bottom:1px solid var(--border); }
 
@@ -74,8 +82,7 @@ permalink: /railroad/book
 
   .bk-note { font-size:11px; color:var(--subtext); text-align:center; margin-top:12px; line-height:1.5; }
 
-  .bk-error { display:none; background:#fef2f2; border:1px solid #fca5a5; border-radius:8px; padding:12px 16px; margin-top:12px; font-size:13px; color:#c0392b; font-weight:600; }
-
+  /* Confirmation screen */
   .bk-confirm { display:none; background:var(--white); border:1px solid var(--border); border-radius:14px; padding:36px 28px; text-align:center; }
   .bk-confirm.show { display:block; }
   .bk-confirm-icon { font-size:52px; margin-bottom:14px; }
@@ -92,6 +99,7 @@ permalink: /railroad/book
   }
 </style>
 
+<div style="background:#1a1410;min-height:100vh;">
 <div class="bk-wrap">
 
   <!-- Header -->
@@ -199,9 +207,6 @@ permalink: /railroad/book
     <div id="bkSeatWarning" style="display:none;background:#fef2f2;border:1px solid #fca5a5;border-radius:8px;padding:10px 14px;margin-top:12px;font-size:13px;color:#c0392b;font-weight:600;">
       ⚠️ Not enough seats available. Only <span id="bkMaxMsg"></span> seat(s) remaining for this ride.
     </div>
-
-    <div class="bk-error" id="bkErrorMsg"></div>
-
     <button class="bk-submit" id="bkSubmitBtn" onclick="bkSubmit()">🎟 Confirm Booking</button>
     <p class="bk-note">Tickets are not pre-purchased online. This reserves your spot and you pay at the depot on the day of your ride. Cash and credit cards accepted.</p>
   </div>
@@ -213,18 +218,17 @@ permalink: /railroad/book
     <div class="bk-confirm-sub">Your spot has been reserved. Please pay at the depot on the day of your ride.</div>
     <div class="bk-confirm-code" id="bkConfirmCode">PMR-000000</div>
     <div class="bk-confirm-details" id="bkConfirmDetails"></div>
-    <a href="{{ "/railroad/schedule" | relative_url }}" class="bk-confirm-back">← Back to Schedule</a>
+    <a href="/railroad/schedule" class="bk-confirm-back">← Back to Schedule</a>
   </div>
 
 </div>
+</div>
 
 <script>
-  const BACKEND = 'http://localhost:8587';
-
   let bkAdult = 1, bkChild = 0, bkInfant = 0;
   let bkAdultPrice = 5;
   let bkRideDate = '', bkRideTime = '', bkRideType = '';
-  let bkMaxSeats = 99;
+  let bkMaxSeats = 99; // set from URL param, enforced in bkChange()
 
   function bkInit() {
     const params = new URLSearchParams(window.location.search);
@@ -232,10 +236,11 @@ permalink: /railroad/book
     bkRideTime = params.get('time') || '';
     bkRideType = params.get('type') || '';
 
-    const scheduleBase = '{{ "/railroad/schedule" | relative_url }}';
-    const backUrl = bkRideDate ? `${scheduleBase}?date=${bkRideDate}` : scheduleBase;
+    // Back button goes back to schedule with same date
+    const backUrl = bkRideDate ? `/railroad/schedule?date=${bkRideDate}` : '/railroad/schedule';
     document.getElementById('bkBackBtn').href = backUrl;
 
+    // Fill ride summary
     document.getElementById('bkTime').textContent = bkRideTime || '--:--';
     document.getElementById('bkType').textContent = bkRideType || 'Train Ride';
 
@@ -246,17 +251,21 @@ permalink: /railroad/book
       document.getElementById('bkDate').textContent = `${days[d.getDay()]}, ${months[d.getMonth()]} ${d.getDate()}, ${d.getFullYear()}`;
     }
 
+    // Read available seats from URL, show in ride card
     const seatsParam = parseInt(params.get('seats'));
-    if (!isNaN(seatsParam)) bkMaxSeats = seatsParam;
+    if (!isNaN(seatsParam)) {
+      bkMaxSeats = seatsParam;
+    }
     const seatsInfoEl = document.getElementById('bkSeatsAvail');
     if (seatsInfoEl) {
-      seatsInfoEl.textContent  = bkMaxSeats >= 99 ? 'Loading...' : `${bkMaxSeats} seat${bkMaxSeats!==1?'s':''} available`;
-      seatsInfoEl.style.color  = bkMaxSeats <= 3 ? '#c0392b' : '#2d6a4f';
+      seatsInfoEl.textContent = bkMaxSeats >= 99 ? 'Loading...' : `${bkMaxSeats} seat${bkMaxSeats!==1?'s':''} available`;
+      seatsInfoEl.style.color = bkMaxSeats <= 3 ? '#c0392b' : '#2d6a4f';
     }
 
+    // Speeder is $4 adult
     if (bkRideType.includes('Speeder')) {
       bkAdultPrice = 4;
-      document.getElementById('bkFareAdult').textContent    = '$4.00';
+      document.getElementById('bkFareAdult').textContent = '$4.00';
       document.getElementById('bkAdultPriceSub').textContent = '$4.00 each';
     }
 
@@ -264,7 +273,7 @@ permalink: /railroad/book
   }
 
   function bkChange(type, delta) {
-    const totalPaid = bkAdult + bkChild;
+    const totalPaid = bkAdult + bkChild; // infants are free and don't take seats
     if (type === 'adult') {
       const next = bkAdult + delta;
       if (next < 1) return;
@@ -284,20 +293,10 @@ permalink: /railroad/book
   }
 
   function bkShowSeatWarning() {
-    const w   = document.getElementById('bkSeatWarning');
+    const w = document.getElementById('bkSeatWarning');
     const msg = document.getElementById('bkMaxMsg');
     if (msg) msg.textContent = bkMaxSeats;
-    if (w) { w.style.display = 'block'; setTimeout(() => { w.style.display = 'none'; }, 3000); }
-  }
-
-  function bkShowError(msg) {
-    const el = document.getElementById('bkErrorMsg');
-    el.textContent  = msg;
-    el.style.display = 'block';
-  }
-
-  function bkHideError() {
-    document.getElementById('bkErrorMsg').style.display = 'none';
+    if (w) { w.style.display='block'; setTimeout(()=>{ w.style.display='none'; }, 3000); }
   }
 
   function bkUpdateTotals() {
@@ -313,85 +312,89 @@ permalink: /railroad/book
   }
 
   async function bkSubmit() {
-    bkHideError();
-
     const first = document.getElementById('bkFirstName').value.trim();
     const last  = document.getElementById('bkLastName').value.trim();
     const email = document.getElementById('bkEmail').value.trim();
     const phone = document.getElementById('bkPhone').value.trim();
 
+    const totalTickets = bkAdult + bkChild;
+    if (totalTickets > bkMaxSeats) {
+      alert(`Only ${bkMaxSeats} seat(s) available for this ride. Please reduce your ticket count.`);
+      return;
+    }
     if (!first || !last || !email || !phone) {
-      bkShowError('Please fill in all passenger information fields.');
+      alert('Please fill in all passenger information fields.');
       return;
     }
     if (!email.includes('@')) {
-      bkShowError('Please enter a valid email address.');
-      return;
-    }
-    if (bkAdult + bkChild > bkMaxSeats) {
-      bkShowError(`Only ${bkMaxSeats} seat(s) available. Please reduce your ticket count.`);
+      alert('Please enter a valid email address.');
       return;
     }
 
     const btn = document.getElementById('bkSubmitBtn');
-    btn.disabled    = true;
+    btn.disabled = true;
     btn.textContent = 'Submitting...';
 
+    // POST to real backend API
     try {
-      const res = await fetch(`${BACKEND}/api/reservations`, {
-        method:      'POST',
-        credentials: 'include',
-        headers:     { 'Content-Type': 'application/json' },
+      const res = await fetch('/api/reservations', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           date:       bkRideDate,
           time:       bkRideTime,
           train_type: bkRideType,
           first_name: first,
           last_name:  last,
-          email:      email,
-          phone:      phone,
-          adults:     bkAdult,
-          children:   bkChild,
-          infants:    bkInfant
+          email, phone,
+          adults:   bkAdult,
+          children: bkChild,
+          infants:  bkInfant
         })
       });
 
-      const data = await res.json();
+      const result = await res.json();
 
       if (!res.ok) {
-        // Handle seat conflict or other backend errors
-        const msg = data.error || `Error ${res.status}`;
-        if (res.status === 409 && data.available !== undefined) {
-          bkShowError(`⚠️ Only ${data.available} seat(s) left — reduce your ticket count and try again.`);
+        // Handle seat conflict (409) or other errors
+        if (res.status === 409) {
+          const avail = result.available ?? 0;
+          alert(`Sorry, only ${avail} seat(s) left for this ride. Please reduce your ticket count.`);
+          bkMaxSeats = avail;
+          // Force quantities back down
+          if (bkAdult + bkChild > avail) {
+            bkAdult = Math.max(1, avail);
+            bkChild = Math.max(0, avail - bkAdult);
+          }
+          bkUpdateTotals();
         } else {
-          bkShowError(`Booking failed: ${msg}`);
+          alert('Booking failed: ' + (result.error || 'Unknown error'));
         }
-        btn.disabled    = false;
+        btn.disabled = false;
         btn.textContent = '🎟 Confirm Booking';
         return;
       }
 
-      // Success — show confirmation screen
-      const grand = (bkAdult * bkAdultPrice) + (bkChild * 2);
-      document.getElementById('bkConfirmCode').textContent = data.confirm_code;
+      // Success
+      const totalPeople = bkAdult + bkChild + bkInfant;
+      document.getElementById('bkConfirmCode').textContent = result.confirm_code;
       document.getElementById('bkConfirmDetails').innerHTML = `
         <strong>Name:</strong> ${first} ${last}<br>
         <strong>Email:</strong> ${email}<br>
-        <strong>Ride:</strong> ${data.train_type}<br>
+        <strong>Ride:</strong> ${result.train_type}<br>
         <strong>Date:</strong> ${document.getElementById('bkDate').textContent}<br>
-        <strong>Departure:</strong> ${data.time}<br>
-        <strong>Tickets:</strong> ${data.adults} adult${data.adults!==1?'s':''}, ${data.children} child${data.children!==1?'ren':''}, ${bkInfant} infant${bkInfant!==1?'s':''} (${data.total_seats + bkInfant} total)<br>
-        <strong>Amount Due at Depot:</strong> $${data.total_price.toFixed(2)}<br>
-        <strong>Seats Remaining After:</strong> ${data.seats_remaining_after}
+        <strong>Departure:</strong> ${bkRideTime}<br>
+        <strong>Tickets:</strong> ${bkAdult} adult${bkAdult!==1?'s':''}, ${bkChild} child${bkChild!==1?'ren':''}, ${bkInfant} infant${bkInfant!==1?'s':''} (${totalPeople} total)<br>
+        <strong>Seats Remaining After Booking:</strong> ${result.seats_remaining_after}<br>
+        <strong>Amount Due at Depot:</strong> $${result.total_price.toFixed(2)}
       `;
 
       document.getElementById('bkFormSection').style.display = 'none';
       document.getElementById('bkConfirmSection').classList.add('show');
 
-    } catch (err) {
-      console.error('Booking error:', err);
-      bkShowError('Could not reach the server. Please check your connection and try again.');
-      btn.disabled    = false;
+    } catch(e) {
+      alert('Network error. Please try again.');
+      btn.disabled = false;
       btn.textContent = '🎟 Confirm Booking';
     }
   }
