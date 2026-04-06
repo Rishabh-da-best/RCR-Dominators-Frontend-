@@ -1,5 +1,15 @@
 # Deployment Information
 
+## Quick deploy on a Linux server
+
+1. Copy the repository to the server.
+2. Go to `node_backend`.
+3. Copy `.env.example` to `.env` and set a real `SESSION_SECRET`.
+4. Run `bash deploy.sh`.
+5. Put NGINX in front of the app using `nginx.conf` and a real domain.
+
+The included `docker-compose.yml` binds the Node app to `127.0.0.1:3000` so it is only reachable through the reverse proxy.
+
 Change the Backend URL in GameEnv.  For a secure `https` connection use `wss` instead of ws
 pages/assets/js/multiplayer/GameEnv.js
 
