@@ -26,12 +26,11 @@ permalink: /railroad/assistant
 
   .rr-wrap { max-width:1100px; margin:0 auto; padding:40px 20px 80px; }
 
-  .rr-grid-2 { display:grid; grid-template-columns:1fr 1fr; gap:20px; }
-  @media(max-width:800px){ .rr-grid-2{ grid-template-columns:1fr; } }
-
   .rr-card {
     background:var(--iron); border:1px solid rgba(255,255,255,0.07);
     border-radius:12px; padding:24px; border-top:3px solid var(--rust);
+    max-width: 600px;
+    margin: 0 auto;
   }
   .rr-card-title {
     font-family:'Courier New',monospace; font-size:10px; letter-spacing:0.2em;
@@ -75,17 +74,6 @@ permalink: /railroad/assistant
   .rr-btn-primary:hover { background:var(--ember); transform:translateY(-1px); }
   .rr-btn-secondary { background:var(--iron2); color:var(--smoke); border:1px solid rgba(255,255,255,0.1); }
   .rr-btn-secondary:hover { color:var(--steam); border-color:var(--gold); }
-
-  /* Insights table */
-  .rr-table { width:100%; border-collapse:collapse; font-size:13px; }
-  .rr-table th {
-    font-family:'Courier New',monospace; font-size:9px; letter-spacing:0.15em;
-    text-transform:uppercase; color:var(--gold); padding:10px 12px;
-    border-bottom:2px solid rgba(255,255,255,0.1); text-align:left;
-  }
-  .rr-table td { padding:10px 12px; color:var(--smoke); border-bottom:1px solid rgba(255,255,255,0.05); }
-  .rr-table tr:hover td { background:rgba(255,255,255,0.03); color:var(--steam); }
-  .rr-note { font-size:11px; color:var(--smoke); margin-bottom:12px; font-family:'Courier New',monospace; }
 </style>
 
 <div class="rr-hero">
@@ -95,41 +83,19 @@ permalink: /railroad/assistant
 </div>
 
 <div class="rr-wrap">
-  <div class="rr-grid-2">
-
-    <div class="rr-card">
-      <div class="rr-card-title">🤖 Visitor Assistant</div>
-      <div class="chat-window" id="chatWindow"></div>
-      <label class="rr-label" for="aiInput">Ask for a recommendation</label>
-      <textarea class="rr-textarea" id="aiInput" rows="3" placeholder="e.g. Suggest a 45-minute family visit plan"></textarea>
-      <div class="rr-btn-row">
-        <button class="rr-btn rr-btn-primary" id="sendBtn">🚂 Get Recommendation</button>
-        <button class="rr-btn rr-btn-secondary" id="clearBtn">Clear</button>
-      </div>
+  <div class="rr-card">
+    <div class="rr-card-title">🤖 Visitor Assistant</div>
+    <div class="chat-window" id="chatWindow"></div>
+    <label class="rr-label" for="aiInput">Ask for a recommendation</label>
+    <textarea class="rr-textarea" id="aiInput" rows="3" placeholder="e.g. Suggest a 45-minute family visit plan"></textarea>
+    <div class="rr-btn-row">
+      <button class="rr-btn rr-btn-primary" id="sendBtn">🚂 Get Recommendation</button>
+      <button class="rr-btn rr-btn-secondary" id="clearBtn">Clear</button>
     </div>
-
-    <div class="rr-card">
-      <div class="rr-card-title">📊 Engagement Insights</div>
-      <p class="rr-note">Prototype metrics showing visitor interaction patterns.</p>
-      <table class="rr-table">
-        <thead>
-          <tr><th>Feature</th><th>Usage</th><th>Insight</th></tr>
-        </thead>
-        <tbody id="insightTable"></tbody>
-      </table>
-    </div>
-
   </div>
 </div>
 
 <script>
-const insights = [
-  { feature:"Panorama Viewer", usage:"78%", insight:"Highest interaction on mobile after hero scroll" },
-  { feature:"Route Map",       usage:"64%", insight:"Users click turnaround marker to understand route" },
-  { feature:"History Timeline",usage:"57%", insight:"Timeline cards help retention in presentation mode" },
-  { feature:"AI Assistant",    usage:"49%", insight:"Most prompts request family plans and visit duration" }
-];
-
 const chatWindow = document.getElementById('chatWindow');
 const aiInput    = document.getElementById('aiInput');
 
@@ -163,14 +129,6 @@ document.getElementById('sendBtn').addEventListener('click', () => {
 document.getElementById('clearBtn').addEventListener('click', () => {
   chatWindow.innerHTML = '';
   addMsg('assistant', 'Chat reset. Ask a new question to get recommendations.');
-});
-
-// Insights table
-const tbody = document.getElementById('insightTable');
-insights.forEach(r => {
-  const tr = document.createElement('tr');
-  tr.innerHTML = `<td>${r.feature}</td><td style="color:var(--gold);font-family:'Courier New',monospace;">${r.usage}</td><td>${r.insight}</td>`;
-  tbody.appendChild(tr);
 });
 
 addMsg('assistant', 'Hello! Ask for visit ideas, family plans, or volunteer recommendations. 🚂');

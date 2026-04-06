@@ -19,7 +19,7 @@ permalink: /railroad/home
     min-height: 100vh;
     display: flex;
     flex-direction: column;
-    padding-top: 56px;
+    padding-top: 0px;
   }
 
   /* ── TRAIN BACKGROUND ── */
@@ -79,17 +79,17 @@ permalink: /railroad/home
   }
   .rail-steel.left  { bottom: 17px; }
   .rail-steel.right { bottom: 9px; }
-  /* Train wrapper — starts off-screen left, moves right */
+  /* Train wrapper — starts off-screen right, moves left */
   .train-wrapper {
-    position: absolute; bottom: 22px; left: 0;
+    position: absolute; bottom: 22px; right: 0;
     display: flex; align-items: flex-end; gap: 0;
     z-index: 20;
-    animation: trainLTR 22s linear infinite;
+    animation: trainRTL 22s linear infinite;
     filter: drop-shadow(2px 4px 10px rgba(0,0,0,0.6));
   }
-  @keyframes trainLTR {
-    0%   { transform: translateX(-900px); }
-    100% { transform: translateX(calc(100vw + 100px)); }
+  @keyframes trainRTL {
+  0%   { transform: translateX(calc(100vw + 100px)); } 
+  100% { transform: translateX(calc(-100vw - 900px)); }
   }
   /* Locomotive */
   .locomotive {
@@ -203,30 +203,35 @@ permalink: /railroad/home
     position: absolute; right: 8px; top: 12px;
     background: var(--rust); width: 14px; height: 14px; border-radius: 2px;
   }
-  /* Clouds — ember-tinted */
+  /* Clouds — moving left to right */
   .cloud {
     position: absolute;
     background: rgba(185,74,28,0.07);
     border-radius: 60% 40% 70% 30% / 50% 60% 40% 50%;
     filter: blur(6px);
-    animation: cloudRTL 60s linear infinite; z-index: 2;
+    animation: cloudLTR 60s linear infinite; z-index: 2;
   }
-  @keyframes cloudRTL {
+  @keyframes cloudLTR {
     0%   { transform: translateX(0); }
-    100% { transform: translateX(calc(-100vw - 300px)); }
+    100% { transform: translateX(calc(100vw + 300px)); }
   }
-  .cloud1 { width:120px; height:55px; top:6%;  right:-160px; animation-duration:70s; opacity:0.5; }
-  .cloud2 { width:160px; height:70px; top:14%; right:-220px; animation-duration:90s; opacity:0.35; }
-  .cloud3 { width: 90px; height:42px; top:2%;  right:-110px; animation-duration:55s; animation-delay:-12s; opacity:0.4; }
+  .cloud1 { width:120px; height:55px; top:6%;  left:-160px; animation-duration:70s; opacity:0.5; }
+  .cloud2 { width:160px; height:70px; top:14%; left:-220px; animation-duration:90s; opacity:0.35; }
+  .cloud3 { width: 90px; height:42px; top:2%;  left:-110px; animation-duration:55s; animation-delay:-12s; opacity:0.4; }
 
   /* ── PAGE CONTENT — needs z-index to sit above background ── */
   .rr-hero, .rr-wrap, .rr-footer, .rr-ai-fab { position: relative; z-index: 10; }
 
   /* ── HERO ── */
   .rr-hero {
-    padding: 80px 24px 64px; text-align: center;
+    padding: 80px 48px 64px;
+    text-align: center;
     background: radial-gradient(ellipse at 50% 0%, rgba(61,42,24,0.85) 0%, rgba(26,20,16,0.75) 70%);
     overflow: hidden;
+    max-width: 1400px;
+    margin: 0 auto;
+    width: 100%;
+    box-sizing: border-box;
   }
   .rr-hero::before {
     content: ''; position: absolute; inset: 0;
@@ -247,6 +252,27 @@ permalink: /railroad/home
     25%     { transform:translateX(4px); }
     75%     { transform:translateX(-4px); }
   }
+  .rr-main-title {
+    margin: 8px 0 12px 0;
+    line-height: 1.2;
+    font-family: "Goudy Old Style", "Goudy Bold", "Goudy", Georgia, serif;
+
+  }
+  .rr-main-title .white-part {
+    color: white;
+    font-size: clamp(36px, 6vw, 68px);
+    font-weight: 700;
+    display: block;
+    letter-spacing: -0.01em;
+  }
+  .rr-main-title .orange-part {
+    color: var(--ember);
+    font-size: clamp(36px, 6vw, 68px);
+    font-weight: 700;
+    display: block;
+    letter-spacing: -0.01em;
+    font-style: italic;
+  }
   .rr-hero-badge {
     font-family:'Courier New',monospace; font-size:10px;
     letter-spacing:0.3em; text-transform:uppercase;
@@ -258,7 +284,7 @@ permalink: /railroad/home
   }
   .rr-hero-title em { font-style:italic; color:var(--ember); }
   .rr-hero-sub {
-    font-size:16px; color:var(--smoke); max-width:560px;
+    font-size:16px; color:var(--smoke); max-width:800px;
     margin:0 auto 36px; line-height:1.7;
   }
   .rr-hero-btns { display:flex; gap:12px; justify-content:center; flex-wrap:wrap; }
@@ -280,7 +306,7 @@ permalink: /railroad/home
   .rr-btn-secondary:hover { background:rgba(201,148,58,0.15); transform:translateY(-2px); }
 
   /* ── CONTENT ── */
-  .rr-wrap { max-width:1100px; margin:0 auto; padding:60px 20px 80px; flex:1; }
+  .rr-wrap { max-width:1400px; margin:0 auto; padding:60px 20px 80px; flex:1; }
   .rr-section-title {
     font-family:'Courier New',monospace; font-size:10px;
     letter-spacing:0.3em; text-transform:uppercase;
@@ -370,7 +396,7 @@ permalink: /railroad/home
   <div class="rail-steel left"></div>
   <div class="rail-steel right"></div>
   <div class="train-wrapper">
-    <!-- 车头在最左边，朝右行驶 -->
+    <!-- 车头朝右，从右向左行驶 -->
     <div class="locomotive">
       <div class="locomotive-front"></div>
       <div class="chimney">
@@ -421,8 +447,16 @@ permalink: /railroad/home
 <!-- HERO -->
 <div class="rr-hero">
   <span class="rr-hero-icon">🚂</span>
+
   <div class="rr-hero-badge">Since 1987 · Heritage Rail · Old Poway Park</div>
-  <h1 class="rr-hero-title">Poway–Midland<br><em>Railroad</em></h1>
+
+  
+  <!-- 新的双行彩色标题 -->
+  <div class="rr-main-title">
+    <span class="white-part">Poway-Midland</span>
+    <span class="orange-part">Railroad</span>
+  </div>
+  
   <p class="rr-hero-sub">Your digital depot for steam, steel, and stories. Explore vintage locomotives, real-time schedules, and the volunteers who keep the iron horse alive every weekend in Poway, CA.</p>
   <div class="rr-hero-btns">
     <a href="{{ "/railroad/calendar" | relative_url }}" class="rr-btn-primary">🎟 Book a Ride</a>
@@ -465,10 +499,10 @@ permalink: /railroad/home
     </div>
   </div>
 
-  <div class="rr-section-title">Contact Us</div>
+  <div class="rr-section-title">Information</div>
   <div class="rr-contact">
     <div>
-      <h2>🚉 Get in Touch</h2>
+      <h2>🚉 Information</h2>
       <p>
         <span>📞</span> (858) 748-0379<br>
         <span>📧</span> info@powaymidlandrr.org<br>

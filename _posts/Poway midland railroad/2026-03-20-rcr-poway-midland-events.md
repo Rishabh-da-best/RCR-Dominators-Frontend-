@@ -7,7 +7,8 @@ permalink: /railroad/events
 <style>
   :root{--coal:#1a1410;--iron:#2e2620;--iron2:#3a2e28;--rust:#b94a1c;--ember:#e8621a;--gold:#c9943a;--steam:#e8e0d0;--smoke:#8c7f6e;}
   *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
-  body{background:var(--coal);color:var(--steam);font-family:'Georgia',serif;padding-top:56px;}
+
+  .ev-page{background:var(--coal);min-height:100vh;font-family:'Georgia',serif;color:var(--steam);}
 
   .rr-hero{padding:52px 24px 40px;text-align:center;background:radial-gradient(ellipse at 50% 0%,#3d2a18 0%,var(--coal) 70%);border-bottom:1px solid rgba(255,255,255,0.06);}
   .rr-hero-tag{font-family:'Courier New',monospace;font-size:10px;letter-spacing:0.3em;text-transform:uppercase;color:var(--gold);margin-bottom:10px;opacity:0.8;}
@@ -37,6 +38,8 @@ permalink: /railroad/events
   .rr-ann-body{font-size:13px;color:var(--smoke);line-height:1.6;}
   .rr-empty{text-align:center;padding:40px;font-family:'Courier New',monospace;font-size:12px;color:var(--smoke);}
 </style>
+
+<div class="ev-page">
 
 <div class="rr-hero">
   <div class="rr-hero-tag">Latest News · Poway–Midland Railroad</div>
@@ -70,6 +73,8 @@ permalink: /railroad/events
   </div>
 </div>
 
+</div>
+
 <script>
 const UPDATES = [
   { id:1, title:"Spring Family Ride Window Expanded",   category:"events",     date:"2026-03-12", summary:"Saturday rides now run until 4:30 PM during spring programming weeks." },
@@ -85,7 +90,6 @@ const statusEl = document.getElementById('statusNote');
 const searchEl = document.getElementById('searchInput');
 const catEl    = document.getElementById('catFilter');
 
-// Populate categories
 const cats = [...new Set(store.map(u=>u.category))];
 cats.forEach(c => {
   const o = document.createElement('option');
