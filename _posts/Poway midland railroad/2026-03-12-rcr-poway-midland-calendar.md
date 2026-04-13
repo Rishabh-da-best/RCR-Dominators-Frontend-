@@ -7,8 +7,8 @@ permalink: /railroad/calendar
 <style>
   :root {
     --rust:#b94a1c; --gold:#c9943a; --green:#2d6a4f;
-    --coal:#1a1410; --iron:#2e2620; --iron2:#3a2e28;
-    --steam:#e8e0d0; --smoke:#8c7f6e;
+    --coal:#ffffff;--iron:#faf8f5;--iron2:#f0ebe2;
+    --steam:#2c1f0e;--smoke:#7a6a58;
     --border:rgba(255,255,255,0.1);
     --text:#e8e0d0; --subtext:#8c7f6e;
   }

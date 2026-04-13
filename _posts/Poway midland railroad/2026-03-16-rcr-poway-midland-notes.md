@@ -9,8 +9,8 @@ permalink: /railroad/notes
     --rust:     #b94a1c;
     --gold:     #c9943a;
     --green:    #2d6a4f;
-    --bg:       #faf8f5;
-    --white:    #ffffff;
+    --bg:       #ffffff;
+    --white:    #faf8f5;
     --border:   #e8e0d0;
     --text:     #2c1f0e;
     --subtext:  #7a6a58;

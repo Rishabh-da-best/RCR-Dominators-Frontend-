@@ -13,9 +13,9 @@ permalink: /railroad/schedule
     --red:   #c0392b;
     --steel: #5a6872;
     --smoke: #8c7f6e;
-    --track: #2a1f18;
-    --card:  rgba(255,255,255,0.05);
-    --border: rgba(255,255,255,0.08);
+    --track: #f0ebe2;
+    --card:  #ffffff;
+    --border: #e8e0d0;
   }
 
   .rr-wrap { max-width:1000px; margin:0 auto; padding:32px 16px 64px; }
@@ -23,25 +23,25 @@ permalink: /railroad/schedule
   .rr-header { display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:16px; background:var(--track); border-radius:14px; padding:24px 28px; margin-bottom:12px; border:1px solid var(--border); }
   .rr-header-left { display:flex; align-items:center; gap:14px; }
   .rr-logo { font-size:32px; background:var(--rust); border-radius:50%; width:52px; height:52px; display:flex; align-items:center; justify-content:center; border:2px solid var(--gold); flex-shrink:0; }
-  .rr-title { font-size:clamp(15px,3vw,20px); font-weight:700; color:#fff; margin:0; line-height:1.2; }
+  .rr-title { font-size:clamp(15px,3vw,20px); font-weight:700; color:#2c1f0e; margin:0; line-height:1.2; }
   .rr-subtitle { font-size:10px; color:var(--gold); letter-spacing:0.15em; text-transform:uppercase; margin-top:3px; }
 
   .rr-clock { text-align:right; }
-  .rr-clock .time { font-family:'Courier New',monospace; font-size:clamp(18px,3.5vw,28px); color:#fff; font-weight:700; letter-spacing:0.05em; }
+  .rr-clock .time { font-family:'Courier New',monospace; font-size:clamp(18px,3.5vw,28px); color:#2c1f0e; font-weight:700; letter-spacing:0.05em; }
   .rr-clock .date { font-size:10px; color:var(--smoke); letter-spacing:0.08em; text-transform:uppercase; }
 
   .rr-ticker { background:var(--rust); border-radius:8px; overflow:hidden; white-space:nowrap; padding:7px 0; margin-bottom:20px; }
-  .rr-ticker-inner { display:inline-block; animation:rr-scroll 30s linear infinite; font-family:'Courier New',monospace; font-size:11px; color:#fff; letter-spacing:0.1em; }
+  .rr-ticker-inner { display:inline-block; animation:rr-scroll 30s linear infinite; font-family:'Courier New',monospace; font-size:11px; color:#2c1f0e; letter-spacing:0.1em; }
   @keyframes rr-scroll { from { transform:translateX(100vw); } to { transform:translateX(-100%); } }
 
   .rr-date-switcher { display:flex; align-items:center; gap:10px; background:var(--track); border:1px solid var(--border); border-radius:10px; padding:12px 18px; margin-bottom:16px; flex-wrap:wrap; }
   .rr-date-switcher label { font-family:'Courier New',monospace; font-size:10px; letter-spacing:0.15em; text-transform:uppercase; color:var(--gold); white-space:nowrap; }
-  .rr-date-input { background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.15); border-radius:6px; color:#fff; font-family:'Courier New',monospace; font-size:12px; padding:6px 10px; cursor:pointer; }
+  .rr-date-input { background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.15); border-radius:6px; color:#2c1f0e; font-family:'Courier New',monospace; font-size:12px; padding:6px 10px; cursor:pointer; }
   .rr-date-input:focus { outline:none; border-color:var(--gold); }
   .rr-date-today { background:rgba(201,148,58,0.15); border:1px solid var(--gold); color:var(--gold); font-family:'Courier New',monospace; font-size:11px; letter-spacing:0.08em; padding:6px 12px; border-radius:6px; cursor:pointer; transition:background 0.2s; white-space:nowrap; }
   .rr-date-today:hover { background:rgba(201,148,58,0.3); }
   .rr-viewing-badge { margin-left:auto; font-size:11px; color:var(--smoke); font-family:'Courier New',monospace; }
-  .rr-viewing-badge span { color:#fff; font-weight:700; }
+  .rr-viewing-badge span { color:#2c1f0e; font-weight:700; }
 
   .rr-label { font-family:'Courier New',monospace; font-size:10px; letter-spacing:0.2em; text-transform:uppercase; color:var(--gold); display:flex; align-items:center; gap:8px; margin-bottom:10px; }
   .rr-label::after { content:''; flex:1; height:1px; background:var(--gold); opacity:0.2; }
@@ -49,9 +49,9 @@ permalink: /railroad/schedule
   .rr-status { display:flex; align-items:center; gap:14px; flex-wrap:wrap; background:var(--track); border:1px solid var(--border); border-left:4px solid var(--green); border-radius:10px; padding:14px 20px; margin-bottom:20px; }
   .rr-dot { width:12px; height:12px; border-radius:50%; background:var(--green); flex-shrink:0; animation:rr-pulse 2s ease-in-out infinite; box-shadow:0 0 0 4px rgba(45,106,79,0.25); }
   @keyframes rr-pulse { 0%,100% { box-shadow:0 0 0 4px rgba(45,106,79,0.25); } 50% { box-shadow:0 0 0 8px rgba(45,106,79,0.08); } }
-  .rr-status-text { font-size:13px; color:#ccc; }
+  .rr-status-text { font-size:13px; color:#7a6a58; }
   .rr-status-text strong { color:#4caf82; }
-  .rr-refresh { margin-left:auto; background:rgba(255,255,255,0.06); border:1px solid var(--border); color:#ccc; font-family:'Courier New',monospace; font-size:11px; letter-spacing:0.08em; padding:7px 14px; border-radius:6px; cursor:pointer; transition:background 0.2s,transform 0.15s; text-transform:uppercase; }
+  .rr-refresh { margin-left:auto; background:rgba(255,255,255,0.06); border:1px solid var(--border); color:#7a6a58; font-family:'Courier New',monospace; font-size:11px; letter-spacing:0.08em; padding:7px 14px; border-radius:6px; cursor:pointer; transition:background 0.2s,transform 0.15s; text-transform:uppercase; }
   .rr-refresh:hover { background:rgba(255,255,255,0.12); transform:translateY(-1px); }
   .rr-refresh.spinning .rr-spin { display:inline-block; animation:spin 0.8s linear infinite; }
   @keyframes spin { to { transform:rotate(360deg); } }
@@ -59,20 +59,20 @@ permalink: /railroad/schedule
   .rr-next { background:var(--track); border:1px solid var(--border); border-radius:14px; padding:26px 22px; margin-bottom:24px; display:grid; grid-template-columns:1fr auto; gap:20px; align-items:center; position:relative; overflow:hidden; }
   .rr-next::before { content:'🚂'; position:absolute; right:-8px; bottom:-14px; font-size:90px; opacity:0.05; pointer-events:none; transform:scaleX(-1); }
   .rr-next-label { font-family:'Courier New',monospace; font-size:10px; letter-spacing:0.2em; text-transform:uppercase; color:var(--gold); margin-bottom:6px; }
-  .rr-next-time { font-size:clamp(38px,7vw,58px); font-weight:900; color:#fff; line-height:1; }
+  .rr-next-time { font-size:clamp(38px,7vw,58px); font-weight:900; color:#2c1f0e; line-height:1; }
   .rr-next-sub { font-size:13px; color:var(--smoke); margin-top:8px; }
   .rr-seats-row { display:flex; align-items:center; gap:10px; margin-top:12px; flex-wrap:wrap; }
   .rr-bar-wrap { flex:1; min-width:100px; height:6px; background:rgba(255,255,255,0.1); border-radius:3px; overflow:hidden; }
   .rr-bar-fill { height:100%; border-radius:3px; transition:width 0.6s ease; }
   .rr-seats-text { font-family:'Courier New',monospace; font-size:11px; color:var(--smoke); white-space:nowrap; }
-  .rr-badge { padding:10px 16px; border-radius:8px; font-family:'Courier New',monospace; font-size:12px; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; color:#fff; text-align:center; white-space:nowrap; }
+  .rr-badge { padding:10px 16px; border-radius:8px; font-family:'Courier New',monospace; font-size:12px; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; color:#2c1f0e; text-align:center; white-space:nowrap; }
 
   .rr-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(230px,1fr)); gap:12px; margin-bottom:32px; }
 
   .rr-card { background:var(--card); border:1px solid var(--border); border-radius:12px; padding:16px; transition:transform 0.2s,box-shadow 0.2s; }
   .rr-card:hover { transform:translateY(-3px); box-shadow:0 8px 24px rgba(0,0,0,0.3); }
   .rr-card-top { display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:10px; }
-  .rr-card-time { font-size:24px; font-weight:800; color:#fff; line-height:1; }
+  .rr-card-time { font-size:24px; font-weight:800; color:#2c1f0e; line-height:1; }
   .rr-card-period { font-size:11px; color:var(--smoke); margin-top:2px; }
   .rr-pill { font-family:'Courier New',monospace; font-size:10px; font-weight:700; letter-spacing:0.07em; text-transform:uppercase; padding:4px 10px; border-radius:20px; }
   .pill-ontime   { background:rgba(45,106,79,0.2);    color:#4caf82; }
@@ -81,7 +81,7 @@ permalink: /railroad/schedule
   .pill-full     { background:rgba(255,255,255,0.06); color:var(--smoke); }
   .rr-divider { height:1px; background:var(--border); margin:10px 0; }
   .rr-info-row { display:flex; justify-content:space-between; font-size:12px; color:var(--smoke); margin-bottom:4px; }
-  .rr-info-row span:last-child { color:#ccc; font-weight:500; }
+  .rr-info-row span:last-child { color:#7a6a58; font-weight:500; }
   .rr-card-bar { height:4px; background:rgba(255,255,255,0.08); border-radius:2px; overflow:hidden; margin-top:10px; }
   .rr-card-fill { height:100%; border-radius:2px; transition:width 0.5s; }
   .rr-alert { margin-top:10px; font-size:11px; font-family:'Courier New',monospace; padding:6px 10px; border-radius:6px; border-left:3px solid; }
@@ -106,7 +106,7 @@ permalink: /railroad/schedule
   .rr-stats { display:grid; grid-template-columns:repeat(auto-fill,minmax(150px,1fr)); gap:10px; margin-top:18px; }
   .rr-stat { background:rgba(255,255,255,0.04); border:1px solid var(--border); border-radius:10px; padding:14px; }
   .rr-stat-label { font-family:'Courier New',monospace; font-size:9px; letter-spacing:0.15em; text-transform:uppercase; color:var(--smoke); margin-bottom:5px; }
-  .rr-stat-value { font-size:20px; font-weight:700; color:#fff; }
+  .rr-stat-value { font-size:20px; font-weight:700; color:#2c1f0e; }
   .rr-stat-sub { font-size:11px; color:var(--smoke); margin-top:2px; }
 
   @media (max-width:580px) {
@@ -115,6 +115,7 @@ permalink: /railroad/schedule
     .rr-stop-name { font-size:8px; max-width:46px; }
     .rr-date-switcher { gap:8px; }
   }
+  body { background: #ffffff; color: #2c1f0e; }
 </style>
 
 <div class="rr-wrap">
@@ -189,7 +190,7 @@ permalink: /railroad/schedule
 
   <div class="rr-label">Live Tracker</div>
   <div class="rr-tracker">
-    <div style="font-size:17px;font-weight:700;color:#fff;margin-bottom:4px;">Train Position</div>
+    <div style="font-size:17px;font-weight:700;color:#2c1f0e;margin-bottom:4px;">Train Position</div>
     <div style="font-size:12px;color:var(--smoke);">Updates every 15 seconds</div>
     <div class="rr-track-diagram">
       <div style="position:relative;">

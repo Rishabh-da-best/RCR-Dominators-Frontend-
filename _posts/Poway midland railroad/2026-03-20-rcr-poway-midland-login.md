@@ -6,9 +6,9 @@ permalink: /railroad/login
 
 <style>
   :root {
-    --coal:#1a1410;--iron:#2e2620;--iron2:#3a2e28;
+    --coal:#ffffff;--iron:#faf8f5;--iron2:#f0ebe2;
     --rust:#b94a1c;--ember:#e8621a;--gold:#c9943a;
-    --steam:#e8e0d0;--smoke:#8c7f6e;
+    --steam:#2c1f0e;--smoke:#7a6a58;
   }
   *, *::before, *::after { box-sizing:border-box; margin:0; padding:0; }
   body { background:var(--coal); color:var(--steam); font-family:'Georgia',serif; padding-top:56px; }

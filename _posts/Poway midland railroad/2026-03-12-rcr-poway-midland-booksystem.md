@@ -14,12 +14,12 @@ permalink: /railroad/book
     --iron2:    #3a2e28;
     --steam:    #e8e0d0;
     --smoke:    #8c7f6e;
-    --light-bg: #1a1410;
-    --white:    #2e2620;
-    --border:   rgba(255,255,255,0.1);
-    --text:     #e8e0d0;
-    --subtext:  #8c7f6e;
-    --input-bg: #3a2e28;
+    --light-bg: #ffffff;
+    --white:    #faf8f5;
+    --border:   #e8e0d0;
+    --text:     #2c1f0e;
+    --subtext:  #7a6a58;
+    --input-bg: #f5f0e8;
   }
 
   * { box-sizing: border-box; }

@@ -8,15 +8,15 @@ permalink: /railroad/trains
 
 <style>
   :root {
-    --coal:    #1a1410;
-    --iron:    #2e2620;
+    --coal:    #ffffff;
+    --iron:    #faf8f5;
     --rust:    #b94a1c;
     --ember:   #e8621a;
     --gold:    #c9943a;
     --brass:   #d4a843;
-    --steam:   #e8e0d0;
+    --steam:   #2c1f0e;
     --parchment: #f5f0e8;
-    --smoke:   #8c7f6e;
+    --smoke:   #7a6a58;
     --rail:    #4a3f35;
   }
 

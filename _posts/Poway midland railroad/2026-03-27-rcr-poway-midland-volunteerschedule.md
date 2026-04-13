@@ -12,21 +12,21 @@ AI: true
     --rust: #b94a1c;
     --gold: #c9943a;
     --green: #2d6a4f;
-    --coal: #1a1410;
-    --iron: #2e2620;
-    --iron2: #3a2e28;
-    --steam: #e8e0d0;
-    --smoke: #8c7f6e;
-    --light-bg: #1a1410;
-    --white: #2e2620;
-    --border: rgba(255,255,255,0.1);
-    --text: #e8e0d0;
-    --subtext: #8c7f6e;
-    --steam-bg: rgba(232,160,32,0.15);
-    --cable-bg: rgba(59,130,246,0.15);
-    --speeder-bg: rgba(16,185,129,0.15);
-    --none-bg: rgba(255,255,255,0.05);
-  }
+    --coal: #ffffff;
+    --iron: #faf8f5;
+    --iron2: #f0ebe2;
+    --steam: #2c1f0e;
+    --smoke: #7a6a58;
+    --light-bg: #ffffff;
+    --white: #faf8f5;
+    --border: #e8e0d0;
+    --text: #2c1f0e;
+    --subtext: #7a6a58;
+    --steam-bg: #fff3cd;
+    --cable-bg: #dbeafe;
+    --speeder-bg: #d1fae5;
+    --none-bg: #f3f4f6;
+}
 
   .vol-page {
     background: var(--coal);

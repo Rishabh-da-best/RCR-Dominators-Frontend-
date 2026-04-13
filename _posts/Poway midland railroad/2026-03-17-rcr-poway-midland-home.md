@@ -7,8 +7,8 @@ permalink: /railroad/home
 <style>
   :root {
     --rust:  #b94a1c; --ember: #e8621a; --gold:  #c9943a;
-    --coal:  #1a1410; --iron:  #2e2620; --iron2: #3a2e28;
-    --steam: #e8e0d0; --smoke: #8c7f6e; --rail:  #4a3f35;
+    --coal:  #faf8f5; --iron:  #ffffff; --iron2: #f0ebe2;
+    --steam: #2c1f0e; --smoke: #7a6a58; --rail:  #4a3f35;
   }
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -32,11 +32,7 @@ permalink: /railroad/home
     position: absolute; bottom: 0; left: 0;
     width: 100%; height: 100%;
     background: linear-gradient(180deg,
-      #1a1208 0%,
-      #2a1a0e 40%,
-      #3d2510 70%,
-      #4a2e14 85%,
-      #3a2010 100%);
+    #e8e4dc 0%, #ddd8cc 40%, #d4cec4 70%, #ccc6ba 85%, #c8c2b6 100%);
   }
   /* Distant silhouette hills */
   .bg-hills {

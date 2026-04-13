@@ -6,9 +6,9 @@ permalink: /railroad/assistant
 
 <style>
   :root {
-    --coal:#1a1410;--iron:#2e2620;--iron2:#3a2e28;--iron3:#251e18;
+    --coal:#ffffff;--iron:#faf8f5;--iron2:#f0ebe2;--iron3:#251e18;
     --rust:#b94a1c;--ember:#e8621a;--gold:#c9943a;--gold2:#f0c060;
-    --steam:#e8e0d0;--smoke:#8c7f6e;--green:#2d6a4f;
+    --steam:#2c1f0e;--smoke:#7a6a58;--green:#2d6a4f;
   }
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   body { background: var(--coal); color: var(--steam); font-family: 'Georgia', serif; padding-top: 56px; }

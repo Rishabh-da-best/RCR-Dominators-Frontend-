@@ -7,7 +7,7 @@ permalink: /railroad/forecast
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Mono:wght@400;500&family=Source+Serif+4:wght@300;400;600&display=swap" rel="stylesheet">
 
 <style>
-  :root{--coal:#1a1410;--iron:#2e2620;--iron2:#3a2e28;--rust:#b94a1c;--ember:#e8621a;--gold:#c9943a;--steam:#e8e0d0;--smoke:#8c7f6e;}
+  :root{--coal:#ffffff;--iron:#faf8f5;--iron2:#f0ebe2;--rust:#b94a1c;--ember:#e8621a;--gold:#c9943a;--steam:#2c1f0e;--smoke:#7a6a58;}
   *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
   .fc-page{background:var(--coal);min-height:100vh;font-family:'Source Serif 4',Georgia,serif;color:var(--steam);}
 
