@@ -18,7 +18,29 @@ permalink: /railroad/schedule
     --border: #e8e0d0;
   }
 
-  .rr-wrap { max-width:1000px; margin:0 auto; padding:32px 16px 64px; }
+    .rr-wrap {
+    width: 100%;
+    max-width: none;
+    margin: 0;
+    padding: 40px 60px 80px;
+    box-sizing: border-box;
+  }
+
+  body {
+  background: #ffffff;
+  color: #2c1f0e;
+}
+
+/* 内容更舒展 */
+.rr-grid {
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+}
+
+/* 卡片更轻一点（现在有点重） */
+.rr-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.15);
+}
 
   .rr-header { display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:16px; background:var(--track); border-radius:14px; padding:24px 28px; margin-bottom:12px; border:1px solid var(--border); }
   .rr-header-left { display:flex; align-items:center; gap:14px; }
@@ -116,6 +138,17 @@ permalink: /railroad/schedule
     .rr-date-switcher { gap:8px; }
   }
   body { background: #ffffff; color: #2c1f0e; }
+
+    /* 🔥 强制全宽（覆盖 Minima） */
+  .page-content {
+    max-width: none !important;
+    padding: 0 !important;
+  }
+
+  .wrapper {
+    max-width: none !important;
+    padding: 0 !important;
+  }
 </style>
 
 <div class="rr-wrap">
@@ -210,7 +243,7 @@ permalink: /railroad/schedule
 </div>
 
 <script>
-  const BACKEND = 'http://localhost:8428';
+  const BACKEND = 'http://localhost:8587';
   const RR_STOPS = ['Depot Station','Oak Grove','Midland Curve','Park Loop','Return to Depot'];
 
   let rrViewDate = null; // null = today
