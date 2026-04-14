@@ -1,8 +1,6 @@
 ---
 ---
 
-// ^^ Do not remove the above front matter, it is required for Jekyll processing
-
 export const baseurl = "{{ site.baseurl }}";
 
 export var pythonURI = "https://rcr-user.opencodingsociety.com";
@@ -44,3 +42,4 @@ export function login(options) {
         document.getElementById(options.message).textContent = 'Possible CORS or service down error: ' + error;
     });
 }
+EOF
