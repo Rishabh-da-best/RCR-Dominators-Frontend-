@@ -6,49 +6,64 @@ permalink: /railroad/book
 
 <style>
   :root {
-    --rust:     #b94a1c;
-    --gold:     #c9943a;
-    --green:    #2d6a4f;
-    --coal:     #1a1410;
-    --iron:     #2e2620;
-    --iron2:    #3a2e28;
-    --steam:    #e8e0d0;
-    --smoke:    #8c7f6e;
+    --rust:     #000000;
+    --gold:     #333333;
+    --green:    #000000;
+    --coal:     #000000;
+    --iron:     #000000;
+    --iron2:    #000000;
+    --steam:    #ffffff;
+    --smoke:    #666666;
     --light-bg: #ffffff;
-    --white:    #faf8f5;
-    --border:   #e8e0d0;
-    --text:     #2c1f0e;
-    --subtext:  #7a6a58;
-    --input-bg: #f5f0e8;
+    --white:    #ffffff;
+    --border:   #cccccc;
+    --text:     #000000;
+    --subtext:  #666666;
+    --input-bg: #f9f9f9;
   }
 
   * { box-sizing: border-box; }
 
-  .bk-wrap { max-width: 680px; margin: 0 auto; padding: 28px 16px 60px; background: var(--light-bg); min-height: 100vh; }
+    .bk-wrap {
+    width: 100vw;
+    height: 100vh;
+    max-width: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    overflow-x: auto;
+  }
 
   /* Header */
-  .bk-header { display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:14px; margin-bottom:28px; }
+  .bk-header { display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:14px; margin-bottom:20px; padding: 20px; background: #ffffff; border-bottom: 1px solid var(--border); }
   .bk-header-left { display:flex; align-items:center; gap:12px; }
-  .bk-logo { font-size:26px; background:var(--rust); border-radius:10px; width:46px; height:46px; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+  .bk-logo { font-size:26px; background:var(--text); border-radius:10px; width:46px; height:46px; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
   .bk-title { font-size:clamp(16px,2.5vw,20px); font-weight:700; color:var(--text); margin:0; }
   .bk-subtitle { font-size:11px; color:var(--subtext); letter-spacing:0.1em; text-transform:uppercase; margin-top:2px; }
-  .bk-back { display:flex; align-items:center; gap:6px; padding:8px 16px; background:var(--white); border:1px solid var(--border); border-radius:8px; color:var(--rust); text-decoration:none; font-size:13px; font-weight:600; transition:background 0.2s; }
-  .bk-back:hover { background:#fff0ea; }
+  .bk-back { display:flex; align-items:center; gap:6px; padding:8px 16px; background:var(--white); border:1px solid var(--border); border-radius:8px; color:var(--text); text-decoration:none; font-size:13px; font-weight:600; transition:background 0.2s; }
+  .bk-back:hover { background:#f5f5f5; }
+
+  /* Main content area - horizontal layout */
+  .main-content { display: flex; flex: 1; overflow-y: hidden; }
 
   /* Ride summary card */
-  .bk-ride-card { background:var(--white); border:1px solid var(--border); border-radius:14px; padding:22px 24px; margin-bottom:24px; border-top:4px solid var(--rust); }
+  .bk-ride-card { background:var(--white); border-right:1px solid var(--border); padding:30px 25px; flex: 0 0 35%; overflow-y: auto; border-top: none; }
   .bk-ride-label { font-size:10px; font-weight:700; letter-spacing:0.2em; text-transform:uppercase; color:var(--subtext); margin-bottom:12px; }
-  .bk-ride-main { display:flex; align-items:center; gap:18px; flex-wrap:wrap; }
+  .bk-ride-main { display:flex; align-items:center; gap:18px; flex-wrap:wrap; margin-bottom: 25px; }
   .bk-ride-time { font-size:48px; font-weight:900; color:var(--text); line-height:1; }
   .bk-ride-info { flex:1; }
   .bk-ride-type { font-size:17px; font-weight:700; color:var(--text); margin-bottom:4px; }
   .bk-ride-date { font-size:13px; color:var(--subtext); }
-  .bk-ride-details { display:grid; grid-template-columns:repeat(auto-fill,minmax(140px,1fr)); gap:10px; margin-top:16px; padding-top:16px; border-top:1px solid var(--border); }
+  .bk-ride-details { display:grid; grid-template-columns:repeat(2,1fr); gap:15px; padding-top:20px; border-top:1px solid var(--border); }
   .bk-detail { font-size:12px; color:var(--subtext); }
-  .bk-detail strong { display:block; font-size:14px; color:var(--text); margin-bottom:1px; }
+  .bk-detail strong { display:block; font-size:14px; color:var(--text); margin-bottom:1px; font-weight: 700; }
+
+  /* Form section - right side */
+  .form-section { flex: 1; display: flex; flex-direction: column; overflow-y: auto; }
 
   /* Form */
-  .bk-form { background:var(--white); border:1px solid var(--border); border-radius:14px; padding:24px; }
+  .bk-form { background:var(--white); border: none; border-radius:0; padding:30px 30px; flex: 1; display: flex; flex-direction: column; }
   .bk-form-title { font-size:16px; font-weight:700; color:var(--text); margin-bottom:20px; padding-bottom:12px; border-bottom:1px solid var(--border); }
 
   .bk-field { margin-bottom:18px; }
@@ -58,48 +73,70 @@ permalink: /railroad/book
     border-radius:8px; font-size:14px; color:var(--text); font-family:inherit;
     transition:border-color 0.2s, box-shadow 0.2s;
   }
-  .bk-field input:focus, .bk-field select:focus { outline:none; border-color:var(--rust); box-shadow:0 0 0 3px rgba(185,74,28,0.1); }
+  .bk-field input:focus, .bk-field select:focus { outline:none; border-color:var(--text); box-shadow:0 0 0 3px rgba(0,0,0,0.1); }
 
   .bk-row { display:grid; grid-template-columns:1fr 1fr; gap:14px; }
 
   .bk-ticket-row { display:flex; align-items:center; justify-content:space-between; padding:12px 0; border-bottom:1px solid var(--border); }
   .bk-ticket-row:last-of-type { border-bottom:none; }
-  .bk-ticket-label { font-size:14px; color:var(--text); }
+  .bk-ticket-label { font-size:14px; color:var(--text); font-weight: 600; }
   .bk-ticket-sub { font-size:11px; color:var(--subtext); margin-top:1px; }
   .bk-ticket-ctrl { display:flex; align-items:center; gap:12px; }
-  .bk-qty-btn { width:30px; height:30px; border-radius:6px; border:1px solid var(--border); background:var(--input-bg); color:var(--text); font-size:16px; cursor:pointer; display:flex; align-items:center; justify-content:center; transition:background 0.2s; }
-  .bk-qty-btn:hover { background:#ede8df; }
+  .bk-qty-btn { width:30px; height:30px; border-radius:6px; border:1px solid var(--border); background:var(--input-bg); color:var(--text); font-size:16px; cursor:pointer; display:flex; align-items:center; justify-content:center; transition:background 0.2s; font-weight: 600; }
+  .bk-qty-btn:hover { background:#e8e8e8; }
   .bk-qty-val { font-size:16px; font-weight:700; color:var(--text); min-width:20px; text-align:center; }
-  .bk-ticket-price { font-size:14px; font-weight:600; color:var(--rust); min-width:40px; text-align:right; }
+  .bk-ticket-price { font-size:14px; font-weight:600; color:var(--text); min-width:40px; text-align:right; }
 
-  .bk-total { display:flex; justify-content:space-between; align-items:center; padding:16px; background:var(--input-bg); border-radius:10px; margin-top:16px; }
+  .bk-total { display:flex; justify-content:space-between; align-items:center; padding:16px; background:var(--input-bg); border-radius:10px; margin-top:16px; border: 1px solid var(--border); }
   .bk-total-label { font-size:13px; font-weight:700; color:var(--subtext); letter-spacing:0.05em; text-transform:uppercase; }
   .bk-total-amt { font-size:24px; font-weight:900; color:var(--text); }
 
-  .bk-submit { width:100%; margin-top:20px; padding:15px; background:var(--rust); border:none; border-radius:10px; color:#fff; font-size:15px; font-weight:700; letter-spacing:0.05em; cursor:pointer; transition:background 0.2s,transform 0.15s; }
-  .bk-submit:hover { background:#a03d16; transform:translateY(-1px); }
+  .bk-submit { width:100%; margin-top:20px; padding:15px; background:var(--text); border:none; border-radius:10px; color:#fff; font-size:15px; font-weight:700; letter-spacing:0.05em; cursor:pointer; transition:background 0.2s,transform 0.15s; }
+  .bk-submit:hover { background:#333333; transform:translateY(-1px); }
   .bk-submit:disabled { background:#ccc; cursor:not-allowed; transform:none; }
 
   .bk-note { font-size:11px; color:var(--subtext); text-align:center; margin-top:12px; line-height:1.5; }
 
   /* Confirmation screen */
-  .bk-confirm { display:none; background:var(--white); border:1px solid var(--border); border-radius:14px; padding:36px 28px; text-align:center; }
+  .bk-confirm { display:none; background:var(--white); border: none; border-radius:0; padding:36px 28px; text-align:center; }
   .bk-confirm.show { display:block; }
   .bk-confirm-icon { font-size:52px; margin-bottom:14px; }
   .bk-confirm-title { font-size:22px; font-weight:800; color:var(--text); margin-bottom:8px; }
   .bk-confirm-sub { font-size:14px; color:var(--subtext); line-height:1.6; margin-bottom:24px; }
-  .bk-confirm-code { font-family:'Courier New',monospace; font-size:22px; font-weight:700; letter-spacing:0.2em; color:var(--rust); background:var(--input-bg); padding:12px 24px; border-radius:8px; display:inline-block; margin-bottom:24px; border:1px solid var(--border); }
-  .bk-confirm-details { background:var(--input-bg); border-radius:10px; padding:16px 20px; text-align:left; margin-bottom:24px; font-size:13px; color:var(--text); line-height:1.8; }
-  .bk-confirm-back { display:inline-block; padding:12px 28px; background:var(--rust); color:#fff; border-radius:8px; text-decoration:none; font-weight:700; font-size:14px; transition:background 0.2s; }
-  .bk-confirm-back:hover { background:#a03d16; }
+  .bk-confirm-code { font-family:'Courier New',monospace; font-size:22px; font-weight:700; letter-spacing:0.2em; color:#000; background:var(--input-bg); padding:12px 24px; border-radius:8px; display:inline-block; margin-bottom:24px; border:1px solid var(--border); }
+  .bk-confirm-details { background:var(--input-bg); border-radius:10px; padding:16px 20px; text-align:left; margin-bottom:24px; font-size:13px; color:var(--text); line-height:1.8; border: 1px solid var(--border); }
+  .bk-confirm-back { display:inline-block; padding:12px 28px; background:var(--text); color:#fff; border-radius:8px; text-decoration:none; font-weight:700; font-size:14px; transition:background 0.2s; }
+  .bk-confirm-back:hover { background:#333333; }
+
 
   @media (max-width:500px) {
     .bk-row { grid-template-columns:1fr; }
     .bk-ride-time { font-size:36px; }
+    .bk-wrap { flex-direction: column; height: auto; }
+    .main-content { flex-direction: column; overflow: auto; }
+    .bk-ride-card { border-right: none; border-bottom: 1px solid var(--border); flex: 0 auto; }
   }
+
+    /* 🔥 彻底解除 Minima 限制 */
+  .page-content {
+    max-width: none !important;
+    padding: 0 !important;
+    background: #ffffff;
+  }
+
+  .wrapper {
+    max-width: none !important;
+    padding: 0 !important;
+  }
+  
+  body {
+    background: #ffffff;
+    color: #000000;
+  }
+
 </style>
 
-<div style="background:#1a1410;min-height:100vh;">
+<div style="background:#ffffff;display:flex;flex-direction:column;height:100vh;width:100vw;position:fixed;top:0;left:0;">
 <div class="bk-wrap">
 
   <!-- Header -->
@@ -114,111 +151,117 @@ permalink: /railroad/book
     <a href="#" id="bkBackBtn" class="bk-back">← Back to Schedule</a>
   </div>
 
-  <!-- Ride summary -->
-  <div class="bk-ride-card">
-    <div class="bk-ride-label">Your Selected Ride</div>
-    <div class="bk-ride-main">
-      <div class="bk-ride-time" id="bkTime">--:--</div>
-      <div class="bk-ride-info">
-        <div class="bk-ride-type" id="bkType">Loading...</div>
-        <div class="bk-ride-date" id="bkDate">—</div>
+  <!-- Main content area - flex row -->
+  <div class="main-content">
+    <!-- Left side - Ride summary -->
+    <div class="bk-ride-card">
+      <div class="bk-ride-label">Your Selected Ride</div>
+      <div class="bk-ride-main">
+        <div class="bk-ride-time" id="bkTime">--:--</div>
+        <div class="bk-ride-info">
+          <div class="bk-ride-type" id="bkType">Loading...</div>
+          <div class="bk-ride-date" id="bkDate">—</div>
+        </div>
       </div>
-    </div>
-    <div class="bk-ride-details">
-      <div class="bk-detail"><strong id="bkDuration">~10–15 min</strong>Ride Duration</div>
-      <div class="bk-detail"><strong>Old Poway Park</strong>Location</div>
-      <div class="bk-detail"><strong id="bkFareAdult">$5.00</strong>Adult Fare</div>
-      <div class="bk-detail"><strong id="bkSeatsAvail" style="color:#2d6a4f;">—</strong>Seats Available</div>
-      <div class="bk-detail"><strong>$2.00</strong>Child Fare (2–12)</div>
-    </div>
-  </div>
-
-  <!-- Booking form -->
-  <div class="bk-form" id="bkFormSection">
-    <div class="bk-form-title">Passenger Information</div>
-
-    <div class="bk-row">
-      <div class="bk-field">
-        <label>First Name</label>
-        <input type="text" id="bkFirstName" placeholder="Jane">
-      </div>
-      <div class="bk-field">
-        <label>Last Name</label>
-        <input type="text" id="bkLastName" placeholder="Smith">
+      <div class="bk-ride-details">
+        <div class="bk-detail"><strong id="bkDuration">~10–15 min</strong>Ride Duration</div>
+        <div class="bk-detail"><strong>Old Poway Park</strong>Location</div>
+        <div class="bk-detail"><strong id="bkFareAdult">$5.00</strong>Adult Fare</div>
+        <div class="bk-detail"><strong id="bkSeatsAvail" style="color:#000000;">—</strong>Seats Available</div>
+        <div class="bk-detail"><strong>$2.00</strong>Child Fare (2–12)</div>
       </div>
     </div>
 
-    <div class="bk-field">
-      <label>Email Address</label>
-      <input type="email" id="bkEmail" placeholder="jane@example.com">
-    </div>
+    <!-- Right side - Booking form -->
+    <div class="form-section">
+      <!-- Booking form -->
+      <div class="bk-form" id="bkFormSection">
+        <div class="bk-form-title">Passenger Information</div>
 
-    <div class="bk-field">
-      <label>Phone Number</label>
-      <input type="tel" id="bkPhone" placeholder="(619) 555-0123">
-    </div>
+        <div class="bk-row">
+          <div class="bk-field">
+            <label>First Name</label>
+            <input type="text" id="bkFirstName" placeholder="Jane">
+          </div>
+          <div class="bk-field">
+            <label>Last Name</label>
+            <input type="text" id="bkLastName" placeholder="Smith">
+          </div>
+        </div>
 
-    <div class="bk-form-title" style="margin-top:24px;">Tickets</div>
+        <div class="bk-field">
+          <label>Email Address</label>
+          <input type="email" id="bkEmail" placeholder="jane@example.com">
+        </div>
 
-    <div class="bk-ticket-row">
-      <div>
-        <div class="bk-ticket-label">Adult</div>
-        <div class="bk-ticket-sub" id="bkAdultPriceSub">$5.00 each</div>
+        <div class="bk-field">
+          <label>Phone Number</label>
+          <input type="tel" id="bkPhone" placeholder="(619) 555-0123">
+        </div>
+
+        <div class="bk-form-title" style="margin-top:24px;">Tickets</div>
+
+        <div class="bk-ticket-row">
+          <div>
+            <div class="bk-ticket-label">Adult</div>
+            <div class="bk-ticket-sub" id="bkAdultPriceSub">$5.00 each</div>
+          </div>
+          <div class="bk-ticket-ctrl">
+            <button class="bk-qty-btn" onclick="bkChange('adult',-1)">−</button>
+            <div class="bk-qty-val" id="bkAdultQty">1</div>
+            <button class="bk-qty-btn" onclick="bkChange('adult',1)">+</button>
+            <div class="bk-ticket-price" id="bkAdultTotal">$5.00</div>
+          </div>
+        </div>
+
+        <div class="bk-ticket-row">
+          <div>
+            <div class="bk-ticket-label">Child (ages 2–12)</div>
+            <div class="bk-ticket-sub">$2.00 each</div>
+          </div>
+          <div class="bk-ticket-ctrl">
+            <button class="bk-qty-btn" onclick="bkChange('child',-1)">−</button>
+            <div class="bk-qty-val" id="bkChildQty">0</div>
+            <button class="bk-qty-btn" onclick="bkChange('child',1)">+</button>
+            <div class="bk-ticket-price" id="bkChildTotal">$0.00</div>
+          </div>
+        </div>
+
+        <div class="bk-ticket-row">
+          <div>
+            <div class="bk-ticket-label">Child under 2</div>
+            <div class="bk-ticket-sub">Free</div>
+          </div>
+          <div class="bk-ticket-ctrl">
+            <button class="bk-qty-btn" onclick="bkChange('infant',-1)">−</button>
+            <div class="bk-qty-val" id="bkInfantQty">0</div>
+            <button class="bk-qty-btn" onclick="bkChange('infant',1)">+</button>
+            <div class="bk-ticket-price">$0.00</div>
+          </div>
+        </div>
+
+        <div class="bk-total">
+          <div class="bk-total-label">Total</div>
+          <div class="bk-total-amt" id="bkGrandTotal">$5.00</div>
+        </div>
+
+        <div id="bkSeatWarning" style="display:none;background:#fff0f0;border:1px solid #cc0000;border-radius:8px;padding:10px 14px;margin-top:12px;font-size:13px;color:#cc0000;font-weight:600;">
+          ⚠️ Not enough seats available. Only <span id="bkMaxMsg"></span> seat(s) remaining for this ride.
+        </div>
+        <button class="bk-submit" id="bkSubmitBtn" onclick="bkSubmit()">🎟 Confirm Booking</button>
+        <p class="bk-note">Tickets are not pre-purchased online. This reserves your spot and you pay at the depot on the day of your ride. Cash and credit cards accepted.</p>
       </div>
-      <div class="bk-ticket-ctrl">
-        <button class="bk-qty-btn" onclick="bkChange('adult',-1)">−</button>
-        <div class="bk-qty-val" id="bkAdultQty">1</div>
-        <button class="bk-qty-btn" onclick="bkChange('adult',1)">+</button>
-        <div class="bk-ticket-price" id="bkAdultTotal">$5.00</div>
+
+      <!-- Confirmation -->
+      <div class="bk-confirm" id="bkConfirmSection">
+        <div class="bk-confirm-icon">🎉</div>
+        <div class="bk-confirm-title">Reservation Confirmed!</div>
+        <div class="bk-confirm-sub">Your spot has been reserved. Please pay at the depot on the day of your ride.</div>
+        <div class="bk-confirm-code" id="bkConfirmCode">PMR-000000</div>
+        <div class="bk-confirm-details" id="bkConfirmDetails"></div>
+        <a href="/railroad/schedule" class="bk-confirm-back">← Back to Schedule</a>
       </div>
     </div>
-
-    <div class="bk-ticket-row">
-      <div>
-        <div class="bk-ticket-label">Child (ages 2–12)</div>
-        <div class="bk-ticket-sub">$2.00 each</div>
-      </div>
-      <div class="bk-ticket-ctrl">
-        <button class="bk-qty-btn" onclick="bkChange('child',-1)">−</button>
-        <div class="bk-qty-val" id="bkChildQty">0</div>
-        <button class="bk-qty-btn" onclick="bkChange('child',1)">+</button>
-        <div class="bk-ticket-price" id="bkChildTotal">$0.00</div>
-      </div>
-    </div>
-
-    <div class="bk-ticket-row">
-      <div>
-        <div class="bk-ticket-label">Child under 2</div>
-        <div class="bk-ticket-sub">Free</div>
-      </div>
-      <div class="bk-ticket-ctrl">
-        <button class="bk-qty-btn" onclick="bkChange('infant',-1)">−</button>
-        <div class="bk-qty-val" id="bkInfantQty">0</div>
-        <button class="bk-qty-btn" onclick="bkChange('infant',1)">+</button>
-        <div class="bk-ticket-price">$0.00</div>
-      </div>
-    </div>
-
-    <div class="bk-total">
-      <div class="bk-total-label">Total</div>
-      <div class="bk-total-amt" id="bkGrandTotal">$5.00</div>
-    </div>
-
-    <div id="bkSeatWarning" style="display:none;background:#fef2f2;border:1px solid #fca5a5;border-radius:8px;padding:10px 14px;margin-top:12px;font-size:13px;color:#c0392b;font-weight:600;">
-      ⚠️ Not enough seats available. Only <span id="bkMaxMsg"></span> seat(s) remaining for this ride.
-    </div>
-    <button class="bk-submit" id="bkSubmitBtn" onclick="bkSubmit()">🎟 Confirm Booking</button>
-    <p class="bk-note">Tickets are not pre-purchased online. This reserves your spot and you pay at the depot on the day of your ride. Cash and credit cards accepted.</p>
-  </div>
-
-  <!-- Confirmation -->
-  <div class="bk-confirm" id="bkConfirmSection">
-    <div class="bk-confirm-icon">🎉</div>
-    <div class="bk-confirm-title">Reservation Confirmed!</div>
-    <div class="bk-confirm-sub">Your spot has been reserved. Please pay at the depot on the day of your ride.</div>
-    <div class="bk-confirm-code" id="bkConfirmCode">PMR-000000</div>
-    <div class="bk-confirm-details" id="bkConfirmDetails"></div>
-    <a href="/railroad/schedule" class="bk-confirm-back">← Back to Schedule</a>
   </div>
 
 </div>
