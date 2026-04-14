@@ -5,46 +5,203 @@ permalink: /railroad/contact
 ---
 
 <style>
-  :root{--coal:#ffffff;--iron:#faf8f5;--iron2:#f0ebe2;--rust:#b94a1c;--ember:#e8621a;--gold:#c9943a;--steam:#2c1f0e;--smoke:#7a6a58;}
-  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
-  body{background:var(--coal);color:var(--steam);font-family:'Georgia',serif;padding-top:56px;}
 
-  .rr-hero{padding:52px 24px 40px;text-align:center;background:radial-gradient(ellipse at 50% 0%,#3d2a18 0%,var(--coal) 70%);border-bottom:1px solid rgba(255,255,255,0.06);}
-  .rr-hero-tag{font-family:'Courier New',monospace;font-size:10px;letter-spacing:0.3em;text-transform:uppercase;color:var(--gold);margin-bottom:10px;opacity:0.8;}
-  .rr-hero h1{font-size:clamp(28px,5vw,52px);font-weight:700;line-height:1;margin-bottom:10px;}
-  .rr-hero h1 em{font-style:italic;color:var(--ember);}
-  .rr-hero p{font-size:14px;color:var(--smoke);max-width:520px;margin:0 auto;line-height:1.7;}
+  :root {
+    --background: #fff;
+    --primary: #6b3f19; /* deep brown */
+    --accent: #b94a1c;  /* rust brown */
+    --accent2: #e8621a; /* orange accent */
+    --border: #e0e0e0;
+    --input-bg: #f7f5f2;
+    --input-border: #d6cfc7;
+    --success: #2d6a4f;
+    --error: #b94a1c;
+  }
+  *,*::before,*::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: var(--background);
+    color: #111;
+    font-family: 'Georgia', serif;
+    padding-top: 56px;
+  }
 
-  .rr-wrap{max-width:1000px;margin:0 auto;padding:40px 20px 80px;}
-  .rr-grid-2{display:grid;grid-template-columns:1fr 1fr;gap:20px;}
-  @media(max-width:700px){.rr-grid-2{grid-template-columns:1fr;}}
 
-  .rr-card{background:var(--iron);border:1px solid rgba(255,255,255,0.07);border-radius:12px;padding:24px;border-top:3px solid var(--rust);}
-  .rr-card-title{font-family:'Courier New',monospace;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:16px;padding-bottom:10px;border-bottom:1px solid rgba(255,255,255,0.07);}
+  .rr-hero {
+    padding: 52px 24px 40px;
+    text-align: center;
+    background: linear-gradient(180deg, #f7f5f2 0%, #fff 100%);
+    border-bottom: 1px solid var(--border);
+  }
+  .rr-hero-tag {
+    font-family: 'Courier New', monospace;
+    font-size: 10px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 10px;
+    opacity: 0.8;
+  }
+  .rr-hero h1 {
+    font-size: clamp(28px,5vw,52px);
+    font-weight: 700;
+    line-height: 1;
+    margin-bottom: 10px;
+    color: var(--primary);
+  }
+  .rr-hero h1 em {
+    font-style: italic;
+    color: var(--accent2);
+  }
+  .rr-hero p {
+    font-size: 14px;
+    color: #4e2e0e;
+    max-width: 520px;
+    margin: 0 auto;
+    line-height: 1.7;
+  }
 
-  .rr-field{margin-bottom:14px;}
-  .rr-label{font-family:'Courier New',monospace;font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:var(--smoke);margin-bottom:5px;display:block;}
-  .rr-input,.rr-select,.rr-textarea{width:100%;padding:10px 14px;background:var(--iron2);border:1px solid rgba(255,255,255,0.1);border-radius:6px;color:var(--steam);font-family:'Georgia',serif;font-size:13px;transition:border-color 0.2s;}
-  .rr-select{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%238c7f6e'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 12px center;padding-right:32px;}
-  .rr-textarea{resize:vertical;}
-  .rr-input:focus,.rr-select:focus,.rr-textarea:focus{outline:none;border-color:var(--gold);box-shadow:0 0 0 3px rgba(201,148,58,0.15);}
-  .rr-select option{background:var(--iron2);}
-  .rr-field-err{font-family:'Courier New',monospace;font-size:10px;color:#fb923c;margin-top:4px;display:none;}
-  .rr-field-err.show{display:block;}
 
-  .rr-btn{width:100%;padding:12px;border:none;border-radius:6px;cursor:pointer;font-family:'Courier New',monospace;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;transition:all 0.2s;margin-top:4px;background:var(--rust);color:#fff;}
-  .rr-btn:hover{background:var(--ember);transform:translateY(-1px);}
-  .rr-feedback{font-size:12px;margin-top:10px;padding:8px 12px;border-radius:4px;font-family:'Courier New',monospace;display:none;}
-  .rr-feedback.ok{background:rgba(45,106,79,0.2);border:1px solid rgba(76,175,130,0.3);color:#4caf82;display:block;}
-  .rr-feedback.err{background:rgba(185,74,28,0.2);border:1px solid rgba(185,74,28,0.3);color:#fb923c;display:block;}
+  .rr-wrap { max-width: 1000px; margin: 0 auto; padding: 40px 20px 80px; }
+  .rr-grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  @media(max-width:700px) { .rr-grid-2 { grid-template-columns: 1fr; } }
 
-  .rr-checklist{list-style:none;padding:0;}
-  .rr-checklist li{padding:8px 0;border-bottom:1px solid rgba(255,255,255,0.05);font-size:13px;color:var(--smoke);display:flex;align-items:flex-start;gap:8px;}
-  .rr-checklist li::before{content:'✓';color:var(--gold);font-family:'Courier New',monospace;flex-shrink:0;}
 
-  .rr-contact-info{margin-top:20px;}
-  .rr-contact-info p{font-size:13px;color:var(--smoke);padding:8px 0;border-bottom:1px solid rgba(255,255,255,0.05);display:flex;align-items:center;gap:8px;}
-  .rr-contact-info span{color:var(--gold);}
+  .rr-card {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 24px;
+    border-top: 3px solid var(--accent);
+    box-shadow: 0 2px 8px rgba(107,63,25,0.04);
+  }
+  .rr-card-title {
+    font-family: 'Courier New', monospace;
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 16px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--border);
+  }
+
+
+  .rr-field { margin-bottom: 14px; }
+  .rr-label {
+    font-family: 'Courier New', monospace;
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--primary);
+    margin-bottom: 5px;
+    display: block;
+  }
+  .rr-input, .rr-select, .rr-textarea {
+    width: 100%;
+    padding: 10px 14px;
+    background: var(--input-bg);
+    border: 1px solid var(--input-border);
+    border-radius: 6px;
+    color: #111;
+    font-family: 'Georgia', serif;
+    font-size: 13px;
+    transition: border-color 0.2s;
+  }
+  .rr-select {
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%236b3f19'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    padding-right: 32px;
+  }
+  .rr-textarea { resize: vertical; }
+  .rr-input:focus, .rr-select:focus, .rr-textarea:focus {
+    outline: none;
+    border-color: var(--accent);
+    box-shadow: 0 0 0 2px rgba(185,74,28,0.10);
+  }
+  .rr-select option { background: var(--input-bg); }
+  .rr-field-err {
+    font-family: 'Courier New', monospace;
+    font-size: 10px;
+    color: var(--error);
+    margin-top: 4px;
+    display: none;
+  }
+  .rr-field-err.show { display: block; }
+
+
+  .rr-btn {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-family: 'Courier New', monospace;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    transition: all 0.2s;
+    margin-top: 4px;
+    background: var(--accent);
+    color: #fff;
+    box-shadow: 0 1px 2px rgba(107,63,25,0.04);
+  }
+  .rr-btn:hover {
+    background: var(--accent2);
+    transform: translateY(-1px);
+  }
+  .rr-feedback {
+    font-size: 12px;
+    margin-top: 10px;
+    padding: 8px 12px;
+    border-radius: 4px;
+    font-family: 'Courier New', monospace;
+    display: none;
+  }
+  .rr-feedback.ok {
+    background: rgba(45,106,79,0.08);
+    border: 1px solid rgba(45,106,79,0.18);
+    color: var(--success);
+    display: block;
+  }
+  .rr-feedback.err {
+    background: rgba(185,74,28,0.08);
+    border: 1px solid rgba(185,74,28,0.18);
+    color: var(--error);
+    display: block;
+  }
+
+
+  .rr-checklist { list-style: none; padding: 0; }
+  .rr-checklist li {
+    padding: 8px 0;
+    border-bottom: 1px solid var(--border);
+    font-size: 13px;
+    color: var(--primary);
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+  }
+  .rr-checklist li::before {
+    content: '✓';
+    color: var(--accent);
+    font-family: 'Courier New', monospace;
+    flex-shrink: 0;
+  }
+
+
+  .rr-contact-info { margin-top: 20px; }
+  .rr-contact-info p {
+    font-size: 13px;
+    color: var(--primary);
+    padding: 8px 0;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .rr-contact-info span { color: var(--accent); }
 </style>
 
 <div class="rr-hero">
