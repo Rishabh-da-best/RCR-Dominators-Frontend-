@@ -170,7 +170,7 @@ permalink: /railroad/forecast
 </div>
 
 <script>
-const BACKEND = 'http://localhost:8587';
+const BACKEND = 'http://localhost:8428';
 const LAT = 32.9728, LON = -117.0359;
 
 // ── US Federal Holidays + CA observances 2025–2027 ────────────────────────
@@ -362,7 +362,7 @@ async function fcPredict(){
     const data=await res.json();
     showResult(data,bucket,weather,wxEmoji,wxLabel,temperature,hasEvent,isSat,buckets);
   }catch(e){
-    errEl.textContent='⚠️ Could not reach backend. Make sure the server is running on localhost:8587.';
+    errEl.textContent='⚠️ Could not reach backend. Make sure the server is running on localhost:8428.';
     errEl.style.display='block';
   }finally{btn.disabled=false;btn.textContent='📈 Generate Forecast';}
 }

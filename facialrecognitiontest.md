@@ -247,7 +247,7 @@ input:focus {
 </style>
 
 <script>
-const API_BASE = 'http://localhost:8587/api/identify';
+const API_BASE = 'http://localhost:8428/api/identify';
 
 async function startCamera() {
   const video = document.getElementById('video');

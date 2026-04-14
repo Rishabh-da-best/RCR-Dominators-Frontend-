@@ -127,7 +127,7 @@ permalink: /railroad/login
 </div>
 
 <script>
-const BACKEND = 'http://localhost:8587';
+const BACKEND = 'http://localhost:8428';
 const REDIRECT_AFTER_LOGIN   = '{{ "/railroad/home" | relative_url }}';
 const REDIRECT_AFTER_SIGNUP  = '{{ "/railroad/home" | relative_url }}';
 const validateEmail = e => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(e);
