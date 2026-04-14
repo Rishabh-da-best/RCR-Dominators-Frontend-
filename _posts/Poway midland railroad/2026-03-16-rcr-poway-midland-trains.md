@@ -9,15 +9,15 @@ permalink: /railroad/trains
 <style>
   :root {
     --coal:    #ffffff;
-    --iron:    #faf8f5;
-    --rust:    #b94a1c;
-    --ember:   #e8621a;
-    --gold:    #c9943a;
-    --brass:   #d4a843;
-    --steam:   #2c1f0e;
-    --parchment: #f5f0e8;
-    --smoke:   #7a6a58;
-    --rail:    #4a3f35;
+    --iron:    #ffffff;
+    --rust:    #000000;
+    --ember:   #333333;
+    --gold:    #000000;
+    --brass:   #333333;
+    --steam:   #000000;
+    --parchment: #f9f9f9;
+    --smoke:   #666666;
+    --rail:    #cccccc;
   }
 
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -30,13 +30,18 @@ permalink: /railroad/trains
     overflow-x: hidden;
   }
 
+  body { background: #ffffff; }
+  .page-content { max-width: none !important; padding: 0 !important; background: #ffffff; }
+  .wrapper { max-width: none !important; padding: 0 !important; }
+
   /* ── Hero ── */
   .eq-hero {
     position: relative;
-    padding: 80px 24px 60px;
+    padding: 60px 24px 40px;
     text-align: center;
-    background: radial-gradient(ellipse at 50% 0%, #3d2a18 0%, var(--coal) 70%);
+    background: #ffffff;
     overflow: hidden;
+    border-bottom: 1px solid #cccccc;
   }
   .eq-hero::before {
     content: '';
@@ -44,28 +49,28 @@ permalink: /railroad/trains
     inset: 0;
     background-image: repeating-linear-gradient(
       90deg, transparent, transparent 40px,
-      rgba(255,255,255,0.015) 40px, rgba(255,255,255,0.015) 41px
+      rgba(0,0,0,0.02) 40px, rgba(0,0,0,0.02) 41px
     );
     pointer-events: none;
   }
   .eq-hero-track {
     position: absolute;
     bottom: 0; left: 0; right: 0;
-    height: 24px;
+    height: 20px;
     background: repeating-linear-gradient(
       90deg,
-      var(--rail) 0px, var(--rail) 30px,
+      #cccccc 0px, #cccccc 30px,
       transparent 30px, transparent 50px
     );
-    opacity: 0.4;
+    opacity: 0.3;
   }
   .eq-hero-track::before, .eq-hero-track::after {
     content: '';
     position: absolute;
     left: 0; right: 0;
-    height: 4px;
-    background: var(--rail);
-    opacity: 0.8;
+    height: 3px;
+    background: #cccccc;
+    opacity: 0.4;
   }
   .eq-hero-track::before { top: 4px; }
   .eq-hero-track::after  { bottom: 4px; }
@@ -74,17 +79,17 @@ permalink: /railroad/trains
     position: absolute;
     top: 24px; left: 24px;
     display: flex; align-items: center; gap: 8px;
-    color: var(--gold); text-decoration: none;
+    color: var(--steam); text-decoration: none;
     font-family: 'DM Mono', monospace; font-size: 11px;
     letter-spacing: 0.15em; text-transform: uppercase;
-    opacity: 0.7; transition: opacity 0.2s;
+    opacity: 0.8; transition: opacity 0.2s;
   }
   .eq-back:hover { opacity: 1; }
 
   .eq-hero-tag {
     font-family: 'DM Mono', monospace; font-size: 10px;
     letter-spacing: 0.3em; text-transform: uppercase;
-    color: var(--gold); margin-bottom: 16px; opacity: 0.8;
+    color: var(--steam); margin-bottom: 16px; opacity: 0.7; font-weight: 600;
   }
   .eq-hero-title {
     font-family: 'Playfair Display', Georgia, serif;
@@ -97,7 +102,7 @@ permalink: /railroad/trains
   }
   .eq-hero-title em {
     font-style: italic;
-    color: var(--ember);
+    color: var(--rust);
     display: block;
   }
   .eq-hero-sub {
@@ -109,37 +114,38 @@ permalink: /railroad/trains
   /* ── Filter tabs ── */
   .eq-filters {
     display: flex; justify-content: center; gap: 8px;
-    flex-wrap: wrap; padding: 0 24px 48px;
+    flex-wrap: wrap; padding: 24px; background: #ffffff; border-bottom: 1px solid #cccccc;
   }
   .eq-filter-btn {
     font-family: 'DM Mono', monospace; font-size: 11px;
     letter-spacing: 0.12em; text-transform: uppercase;
     padding: 8px 18px; border-radius: 2px;
-    border: 1px solid rgba(255,255,255,0.12);
+    border: 1px solid #cccccc;
     background: transparent; color: var(--smoke);
     cursor: pointer; transition: all 0.2s;
   }
-  .eq-filter-btn:hover { border-color: var(--gold); color: var(--gold); }
+  .eq-filter-btn:hover { border-color: var(--text); color: var(--text); }
   .eq-filter-btn.active { background: var(--rust); border-color: var(--rust); color: #fff; }
 
   /* ── Grid ── */
   .eq-grid {
     max-width: 1200px; margin: 0 auto;
-    padding: 0 24px 80px;
+    padding: 24px;
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
-    gap: 2px;
+    gap: 12px;
   }
 
   /* ── Card ── */
   .eq-card {
     position: relative;
-    background: var(--iron);
+    background: var(--coal);
+    border: 1px solid #cccccc;
     cursor: pointer;
     overflow: hidden;
-    transition: transform 0.3s;
+    transition: transform 0.3s, box-shadow 0.3s;
   }
-  .eq-card:hover { transform: translateY(-4px); z-index: 2; }
+  .eq-card:hover { transform: translateY(-4px); box-shadow: 0 8px 24px rgba(0,0,0,0.12); z-index: 2; }
   .eq-card.hidden { display: none; }
 
   .eq-card-banner {
@@ -149,9 +155,9 @@ permalink: /railroad/trains
   .eq-card-banner.cable  { background: #3b82f6; }
   .eq-card-banner.speeder { background: #10b981; }
   .eq-card-banner.gondola { background: #8b5cf6; }
-  .eq-card-banner.coach   { background: var(--gold); }
-  .eq-card-banner.static  { background: var(--smoke); }
-  .eq-card-banner.sold    { background: linear-gradient(90deg, #6b4c8a, #9b59b6); }
+  .eq-card-banner.coach   { background: var(--rust); }
+  .eq-card-banner.static  { background: #999999; }
+  .eq-card-banner.sold    { background: linear-gradient(90deg, #9b59b6, #c084fc); }
 
   .eq-card-emoji {
     font-size: 52px;
@@ -167,7 +173,7 @@ permalink: /railroad/trains
   .eq-card-type {
     font-family: 'DM Mono', monospace; font-size: 9px;
     letter-spacing: 0.25em; text-transform: uppercase;
-    color: var(--gold); margin-bottom: 8px;
+    color: var(--rust); margin-bottom: 8px; font-weight: 600;
   }
   .eq-card-name {
     font-family: 'Playfair Display', serif;
@@ -187,13 +193,13 @@ permalink: /railroad/trains
     gap: 10px; margin-bottom: 20px;
   }
   .eq-spec {
-    border-left: 2px solid rgba(255,255,255,0.08);
+    border-left: 2px solid #cccccc;
     padding-left: 10px;
   }
   .eq-spec-label {
     font-family: 'DM Mono', monospace; font-size: 8px;
     letter-spacing: 0.2em; text-transform: uppercase;
-    color: var(--smoke); margin-bottom: 3px;
+    color: var(--smoke); margin-bottom: 3px; font-weight: 600;
   }
   .eq-spec-value { font-size: 12px; color: var(--steam); font-weight: 600; }
 
@@ -204,26 +210,26 @@ permalink: /railroad/trains
     padding: 5px 10px; border-radius: 2px;
     margin-bottom: 16px;
   }
-  .status-operational { background: rgba(45,106,79,0.2); color: #4caf82; border: 1px solid rgba(76,175,130,0.3); }
-  .status-static { background: rgba(255,255,255,0.05); color: var(--smoke); border: 1px solid rgba(255,255,255,0.1); }
-  .status-sold   { background: rgba(107,76,138,0.2); color: #c084fc; border: 1px solid rgba(192,132,252,0.3); }
+  .status-operational { background: rgba(16,185,129,0.15); color: #10b981; border: 1px solid rgba(16,185,129,0.3); }
+  .status-static { background: rgba(0,0,0,0.05); color: var(--smoke); border: 1px solid #cccccc; }
+  .status-sold   { background: rgba(192,132,252,0.15); color: #a855f7; border: 1px solid rgba(192,132,252,0.3); }
   .eq-status-dot { width: 6px; height: 6px; border-radius: 50%; background: currentColor; }
 
   .eq-card-btn {
     width: 100%; padding: 11px;
     background: transparent;
-    border: 1px solid rgba(255,255,255,0.15);
+    border: 1px solid #cccccc;
     color: var(--steam); font-family: 'DM Mono', monospace;
     font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase;
     cursor: pointer; transition: all 0.2s;
     display: flex; align-items: center; justify-content: center; gap: 8px;
   }
-  .eq-card-btn:hover { background: var(--rust); border-color: var(--rust); }
+  .eq-card-btn:hover { background: var(--rust); border-color: var(--rust); color: #fff; }
 
   /* ── Modal ── */
   .eq-modal-overlay {
     position: fixed; inset: 0; z-index: 1000;
-    background: rgba(10,8,6,0.92);
+    background: rgba(255,255,255,0.95);
     display: flex; align-items: center; justify-content: center;
     padding: 24px;
     opacity: 0; pointer-events: none;
@@ -232,14 +238,15 @@ permalink: /railroad/trains
   .eq-modal-overlay.open { opacity: 1; pointer-events: all; }
 
   .eq-modal {
-    background: var(--iron);
+    background: var(--coal);
+    border: 1px solid #cccccc;
     max-width: 720px; width: 100%;
     max-height: 90vh; overflow-y: auto;
     position: relative;
     transform: translateY(30px) scale(0.97);
     transition: transform 0.3s;
     scrollbar-width: thin;
-    scrollbar-color: var(--rail) transparent;
+    scrollbar-color: #cccccc transparent;
   }
   .eq-modal-overlay.open .eq-modal { transform: none; }
 
@@ -247,24 +254,24 @@ permalink: /railroad/trains
   .eq-modal-banner.cable   { background: #3b82f6; }
   .eq-modal-banner.speeder { background: #10b981; }
   .eq-modal-banner.gondola { background: #8b5cf6; }
-  .eq-modal-banner.coach   { background: var(--gold); }
+  .eq-modal-banner.coach   { background: var(--rust); }
 
   .eq-modal-close {
     position: absolute; top: 20px; right: 20px;
     width: 32px; height: 32px; border-radius: 50%;
-    background: rgba(255,255,255,0.08); border: none;
+    background: rgba(0,0,0,0.08); border: none;
     color: var(--steam); font-size: 18px; cursor: pointer;
     display: flex; align-items: center; justify-content: center;
     transition: background 0.2s;
   }
-  .eq-modal-close:hover { background: var(--rust); }
+  .eq-modal-close:hover { background: var(--rust); color: #fff; }
 
   .eq-modal-header { padding: 36px 40px 28px; }
   .eq-modal-emoji { font-size: 64px; display: block; margin-bottom: 16px; }
   .eq-modal-type {
     font-family: 'DM Mono', monospace; font-size: 10px;
     letter-spacing: 0.25em; text-transform: uppercase;
-    color: var(--gold); margin-bottom: 10px;
+    color: var(--rust); margin-bottom: 10px; font-weight: 600;
   }
   .eq-modal-title {
     font-family: 'Playfair Display', serif;
@@ -276,19 +283,19 @@ permalink: /railroad/trains
 
   /* Specs table */
   .eq-modal-specs {
-    border: 1px solid rgba(255,255,255,0.08);
+    border: 1px solid #cccccc;
     border-radius: 4px; overflow: hidden; margin-bottom: 32px;
   }
   .eq-modal-spec-row {
     display: grid; grid-template-columns: 160px 1fr;
-    border-bottom: 1px solid rgba(255,255,255,0.06);
+    border-bottom: 1px solid #cccccc;
   }
   .eq-modal-spec-row:last-child { border-bottom: none; }
   .eq-modal-spec-key {
     font-family: 'DM Mono', monospace; font-size: 10px;
     letter-spacing: 0.12em; text-transform: uppercase;
     color: var(--smoke); padding: 12px 16px;
-    background: rgba(0,0,0,0.2);
+    background: #f9f9f9; font-weight: 600;
   }
   .eq-modal-spec-val {
     font-size: 13px; color: var(--steam);
@@ -299,15 +306,15 @@ permalink: /railroad/trains
   .eq-modal-section-title {
     font-family: 'Playfair Display', serif;
     font-size: 18px; font-weight: 700;
-    color: var(--gold); margin-bottom: 16px;
+    color: var(--rust); margin-bottom: 16px;
     display: flex; align-items: center; gap: 10px;
   }
   .eq-modal-section-title::after {
     content: ''; flex: 1; height: 1px;
-    background: rgba(255,255,255,0.08);
+    background: #cccccc;
   }
   .eq-modal-history {
-    font-size: 14px; color: rgba(232,224,208,0.8);
+    font-size: 14px; color: rgba(0,0,0,0.8);
     line-height: 1.8; font-weight: 300;
     margin-bottom: 32px;
   }
@@ -316,17 +323,17 @@ permalink: /railroad/trains
   .eq-timeline { position: relative; padding-left: 24px; margin-bottom: 32px; }
   .eq-timeline::before {
     content: ''; position: absolute; left: 6px; top: 0; bottom: 0;
-    width: 2px; background: rgba(255,255,255,0.08);
+    width: 2px; background: #cccccc;
   }
   .eq-timeline-item { position: relative; margin-bottom: 20px; }
   .eq-timeline-dot {
     position: absolute; left: -22px; top: 4px;
     width: 10px; height: 10px; border-radius: 50%;
-    background: var(--rust); border: 2px solid var(--iron);
+    background: var(--rust); border: 2px solid var(--coal);
   }
   .eq-timeline-year {
     font-family: 'DM Mono', monospace; font-size: 11px;
-    color: var(--gold); font-weight: 500; margin-bottom: 4px;
+    color: var(--rust); font-weight: 600; margin-bottom: 4px;
   }
   .eq-timeline-text { font-size: 13px; color: var(--smoke); line-height: 1.6; }
 
