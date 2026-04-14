@@ -6,75 +6,83 @@ permalink: /railroad/calendar
 
 <style>
   :root {
-    --rust:#b94a1c; --gold:#c9943a; --green:#2d6a4f;
-    --coal:#ffffff;--iron:#faf8f5;--iron2:#f0ebe2;
-    --steam:#2c1f0e;--smoke:#7a6a58;
-    --border:rgba(255,255,255,0.1);
-    --text:#e8e0d0; --subtext:#8c7f6e;
+    --rust:#000000; --gold:#333333; --green:#000000;
+    --coal:#ffffff;--iron:#ffffff;--iron2:#f5f5f5;
+    --steam:#000000;--smoke:#666666;
+    --border:#cccccc;
+    --text:#000000; --subtext:#666666;
   }
   *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
 
-  .cal-page{background:var(--coal);min-height:100vh;font-family:'Georgia',serif;color:var(--steam);}
-  .cal-wrap{max-width:1000px;margin:0 auto;padding:28px 16px 60px;}
+  .cal-page{background:var(--coal);min-height:100vh;font-family:'Georgia',serif;color:var(--steam);display:flex;flex-direction:column;}
+  .cal-wrap{display:flex;flex-direction:column;height:100vh;margin:0;padding:0;}
 
-  .cal-header{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:14px;margin-bottom:24px;}
+  .cal-header{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:14px;padding:20px;background:var(--coal);border-bottom:1px solid var(--border);flex-shrink:0;}
   .cal-header-left{display:flex;align-items:center;gap:12px;}
   .cal-logo{font-size:28px;background:var(--rust);border-radius:10px;width:48px;height:48px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
   .cal-title{font-size:clamp(16px,2.5vw,20px);font-weight:700;color:var(--steam);margin:0;}
   .cal-subtitle{font-size:11px;color:var(--subtext);letter-spacing:0.1em;text-transform:uppercase;margin-top:2px;}
 
-  .cal-back{display:flex;align-items:center;gap:6px;padding:8px 16px;background:var(--iron);border:1px solid var(--border);border-radius:8px;color:var(--gold);text-decoration:none;font-size:13px;font-weight:600;transition:background 0.2s,transform 0.15s;}
+  .cal-back{display:flex;align-items:center;gap:6px;padding:8px 16px;background:var(--iron);border:1px solid var(--border);border-radius:8px;color:var(--steam);text-decoration:none;font-size:13px;font-weight:600;transition:background 0.2s,transform 0.15s;}
   .cal-back:hover{background:var(--iron2);transform:translateY(-1px);}
 
-  .cal-nav{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;flex-wrap:wrap;gap:12px;}
+  .cal-nav{display:flex;align-items:center;justify-content:space-between;padding:16px 20px;background:var(--coal);border-bottom:1px solid var(--border);flex-wrap:wrap;gap:12px;flex-shrink:0;}
   .cal-month-title{font-size:clamp(20px,4vw,28px);font-weight:800;color:var(--steam);}
   .cal-nav-btns{display:flex;gap:8px;align-items:center;}
   .cal-nav-btn{width:36px;height:36px;border-radius:8px;border:1px solid var(--border);background:var(--iron);color:var(--steam);font-size:16px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background 0.2s,transform 0.15s;}
   .cal-nav-btn:hover{background:var(--iron2);transform:translateY(-1px);}
-  .cal-today-btn{padding:8px 16px;border-radius:8px;border:1px solid var(--rust);background:var(--iron);color:var(--rust);font-size:12px;font-weight:600;letter-spacing:0.05em;cursor:pointer;transition:background 0.2s;}
-  .cal-today-btn:hover{background:rgba(185,74,28,0.15);}
+  .cal-today-btn{padding:8px 16px;border-radius:8px;border:1px solid var(--text);background:var(--iron);color:var(--text);font-size:12px;font-weight:600;letter-spacing:0.05em;cursor:pointer;transition:background 0.2s;}
+  .cal-today-btn:hover{background:#f0f0f0;}
 
-  .cal-legend{display:flex;gap:16px;flex-wrap:wrap;margin-bottom:16px;padding:12px 16px;background:var(--iron);border:1px solid var(--border);border-radius:10px;}
+  .cal-legend{display:flex;flex-direction:column;gap:12px;padding:16px;background:var(--coal);border-bottom:1px solid var(--border);flex-shrink:0;}
   .legend-item{display:flex;align-items:center;gap:7px;font-size:12px;color:var(--subtext);}
   .legend-dot{width:12px;height:12px;border-radius:3px;flex-shrink:0;}
-  .dot-steam{background:#e8a020;}.dot-cable{background:#3b82f6;}.dot-speeder{background:#10b981;}.dot-none{background:#555;}
+  .dot-steam{background:#e8a020;}.dot-cable{background:#3b82f6;}.dot-speeder{background:#10b981;}.dot-none{background:#999;}
 
-  .cal-grid-header{display:grid;grid-template-columns:repeat(7,1fr);gap:3px;margin-bottom:3px;}
+  .cal-grid-header{display:grid;grid-template-columns:repeat(7,1fr);gap:3px;margin-bottom:3px;padding:8px;}
   .cal-day-label{text-align:center;font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--subtext);padding:8px 4px;}
-  .cal-day-label.weekend{color:var(--rust);}
+  .cal-day-label.weekend{color:var(--text);}
 
-  .cal-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:3px;}
+  .cal-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:3px;padding:8px;overflow-y:auto;flex:1;}
 
-  .cal-cell{min-height:90px;background:var(--iron);border:1px solid var(--border);border-radius:8px;padding:8px;transition:box-shadow 0.2s,transform 0.15s;}
+  .cal-cell{min-height:90px;background:var(--coal);border:1px solid var(--border);border-radius:8px;padding:8px;transition:box-shadow 0.2s,transform 0.15s;}
   .cal-cell.clickable{cursor:pointer;}
-  .cal-cell.clickable:hover{box-shadow:0 4px 16px rgba(185,74,28,0.25);transform:translateY(-2px);border-color:var(--gold);}
-  .cal-cell.other-month{background:rgba(255,255,255,0.02);opacity:0.4;pointer-events:none;}
-  .cal-cell.today{border:2px solid var(--rust);}
-  .cal-cell.today .cal-date-num{color:var(--rust);font-weight:800;}
+  .cal-cell.clickable:hover{box-shadow:0 4px 16px rgba(0,0,0,0.15);transform:translateY(-2px);border-color:var(--text);}
+  .cal-cell.other-month{background:#f9f9f9;opacity:0.3;pointer-events:none;}
+  .cal-cell.today{border:2px solid var(--text);}
+  .cal-cell.today .cal-date-num{color:var(--text);font-weight:800;}
   .cal-cell.past{opacity:0.5;}
 
-  .cal-date-num{font-size:13px;font-weight:600;color:var(--steam);margin-bottom:5px;}
+  .cal-date-num{font-size:13px;font-weight:600;color:var(--text);margin-bottom:5px;}
 
   .cal-event{font-size:10px;font-weight:600;padding:3px 7px;border-radius:5px;margin-bottom:3px;line-height:1.3;}
-  .event-steam  {background:rgba(232,160,32,0.2);color:#f0c060;border-left:3px solid #e8a020;}
-  .event-cable  {background:rgba(59,130,246,0.2);color:#93c5fd;border-left:3px solid #3b82f6;}
-  .event-speeder{background:rgba(16,185,129,0.2);color:#6ee7b7;border-left:3px solid #10b981;}
-  .event-none   {background:rgba(255,255,255,0.05);color:var(--subtext);border-left:3px solid #555;font-style:italic;}
+  .event-steam  {background:rgba(232,160,32,0.15);color:#b87a00;border-left:3px solid #e8a020;}
+  .event-cable  {background:rgba(59,130,246,0.15);color:#0050b3;border-left:3px solid #3b82f6;}
+  .event-speeder{background:rgba(16,185,129,0.15);color:#007d4e;border-left:3px solid #10b981;}
+  .event-none   {background:#f5f5f5;color:var(--subtext);border-left:3px solid #999;font-style:italic;}
 
   .cal-event-time{font-size:9px;color:var(--subtext);margin-top:2px;}
-  .cal-click-hint{font-size:9px;color:var(--gold);margin-top:4px;font-style:italic;}
+  .cal-click-hint{font-size:9px;color:var(--text);margin-top:4px;font-style:italic;}
 
-  .cal-info{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px;margin-top:20px;}
-  .cal-info-card{background:var(--iron);border:1px solid var(--border);border-radius:10px;padding:16px;border-top:3px solid var(--rust);}
+  /* Main content area - horizontal layout */
+  .main-cal-content { display: flex; flex: 1; overflow-y: hidden; }
+
+  .cal-info{display:flex;flex-direction:column;gap:12px;padding:16px 20px;background:var(--coal);border-right:1px solid var(--border);flex:0 0 30%;overflow-y:auto;}
+  .cal-info-card{background:var(--coal);border:1px solid var(--border);border-radius:10px;padding:16px;border-top:3px solid var(--text);}
   .cal-info-label{font-size:10px;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:var(--subtext);margin-bottom:6px;}
   .cal-info-value{font-size:15px;font-weight:700;color:var(--steam);margin-bottom:3px;}
   .cal-info-sub{font-size:11px;color:var(--subtext);line-height:1.4;}
+  
+  .cal-right-section { flex: 1; display: flex; flex-direction: column; overflow-y: hidden; }
 
   @media(max-width:580px){
     .cal-cell{min-height:64px;padding:5px;}
     .cal-event{font-size:9px;padding:2px 5px;}
     .cal-date-num{font-size:11px;}
     .cal-event-time,.cal-click-hint{display:none;}
+    .main-cal-content { flex-direction: column; }
+    .cal-info { flex: 0 auto; border-right: none; border-bottom: 1px solid var(--border); }
+    .cal-right-section { flex: 1; }
   }
 </style>
 
@@ -92,54 +100,61 @@ permalink: /railroad/calendar
     <a href="{{ "/railroad/schedule" | relative_url }}" class="cal-back">← Schedule &amp; Tracker</a>
   </div>
 
-  <div class="cal-nav">
-    <div class="cal-month-title" id="calMonthTitle">March 2026</div>
-    <div class="cal-nav-btns">
-      <button class="cal-nav-btn" onclick="calChangeMonth(-1)">‹</button>
-      <button class="cal-today-btn" onclick="calGoToday()">Today</button>
-      <button class="cal-nav-btn" onclick="calChangeMonth(1)">›</button>
-    </div>
-  </div>
+  <div class="main-cal-content">
+    <!-- Left sidebar: Legend and Info Cards -->
+    <div class="cal-info">
+      <div style="margin-bottom: 8px;">
+        <div style="font-size: 12px; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: var(--subtext); margin-bottom: 12px;">Operations Guide</div>
+        <div class="legend-item"><div class="legend-dot dot-steam"></div> <span style="font-size: 11px;">Steam Locomotive (Sat 10am–2pm)</span></div>
+        <div class="legend-item"><div class="legend-dot dot-cable"></div> <span style="font-size: 11px;">Cable Car (Sun 11am–2pm)</span></div>
+        <div class="legend-item"><div class="legend-dot dot-speeder"></div> <span style="font-size: 11px;">Speeder w/ Ore Cars (Sun 11am–2pm)</span></div>
+        <div class="legend-item"><div class="legend-dot dot-none"></div> <span style="font-size: 11px;">No Operation</span></div>
+      </div>
 
-  <div class="cal-legend">
-    <div class="legend-item"><div class="legend-dot dot-steam"></div> Steam Locomotive (Sat 10am–2pm)</div>
-    <div class="legend-item"><div class="legend-dot dot-cable"></div> Cable Car (Sun 11am–2pm)</div>
-    <div class="legend-item"><div class="legend-dot dot-speeder"></div> Speeder w/ Ore Cars (Sun 11am–2pm)</div>
-    <div class="legend-item"><div class="legend-dot dot-none"></div> No Operation</div>
-  </div>
-
-  <div class="cal-grid-header">
-    <div class="cal-day-label weekend">Sun</div>
-    <div class="cal-day-label">Mon</div>
-    <div class="cal-day-label">Tue</div>
-    <div class="cal-day-label">Wed</div>
-    <div class="cal-day-label">Thu</div>
-    <div class="cal-day-label">Fri</div>
-    <div class="cal-day-label weekend">Sat</div>
-  </div>
-
-  <div class="cal-grid" id="calGrid"></div>
-
-  <div class="cal-info">
-    <div class="cal-info-card">
-      <div class="cal-info-label">Steam Locomotive</div>
-      <div class="cal-info-value">Every Saturday</div>
-      <div class="cal-info-sub">10:00am – 2:00pm<br>Up to 65 riders · Adult $5 · Child $2</div>
+      <div class="cal-info-card">
+        <div class="cal-info-label">Steam Locomotive</div>
+        <div class="cal-info-value">Every Saturday</div>
+        <div class="cal-info-sub">10:00am – 2:00pm<br>Up to 65 riders<br>Adult $5 · Child $2</div>
+      </div>
+      <div class="cal-info-card" style="border-top-color:#3b82f6;">
+        <div class="cal-info-label">Cable Car</div>
+        <div class="cal-info-value">Select Sundays</div>
+        <div class="cal-info-sub">11:00am – 2:00pm<br>Up to 30 riders<br>Adult $5 · Child $2</div>
+      </div>
+      <div class="cal-info-card" style="border-top-color:#10b981;">
+        <div class="cal-info-label">Speeder w/ Ore Cars</div>
+        <div class="cal-info-value">Select Sundays</div>
+        <div class="cal-info-sub">11:00am – 2:00pm<br>Up to 30 riders<br>Adult $4 · Child $2</div>
+      </div>
+      <div class="cal-info-card" style="border-top-color:#999;">
+        <div class="cal-info-label">No Operation</div>
+        <div class="cal-info-value">2nd Sunday / Weekdays</div>
+        <div class="cal-info-sub">No rides on 2nd Sunday each month or weekdays.</div>
+      </div>
     </div>
-    <div class="cal-info-card" style="border-top-color:#3b82f6;">
-      <div class="cal-info-label">Cable Car</div>
-      <div class="cal-info-value">Select Sundays</div>
-      <div class="cal-info-sub">11:00am – 2:00pm<br>Up to 30 riders · Adult $5 · Child $2</div>
-    </div>
-    <div class="cal-info-card" style="border-top-color:#10b981;">
-      <div class="cal-info-label">Speeder w/ Ore Cars</div>
-      <div class="cal-info-value">Select Sundays</div>
-      <div class="cal-info-sub">11:00am – 2:00pm<br>Up to 30 riders · Adult $4 · Child $2</div>
-    </div>
-    <div class="cal-info-card" style="border-top-color:#555;">
-      <div class="cal-info-label">No Operation</div>
-      <div class="cal-info-value">2nd Sunday / Weekdays</div>
-      <div class="cal-info-sub">No rides on 2nd Sunday each month or weekdays.</div>
+
+    <!-- Right section: Calendar -->
+    <div class="cal-right-section">
+      <div class="cal-nav">
+        <div class="cal-month-title" id="calMonthTitle">March 2026</div>
+        <div class="cal-nav-btns">
+          <button class="cal-nav-btn" onclick="calChangeMonth(-1)">‹</button>
+          <button class="cal-today-btn" onclick="calGoToday()">Today</button>
+          <button class="cal-nav-btn" onclick="calChangeMonth(1)">›</button>
+        </div>
+      </div>
+
+      <div class="cal-grid-header">
+        <div class="cal-day-label weekend">Sun</div>
+        <div class="cal-day-label">Mon</div>
+        <div class="cal-day-label">Tue</div>
+        <div class="cal-day-label">Wed</div>
+        <div class="cal-day-label">Thu</div>
+        <div class="cal-day-label">Fri</div>
+        <div class="cal-day-label weekend">Sat</div>
+      </div>
+
+      <div class="cal-grid" id="calGrid"></div>
     </div>
   </div>
 
