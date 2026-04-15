@@ -16,7 +16,7 @@ permalink: /railroad/login
 
   .rr-hero { padding:52px 24px 40px; text-align:center;
     background:radial-gradient(ellipse at 50% 0%,#3d2a18 0%,var(--coal) 70%);
-    border-bottom:1px solid rgba(255,255,255,0.06); }
+    border-bottom:1px solid #cccccc; }
   .rr-hero-tag { font-family:'Courier New',monospace; font-size:10px; letter-spacing:0.3em;
     text-transform:uppercase; color:#ffffff; margin-bottom:10px; opacity:0.8; }
   .rr-hero h1 { font-size:clamp(28px,5vw,52px); font-weight:700; line-height:1; margin-bottom:10px; color:#ffffff; }
@@ -30,18 +30,18 @@ permalink: /railroad/login
   .rr-grid-2 { display:grid; grid-template-columns:1fr 1fr; gap:20px; margin-bottom:20px; }
   @media(max-width:700px){ .rr-grid-2{ grid-template-columns:1fr; } }
 
-  .rr-card { background:var(--iron); border:1px solid rgba(255,255,255,0.07);
+  .rr-card { background:var(--iron); border:1px solid #cccccc;
     border-radius:12px; padding:24px; border-top:3px solid var(--rust); }
   .rr-card-title { font-family:'Courier New',monospace; font-size:10px; letter-spacing:0.2em;
     text-transform:uppercase; color:var(--gold); margin-bottom:16px;
-    padding-bottom:10px; border-bottom:1px solid rgba(255,255,255,0.07); }
+    padding-bottom:10px; border-bottom:1px solid #cccccc; }
 
   .rr-field { margin-bottom:14px; }
   .rr-label { font-family:'Courier New',monospace; font-size:10px; letter-spacing:0.1em;
     text-transform:uppercase; color:var(--smoke); margin-bottom:5px; display:block; }
   .rr-input {
     width:100%; padding:10px 14px; background:var(--iron2);
-    border:1px solid rgba(255,255,255,0.1); border-radius:6px;
+    border:1px solid #cccccc; border-radius:6px;
     color:var(--steam); font-family:'Georgia',serif; font-size:13px; transition:border-color 0.2s;
   }
   .rr-input:focus { outline:none; border-color:var(--gold); box-shadow:0 0 0 3px rgba(201,148,58,0.15); }
@@ -56,12 +56,12 @@ permalink: /railroad/login
   .rr-btn-primary { background:var(--rust); color:#fff; }
   .rr-btn-primary:hover { background:var(--ember); }
   .rr-btn-secondary { background:var(--iron2); color:var(--smoke);
-    border:1px solid rgba(255,255,255,0.1); }
+    border:1px solid #cccccc; }
   .rr-btn-secondary:hover { color:var(--steam); border-color:var(--gold); }
   .hidden { display:none; }
 
   /* Status card */
-  .rr-status { background:var(--iron); border:1px solid rgba(255,255,255,0.07);
+  .rr-status { background:var(--iron); border:1px solid #cccccc;
     border-radius:12px; padding:24px; border-left:4px solid var(--gold); }
   .rr-status h3 { font-family:'Courier New',monospace; font-size:10px; letter-spacing:0.2em;
     text-transform:uppercase; color:var(--gold); margin-bottom:12px; }

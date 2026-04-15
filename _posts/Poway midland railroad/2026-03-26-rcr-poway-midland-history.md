@@ -50,7 +50,7 @@ permalink: /railroad/history
 .hs-event-body{font-size:13px;color:var(--smoke);line-height:1.75;max-height:0;overflow:hidden;
   transition:max-height 0.5s ease, opacity 0.3s ease;opacity:0;}
 .hs-event.active .hs-event-body{max-height:600px;opacity:1;}
-.hs-event-card{background:var(--iron);border:1px solid rgba(255,255,255,0.07);
+.hs-event-card{background:var(--iron);border:1px solid #cccccc;
   border-radius:10px;padding:18px 20px;border-left:3px solid var(--rust);}
 .hs-event-card:hover{border-left-color:var(--gold);}
 .hs-expand-hint{font-family:'Courier New',monospace;font-size:10px;color:var(--rust);margin-top:8px;
@@ -61,14 +61,14 @@ permalink: /railroad/history
 /* ── LOCOMOTIVE STORY ── */
 .hs-loco-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:64px;}
 @media(max-width:700px){.hs-loco-grid{grid-template-columns:1fr;}}
-.hs-loco-card{background:var(--iron);border:1px solid rgba(255,255,255,0.07);
+.hs-loco-card{background:var(--iron);border:1px solid #cccccc;
   border-radius:12px;padding:24px;border-top:3px solid var(--rust);}
 .hs-loco-card h3{font-family:'Courier New',monospace;font-size:11px;letter-spacing:0.15em;
   text-transform:uppercase;color:var(--gold);margin-bottom:12px;}
 .hs-loco-card p{font-size:13px;color:var(--smoke);line-height:1.75;}
 .hs-loco-card p+p{margin-top:10px;}
 .hs-spec-table{width:100%;border-collapse:collapse;font-size:12px;margin-top:12px;}
-.hs-spec-table td{padding:7px 10px;border-bottom:1px solid rgba(255,255,255,0.05);color:var(--smoke);}
+.hs-spec-table td{padding:7px 10px;border-bottom:1px solid #cccccc;color:var(--smoke);}
 .hs-spec-table td:first-child{font-family:'Courier New',monospace;font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:var(--gold);width:44%;}
 .hs-spec-table tr:last-child td{border-bottom:none;}
 
@@ -76,7 +76,7 @@ permalink: /railroad/history
 .hs-hotspot-wrap{margin-bottom:64px;}
 .hs-stage{position:relative;width:100%;height:200px;
   background:linear-gradient(135deg,#2a1a0e,#1a1410);border-radius:12px;
-  border:1px solid rgba(255,255,255,0.07);overflow:hidden;margin-bottom:14px;}
+  border:1px solid #cccccc;overflow:hidden;margin-bottom:14px;}
 .hs-stage-track{position:absolute;bottom:30px;left:0;right:0;height:8px;
   background:repeating-linear-gradient(90deg,#4a3f35 0,#4a3f35 40px,transparent 40px,transparent 60px);opacity:0.6;}
 .hs-stage-loco{position:absolute;bottom:36px;left:36px;font-size:44px;
@@ -89,7 +89,7 @@ permalink: /railroad/history
   transition:all 0.2s;z-index:2;}
 .hs-hspot:hover,.hs-hspot.active{background:var(--ember);transform:scale(1.25);
   box-shadow:0 0 14px rgba(232,98,26,0.6);}
-.hs-popup{background:var(--iron2);border:1px solid rgba(255,255,255,0.08);
+.hs-popup{background:var(--iron2);border:1px solid #cccccc;
   border-left:3px solid var(--gold);border-radius:8px;padding:16px;min-height:72px;}
 .hs-popup h3{font-family:'Courier New',monospace;font-size:11px;letter-spacing:0.1em;
   text-transform:uppercase;color:var(--gold);margin-bottom:7px;}

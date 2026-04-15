@@ -12,7 +12,7 @@ permalink: /railroad/camera
   *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
   body{background:var(--coal);color:var(--steam);font-family:'Georgia',serif;padding-top:56px;}
 
-  .rr-hero{padding:52px 24px 40px;text-align:center;background:radial-gradient(ellipse at 50% 0%,#3d2a18 0%,var(--coal) 70%);border-bottom:1px solid rgba(255,255,255,0.06);}
+  .rr-hero{padding:52px 24px 40px;text-align:center;background:radial-gradient(ellipse at 50% 0%,#3d2a18 0%,var(--coal) 70%);border-bottom:1px solid #cccccc;}
   .rr-hero-tag{font-family:'Courier New',monospace;font-size:10px;letter-spacing:0.3em;text-transform:uppercase;color:#ffffff;margin-bottom:10px;opacity:0.8;}
   .rr-hero h1{font-size:clamp(28px,5vw,52px);font-weight:700;line-height:1;margin-bottom:10px;color:#ffffff;}
   .rr-hero h1 em{font-style:italic;color:#ffffff;}
@@ -24,38 +24,38 @@ permalink: /railroad/camera
   .rr-section-title{font-family:'Courier New',monospace;font-size:10px;letter-spacing:0.3em;text-transform:uppercase;color:var(--gold);margin-bottom:20px;display:flex;align-items:center;gap:12px;}
   .rr-section-title::after{content:'';flex:1;height:1px;background:rgba(255,255,255,0.08);}
 
-  .rr-card{background:var(--iron);border:1px solid rgba(255,255,255,0.07);border-radius:12px;padding:24px;border-top:3px solid var(--rust);}
+  .rr-card{background:var(--iron);border:1px solid #cccccc;border-radius:12px;padding:24px;border-top:3px solid var(--rust);}
 
   /* Panorama */
   .pano-controls{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px;}
-  .pano-btn{padding:8px 16px;background:var(--iron2);border:1px solid rgba(255,255,255,0.1);border-radius:6px;color:var(--smoke);cursor:pointer;font-family:'Courier New',monospace;font-size:10px;letter-spacing:0.1em;text-transform:uppercase;transition:all 0.2s;}
+  .pano-btn{padding:8px 16px;background:var(--iron2);border:1px solid #cccccc;border-radius:6px;color:var(--smoke);cursor:pointer;font-family:'Courier New',monospace;font-size:10px;letter-spacing:0.1em;text-transform:uppercase;transition:all 0.2s;}
   .pano-btn[aria-pressed="true"],.pano-btn:hover{background:rgba(201,148,58,0.15);border-color:var(--gold);color:var(--gold);}
-  #panorama{width:100%;height:400px;border-radius:8px;overflow:hidden;border:1px solid rgba(255,255,255,0.08);}
+  #panorama{width:100%;height:400px;border-radius:8px;overflow:hidden;border:1px solid #cccccc;}
   .rr-note{font-family:'Courier New',monospace;font-size:10px;color:var(--smoke);margin-top:8px;}
 
   /* Map */
   .rr-map-grid{display:grid;grid-template-columns:1fr 280px;gap:20px;align-items:start;}
   @media(max-width:700px){.rr-map-grid{grid-template-columns:1fr;}}
-  #routeMap{width:100%;height:360px;border-radius:8px;border:1px solid rgba(255,255,255,0.08);}
+  #routeMap{width:100%;height:360px;border-radius:8px;border:1px solid #cccccc;}
   .rr-map-sidebar h3{font-family:'Courier New',monospace;font-size:10px;letter-spacing:0.15em;text-transform:uppercase;color:var(--gold);margin-bottom:10px;margin-top:16px;}
   .rr-map-sidebar h3:first-child{margin-top:0;}
   .rr-map-list{list-style:none;padding:0;}
-  .rr-map-list li{font-size:13px;color:var(--smoke);padding:6px 0;border-bottom:1px solid rgba(255,255,255,0.05);display:flex;align-items:flex-start;gap:6px;}
+  .rr-map-list li{font-size:13px;color:var(--smoke);padding:6px 0;border-bottom:1px solid #cccccc;display:flex;align-items:flex-start;gap:6px;}
   .rr-map-list li::before{content:'▸';color:var(--rust);flex-shrink:0;}
 
   /* Hotspots */
-  .hotspot-stage{position:relative;width:100%;height:220px;background:linear-gradient(135deg,#2a1a0e,#1a1410);border-radius:8px;border:1px solid rgba(255,255,255,0.08);overflow:hidden;margin-bottom:16px;}
+  .hotspot-stage{position:relative;width:100%;height:220px;background:linear-gradient(135deg,#2a1a0e,#1a1410);border-radius:8px;border:1px solid #cccccc;overflow:hidden;margin-bottom:16px;}
   .hotspot-track{position:absolute;bottom:30px;left:0;right:0;height:8px;background:repeating-linear-gradient(90deg,#4a3f35 0,#4a3f35 40px,transparent 40px,transparent 60px);opacity:0.6;}
   .hotspot-loco{position:absolute;bottom:36px;left:40px;font-size:40px;}
   .hotspot-btn{position:absolute;width:28px;height:28px;border-radius:50%;background:var(--rust);border:2px solid var(--gold);color:#fff;font-family:'Courier New',monospace;font-size:11px;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all 0.2s;z-index:2;}
   .hotspot-btn:hover{background:var(--ember);transform:scale(1.2);}
-  .hotspot-popup{background:var(--iron2);border:1px solid rgba(255,255,255,0.08);border-left:3px solid var(--gold);border-radius:8px;padding:16px;}
+  .hotspot-popup{background:var(--iron2);border:1px solid #cccccc;border-left:3px solid var(--gold);border-radius:8px;padding:16px;}
   .hotspot-popup h3{font-family:'Courier New',monospace;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--gold);margin-bottom:8px;}
   .hotspot-popup p{font-size:13px;color:var(--smoke);line-height:1.6;}
 
   /* Timeline */
   .timeline-track{display:flex;gap:14px;overflow-x:auto;padding-bottom:12px;}
-  .timeline-card{flex:0 0 200px;background:var(--iron2);border:1px solid rgba(255,255,255,0.07);border-radius:10px;overflow:hidden;cursor:pointer;transition:all 0.2s;}
+  .timeline-card{flex:0 0 200px;background:var(--iron2);border:1px solid #cccccc;border-radius:10px;overflow:hidden;cursor:pointer;transition:all 0.2s;}
   .timeline-card:hover{transform:translateY(-3px);border-color:var(--gold);box-shadow:0 8px 20px rgba(0,0,0,0.4);}
   .timeline-thumb{width:100%;height:110px;object-fit:cover;display:block;}
   .timeline-meta{padding:10px 12px;}
@@ -63,7 +63,7 @@ permalink: /railroad/camera
   .timeline-event{font-size:12px;color:var(--smoke);}
 
   /* Modal */
-  dialog{background:var(--iron);border:1px solid rgba(255,255,255,0.1);border-radius:12px;padding:0;max-width:600px;width:90%;color:var(--steam);}
+  dialog{background:var(--iron);border:1px solid #cccccc;border-radius:12px;padding:0;max-width:600px;width:90%;color:var(--steam);}
   dialog::backdrop{background:rgba(0,0,0,0.8);}
   .modal-inner{padding:24px;}
   .modal-img{width:100%;border-radius:8px;margin-bottom:14px;display:block;}

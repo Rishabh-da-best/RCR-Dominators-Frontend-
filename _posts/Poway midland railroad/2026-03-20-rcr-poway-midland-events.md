@@ -14,7 +14,7 @@ permalink: /railroad/events
   .page-content { max-width: none !important; padding: 0 !important; background: #ffffff; }
   .wrapper { max-width: none !important; padding: 0 !important; }
 
-  .rr-hero{padding:52px 24px 40px;text-align:center;background:radial-gradient(ellipse at 50% 0%,#3d2a18 0%,var(--coal) 70%);border-bottom:1px solid rgba(255,255,255,0.06);}
+  .rr-hero{padding:52px 24px 40px;text-align:center;background:radial-gradient(ellipse at 50% 0%,#3d2a18 0%,var(--coal) 70%);border-bottom:1px solid #cccccc;}
   .rr-hero-tag{font-family:'Courier New',monospace;font-size:10px;letter-spacing:0.3em;text-transform:uppercase;color:#ffffff;margin-bottom:10px;opacity:0.8;}
   .rr-hero h1{font-size:clamp(28px,5vw,52px);font-weight:700;line-height:1;margin-bottom:10px;color:#ffffff;}
   .rr-hero h1 em{font-style:italic;color:#ffffff;}
@@ -24,18 +24,18 @@ permalink: /railroad/events
   .rr-grid-2{display:grid;grid-template-columns:280px 1fr;gap:20px;}
   @media(max-width:700px){.rr-grid-2{grid-template-columns:1fr;}}
 
-  .rr-card{background:var(--iron);border:1px solid rgba(255,255,255,0.07);border-radius:12px;padding:24px;border-top:3px solid var(--rust);}
-  .rr-card-title{font-family:'Courier New',monospace;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:16px;padding-bottom:10px;border-bottom:1px solid rgba(255,255,255,0.07);}
+  .rr-card{background:var(--iron);border:1px solid #cccccc;border-radius:12px;padding:24px;border-top:3px solid var(--rust);}
+  .rr-card-title{font-family:'Courier New',monospace;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:16px;padding-bottom:10px;border-bottom:1px solid #cccccc;}
 
   .rr-field{margin-bottom:14px;}
   .rr-label{font-family:'Courier New',monospace;font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:var(--smoke);margin-bottom:5px;display:block;}
-  .rr-input,.rr-select{width:100%;padding:10px 14px;background:var(--iron2);border:1px solid rgba(255,255,255,0.1);border-radius:6px;color:var(--steam);font-family:'Georgia',serif;font-size:13px;transition:border-color 0.2s;}
+  .rr-input,.rr-select{width:100%;padding:10px 14px;background:var(--iron2);border:1px solid #cccccc;border-radius:6px;color:var(--steam);font-family:'Georgia',serif;font-size:13px;transition:border-color 0.2s;}
   .rr-select{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%238c7f6e'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 12px center;padding-right:32px;}
   .rr-input:focus,.rr-select:focus{outline:none;border-color:var(--gold);}
   .rr-select option{background:var(--iron2);}
   .rr-status-note{font-family:'Courier New',monospace;font-size:10px;color:var(--smoke);margin-top:10px;}
 
-  .rr-announcement{background:var(--iron2);border:1px solid rgba(255,255,255,0.06);border-radius:8px;padding:16px;margin-bottom:10px;transition:all 0.2s;}
+  .rr-announcement{background:var(--iron2);border:1px solid #cccccc;border-radius:8px;padding:16px;margin-bottom:10px;transition:all 0.2s;}
   .rr-announcement:hover{border-color:rgba(201,148,58,0.3);background:rgba(42,31,24,0.6);}
   .rr-ann-title{font-size:15px;color:var(--steam);font-weight:600;margin-bottom:6px;}
   .rr-ann-meta{font-family:'Courier New',monospace;font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:var(--gold);margin-bottom:8px;}

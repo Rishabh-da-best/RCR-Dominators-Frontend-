@@ -17,7 +17,7 @@ permalink: /railroad/profile
   .pf-hero {
     padding: 40px 24px 32px; text-align: center;
     background: radial-gradient(ellipse at 50% 0%, #3d2a18 0%, var(--coal) 70%);
-    border-bottom: 1px solid rgba(255,255,255,0.06);
+    border-bottom: 1px solid #cccccc;
   }
   .pf-avatar {
     width: 80px; height: 80px; border-radius: 50%;
@@ -42,14 +42,14 @@ permalink: /railroad/profile
   @media(max-width:680px) { .pf-grid { grid-template-columns: 1fr; } }
 
   .pf-card {
-    background: var(--iron); border: 1px solid rgba(255,255,255,0.07);
+    background: var(--iron); border: 1px solid #cccccc;
     border-radius: 12px; padding: 24px; border-top: 3px solid var(--rust);
   }
   .pf-card-title {
     font-family: 'Courier New', monospace; font-size: 10px;
     letter-spacing: 0.2em; text-transform: uppercase;
     color: var(--gold); margin-bottom: 18px;
-    padding-bottom: 10px; border-bottom: 1px solid rgba(255,255,255,0.07);
+    padding-bottom: 10px; border-bottom:1px solid #cccccc;
   }
 
   .pf-field { margin-bottom: 14px; }
@@ -61,11 +61,11 @@ permalink: /railroad/profile
   .pf-value {
     font-size: 14px; color: var(--steam); padding: 10px 14px;
     background: var(--iron2); border-radius: 6px;
-    border: 1px solid rgba(255,255,255,0.08);
+    border: 1px solid #cccccc;
   }
   .pf-input {
     width: 100%; padding: 10px 14px; background: var(--iron2);
-    border: 1px solid rgba(255,255,255,0.1); border-radius: 6px;
+    border: 1px solid #cccccc; border-radius: 6px;
     color: var(--steam); font-family: 'Georgia', serif; font-size: 14px;
     transition: border-color 0.2s;
   }
@@ -89,11 +89,11 @@ permalink: /railroad/profile
   .pf-btn-danger:hover { background: rgba(185,74,28,0.3); }
 
   /* Booking history */
-  .pf-bookings { background: var(--iron); border: 1px solid rgba(255,255,255,0.07); border-radius: 12px; padding: 24px; border-top: 3px solid var(--gold); }
+  .pf-bookings { background: var(--iron); border: 1px solid #cccccc; border-radius: 12px; padding: 24px; border-top: 3px solid var(--gold); }
   .pf-booking-row {
     display: grid; grid-template-columns: auto 1fr auto;
     gap: 14px; align-items: center;
-    padding: 14px 0; border-bottom: 1px solid rgba(255,255,255,0.06);
+    padding: 14px 0; border-bottom: 1px solid #cccccc;
   }
   .pf-booking-row:last-child { border-bottom: none; }
   .pf-booking-code {
@@ -194,7 +194,7 @@ permalink: /railroad/profile
 
     <!-- Booking History -->
     <div class="pf-bookings">
-      <div class="pf-card-title" style="font-family:'Courier New',monospace;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:18px;padding-bottom:10px;border-bottom:1px solid rgba(255,255,255,0.07);">
+      <div class="pf-card-title" style="font-family:'Courier New',monospace;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:18px;padding-bottom:10px;border-bottom:1px solid #cccccc;">
          My Booking History
       </div>
       <div id="pfBookingList">
