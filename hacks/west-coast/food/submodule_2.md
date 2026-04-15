@@ -578,7 +578,7 @@ const mockPage1 = [
   { item: "Chocolate Shake", category: "drinks", price: 2.40, calories: 590 }
 ];
 
-console.log("📖 Page 1 Results:", mockPage1);
+console.log(" Page 1 Results:", mockPage1);
 console.log(" Showing 5 items per page");
 
 completeTask('innout');

@@ -959,7 +959,7 @@ LLMs have two phases: **training** (where they learn patterns) and **runtime** (
   </div>
   
   <div class="controls">
-    <button class="train-btn" onclick="loadSampleData()">📖 Load Sample Dataset</button>
+    <button class="train-btn" onclick="loadSampleData()"> Load Sample Dataset</button>
     <button class="reset-btn" onclick="resetModel()">🔄 Reset Model</button>
   </div>
 </div>

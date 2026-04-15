@@ -324,7 +324,7 @@ permalink: /solitaire/
             <p class="intro-text">Welcome to <strong>Klondike Solitaire</strong></p>
             <p class="sub-text">Move all cards to the foundation piles, organized by suit from Ace to King</p>
             <a id="new_game" class="menu-link">➕ New Game</a>
-            <a id="instructions" class="menu-link">📖 How to Play</a>
+            <a id="instructions" class="menu-link"> How to Play</a>
         </div>
         <!-- Game Over -->
         <div id="gameover" class="py-4 text-light fade-in">
@@ -375,7 +375,7 @@ permalink: /solitaire/
     <div id="instructions_modal" class="modal" style="display: none;">
         <div class="modal-content slide-down">
             <span class="close">&times;</span>
-            <h3>📖 How to Play Klondike Solitaire</h3>
+            <h3> How to Play Klondike Solitaire</h3>
             <div class="instructions-container">
                 <h4>Objective</h4>
                 <p class="highlight-box">

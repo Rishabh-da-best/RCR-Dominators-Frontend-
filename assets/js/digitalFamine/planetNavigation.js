@@ -65,7 +65,7 @@ export function initPlanetNavigation(gameInstance) {
 // Help/Story Button (reopen splash screen)
 const helpBtn = document.createElement('button');
 helpBtn.id = 'help-btn';
-helpBtn.innerHTML = '📖 Story';
+helpBtn.innerHTML = ' Story';
 helpBtn.className = 'medium filledHighlight primary';
 helpBtn.style.cssText = `
   background-color: #3b82f6;
