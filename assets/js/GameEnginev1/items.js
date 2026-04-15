@@ -74,7 +74,7 @@ export const defaultItems = {
         id: "roi_calculator",
         name: "ROI Calculator",
         description: "Calculate Return on Investment for your trades.",
-        emoji: "📊",
+        emoji: "",
         stackable: false,
         value: 300,
         isCalculator: true

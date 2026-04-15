@@ -181,7 +181,7 @@ export default class PauseMenu {
         const leaderboardBtn = document.createElement('button');
         leaderboardBtn.id = 'pause-menu-toggle-leaderboard-btn';
         leaderboardBtn.className = 'pause-menu-btn';
-        leaderboardBtn.textContent = '📊 Toggle Leaderboard';
+        leaderboardBtn.textContent = ' Toggle Leaderboard';
         leaderboardBtn.addEventListener('click', () => this.toggleLeaderboard());
 
         buttonsDiv.appendChild(resumeBtn);

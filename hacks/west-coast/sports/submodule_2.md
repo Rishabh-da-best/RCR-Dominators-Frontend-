@@ -493,7 +493,7 @@ footer:
         <div class="header">
             <h1>🌟 Los Angeles Sports API</h1>
             <p>Learn to Build API URLs Like a Pro!</p>
-            <div class="step-badge">📊 Step 2: Understanding API URLs</div>
+            <div class="step-badge"> Step 2: Understanding API URLs</div>
         </div>
 
         <div class="concept-section">
@@ -504,7 +504,7 @@ footer:
             <p>The foundation - like the stadium address</p>
             <div class="code-box">https://www.thesportsdb.com/api/v1/json/</div>
 
-            <h3>🔑 API Key</h3>
+            <h3> API Key</h3>
             <p>Your ticket to access the data</p>
             <div class="code-box">3</div>
 

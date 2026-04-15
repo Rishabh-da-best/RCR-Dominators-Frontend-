@@ -708,7 +708,7 @@ class GameLevelHomePage {
               </div>
               
               <div class="page-card">
-                <div class="page-icon">🤖</div>
+                <div class="page-icon"></div>
                 <h4>AI Page</h4>
                 <p>Understand and control artificial intelligence systems</p>
               </div>

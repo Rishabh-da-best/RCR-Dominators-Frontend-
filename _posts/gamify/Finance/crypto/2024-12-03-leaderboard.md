@@ -156,7 +156,7 @@ title: Leaderboard
         }
 
         .name::after {
-            content: ' 📊';
+            content: ' ';
             font-size: 14px;
             opacity: 0.7;
         }
@@ -276,7 +276,7 @@ title: Leaderboard
         
         <!-- Instructions -->
         <p style="color: #ff9800; margin-bottom: 30px; font-style: italic;">
-            Click on any username to view their detailed analytics and profit graphs 📊
+            Click on any username to view their detailed analytics and profit graphs 
         </p>
         
         <!-- Leaderboard Table -->

@@ -471,7 +471,7 @@ footer:
             </div>
 
             <div id="parseSection" style="display: none;">
-                <button class="action-btn" onclick="parseData()">📊 Parse JSON into Usable Data</button>
+                <button class="action-btn" onclick="parseData()"> Parse JSON into Usable Data</button>
                 <div class="code-example" id="codeExample"></div>
             </div>
 

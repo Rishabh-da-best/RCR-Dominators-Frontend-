@@ -149,7 +149,7 @@ This level will provide the player with the final key that they need to escape t
 <img src="{{site.baseurl}}/images/MansionGameBlog/ExampleGitHubIssue.png" alt="Example GitHub Issue">
 
 
-## Key Files 🔑
+## Key Files 
 All of the code for all of the levels were in /assets/js/mansionGame.
 
 - `/assets/js/mansionGame/mansionLevel6.js` and `/assets/js/mansionGame/mansionLevel6_BattleRoom.js` were where we wrote the logic for each room, and defined the background and objects for each.

@@ -100,7 +100,7 @@ function getLessonAndResponse() {
     const btn = document.createElement("button");
     btn.id = "score-reflection";
     btn.className = "btn";
-    btn.textContent = "🤖 Get AI Score";
+    btn.textContent = " Get AI Score";
     quiz.appendChild(btn);
   }
   if (!document.getElementById("ai-score-output")) {

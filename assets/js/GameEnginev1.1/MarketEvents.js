@@ -351,7 +351,7 @@ class MarketEvents {
                 frogEmoji = '🐸🚀';
                 break;
             case this.eventTypes.EARNINGS_SEASON:
-                frogEmoji = '🐸📊';
+                frogEmoji = '🐸';
                 break;
             case this.eventTypes.FED_ANNOUNCEMENT:
                 frogEmoji = '🐸🏦';

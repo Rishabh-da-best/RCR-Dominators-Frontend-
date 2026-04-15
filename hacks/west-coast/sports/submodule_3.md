@@ -953,7 +953,7 @@ fetch('https://api.sfsports.com/v1/stadium/levis_stadium')<br>
                     </div>
                     <h3 style="color: #B3995D; margin: 20px 0 10px 0;">📥 Raw JSON Response:</h3>
                     <div class="json-display">${JSON.stringify(response, null, 2)}</div>
-                    <h3 style="color: #B3995D; margin: 20px 0 10px 0;">📊 Parsed Data (Easy to Read):</h3>
+                    <h3 style="color: #B3995D; margin: 20px 0 10px 0;"> Parsed Data (Easy to Read):</h3>
                     <div class="parsed-data">
                         <div class="data-row">
                             <span class="data-label">Stadium Name:</span>

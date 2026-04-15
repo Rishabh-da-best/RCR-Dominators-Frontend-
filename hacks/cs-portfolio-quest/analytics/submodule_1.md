@@ -642,7 +642,7 @@ Keep it conversational, positive, and concise (3-4 sentences total). Be specific
       const insightsText = document.querySelector('.insights-text');
       const recommendationDiv = document.querySelector('.recommendation');
       
-      insightsText.innerHTML = '<span style="opacity: 0.7;">🤖 Generating personalized insights...</span>';
+      insightsText.innerHTML = '<span style="opacity: 0.7;"> Generating personalized insights...</span>';
       recommendationDiv.style.display = 'none';
 
       const insight = await generateAIInsights(lessonData);

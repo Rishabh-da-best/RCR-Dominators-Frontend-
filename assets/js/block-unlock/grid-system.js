@@ -209,7 +209,7 @@ export class Grid {
         console.log("╔════════════════════════════════════╗");
         console.log("║   CLEARING LEVEL - START          ║");
         console.log("╚════════════════════════════════════╝");
-        console.log("📊 Before Clear:");
+        console.log(" Before Clear:");
         console.log("  - Total tiles:", Object.keys(this.tileMap).length);
         console.log("  - Tile positions:", Object.keys(this.tileMap));
         console.log("  - Total borders:", this.borders.length);
@@ -250,7 +250,7 @@ export class Grid {
             }
         }
         
-        console.log("📊 After Clear:");
+        console.log(" After Clear:");
         console.log("  - Total tiles:", Object.keys(this.tileMap).length);
         console.log("  - Total borders:", this.borders.length);
         console.log("  - startGame flag:", this.startGame);

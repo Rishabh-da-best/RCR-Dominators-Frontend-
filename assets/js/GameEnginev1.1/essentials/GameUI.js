@@ -287,7 +287,7 @@ export default class GameUI {
         // Modal title
         const title = document.createElement("h2");
         title.className = "game-modal-title";
-        title.innerText = "ℹ️ GAME INFO ℹ️";
+        title.innerText = " GAME INFO ";
 
         // Info container
         const infoContainer = document.createElement("div");

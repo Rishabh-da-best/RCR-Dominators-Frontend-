@@ -144,7 +144,7 @@ After forming a team you will need to start on the journey of acting as a team a
   Sprint Planning → Daily Standups → Sprint Review → Retrospective
   ```
 
-### 📊 Team Success Indicators
+###  Team Success Indicators
 
 Your team is on track when you see:
 

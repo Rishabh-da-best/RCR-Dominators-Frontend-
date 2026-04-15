@@ -644,7 +644,7 @@ const bajaTaco = new FishTaco("ft1", "mahi-mahi",
   "baja sauce", 13.50, 2);
 
 console.log("🌮 Created Fish Taco:", bajaTaco);
-console.log("📊 Total with tax:", "$" + bajaTaco.calculateTotalPrice().toFixed(2));
+console.log(" Total with tax:", "$" + bajaTaco.calculateTotalPrice().toFixed(2));
 console.log("🌶️ Spice level:", bajaTaco.spiceLevel + "/5");
 
 // Mark task as complete

@@ -9,7 +9,7 @@ author: John Mortensen
 
 ## Sprint Navigation Guide
 
-ℹ️ *Click any button below to see an animated demonstration*
+ *Click any button below to see an animated demonstration*
 
 ---
 

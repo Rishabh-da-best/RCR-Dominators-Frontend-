@@ -252,7 +252,7 @@ export class LevelLoader {
         console.log("🔄 Reloading level...");
         const result = await this.loadLevel(levelData);
         
-        console.log("📊 Reset result:", result ? "✅ Success" : "❌ Failed");
+        console.log(" Reset result:", result ? "✅ Success" : "❌ Failed");
         console.log("╔════════════════════════════════════╗");
         console.log("║   RESET LEVEL - COMPLETE          ║");
         console.log("╚════════════════════════════════════╝");

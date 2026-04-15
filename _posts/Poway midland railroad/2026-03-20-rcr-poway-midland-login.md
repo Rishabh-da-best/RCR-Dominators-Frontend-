@@ -81,7 +81,7 @@ permalink: /railroad/login
   <div class="rr-grid-2">
 
     <div class="rr-card">
-      <div class="rr-card-title">🔑 Login</div>
+      <div class="rr-card-title"> Login</div>
       <form id="loginForm" novalidate>
         <div class="rr-field">
           <label class="rr-label" for="loginEmail">Email</label>

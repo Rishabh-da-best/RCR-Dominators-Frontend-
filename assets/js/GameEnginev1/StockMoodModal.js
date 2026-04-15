@@ -39,7 +39,7 @@ class StockMoodModal {
       });
   
       document.body.appendChild(this.modal);
-      console.log("📊 Stock Mood Modal created successfully.");
+      console.log(" Stock Mood Modal created successfully.");
     }
   
     async handleMoodClick(mood) {

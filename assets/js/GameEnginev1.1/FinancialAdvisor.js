@@ -494,7 +494,7 @@ class FinancialAdvisor extends Npc {
                         justify-content: center;
                         margin-right: 12px;
                         font-size: 14px;
-                    ">📊</span>
+                    "></span>
                     Financial Intelligence Center
                 </h2>
                 

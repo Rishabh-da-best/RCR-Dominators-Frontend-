@@ -636,7 +636,7 @@ footer:
   
   <div id="analysisResults" style="display: none; margin-top: 25px;">
     <div class="stats">
-      <h3 style="color: #4ecca3 !important; margin-top: 0;">📊 Prompt Quality Score</h3>
+      <h3 style="color: #4ecca3 !important; margin-top: 0;"> Prompt Quality Score</h3>
       <div class="progress-bar">
         <div class="progress-fill" id="scoreIndicator" style="width: 0%;">
           <span id="scoreText">-</span>

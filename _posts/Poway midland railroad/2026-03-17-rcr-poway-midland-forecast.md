@@ -155,12 +155,12 @@ permalink: /railroad/forecast
       <div class="fc-tip" id="fcTip"></div>
 
       <div class="fc-card">
-        <div class="fc-card-title">📊 Full Day Breakdown</div>
+        <div class="fc-card-title"> Full Day Breakdown</div>
         <div id="fcHourly"></div>
       </div>
 
       <div class="fc-card">
-        <div class="fc-card-title">🤖 Feature Importance</div>
+        <div class="fc-card-title"> Feature Importance</div>
         <div class="fc-wt">What the model learned</div>
         <div id="fcWeights"></div>
       </div>
@@ -391,7 +391,7 @@ function showResult(data,bucket,weather,wxEmoji,wxLabel,temp,hasEvent,isSat,buck
   else facts.push({label:'🔥 Hot',type:'neg'});
   if(fcData.isHoliday)facts.push({label:'🎉 '+fcData.holidayName,type:'pos'});
   if(fcData.isSchoolBreak)facts.push({label:'🏫 School Break',type:'pos'});
-  if(hasEvent)facts.push({label:'🎪 Special Event',type:'pos'});
+  if(hasEvent)facts.push({label:' Special Event',type:'pos'});
   facts.push({label:'⏰ '+bucket.label,type:bucket.peak>=0.95?'neg':'neu'});
   document.getElementById('fcFactors').innerHTML=facts.map(f=>`<span class="fc-factor ${f.type}">${f.label}</span>`).join('');
 

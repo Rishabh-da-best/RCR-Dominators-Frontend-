@@ -11,7 +11,7 @@ show_reading_time: false
 <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
 
 <div class="container">
-    <h1>📊 Grades Analytics</h1>
+    <h1> Grades Analytics</h1>
     <!-- Assignment Selection Dropdown -->
     <label for="assignmentSelect">Choose an Assignment:</label>
     <select id="assignmentSelect"></select>

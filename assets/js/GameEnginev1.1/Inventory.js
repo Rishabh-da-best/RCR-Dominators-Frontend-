@@ -934,7 +934,7 @@ class Inventory {
                             <p>• Use multiple timeframes for confirmation</p>
                         </div>
                         <div class="tip-section">
-                            <h4>📊 Technical Indicators</h4>
+                            <h4> Technical Indicators</h4>
                             <p>• Moving Averages (MA, EMA)</p>
                             <p>• Relative Strength Index (RSI)</p>
                             <p>• MACD and Bollinger Bands</p>
@@ -1149,7 +1149,7 @@ class Inventory {
             id: 'roi_calculator',
             name: 'ROI Calculator',
             description: 'Calculate Return on Investment for your trades.',
-            emoji: '📊',
+            emoji: '',
             stackable: false,
             value: 300,
             isCalculator: true

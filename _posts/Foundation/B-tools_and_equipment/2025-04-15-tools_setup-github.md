@@ -15,7 +15,7 @@ GitHub is more than just a place to store code — it's where real collaboration
 
 ---
 
-## 🔑 Key GitHub Workflows
+##  Key GitHub Workflows
 
 Following are some use cases that we expect students will follow during their coursework.
 
@@ -51,7 +51,7 @@ You can:
 
 ---
 
-### 🍴 Fork → 🌿 Branch → 📬 Pull Request
+### 🍴 Fork → 🌿 Branch →  Pull Request
 
 Use this workflow when you want to **contribute** to someone else's public repository (like a shared class lesson or team project).
 
@@ -86,7 +86,7 @@ When collaborating in groups, you can either:
 
 ---
 
-## 📊 Summary Table
+##  Summary Table
 
 | Use Case       | Source Repo      | Your Role         | Workflow Type        | Contributions     | Publishing         |
 |----------------|------------------|--------------------|----------------------|-------------------|--------------------|

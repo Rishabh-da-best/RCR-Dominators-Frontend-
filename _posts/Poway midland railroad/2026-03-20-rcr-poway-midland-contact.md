@@ -214,7 +214,7 @@ permalink: /railroad/contact
   <div class="rr-grid-2">
 
     <div class="rr-card">
-      <div class="rr-card-title">📬 Send a Message</div>
+      <div class="rr-card-title"> Send a Message</div>
       <form id="contactForm" novalidate>
         <div class="rr-field">
           <label class="rr-label" for="cName">Name</label>

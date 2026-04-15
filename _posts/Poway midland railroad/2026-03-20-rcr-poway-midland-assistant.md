@@ -84,7 +84,7 @@ permalink: /railroad/assistant
 
 <div class="rr-wrap">
   <div class="rr-card">
-    <div class="rr-card-title">🤖 Visitor Assistant</div>
+    <div class="rr-card-title"> Visitor Assistant</div>
     <div class="chat-window" id="chatWindow"></div>
     <label class="rr-label" for="aiInput">Ask for a recommendation</label>
     <textarea class="rr-textarea" id="aiInput" rows="3" placeholder="e.g. Suggest a 45-minute family visit plan"></textarea>

@@ -513,7 +513,7 @@ date: 2025-10-21
   <div class="repair-interface" id="repairInterface">
     <div class="repair-panel">
       <div class="panel-header">
-        <h2>🤖 AI Prompt Effectiveness Analyzer</h2>
+        <h2> AI Prompt Effectiveness Analyzer</h2>
         <button class="close-button" onclick="closeRepairInterface()">✕</button>
       </div>
 

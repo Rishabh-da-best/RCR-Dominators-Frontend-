@@ -393,7 +393,7 @@ const sampleResults = [
   { name: "Spicy Pork Belly", protein: "pork", price: 24.99, spice_level: 4 }
 ];
 
-console.log("📊 Sample Korean BBQ Results:", sampleResults);
+console.log(" Sample Korean BBQ Results:", sampleResults);
 completeTask('koreanbbq');
     </textarea>
     <div style="margin-top:0.5rem" class="editor-actions">
@@ -483,7 +483,7 @@ const tacoResults = [
   { vendor: "King Taco", location: "Multiple", price: 2.75, authenticity: 4.2 }
 ];
 
-console.log("📊 Found", tacoResults.length, "al pastor vendors");
+console.log(" Found", tacoResults.length, "al pastor vendors");
 completeTask('streettacos');
     </textarea>
     <div style="margin-top:0.5rem" class="editor-actions">
@@ -579,7 +579,7 @@ const mockPage1 = [
 ];
 
 console.log("📖 Page 1 Results:", mockPage1);
-console.log("📊 Showing 5 items per page");
+console.log(" Showing 5 items per page");
 
 completeTask('innout');
     </textarea>
@@ -690,7 +690,7 @@ const searchResults = [
 ];
 
 console.log("🔍 Search Results:", searchResults);
-console.log("📊 Found", searchResults.length, "matching dishes");
+console.log(" Found", searchResults.length, "matching dishes");
 
 completeTask('avocado');
     </textarea>
@@ -822,7 +822,7 @@ const fusionResults = [
 ];
 
 console.log("🌐 Fusion Analysis:", fusionResults);
-console.log("📊 Korean-Japanese fusion is most popular!");
+console.log(" Korean-Japanese fusion is most popular!");
 
 completeTask('ramen');
     </textarea>
@@ -871,7 +871,7 @@ completeTask('ramen');
 
       <div style="display:flex; gap:0.5rem; margin-top:0.75rem;">
         <button class="sq-btn sq-run" onclick="queryErewhonSmoothies()">🥤 Query Smoothies</button>
-        <button class="sq-btn" onclick="analyzeErewhonPerformance()">📊 Analyze Performance</button>
+        <button class="sq-btn" onclick="analyzeErewhonPerformance()"> Analyze Performance</button>
         <button class="sq-btn" onclick="clearTerm('terminal-erewhon')">Clear Terminal</button>
       </div>
 
@@ -962,7 +962,7 @@ window.queryErewhonSmoothies = async function() {
 window.analyzeErewhonPerformance = function() {
   clearTerm('terminal-erewhon');
   
-  logTo('terminal-erewhon', '📊 Erewhon Performance Analysis:');
+  logTo('terminal-erewhon', ' Erewhon Performance Analysis:');
   logTo('terminal-erewhon', '');
   
   const indexAnalysis = `

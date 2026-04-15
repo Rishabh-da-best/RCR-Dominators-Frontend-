@@ -2130,7 +2130,7 @@ class FinTech extends Game {
                 <span>Press E near NPCs</span>
             </div>
             <div class="instruction-box">
-                <span class="instruction-icon">📊</span>
+                <span class="instruction-icon"></span>
                 <span class="instruction-label">Stats:</span>
                 <span>Click stats icon (top-right)</span>
             </div>

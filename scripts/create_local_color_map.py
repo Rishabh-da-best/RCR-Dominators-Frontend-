@@ -392,7 +392,7 @@ class LocalColorMapper:
         print(f"✅ Color map written to: {output_file}")
         
         # Step 5: Create usage report
-        print("\n📊 Step 4: Creating usage report...")
+        print("\n Step 4: Creating usage report...")
         report_content = self.create_usage_report()
         report_path = Path('local-color-usage-report.md')
         report_path.write_text(report_content)

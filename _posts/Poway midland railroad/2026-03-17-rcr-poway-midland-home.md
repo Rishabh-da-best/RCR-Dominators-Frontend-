@@ -467,10 +467,10 @@ permalink: /railroad/home
     <a href="{{ "/railroad/schedule" | relative_url }}" class="rr-quick-card"><span class="rr-quick-icon"></span><div class="rr-quick-label">Schedule</div><div class="rr-quick-sub">View today's rides</div></a>
     <a href="{{ "/railroad/calendar" | relative_url }}" class="rr-quick-card"><span class="rr-quick-icon"></span><div class="rr-quick-label">Book a Ride</div><div class="rr-quick-sub">Reserve your seat</div></a>
     <a href="{{ "/railroad/trains" | relative_url }}"   class="rr-quick-card"><span class="rr-quick-icon"></span><div class="rr-quick-label">Our Fleet</div><div class="rr-quick-sub">Meet the trains</div></a>
-    <a href="{{ "/railroad/notes" | relative_url }}"    class="rr-quick-card"><span class="rr-quick-icon">📸</span><div class="rr-quick-label">Notes</div><div class="rr-quick-sub">Share your experience</div></a>
-    <a href="{{ "/railroad/forecast" | relative_url }}" class="rr-quick-card"><span class="rr-quick-icon">📊</span><div class="rr-quick-label">Visitor Forecast</div><div class="rr-quick-sub">ML prediction</div></a>
-    <a href="{{ "/railroad/events" | relative_url }}"   class="rr-quick-card"><span class="rr-quick-icon">🎪</span><div class="rr-quick-label">Events</div><div class="rr-quick-sub">Upcoming activities</div></a>
-    <a href="{{ "/railroad/camera" | relative_url }}"   class="rr-quick-card"><span class="rr-quick-icon">🎥</span><div class="rr-quick-label">Live Camera</div><div class="rr-quick-sub">Watch the park live</div></a>
+    <a href="{{ "/railroad/notes" | relative_url }}"    class="rr-quick-card"><span class="rr-quick-icon"></span><div class="rr-quick-label">Notes</div><div class="rr-quick-sub">Share your experience</div></a>
+    <a href="{{ "/railroad/forecast" | relative_url }}" class="rr-quick-card"><span class="rr-quick-icon"></span><div class="rr-quick-label">Visitor Forecast</div><div class="rr-quick-sub">ML prediction</div></a>
+    <a href="{{ "/railroad/events" | relative_url }}"   class="rr-quick-card"><span class="rr-quick-icon"></span><div class="rr-quick-label">Events</div><div class="rr-quick-sub">Upcoming activities</div></a>
+    <a href="{{ "/railroad/camera" | relative_url }}"   class="rr-quick-card"><span class="rr-quick-icon"></span><div class="rr-quick-label">Live Camera</div><div class="rr-quick-sub">Watch the park live</div></a>
   </div>
 
   <div class="rr-section-title">Latest News from the Line</div>
@@ -511,7 +511,7 @@ permalink: /railroad/home
 </div>
 
 <a href="{{ "/railroad/assistant" | relative_url }}" class="rr-ai-fab">
-  <span class="rr-ai-fab-icon">🤖</span>
+  <span class="rr-ai-fab-icon"></span>
   AI Assistant
 </a>
 

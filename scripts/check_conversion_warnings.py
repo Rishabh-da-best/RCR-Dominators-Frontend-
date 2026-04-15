@@ -247,7 +247,7 @@ def main():
                     notebooks_per_issue[issue_key] = set()
                 notebooks_per_issue[issue_key].add(str(rel_path))
         
-        print(f"\n📊 Overall Warning Summary:")
+        print(f"\n Overall Warning Summary:")
         for issue_type in sorted(issue_summary.keys()):
             count = issue_summary[issue_type]
             affected_notebooks = len(notebooks_per_issue[issue_type])
@@ -297,7 +297,7 @@ def main():
             
             total_warnings += warning_count
         
-        print(f"\n📊 Summary:")
+        print(f"\n Summary:")
         print(f"- **Total notebooks with issues**: {len(notebook_list)}")
         print(f"- **Total issues**: {total_warnings}")
         if notebook_list:
@@ -339,7 +339,7 @@ def main():
         
         print(f"\n🎉 Successfully applied {total_fixes} fixes to {fixed_count} notebooks")
         if fixed_count < len(problematic_notebooks):
-            print(f"ℹ️  {len(problematic_notebooks) - fixed_count} notebooks had issues that couldn't be automatically fixed")
+            print(f"  {len(problematic_notebooks) - fixed_count} notebooks had issues that couldn't be automatically fixed")
 
 if __name__ == "__main__":
     main()

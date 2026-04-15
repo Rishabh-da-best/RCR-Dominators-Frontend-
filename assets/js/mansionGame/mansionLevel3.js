@@ -478,7 +478,7 @@ class MansionLevel3 {
     // Spawn key after 300m distance
     const distance = Math.floor(this.score / 10);
     if (distance >= 300 && !this.keySpawned) {
-      console.log("🔑 SPAWNING KEY at distance:", distance);
+      console.log(" SPAWNING KEY at distance:", distance);
       this.spawnKey();
       this.keySpawned = true;
       

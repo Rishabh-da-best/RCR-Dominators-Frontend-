@@ -560,7 +560,7 @@ date: 2025-10-24
           
           <div class="hud-container" style="max-width: 500px; margin: 2rem auto;">
             <div class="hud-card">
-              <h3>📊 FINAL ACCURACY RATING</h3>
+              <h3> FINAL ACCURACY RATING</h3>
               <div class="hud-value" id="final-accuracy">0%</div>
               <div class="progress-bar">
                 <div class="progress-fill" id="final-accuracy-bar" style="width: 0%"></div>

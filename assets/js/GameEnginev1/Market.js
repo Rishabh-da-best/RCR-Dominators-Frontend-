@@ -82,7 +82,7 @@ class Market {
       this.balance += amount;
     }
   
-    // 📊 Get current balance
+    //  Get current balance
     getBalance() {
       return this.balance.toFixed(2);
     }

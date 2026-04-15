@@ -219,7 +219,7 @@
         
         // Debug logging
         if (ENHANCED_CONFIG.eventTrackingEnabled) {
-            console.log(`📊 Event recorded: ${eventType}`, event);
+            console.log(` Event recorded: ${eventType}`, event);
         }
         
         // If batch is getting large, send immediately

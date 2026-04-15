@@ -152,7 +152,7 @@ The key differences between Instructional Design and LxD are rooted in a more it
 - **Understanding by Design (UbD):** A Backwards Design approach:
 
   - 🎯 Identify desired results.
-  - 📊 Determine assessment evidence.
+  -  Determine assessment evidence.
   - 🛠️ Plan learning experiences and instruction.
 
 ---

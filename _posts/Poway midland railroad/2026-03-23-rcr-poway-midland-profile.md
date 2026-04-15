@@ -172,7 +172,7 @@ permalink: /railroad/profile
 
       <!-- Change Password -->
       <div class="pf-card">
-        <div class="pf-card-title">🔑 Change Password</div>
+        <div class="pf-card-title"> Change Password</div>
         <div class="pf-field">
           <label class="pf-label">Current Password</label>
           <input class="pf-input" type="password" id="pfCurPass" placeholder="Enter current password">

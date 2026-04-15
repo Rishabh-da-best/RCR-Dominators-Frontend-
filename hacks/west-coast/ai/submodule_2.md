@@ -260,7 +260,7 @@ LLMs don't have memory like humans. Instead, they have a **context window** - th
   
   <div class="controls">
     <button onclick="addMessage()">📝 Add New Message</button>
-    <button onclick="processMessage()">🤖 LLM Processes</button>
+    <button onclick="processMessage()"> LLM Processes</button>
     <button onclick="resetConversation()" class="secondary">🔄 Reset</button>
   </div>
   
@@ -408,7 +408,7 @@ async function processMessage() {
   messageCounter++;
   messages.push({
     id: messageCounter,
-    text: `🤖 I processed ${Math.min(contextWindowSize, totalMessages)} messages. I can only see the most recent ${contextWindowSize} messages!`,
+    text: ` I processed ${Math.min(contextWindowSize, totalMessages)} messages. I can only see the most recent ${contextWindowSize} messages!`,
     timestamp: new Date().toLocaleTimeString()
   });
   
@@ -1025,14 +1025,14 @@ function queryModel() {
     if (response.found) {
       successfulQueries++;
       document.getElementById('response-box').innerHTML = `
-        <strong>🤖 Model Response:</strong><br>
+        <strong> Model Response:</strong><br>
         ${response.answer}<br>
         <br>
         <small>✅ Retrieved from training data: "${response.source}"</small>
       `;
     } else {
       document.getElementById('response-box').innerHTML = `
-        <strong>🤖 Model Response:</strong><br>
+        <strong> Model Response:</strong><br>
         I don't have information about that in my training data.<br>
         <br>
         <div class="alert">

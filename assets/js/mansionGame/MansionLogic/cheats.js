@@ -198,7 +198,7 @@ export function addLevelNavigationButtons(gameInstance) {
 
         // Modal title
         const title = document.createElement("h2");
-        title.innerText = "ℹ️ GAME INFO ℹ️";
+        title.innerText = " GAME INFO ";
         title.style.cssText = `
             text-align: center;
             color: #e67e22;

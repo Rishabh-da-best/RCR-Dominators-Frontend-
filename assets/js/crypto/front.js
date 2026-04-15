@@ -133,7 +133,7 @@ function updateActiveGPUsList() {
                 <p class="text-white">⚡ ${gpu.hashrate.toFixed(2)} MH/s</p>
                 <p class="text-white">🔌 ${gpu.power}W</p>
                 <p class="text-white">🌡️ ${gpu.temp}°C</p>
-                <p class="text-white">📊 ${(gpu.hashrate / gpu.power).toFixed(3)} MH/W</p>
+                <p class="text-white"> ${(gpu.hashrate / gpu.power).toFixed(3)} MH/W</p>
               </div>
             </div>
             <div>

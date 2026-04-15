@@ -400,7 +400,7 @@ microblog: true
     <div class="metric-card">
       <div class="metric-header">
         <span class="metric-title">Class Average</span>
-        <div class="metric-icon" style="background: rgba(234, 140, 51, 0.2);">📊</div>
+        <div class="metric-icon" style="background: rgba(234, 140, 51, 0.2);"></div>
       </div>
       <div class="metric-value" id="class-average">84.5%</div>
       <div class="metric-subtitle" id="students-enrolled">6 students enrolled</div>

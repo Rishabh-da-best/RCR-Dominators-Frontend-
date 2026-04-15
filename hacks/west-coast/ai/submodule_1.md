@@ -363,7 +363,7 @@ footer:
 </style>
 
 <div class="container">
-    <h1>🤖 Understanding Artificial Intelligence</h1>
+    <h1> Understanding Artificial Intelligence</h1>
     
     <div class="progress-bar">
         <div class="progress-fill" id="progressFill">0% Complete</div>

@@ -364,7 +364,7 @@ def create_sightings_table(conn):
     - description: TEXT
     - verified_by: INTEGER, FOREIGN KEY referencing Agents(agent_id)
     
-    🔑 Foreign Key Syntax:
+     Foreign Key Syntax:
     FOREIGN KEY (verified_by) REFERENCES Agents(agent_id)
     """
     
@@ -513,7 +513,7 @@ def mission_validation(conn):
     
     if checks_passed == total_checks:
         print("\n🎉 MISSION SUCCESS!")
-        print("🔑 CODE FRAGMENT EARNED: ALPHA-7X9K")
+        print(" CODE FRAGMENT EARNED: ALPHA-7X9K")
         print("\n📡 Earth's radar systems are back online!")
         print("🎖️  Your database architecture has been logged in the")
         print("    Defense Network Hall of Fame.")

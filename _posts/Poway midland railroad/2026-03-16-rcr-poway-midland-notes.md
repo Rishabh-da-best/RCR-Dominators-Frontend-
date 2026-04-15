@@ -117,7 +117,7 @@ permalink: /railroad/notes
   <!-- Header -->
   <div class="nt-header">
     <div class="nt-header-left">
-      <div class="nt-logo">📸</div>
+      <div class="nt-logo"></div>
       <div>
         <div class="nt-title">Railroad Notes</div>
         <div class="nt-subtitle">Poway–Midland Railroad · Share Your Experience</div>

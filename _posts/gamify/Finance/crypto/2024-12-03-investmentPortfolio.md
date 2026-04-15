@@ -412,8 +412,8 @@ function createTransactionRow({ type, amount, value, timestamp }) {
 
             const response = await fetch(`${javaURI}/api/crypto/live`, fetchOptions);
             
-            console.log("📊 API Response Status:", response.status);
-            console.log("📊 API Response Headers:", response.headers);
+            console.log(" API Response Status:", response.status);
+            console.log(" API Response Headers:", response.headers);
 
             if (!response.ok) {
                 throw new Error(`Failed to fetch crypto data. Status: ${response.status} ${response.statusText}`);

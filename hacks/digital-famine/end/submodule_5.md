@@ -848,7 +848,7 @@ function showCompletion() {
     const report = `
         <h4>Knowledge Recovery Report:</h4>
         <p>✅ <strong>Mission Complete!</strong> 100% of Earth's digital knowledge restored!</p>
-        <p>📊 <strong>Performance Stats:</strong></p>
+        <p> <strong>Performance Stats:</strong></p>
         <ul style="text-align: left; line-height: 1.8;">
             <li>Questions Mastered: ${questions.length} / ${questions.length}</li>
             <li>Total Attempts: ${totalQuestionsAsked}</li>
