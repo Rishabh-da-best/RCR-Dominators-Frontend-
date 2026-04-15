@@ -14,7 +14,7 @@ permalink: /railroad/history
 
 /* Hero */
 .hs-hero{position:relative;padding:60px 24px 50px;text-align:center;overflow:hidden;
-  background:linear-gradient(180deg,#2a1a0e 0%,var(--coal) 100%);}
+  background:#2a1a0e;}
 .hs-hero::before{content:'';position:absolute;inset:0;
   background-image:repeating-linear-gradient(90deg,transparent,transparent 60px,rgba(255,255,255,0.01) 60px,rgba(255,255,255,0.01) 61px);
   pointer-events:none;}

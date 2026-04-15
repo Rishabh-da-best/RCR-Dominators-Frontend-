@@ -222,7 +222,7 @@ permalink: /railroad/home
   .rr-hero {
     padding: 80px 48px 64px;
     text-align: center;
-    background: radial-gradient(ellipse at 50% 0%, rgba(61,42,24,0.85) 0%, rgba(26,20,16,0.75) 70%);
+    background: #2a1a0e;
     overflow: hidden;
     max-width: 1400px;
     margin: 0 auto;
@@ -276,11 +276,11 @@ permalink: /railroad/home
   }
   .rr-hero-title {
     font-size:clamp(36px,7vw,76px); font-weight:700;
-    color:var(--steam); line-height:1; margin-bottom:16px;
+    color:#ffffff; line-height:1; margin-bottom:16px;
   }
-  .rr-hero-title em { font-style:italic; color:var(--ember); }
+  .rr-hero-title em { font-style:italic; color:#ffffff; }
   .rr-hero-sub {
-    font-size:16px; color:var(--smoke); max-width:800px;
+    font-size:16px; color:#ffffff; max-width:800px;
     margin:0 auto 36px; line-height:1.7;
   }
   .rr-hero-btns { display:flex; gap:12px; justify-content:center; flex-wrap:wrap; }

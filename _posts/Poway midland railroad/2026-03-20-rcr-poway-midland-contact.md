@@ -30,7 +30,7 @@ permalink: /railroad/contact
   .rr-hero {
     padding: 32px 34px 26px;
     text-align: left;
-    background: var(--background);
+    background: #2a1a0e;
     border-bottom: 1px solid var(--border);
     flex-shrink: 0;
   }
@@ -39,7 +39,7 @@ permalink: /railroad/contact
     font-size: 10px;
     letter-spacing: 0.25em;
     text-transform: uppercase;
-    color: var(--subtext);
+    color: #ffffff;
     margin-bottom: 10px;
     opacity: 0.9;
   }
@@ -48,11 +48,11 @@ permalink: /railroad/contact
     font-weight: 700;
     line-height: 1.05;
     margin-bottom: 12px;
-    color: var(--text);
+    color: #ffffff;
   }
   .rr-hero h1 em {
     font-style: italic;
-    color: var(--accent2);
+    color: #ffffff;
   }
   .rr-hero p {
     font-size: 14px;

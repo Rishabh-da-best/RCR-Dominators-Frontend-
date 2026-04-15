@@ -39,7 +39,7 @@ permalink: /railroad/trains
     position: relative;
     padding: 60px 24px 40px;
     text-align: center;
-    background: #ffffff;
+    background: #2a1a0e;
     overflow: hidden;
     border-bottom: 1px solid #cccccc;
   }
@@ -89,24 +89,24 @@ permalink: /railroad/trains
   .eq-hero-tag {
     font-family: 'DM Mono', monospace; font-size: 10px;
     letter-spacing: 0.3em; text-transform: uppercase;
-    color: #ffffff; margin-bottom: 16px; opacity: 0.7; font-weight: 600;
+    color: var(--steam); margin-bottom: 16px; opacity: 0.7; font-weight: 600;
   }
   .eq-hero-title {
     font-family: 'Playfair Display', Georgia, serif;
     font-size: clamp(42px, 8vw, 88px);
     font-weight: 900;
-    color: #ffffff;
+    color: var(--steam);
     line-height: 0.95;
     letter-spacing: -0.02em;
     margin-bottom: 20px;
   }
   .eq-hero-title em {
     font-style: italic;
-    color: #ffffff;
+    color: var(--steam);
     display: block;
   }
   .eq-hero-sub {
-    font-size: 16px; color: #ffffff;
+    font-size: 16px; color: var(--steam);
     max-width: 520px; margin: 0 auto 40px;
     line-height: 1.7; font-weight: 300;
   }

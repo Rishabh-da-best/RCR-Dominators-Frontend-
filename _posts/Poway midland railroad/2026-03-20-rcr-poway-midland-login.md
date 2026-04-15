@@ -15,7 +15,7 @@ permalink: /railroad/login
   body { background:var(--coal); color:var(--steam); font-family:'Georgia',serif; padding-top:56px; }
 
   .rr-hero { padding:52px 24px 40px; text-align:center;
-    background:radial-gradient(ellipse at 50% 0%,#3d2a18 0%,var(--coal) 70%);
+    background:#2a1a0e;
     border-bottom:1px solid #cccccc; }
   .rr-hero-tag { font-family:'Courier New',monospace; font-size:10px; letter-spacing:0.3em;
     text-transform:uppercase; color:#ffffff; margin-bottom:10px; opacity:0.8; }

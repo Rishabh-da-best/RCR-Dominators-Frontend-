@@ -22,15 +22,15 @@ permalink: /railroad/assistant
   .rr-hero {
     padding: 32px 34px 26px;
     text-align: left;
-    background: var(--background);
+    background: #2a1a0e;
     border-bottom: 1px solid var(--border);
     flex-shrink: 0;
   }
   .rr-hero-tag { font-family:'Courier New',monospace; font-size:10px; letter-spacing:0.25em;
-    text-transform:uppercase; color:var(--subtext); margin-bottom:10px; opacity:0.9; }
-  .rr-hero h1 { font-size:clamp(28px,4vw,48px); font-weight:700; color:var(--text); line-height:1.05; margin-bottom:12px; }
-  .rr-hero h1 em { font-style:italic; color:var(--ember); }
-  .rr-hero p { font-size:14px; color:var(--subtext); max-width:700px; line-height:1.7; }
+    text-transform:uppercase; color:#ffffff; margin-bottom:10px; opacity:0.9; }
+  .rr-hero h1 { font-size:clamp(28px,4vw,48px); font-weight:700; color:#ffffff; line-height:1.05; margin-bottom:12px; }
+  .rr-hero h1 em { font-style:italic; color:#ffffff; }
+  .rr-hero p { font-size:14px; color:#ffffff; max-width:700px; line-height:1.7; }
 
   .rr-wrap { display: flex; flex: 1; width: 100%; overflow: visible; padding: 24px 24px 24px; }
   .rr-grid-2 { display: grid; grid-template-columns: 0.45fr 0.55fr; gap: 22px; width: 100%; min-height: 0; }

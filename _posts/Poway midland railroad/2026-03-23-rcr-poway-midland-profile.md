@@ -16,7 +16,7 @@ permalink: /railroad/profile
 
   .pf-hero {
     padding: 40px 24px 32px; text-align: center;
-    background: radial-gradient(ellipse at 50% 0%, #3d2a18 0%, var(--coal) 70%);
+    background: #2a1a0e;
     border-bottom: 1px solid #cccccc;
   }
   .pf-avatar {

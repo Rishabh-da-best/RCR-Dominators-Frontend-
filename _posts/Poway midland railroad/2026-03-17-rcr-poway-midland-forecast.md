@@ -9,7 +9,9 @@ permalink: /railroad/forecast
 <style>
   :root{--coal:#ffffff;--iron:#ffffff;--iron2:#f5f5f5;--rust:#000000;--ember:#333333;--gold:#000000;--steam:#000000;--smoke:#666666;--text:#000000;--subtext:#666666;--background:#ffffff;}
   *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
-  body{overflow-x:visible;overflow-y:auto;}
+  html, body { width:100%; height:100%; }
+  body{overflow-x:visible;overflow-y:auto;background:#ffffff;}
+  .page-content, .wrapper { max-width: none !important; padding: 0 !important; }
   .fc-page{background:var(--coal);min-height:100vh;font-family:'Source Serif 4',Georgia,serif;color:var(--steam);width:100%;overflow:visible;}
 
   .fc-hero{position:relative;padding:60px 24px 50px;text-align:center;background:#2a1a0e;border-bottom:1px solid #cccccc;}

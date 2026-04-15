@@ -12,7 +12,7 @@ permalink: /railroad/camera
   *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
   body{background:var(--coal);color:var(--steam);font-family:'Georgia',serif;padding-top:56px;}
 
-  .rr-hero{padding:52px 24px 40px;text-align:center;background:radial-gradient(ellipse at 50% 0%,#3d2a18 0%,var(--coal) 70%);border-bottom:1px solid #cccccc;}
+  .rr-hero{padding:52px 24px 40px;text-align:center;background:#2a1a0e;border-bottom:1px solid #cccccc;}
   .rr-hero-tag{font-family:'Courier New',monospace;font-size:10px;letter-spacing:0.3em;text-transform:uppercase;color:#ffffff;margin-bottom:10px;opacity:0.8;}
   .rr-hero h1{font-size:clamp(28px,5vw,52px);font-weight:700;line-height:1;margin-bottom:10px;color:#ffffff;}
   .rr-hero h1 em{font-style:italic;color:#ffffff;}
