@@ -442,7 +442,7 @@ permalink: /railroad/home
 
 <!-- HERO -->
 <div class="rr-hero">
-  <span class="rr-hero-icon">🚂</span>
+  <span class="rr-hero-icon"></span>
 
   <div class="rr-hero-badge">Since 1987 · Heritage Rail · Old Poway Park</div>
 
@@ -455,8 +455,8 @@ permalink: /railroad/home
   
   <p class="rr-hero-sub">Your digital depot for steam, steel, and stories. Explore vintage locomotives, real-time schedules, and the volunteers who keep the iron horse alive every weekend in Poway, CA.</p>
   <div class="rr-hero-btns">
-    <a href="{{ "/railroad/calendar" | relative_url }}" class="rr-btn-primary">🎟 Book a Ride</a>
-    <a href="{{ "/railroad/trains" | relative_url }}" class="rr-btn-secondary">🚂 Our Fleet</a>
+    <a href="{{ "/railroad/calendar" | relative_url }}" class="rr-btn-primary"> Book a Ride</a>
+    <a href="{{ "/railroad/trains" | relative_url }}" class="rr-btn-secondary"> Our Fleet</a>
   </div>
   <div class="rr-hero-track"></div>
 </div>
@@ -464,9 +464,9 @@ permalink: /railroad/home
 <div class="rr-wrap">
   <div class="rr-section-title">Quick Access</div>
   <div class="rr-quick">
-    <a href="{{ "/railroad/schedule" | relative_url }}" class="rr-quick-card"><span class="rr-quick-icon">📅</span><div class="rr-quick-label">Schedule</div><div class="rr-quick-sub">View today's rides</div></a>
-    <a href="{{ "/railroad/calendar" | relative_url }}" class="rr-quick-card"><span class="rr-quick-icon">🎟</span><div class="rr-quick-label">Book a Ride</div><div class="rr-quick-sub">Reserve your seat</div></a>
-    <a href="{{ "/railroad/trains" | relative_url }}"   class="rr-quick-card"><span class="rr-quick-icon">🚂</span><div class="rr-quick-label">Our Fleet</div><div class="rr-quick-sub">Meet the trains</div></a>
+    <a href="{{ "/railroad/schedule" | relative_url }}" class="rr-quick-card"><span class="rr-quick-icon"></span><div class="rr-quick-label">Schedule</div><div class="rr-quick-sub">View today's rides</div></a>
+    <a href="{{ "/railroad/calendar" | relative_url }}" class="rr-quick-card"><span class="rr-quick-icon"></span><div class="rr-quick-label">Book a Ride</div><div class="rr-quick-sub">Reserve your seat</div></a>
+    <a href="{{ "/railroad/trains" | relative_url }}"   class="rr-quick-card"><span class="rr-quick-icon"></span><div class="rr-quick-label">Our Fleet</div><div class="rr-quick-sub">Meet the trains</div></a>
     <a href="{{ "/railroad/notes" | relative_url }}"    class="rr-quick-card"><span class="rr-quick-icon">📸</span><div class="rr-quick-label">Notes</div><div class="rr-quick-sub">Share your experience</div></a>
     <a href="{{ "/railroad/forecast" | relative_url }}" class="rr-quick-card"><span class="rr-quick-icon">📊</span><div class="rr-quick-label">Visitor Forecast</div><div class="rr-quick-sub">ML prediction</div></a>
     <a href="{{ "/railroad/events" | relative_url }}"   class="rr-quick-card"><span class="rr-quick-icon">🎪</span><div class="rr-quick-label">Events</div><div class="rr-quick-sub">Upcoming activities</div></a>

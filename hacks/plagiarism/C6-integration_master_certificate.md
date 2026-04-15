@@ -275,7 +275,7 @@ document.addEventListener("DOMContentLoaded", function() {
                     const salemData = JSON.parse(c2_1_data);
                     const saveDate = new Date(salemData.timestamp).toLocaleString();
                     c2Content += `
-                        <strong>📅 Salem Exercise Completed:</strong> ${saveDate}<br><br>
+                        <strong> Salem Exercise Completed:</strong> ${saveDate}<br><br>
                         <strong>Salem's Citation Exercise:</strong><br>
                         <em>Original Uncited Text:</em><br>
                         <div style="padding: 8px; border-radius: 4px; margin: 5px 0;">
@@ -300,7 +300,7 @@ document.addEventListener("DOMContentLoaded", function() {
                     const comparisonData = JSON.parse(c2_2_data);
                     const saveDate = new Date(comparisonData.timestamp).toLocaleString();
                     c2Content += `
-                        <strong>📅 Comparison Exercise Completed:</strong> ${saveDate}<br><br>
+                        <strong> Comparison Exercise Completed:</strong> ${saveDate}<br><br>
                         <strong>Comparison Exercise:</strong><br>
                         <em>Uncited Version (showing plagiarism):</em><br>
                         <div style="padding: 8px; border-radius: 4px; margin: 5px 0;">
@@ -326,7 +326,7 @@ document.addEventListener("DOMContentLoaded", function() {
                     const c2Work = JSON.parse(c2AssessmentData);
                     const completedDate = new Date(c2Work.timestamp).toLocaleString();
                     c2Content += `
-                        <strong>📅 Assessment Completed:</strong> ${completedDate}<br><br>
+                        <strong> Assessment Completed:</strong> ${completedDate}<br><br>
                         <strong>Salem's Citation Exercise:</strong><br>
                         <em>Original Uncited Text:</em><br>
                         <div style="padding: 8px; border-radius: 4px; margin: 5px 0;">
@@ -385,7 +385,7 @@ document.addEventListener("DOMContentLoaded", function() {
                     const taylorData = JSON.parse(c3_1_data);
                     const saveDate = new Date(taylorData.timestamp).toLocaleString();
                     c3Content += `
-                        <strong>📅 Taylor Swift Exercise Completed:</strong> ${saveDate}<br><br>
+                        <strong> Taylor Swift Exercise Completed:</strong> ${saveDate}<br><br>
                         <strong>Taylor Swift Reference Correction:</strong><br>
                         <em>Original weak reference:</em> ${safeValue(taylorData, 'originalReference', 'MSN. (2025). Taylor Swift\'s legal odyssey...')}<br>
                         <em>Student's improved version:</em><br>
@@ -403,7 +403,7 @@ document.addEventListener("DOMContentLoaded", function() {
                     const peteData = JSON.parse(c3_2_data);
                     const saveDate = new Date(peteData.timestamp).toLocaleString();
                     c3Content += `
-                        <strong>📅 Pete Hegseth Exercise Completed:</strong> ${saveDate}<br><br>
+                        <strong> Pete Hegseth Exercise Completed:</strong> ${saveDate}<br><br>
                         <strong>Pete Hegseth Reference Correction:</strong><br>
                         <em>Original weak reference:</em> ${safeValue(peteData, 'originalReference', 'News source on 2025 academic misconduct cases.')}<br>
                         <em>Student's improved version:</em><br>
@@ -422,7 +422,7 @@ document.addEventListener("DOMContentLoaded", function() {
                     const c3Work = JSON.parse(c3AssessmentData);
                     const completedDate = new Date(c3Work.timestamp).toLocaleString();
                     c3Content += `
-                        <strong>📅 Assessment Completed:</strong> ${completedDate}<br><br>
+                        <strong> Assessment Completed:</strong> ${completedDate}<br><br>
                         <strong>Taylor Swift Reference Correction:</strong><br>
                         <em>Original weak reference:</em> MSN. (2025). Taylor Swift's legal odyssey...<br>
                         <em>Student's improved version:</em><br>
@@ -462,7 +462,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
                 c4Container.innerHTML = `
                     <div class="work-section">
-                        <strong>📅 ${isCompleted ? 'Completed' : 'Last Saved'}:</strong> ${completedDate}<br><br>
+                        <strong> ${isCompleted ? 'Completed' : 'Last Saved'}:</strong> ${completedDate}<br><br>
                         <strong>Status:</strong> ${statusIcon} ${statusText}<br>
                         <strong>Writing Analysis Mode:</strong> ${safeValue(c4Work, 'studentWork.analysisMode')}<br>
                         <strong>Word Count:</strong> ${safeValue(c4Work, 'studentWork.wordCount')}<br><br>

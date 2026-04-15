@@ -95,7 +95,7 @@ permalink: /railroad/calendar
 
   <div class="cal-header">
     <div class="cal-header-left">
-      <div class="cal-logo">🚂</div>
+      <div class="cal-logo"></div>
       <div>
         <div class="cal-title">Operations Calendar</div>
         <div class="cal-subtitle">Poway–Midland Railroad · Old Poway Park</div>
@@ -176,7 +176,7 @@ permalink: /railroad/calendar
     '2026-5-30':'steam','2026-5-31':'cable',
   };
   const EVENT_CONFIG = {
-    steam:  {cls:'event-steam',  label:'🚂 Steam Locomotive',time:'10am – 2pm'},
+    steam:  {cls:'event-steam',  label:' Steam Locomotive',time:'10am – 2pm'},
     cable:  {cls:'event-cable',  label:'🚌 Cable Car',       time:'11am – 2pm'},
     speeder:{cls:'event-speeder',label:'🚃 Speeder',         time:'11am – 2pm'},
     none:   {cls:'event-none',   label:'No Operation',       time:''},

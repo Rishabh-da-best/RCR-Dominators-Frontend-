@@ -179,7 +179,7 @@ document.getElementById('loginForm').addEventListener('submit', async e => {
     });
     const data = await res.json();
     if (!res.ok) { setFeedback(fb, data.error || 'Login failed.', 'err'); return; }
-    setFeedback(fb, `Welcome back, ${data.name}! 🚂 Redirecting...`, 'ok');
+    setFeedback(fb, `Welcome back, ${data.name}!  Redirecting...`, 'ok');
     updateView(data);
     setTimeout(() => { window.location.href = REDIRECT_AFTER_LOGIN; }, 1000);
   } catch {
@@ -205,7 +205,7 @@ document.getElementById('signupForm').addEventListener('submit', async e => {
     });
     const data = await res.json();
     if (!res.ok) { setFeedback(fb, data.error || 'Registration failed.', 'err'); return; }
-    setFeedback(fb, `Account created! Welcome aboard, ${data.name}! 🚂 Redirecting...`, 'ok');
+    setFeedback(fb, `Account created! Welcome aboard, ${data.name}!  Redirecting...`, 'ok');
     updateView(data);
     setTimeout(() => { window.location.href = REDIRECT_AFTER_SIGNUP; }, 1000);
   } catch {

@@ -500,7 +500,7 @@ footer:
             <h2>📚 Understanding API URLs</h2>
             <p>Just like finding seats at Dodger Stadium, API URLs have specific parts that tell you exactly where to go. Let's break down how to build the perfect API URL to get LA sports team data!</p>
             
-            <h3>🏠 Base URL</h3>
+            <h3> Base URL</h3>
             <p>The foundation - like the stadium address</p>
             <div class="code-box">https://www.thesportsdb.com/api/v1/json/</div>
 

@@ -142,7 +142,7 @@ permalink: /railroad/book
   <!-- Header -->
   <div class="bk-header">
     <div class="bk-header-left">
-      <div class="bk-logo">🎟</div>
+      <div class="bk-logo"></div>
       <div>
         <div class="bk-title">Book a Train Ride</div>
         <div class="bk-subtitle">Poway–Midland Railroad · Old Poway Park</div>
@@ -248,7 +248,7 @@ permalink: /railroad/book
         <div id="bkSeatWarning" style="display:none;background:#fff0f0;border:1px solid #cc0000;border-radius:8px;padding:10px 14px;margin-top:12px;font-size:13px;color:#cc0000;font-weight:600;">
           ⚠️ Not enough seats available. Only <span id="bkMaxMsg"></span> seat(s) remaining for this ride.
         </div>
-        <button class="bk-submit" id="bkSubmitBtn" onclick="bkSubmit()">🎟 Confirm Booking</button>
+        <button class="bk-submit" id="bkSubmitBtn" onclick="bkSubmit()"> Confirm Booking</button>
         <p class="bk-note">Tickets are not pre-purchased online. This reserves your spot and you pay at the depot on the day of your ride. Cash and credit cards accepted.</p>
       </div>
 
@@ -414,7 +414,7 @@ permalink: /railroad/book
           alert('Booking failed: ' + (result.error || 'Unknown error'));
         }
         btn.disabled = false;
-        btn.textContent = '🎟 Confirm Booking';
+        btn.textContent = ' Confirm Booking';
         return;
       }
 
@@ -438,7 +438,7 @@ permalink: /railroad/book
     } catch(e) {
       alert('Network error. Please try again.');
       btn.disabled = false;
-      btn.textContent = '🎟 Confirm Booking';
+      btn.textContent = ' Confirm Booking';
     }
   }
 

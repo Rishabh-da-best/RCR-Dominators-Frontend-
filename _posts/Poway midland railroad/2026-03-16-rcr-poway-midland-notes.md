@@ -273,7 +273,7 @@ permalink: /railroad/notes
       if (notes.length === 0) {
         grid.innerHTML = `
           <div class="nt-empty" style="grid-column:1/-1">
-            <div class="nt-empty-icon">🚂</div>
+            <div class="nt-empty-icon"></div>
             <div class="nt-empty-text">No notes yet — be the first to share your experience!</div>
           </div>`;
         return;

@@ -299,7 +299,7 @@ document.getElementById('contactForm').addEventListener('submit', e => {
   if (msg.length < 12)        { setErr('errMsg','Message must be at least 12 characters.'); valid=false; }
 
   if (!valid) { setFeedback(fb,'Please fix the highlighted fields before submitting.','err'); return; }
-  setFeedback(fb,'Message sent! Our team will follow up shortly. 🚂','ok');
+  setFeedback(fb,'Message sent! Our team will follow up shortly. ','ok');
   document.getElementById('contactForm').reset();
 });
 </script>

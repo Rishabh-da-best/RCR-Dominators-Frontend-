@@ -174,7 +174,7 @@ AI: true
   <div class="filters">
     <div class="filter-buttons">
       <button class="filter-btn active" data-filter="all">All shifts</button>
-      <button class="filter-btn" data-filter="steam">🚂 Steam</button>
+      <button class="filter-btn" data-filter="steam"> Steam</button>
       <button class="filter-btn" data-filter="cable">🚋 Cable Car</button>
       <button class="filter-btn" data-filter="speeder">🚃 Speeder</button>
       <button class="filter-btn" data-filter="open">🟢 Open spots</button>
@@ -280,7 +280,7 @@ AI: true
     for(let op of filtered){
       const volunteersList=volunteerData[op.iso]||[];const takenCount=volunteersList.length;const slotsLeft=op.slotsTotal-takenCount;const isSigned=isUserSignedUp(op.iso);const isFull=takenCount>=op.slotsTotal;
       const badgeClass=`badge-${op.eventType}`;
-      let eventIcon='';if(op.eventType==='steam')eventIcon='🚂 ';else if(op.eventType==='cable')eventIcon='🚋 ';else eventIcon='🚃 ';
+      let eventIcon='';if(op.eventType==='steam')eventIcon=' ';else if(op.eventType==='cable')eventIcon='🚋 ';else eventIcon='🚃 ';
       const volunteersDisplay=volunteersList.length>0?volunteersList.join(', '):'— no volunteers yet';
       const tr=document.createElement('tr');
       tr.innerHTML=`<td class="date-cell">${op.dateDisplay}<br><span style="font-size:0.7rem;color:var(--subtext);">${op.weekday}</span></td><td><span class="badge-event ${badgeClass}">${eventIcon}${op.eventLabel}</span></td><td>${op.timeRange}</td><td><div><strong>${takenCount}/${op.slotsTotal} slots filled</strong></div><div class="shift-count" style="margin-top:4px;">👥 ${volunteersDisplay}</div>${isFull?'<div class="slot-full">⚠️ Shift full</div>':`<div style="color:#4caf82;font-size:0.7rem;">${slotsLeft} spot(s) open</div>`}</td><td class="volunteer-buttons">${!isSigned&&!isFull?`<button class="vol-btn signup" data-iso="${op.iso}">➕ Sign up</button>`:''} ${isSigned?`<button class="vol-btn cancel" data-iso="${op.iso}">✖ Cancel</button>`:''} ${isSigned?`<span class="vol-status">✓ Signed</span>`:(isFull?`<span class="vol-status" style="background:rgba(185,74,28,0.2);color:#fb923c;">🔒 Full</span>`:`<span class="vol-status">Open</span>`)}</td>`;

@@ -113,7 +113,7 @@ export function addLevelNavigationButtons(gameInstance) {
     // Create Home button (center)
    const homeButton = document.createElement("button");
     homeButton.id = "homeButton";
-    homeButton.innerText = "🏠";
+    homeButton.innerText = "";
     // Remove class-based styling so it's just the emoji; apply minimal styles to remove border/background
     homeButton.className = "";
     homeButton.setAttribute("aria-label", "Home");

@@ -63,7 +63,7 @@ export default class GameUI {
         centerContainer.className = "game-footer-center";
 
         // Create Home button
-        const homeButton = this.createButton("homeButton", "🏠", () => {
+        const homeButton = this.createButton("homeButton", "", () => {
             window.location.href = this.config.homeUrl;
         });
         homeButton.setAttribute("aria-label", "Home");

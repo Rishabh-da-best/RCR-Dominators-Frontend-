@@ -79,7 +79,7 @@ permalink: /railroad/schedule
   @keyframes spin { to { transform:rotate(360deg); } }
 
   .rr-next { background:var(--track); border:1px solid var(--border); border-radius:14px; padding:26px 22px; margin-bottom:24px; display:grid; grid-template-columns:1fr auto; gap:20px; align-items:center; position:relative; overflow:hidden; }
-  .rr-next::before { content:'🚂'; position:absolute; right:-8px; bottom:-14px; font-size:90px; opacity:0.05; pointer-events:none; transform:scaleX(-1); }
+  .rr-next::before { content:''; position:absolute; right:-8px; bottom:-14px; font-size:90px; opacity:0.05; pointer-events:none; transform:scaleX(-1); }
   .rr-next-label { font-family:'Courier New',monospace; font-size:10px; letter-spacing:0.2em; text-transform:uppercase; color:var(--gold); margin-bottom:6px; }
   .rr-next-time { font-size:clamp(38px,7vw,58px); font-weight:900; color:#2c1f0e; line-height:1; }
   .rr-next-sub { font-size:13px; color:var(--smoke); margin-top:8px; }
@@ -155,14 +155,14 @@ permalink: /railroad/schedule
 
   <div class="rr-header">
     <div class="rr-header-left">
-      <div class="rr-logo">🚂</div>
+      <div class="rr-logo"></div>
       <div>
         <div class="rr-title">Poway–Midland Railroad</div>
         <div class="rr-subtitle">Old Poway Park · Schedule &amp; Live Tracker</div>
       </div>
     </div>
     <div style="display:flex;align-items:center;gap:12px;">
-      <a href="{{ "/railroad/calendar" | relative_url }}" title="View Operations Calendar" style="display:flex;align-items:center;justify-content:center;width:44px;height:44px;border-radius:10px;background:rgba(201,148,58,0.15);border:1px solid #c9943a;font-size:22px;text-decoration:none;flex-shrink:0;transition:background 0.2s,transform 0.15s;" onmouseover="this.style.background='rgba(201,148,58,0.3)';this.style.transform='translateY(-2px)'" onmouseout="this.style.background='rgba(201,148,58,0.15)';this.style.transform='none'">📅</a>
+      <a href="{{ "/railroad/calendar" | relative_url }}" title="View Operations Calendar" style="display:flex;align-items:center;justify-content:center;width:44px;height:44px;border-radius:10px;background:rgba(201,148,58,0.15);border:1px solid #c9943a;font-size:22px;text-decoration:none;flex-shrink:0;transition:background 0.2s,transform 0.15s;" onmouseover="this.style.background='rgba(201,148,58,0.3)';this.style.transform='translateY(-2px)'" onmouseout="this.style.background='rgba(201,148,58,0.15)';this.style.transform='none'"></a>
       <div class="rr-clock">
         <div class="time" id="rrTime">--:--:--</div>
         <div class="date" id="rrDate">---</div>
@@ -172,7 +172,7 @@ permalink: /railroad/schedule
 
   <div class="rr-ticker">
     <span class="rr-ticker-inner">
-      🚂 &nbsp; WELCOME TO POWAY–MIDLAND RAILROAD &nbsp;·&nbsp;
+       &nbsp; WELCOME TO POWAY–MIDLAND RAILROAD &nbsp;·&nbsp;
       TRAIN RIDES EVERY WEEKEND &amp; HOLIDAYS &nbsp;·&nbsp;
       OLD POWAY PARK, POWAY CA &nbsp;·&nbsp;
       CHECK BELOW FOR TODAY'S SCHEDULE &nbsp;·&nbsp;&nbsp;
@@ -181,7 +181,7 @@ permalink: /railroad/schedule
 
   <!-- Date Switcher -->
   <div class="rr-date-switcher">
-    <label>📅 Date:</label>
+    <label> Date:</label>
     <select id="rrSelMonth" class="rr-date-input" onchange="rrDropdownChange()">
       <option value="0">January</option><option value="1">February</option>
       <option value="2">March</option><option value="3">April</option>
@@ -228,7 +228,7 @@ permalink: /railroad/schedule
     <div class="rr-track-diagram">
       <div style="position:relative;">
         <div class="rr-track-line"></div>
-        <div class="rr-train-pos" id="rrTrainIcon" style="left:10%">🚂</div>
+        <div class="rr-train-pos" id="rrTrainIcon" style="left:10%"></div>
       </div>
       <div class="rr-stops" id="rrStops"></div>
     </div>
@@ -399,7 +399,7 @@ permalink: /railroad/schedule
         <div class="rr-info-row"><span>Adult Fare</span><span>${r.trainType.includes('Speeder')?'$4.00':'$5.00'}</span></div>
         <div class="rr-card-bar"><div class="rr-card-fill" style="width:${pct}%;background:${cfg.bar}"></div></div>
         ${r.status==='full'?`<div class="rr-alert alert-full">🔒 This ride is fully booked</div>`:''}
-        <a href="${bookUrl}" class="rr-book-btn ${canBook?'':'disabled'}">${canBook?'🎟 Book This Ride':'Fully Booked'}</a>
+        <a href="${bookUrl}" class="rr-book-btn ${canBook?'':'disabled'}">${canBook?' Book This Ride':'Fully Booked'}</a>
       `;
       grid.appendChild(card);
     });

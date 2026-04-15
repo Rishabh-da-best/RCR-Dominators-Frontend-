@@ -533,7 +533,7 @@ body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-se
     <li><a href="#alcatraz" id="nav-alcatraz">🏛️ Alcatraz</a></li>
     <li><a href="#golden-gate" id="nav-golden-gate">🌉 Golden Gate</a></li>
     <li><a href="#palace" id="nav-palace">🏛️ Palace of Fine Arts</a></li>
-    <li><a href="#painted-ladies" id="nav-painted-ladies">🏠 Painted Ladies</a></li>
+    <li><a href="#painted-ladies" id="nav-painted-ladies"> Painted Ladies</a></li>
   </ul>
 </nav>
 
@@ -894,7 +894,7 @@ body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-se
 <!-- PAINTED LADIES -->
 <div class="location" id="painted-ladies">
   <div class="location-header">
-    <h2>🏠 Painted Ladies</h2>
+    <h2> Painted Ladies</h2>
     <p>Color & Contrast Hierarchy</p>
   </div>
 
@@ -993,7 +993,7 @@ body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-se
   </div>
 
   <div class="quiz-section">
-    <h3>🏠 Build Your Hierarchy</h3>
+    <h3> Build Your Hierarchy</h3>
     <p class="subtitle">Create a custom design component!</p>
     
     <div class="question" id="ladies-q1">
@@ -1024,7 +1024,7 @@ body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-se
         <h2 class="demo-secondary" id="ladies-demo-p">Primary Level</h2>
         <p class="demo-tertiary" id="ladies-demo-s">Secondary Level</p>
       </div>
-      <p>Your design is as iconic as the Painted Ladies! 🏠</p>
+      <p>Your design is as iconic as the Painted Ladies! </p>
     </div>
   </div>
 </div>

@@ -357,7 +357,7 @@ permalink: /railroad/trains
   <div class="eq-filters">
     <button class="eq-filter-btn active" onclick="eqFilter('all', this)">All Equipment</button>
     <button class="eq-filter-btn" onclick="eqFilter('operational', this)">🟢 Operational</button>
-    <button class="eq-filter-btn" onclick="eqFilter('steam', this)">🚂 Steam</button>
+    <button class="eq-filter-btn" onclick="eqFilter('steam', this)"> Steam</button>
     <button class="eq-filter-btn" onclick="eqFilter('cable', this)">🚌 Cable Car</button>
     <button class="eq-filter-btn" onclick="eqFilter('speeder', this)">🚃 Speeder</button>
     <button class="eq-filter-btn" onclick="eqFilter('static', this)">🏛 Static</button>
@@ -396,7 +396,7 @@ const EQ_DATA = [
   {
     id: 'steam',
     photo: '/assets/images/steam-engine1-1.png',
-    emoji: '🚂',
+    emoji: '',
     type: 'Steam Locomotive',
     name: '1907 Baldwin 0-4-0',
     bannerClass: '',
@@ -582,7 +582,7 @@ const EQ_DATA = [
   },
   {
     id: 'caboose',
-    emoji: '🏠',
+    emoji: '',
     type: 'Static Display',
     name: '1937 Southern Pacific Caboose',
     bannerClass: 'static',

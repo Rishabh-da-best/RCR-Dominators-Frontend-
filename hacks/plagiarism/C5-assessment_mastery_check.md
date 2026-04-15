@@ -244,7 +244,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 c2Content = '<div class="work-section">';
 
                 c2Content += `
-                    <strong>📅 Assessment Completed:</strong> ${completedDate}<br><br>
+                    <strong> Assessment Completed:</strong> ${completedDate}<br><br>
                     <strong>Salem's Citation Exercise:</strong><br>
                     <em>Original Uncited Text:</em><br>
                     <div style="padding: 8px; border-radius: 4px; margin: 5px 0;">
@@ -298,7 +298,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 c3Content = '<div class="work-section">';
 
                 c3Content += `
-                    <strong>📅 Assessment Completed:</strong> ${completedDate}<br><br>
+                    <strong> Assessment Completed:</strong> ${completedDate}<br><br>
                     <strong>Taylor Swift Reference Correction:</strong><br>
                     <em>Original weak reference:</em> MSN. (2025). Taylor Swift's legal odyssey...<br>
                     <em>Student's improved version:</em><br>
@@ -340,7 +340,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
                 c4Container.innerHTML = `
                     <div class="work-section">
-                        <strong>📅 Completed:</strong> ${completedDate}<br><br>
+                        <strong> Completed:</strong> ${completedDate}<br><br>
                         <strong>C4 Writing Workshop:</strong><br>
                         <div style="padding: 8px; border-radius: 4px; margin: 5px 0;">
                             ${content}

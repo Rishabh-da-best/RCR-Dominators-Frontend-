@@ -107,7 +107,7 @@ permalink: /railroad/forecast
 
 <div class="fc-page">
   <div class="fc-hero">
-    <span class="fc-hero-icon">🚂</span>
+    <span class="fc-hero-icon"></span>
     <div class="fc-hero-tag">ML Powered · Poway–Midland Railroad</div>
     <h1 class="fc-hero-title">Tomorrow's<br><em>Crowd Forecast</em></h1>
     <p class="fc-hero-sub">Real weather data + machine learning. Know how busy PMRR will be before you arrive — down to the hour.</p>

@@ -145,7 +145,7 @@ permalink: /railroad/schedule
     position: relative;
     overflow: hidden;
   }
-  .rr-next::before { content:'🚂'; position:absolute; right:-8px; bottom:-14px; font-size:90px; opacity:0.05; pointer-events:none; transform:scaleX(-1); }
+  .rr-next::before { content:''; position:absolute; right:-8px; bottom:-14px; font-size:90px; opacity:0.05; pointer-events:none; transform:scaleX(-1); }
 
   .rr-next-label { font-family:'Courier New',monospace; font-size:10px; letter-spacing:0.2em; text-transform:uppercase; color:var(--gold); margin-bottom:6px; }
   .rr-next-time  { font-size: clamp(38px,7vw,58px); font-weight:900; color:#fff; line-height:1; }
@@ -220,7 +220,7 @@ permalink: /railroad/schedule
 
   <div class="rr-header">
     <div class="rr-header-left">
-      <div class="rr-logo">🚂</div>
+      <div class="rr-logo"></div>
       <div>
         <div class="rr-title">Poway–Midland Railroad</div>
         <div class="rr-subtitle">Old Poway Park · Schedule &amp; Live Tracker</div>
@@ -234,7 +234,7 @@ permalink: /railroad/schedule
 
   <div class="rr-ticker">
     <span class="rr-ticker-inner">
-      🚂 &nbsp; WELCOME TO POWAY–MIDLAND RAILROAD &nbsp;·&nbsp;
+       &nbsp; WELCOME TO POWAY–MIDLAND RAILROAD &nbsp;·&nbsp;
       TRAIN RIDES EVERY WEEKEND &amp; HOLIDAYS &nbsp;·&nbsp;
       OLD POWAY PARK, POWAY CA &nbsp;·&nbsp;
       CHECK BELOW FOR TODAY'S SCHEDULE &nbsp;·&nbsp;&nbsp;
@@ -271,7 +271,7 @@ permalink: /railroad/schedule
     <div class="rr-track-diagram">
       <div style="position:relative;">
         <div class="rr-track-line"></div>
-        <div class="rr-train-pos" id="rrTrainIcon" style="left:10%">🚂</div>
+        <div class="rr-train-pos" id="rrTrainIcon" style="left:10%"></div>
       </div>
       <div class="rr-stops" id="rrStops"></div>
     </div>

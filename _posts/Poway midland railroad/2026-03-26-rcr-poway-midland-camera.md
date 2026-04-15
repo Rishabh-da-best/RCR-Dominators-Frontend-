@@ -189,7 +189,7 @@ ROUTE.stops.forEach(s=>{
 });
 ROUTE.poi.forEach(p=>L.marker([p.lat,p.lng]).bindPopup(`<b>${p.name}</b>`).addTo(map));
 map.fitBounds(poly.getBounds(),{padding:[20,20]});
-const trainIcon = L.divIcon({className:'',html:'<span style="font-size:1.2rem">🚂</span>',iconSize:[32,24],iconAnchor:[16,12]});
+const trainIcon = L.divIcon({className:'',html:'<span style="font-size:1.2rem"></span>',iconSize:[32,24],iconAnchor:[16,12]});
 const trainMarker = L.marker(lls[0],{icon:trainIcon}).addTo(map);
 let ri=0; setInterval(()=>{ ri=(ri+1)%lls.length; trainMarker.setLatLng(lls[ri]); },1800);
 

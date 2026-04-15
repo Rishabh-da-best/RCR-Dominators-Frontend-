@@ -679,7 +679,7 @@ export function addModuleFooterControls() {
   
   // Return to Quest Home button
   const homeBtn = document.createElement('button');
-  homeBtn.innerHTML = '🏠 Home';
+  homeBtn.innerHTML = ' Home';
   homeBtn.className = 'medium filledHighlight primary';
   homeBtn.style.cssText = `
     background: linear-gradient(135deg, #667eea, #764ba2);

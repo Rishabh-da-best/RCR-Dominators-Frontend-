@@ -210,7 +210,7 @@ body{background:var(--coal);color:var(--steam);font-family:'Georgia',serif;paddi
   </div>
 
   <!-- ── LOCOMOTIVE STORY ── -->
-  <div class="hs-label">🚂 The Baldwin Locomotive — #30646</div>
+  <div class="hs-label"> The Baldwin Locomotive — #30646</div>
   <div class="hs-loco-grid">
     <div class="hs-loco-card">
       <h3>Original Specifications</h3>
@@ -241,7 +241,7 @@ body{background:var(--coal);color:var(--steam);font-family:'Georgia',serif;paddi
   <div class="hs-hotspot-wrap">
     <div class="hs-stage">
       <div class="hs-stage-track"></div>
-      <div class="hs-stage-loco">🚂</div>
+      <div class="hs-stage-loco"></div>
       <div class="hs-hspot" style="left:44%;top:38%;" onclick="showHotspot(0)">1</div>
       <div class="hs-hspot" style="left:20%;top:52%;" onclick="showHotspot(1)">2</div>
       <div class="hs-hspot" style="left:68%;top:42%;" onclick="showHotspot(2)">3</div>

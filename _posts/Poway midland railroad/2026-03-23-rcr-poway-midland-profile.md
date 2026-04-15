@@ -147,7 +147,7 @@ permalink: /railroad/profile
     <div class="pf-avatar" id="pfAvatar">?</div>
     <div class="pf-name"  id="pfName">Loading...</div>
     <div class="pf-email" id="pfEmail"></div>
-    <div class="pf-tag">🚂 Railroad Member</div>
+    <div class="pf-tag"> Railroad Member</div>
   </div>
 
   <div class="pf-wrap">
@@ -194,7 +194,7 @@ permalink: /railroad/profile
     <!-- Booking History -->
     <div class="pf-bookings">
       <div class="pf-card-title" style="font-family:'Courier New',monospace;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:18px;padding-bottom:10px;border-bottom:1px solid rgba(255,255,255,0.07);">
-        🎟 My Booking History
+         My Booking History
       </div>
       <div id="pfBookingList">
         <div class="pf-empty">Loading reservations...</div>
@@ -308,7 +308,7 @@ permalink: /railroad/profile
       });
       const data = await res.json();
       if (!res.ok) { pfFeedback(fb, data.error || 'Failed to update password.', 'err'); return; }
-      pfFeedback(fb, 'Password updated successfully! 🚂', 'ok');
+      pfFeedback(fb, 'Password updated successfully! ', 'ok');
       document.getElementById('pfCurPass').value = '';
       document.getElementById('pfNewPass').value = '';
       document.getElementById('pfConPass').value = '';

@@ -332,7 +332,7 @@ permalink: /solitaire/
             <p id="final_score" class="result-text">Final Score: 0</p>
             <p id="final_time" class="result-text">Time: 00:00</p>
             <a id="new_game1" class="menu-link">🔄 New Game</a>
-            <a id="menu_return" class="menu-link">🏠 Main Menu</a>
+            <a id="menu_return" class="menu-link"> Main Menu</a>
         </div>
         <!-- Game Screen -->
         <div id="game_screen" class="game-container wrap" tabindex="1">

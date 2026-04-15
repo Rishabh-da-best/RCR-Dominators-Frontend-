@@ -387,7 +387,7 @@ footer:
           <div class="hint">Fast, convenient</div>
         </button>
         <button class="selectable" data-transport="Train">
-          <div class="icon">🚂</div>
+          <div class="icon"></div>
           <div class="title">Take the Train</div>
           <div class="hint">Relaxing, scenic</div>
         </button>
@@ -420,7 +420,7 @@ footer:
           <div class="hint">Budget-friendly, social</div>
         </button>
         <button class="selectable" data-accommodation="Airbnb">
-          <div class="icon">🏠</div>
+          <div class="icon"></div>
           <div class="title">Airbnb</div>
           <div class="hint">Home away from home</div>
         </button>

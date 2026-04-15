@@ -133,7 +133,7 @@ After forming a team you will need to start on the journey of acting as a team a
 - Teams need to manage progress. At the top of every repository in GitHub there are Issue and Project management tabs. You will need to become familiar with Issues, Kanban, and Timelines.
 
   ```text
-  📋 Issues → 📅 Kanban Board → ⏱️ Timeline → 🔄 Deploy
+  📋 Issues →  Kanban Board → ⏱️ Timeline → 🔄 Deploy
   ```
 
 #### **Agile Ceremonies**

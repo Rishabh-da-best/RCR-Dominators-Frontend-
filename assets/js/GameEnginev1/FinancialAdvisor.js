@@ -543,7 +543,7 @@ class FinancialAdvisor extends Npc {
                             color: #888;
                         ">
                             <span style="margin-right: 8px;">
-                                <i style="margin-right: 4px;">📅</i>${randomNews.date}
+                                <i style="margin-right: 4px;"></i>${randomNews.date}
                             </span>
                         </div>
                     </div>

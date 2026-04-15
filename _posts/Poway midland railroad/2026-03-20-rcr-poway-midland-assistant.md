@@ -89,7 +89,7 @@ permalink: /railroad/assistant
     <label class="rr-label" for="aiInput">Ask for a recommendation</label>
     <textarea class="rr-textarea" id="aiInput" rows="3" placeholder="e.g. Suggest a 45-minute family visit plan"></textarea>
     <div class="rr-btn-row">
-      <button class="rr-btn rr-btn-primary" id="sendBtn">🚂 Get Recommendation</button>
+      <button class="rr-btn rr-btn-primary" id="sendBtn"> Get Recommendation</button>
       <button class="rr-btn rr-btn-secondary" id="clearBtn">Clear</button>
     </div>
   </div>
@@ -131,5 +131,5 @@ document.getElementById('clearBtn').addEventListener('click', () => {
   addMsg('assistant', 'Chat reset. Ask a new question to get recommendations.');
 });
 
-addMsg('assistant', 'Hello! Ask for visit ideas, family plans, or volunteer recommendations. 🚂');
+addMsg('assistant', 'Hello! Ask for visit ideas, family plans, or volunteer recommendations. ');
 </script>
