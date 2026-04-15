@@ -15,10 +15,43 @@ permalink: /railroad/profile
   body { background:var(--coal); color:var(--steam); font-family:'Georgia',serif; padding-top:56px; }
 
   .pf-hero {
-    padding: 40px 24px 32px; text-align: center;
+    padding: 60px 24px 40px; text-align: center;
     background: #2a1a0e;
     border-bottom: 1px solid #cccccc;
+    position: relative;
+    overflow: hidden;
   }
+  .pf-hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: repeating-linear-gradient(
+      90deg, transparent, transparent 40px,
+      rgba(0,0,0,0.02) 40px, rgba(0,0,0,0.02) 41px
+    );
+    pointer-events: none;
+  }
+  .pf-track {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 20px;
+    background: repeating-linear-gradient(
+      90deg,
+      #cccccc 0px, #cccccc 30px,
+      transparent 30px, transparent 50px
+    );
+    opacity: 0.3;
+  }
+  .pf-track::before, .pf-track::after {
+    content: '';
+    position: absolute;
+    left: 0; right: 0;
+    height: 3px;
+    background: #cccccc;
+    opacity: 0.4;
+  }
+  .pf-track::before { top: 4px; }
+  .pf-track::after  { bottom: 4px; }
   .pf-avatar {
     width: 80px; height: 80px; border-radius: 50%;
     background: var(--rust); border: 3px solid var(--gold);
@@ -149,6 +182,7 @@ permalink: /railroad/profile
     <div class="pf-name"  id="pfName">Loading...</div>
     <div class="pf-email" id="pfEmail"></div>
     <div class="pf-tag"> Railroad Member</div>
+    <div class="pf-track"></div>
   </div>
 
   <div class="pf-wrap">

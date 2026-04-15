@@ -12,7 +12,38 @@ permalink: /railroad/camera
   *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
   body{background:var(--coal);color:var(--steam);font-family:'Georgia',serif;padding-top:56px;}
 
-  .rr-hero{padding:52px 24px 40px;text-align:center;background:#2a1a0e;border-bottom:1px solid #cccccc;}
+  .rr-hero{padding:60px 24px 40px;text-align:center;background:#2a1a0e;border-bottom:1px solid #cccccc;position:relative;overflow:hidden;}
+  .rr-hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: repeating-linear-gradient(
+      90deg, transparent, transparent 40px,
+      rgba(0,0,0,0.02) 40px, rgba(0,0,0,0.02) 41px
+    );
+    pointer-events: none;
+  }
+  .rr-hero-track {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 20px;
+    background: repeating-linear-gradient(
+      90deg,
+      #cccccc 0px, #cccccc 30px,
+      transparent 30px, transparent 50px
+    );
+    opacity: 0.3;
+  }
+  .rr-hero-track::before, .rr-hero-track::after {
+    content: '';
+    position: absolute;
+    left: 0; right: 0;
+    height: 3px;
+    background: #cccccc;
+    opacity: 0.4;
+  }
+  .rr-hero-track::before { top: 4px; }
+  .rr-hero-track::after  { bottom: 4px; }
   .rr-hero-tag{font-family:'Courier New',monospace;font-size:10px;letter-spacing:0.3em;text-transform:uppercase;color:#ffffff;margin-bottom:10px;opacity:0.8;}
   .rr-hero h1{font-size:clamp(28px,5vw,52px);font-weight:700;line-height:1;margin-bottom:10px;color:#ffffff;}
   .rr-hero h1 em{font-style:italic;color:#ffffff;}

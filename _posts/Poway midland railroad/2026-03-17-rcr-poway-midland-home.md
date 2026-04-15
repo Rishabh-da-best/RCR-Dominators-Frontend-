@@ -220,7 +220,7 @@ permalink: /railroad/home
 
   /* ── HERO ── */
   .rr-hero {
-    padding: 80px 48px 64px;
+    padding: 60px 24px 40px;
     text-align: center;
     background: #2a1a0e;
     overflow: hidden;
@@ -228,6 +228,7 @@ permalink: /railroad/home
     margin: 0 auto;
     width: 100%;
     box-sizing: border-box;
+    position: relative;
   }
   .rr-hero::before {
     content: ''; position: absolute; inset: 0;
