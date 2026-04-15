@@ -14,8 +14,8 @@ permalink: /railroad/calendar
   }
   *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
 
-  .cal-page{background:var(--coal);min-height:100vh;width:100vw;position:fixed;top:0;left:0;font-family:'Georgia',serif;color:var(--steam);display:flex;flex-direction:column;overflow:hidden;}
-  .cal-wrap{display:flex;flex-direction:column;height:100vh;width:100vw;margin:0;padding:0;overflow:hidden;}
+  .cal-page{background:var(--coal);min-height:100vh;font-family:'Georgia',serif;color:var(--steam);display:flex;flex-direction:column;}
+  .cal-wrap{display:flex;flex-direction:column;min-height:100vh;margin:0;padding:0;}
 
   .cal-header{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:14px;padding:20px;background:var(--coal);border-bottom:1px solid var(--border);flex-shrink:0;}
   .cal-header-left{display:flex;align-items:center;gap:12px;}
@@ -65,7 +65,7 @@ permalink: /railroad/calendar
   .cal-click-hint{font-size:9px;color:var(--text);margin-top:4px;font-style:italic;}
 
   /* Main content area - horizontal layout */
-  .main-cal-content { display: flex; flex: 1; overflow-y: hidden; }
+  .main-cal-content { display: flex; flex: 1; }
 
   .cal-info{display:flex;flex-direction:column;gap:12px;padding:16px 20px;background:var(--coal);border-right:1px solid var(--border);flex:0 0 30%;overflow-y:auto;}
   .cal-info-card{background:var(--coal);border:1px solid var(--border);border-radius:10px;padding:16px;border-top:3px solid var(--text);}
@@ -73,7 +73,7 @@ permalink: /railroad/calendar
   .cal-info-value{font-size:15px;font-weight:700;color:var(--steam);margin-bottom:3px;}
   .cal-info-sub{font-size:11px;color:var(--subtext);line-height:1.4;}
   
-  .cal-right-section { flex: 1; display: flex; flex-direction: column; overflow-y: hidden; }
+  .cal-right-section { flex: 1; display: flex; flex-direction: column; }
 
   /* Remove Minima width constraints and keep full-screen layout */
   .page-content, .wrapper { max-width: none !important; padding: 0 !important; }

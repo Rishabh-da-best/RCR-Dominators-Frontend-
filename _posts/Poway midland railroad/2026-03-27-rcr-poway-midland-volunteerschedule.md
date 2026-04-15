@@ -41,17 +41,14 @@ AI: true
     flex-direction: column;
   }
     .vol-wrap {
-      width: 100vw;
-      height: 100vh;
+      width: 100%;
+      min-height: 100vh;
       margin: 0;
       padding: 0;
       background: var(--light-bg);
       display: flex;
       flex-direction: column;
-      position: fixed;
-      top: 0;
-      left: 0;
-      overflow: hidden;
+      overflow: visible;
     }
 
     /* header */
@@ -151,7 +148,7 @@ AI: true
 
 </style>
 
-<div class="vol-page" style="position:fixed;top:0;left:0;width:100vw;height:100vh;overflow:hidden;">
+<div class="vol-page">
 <div class="vol-wrap">
   <div class="vol-header">
     <div class="vol-brand">

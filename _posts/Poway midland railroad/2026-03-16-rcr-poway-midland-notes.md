@@ -23,7 +23,7 @@ permalink: /railroad/notes
   .page-content { max-width: none !important; padding: 0 !important; background: #ffffff; }
   .wrapper { max-width: none !important; padding: 0 !important; }
 
-  .nt-wrap { display: flex; flex-direction: column; height: 100vh; width: 100vw; margin: 0; padding: 0; position: fixed; top: 0; left: 0; }
+  .nt-wrap { display: flex; flex-direction: column; min-height: 100vh; width: 100%; margin: 0; padding: 0; overflow-y: auto; }
 
   /* Header */
   .nt-header { display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:14px; padding:20px; background:var(--bg); border-bottom:1px solid var(--border); flex-shrink:0; }
@@ -35,10 +35,10 @@ permalink: /railroad/notes
   .nt-back:hover { background:#f5f5f5; }
 
   /* Main content area - horizontal layout */
-  .main-nt-content { display: flex; flex: 1; overflow-y: hidden; }
+  .main-nt-content { display: flex; min-height: calc(100vh - 80px); overflow: visible; }
 
   /* Compose box - left sidebar */
-  .nt-compose { background:var(--white); border-right:1px solid var(--border); border-radius:0; padding:20px 24px; flex:0 0 35%; overflow-y:auto; border-top:none; }
+  .nt-compose { background:var(--white); border-right:1px solid var(--border); border-radius:0; padding:20px 24px; flex:0 0 35%; overflow-y: visible; border-top:none; }
   .nt-compose-title { font-size:15px; font-weight:700; color:var(--text); margin-bottom:16px; }
   .nt-field { margin-bottom:14px; }
   .nt-field label { display:block; font-size:11px; font-weight:600; color:var(--subtext); letter-spacing:0.08em; text-transform:uppercase; margin-bottom:6px; }
@@ -75,7 +75,7 @@ permalink: /railroad/notes
   .nt-feed-count { font-size:13px; color:var(--text); font-weight:700; margin-left:auto; letter-spacing:0; }
 
   /* Masonry grid */
-  .nt-grid { columns: 2; column-gap: 12px; padding: 12px; overflow-y: auto; flex: 1; }
+  .nt-grid { columns: 2; column-gap: 12px; padding: 12px; overflow-y: visible; flex: 1; }
   @media (max-width: 800px) { .nt-grid { columns: 1; } }
   @media (max-width: 500px) { .nt-grid { columns: 1; } }
 

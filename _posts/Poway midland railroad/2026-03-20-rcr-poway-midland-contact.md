@@ -7,46 +7,48 @@ permalink: /railroad/contact
 <style>
 
   :root {
-    --background: #fff;
-    --primary: #6b3f19; /* deep brown */
-    --accent: #b94a1c;  /* rust brown */
-    --accent2: #e8621a; /* orange accent */
-    --border: #e0e0e0;
-    --input-bg: #f7f5f2;
-    --input-border: #d6cfc7;
-    --success: #2d6a4f;
-    --error: #b94a1c;
+    --rust:#000000; --gold:#333333; --green:#000000;
+    --background:#ffffff; --white:#ffffff; --primary:#000000;
+    --border:#cccccc; --input-bg:#f7f7f7; --input-border:#dddddd;
+    --text:#000000; --subtext:#666666;
+    --accent:#000000; --accent2:#333333;
+    --success:#2d6a4f; --error:#b94a1c;
   }
   *,*::before,*::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { width:100%; height:100%; }
   body {
     background: var(--background);
-    color: #111;
+    color: var(--text);
     font-family: 'Georgia', serif;
-    padding-top: 56px;
   }
 
+  .page-content, .wrapper { max-width: none !important; padding: 0 !important; }
+
+  .contact-page { width: 100%; min-height: 100vh; background: var(--background); color: var(--text); }
+  .contact-wrap { display: flex; flex-direction: column; width: 100%; min-height: 100%; overflow: visible; }
 
   .rr-hero {
-    padding: 52px 24px 40px;
-    text-align: center;
-    background: linear-gradient(180deg, #f7f5f2 0%, #fff 100%);
+    padding: 32px 34px 26px;
+    text-align: left;
+    background: var(--background);
     border-bottom: 1px solid var(--border);
+    flex-shrink: 0;
   }
   .rr-hero-tag {
     font-family: 'Courier New', monospace;
     font-size: 10px;
-    letter-spacing: 0.3em;
+    letter-spacing: 0.25em;
     text-transform: uppercase;
-    color: var(--accent);
+    color: var(--subtext);
     margin-bottom: 10px;
-    opacity: 0.8;
+    opacity: 0.9;
   }
   .rr-hero h1 {
-    font-size: clamp(28px,5vw,52px);
+    font-size: clamp(28px, 4vw, 48px);
     font-weight: 700;
-    line-height: 1;
-    margin-bottom: 10px;
-    color: var(--primary);
+    line-height: 1.05;
+    margin-bottom: 12px;
+    color: var(--text);
   }
   .rr-hero h1 em {
     font-style: italic;
@@ -54,32 +56,33 @@ permalink: /railroad/contact
   }
   .rr-hero p {
     font-size: 14px;
-    color: #4e2e0e;
-    max-width: 520px;
-    margin: 0 auto;
+    color: var(--subtext);
+    max-width: 640px;
+    margin: 0;
     line-height: 1.7;
   }
 
-
-  .rr-wrap { max-width: 1000px; margin: 0 auto; padding: 40px 20px 80px; }
-  .rr-grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
-  @media(max-width:700px) { .rr-grid-2 { grid-template-columns: 1fr; } }
-
+  .rr-wrap { display: flex; flex: 1; width: 100%; overflow: visible; padding: 24px 24px 24px; }
+  .rr-grid-2 { display: grid; grid-template-columns: 0.42fr 0.58fr; gap: 22px; width: 100%; min-height: 0; }
+  .rr-grid-2 > div { min-height: 0; }
+  @media(max-width:900px) { .rr-grid-2 { grid-template-columns: 1fr; } }
 
   .rr-card {
-    background: #fff;
+    background: var(--white);
     border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 24px;
+    border-radius: 16px;
+    padding: 26px;
     border-top: 3px solid var(--accent);
-    box-shadow: 0 2px 8px rgba(107,63,25,0.04);
+    box-shadow: 0 12px 28px rgba(0,0,0,0.05);
+    min-height: 0;
+    overflow: auto;
   }
   .rr-card-title {
     font-family: 'Courier New', monospace;
     font-size: 10px;
     letter-spacing: 0.2em;
     text-transform: uppercase;
-    color: var(--accent);
+    color: var(--text);
     margin-bottom: 16px;
     padding-bottom: 10px;
     border-bottom: 1px solid var(--border);
@@ -148,7 +151,7 @@ permalink: /railroad/contact
     box-shadow: 0 1px 2px rgba(107,63,25,0.04);
   }
   .rr-btn:hover {
-    background: var(--accent2);
+    background: #222222;
     transform: translateY(-1px);
   }
   .rr-feedback {
@@ -194,16 +197,18 @@ permalink: /railroad/contact
   .rr-contact-info { margin-top: 20px; }
   .rr-contact-info p {
     font-size: 13px;
-    color: var(--primary);
-    padding: 8px 0;
+    color: var(--text);
+    padding: 10px 0;
     border-bottom: 1px solid var(--border);
     display: flex;
     align-items: center;
     gap: 8px;
   }
-  .rr-contact-info span { color: var(--accent); }
+  .rr-contact-info span { color: var(--accent2); }
 </style>
 
+<div class="contact-page">
+<div class="contact-wrap">
 <div class="rr-hero">
   <div class="rr-hero-tag">Get in Touch · Poway–Midland Railroad</div>
   <h1>Contact <em>&amp; Feedback</em></h1>
@@ -269,6 +274,8 @@ permalink: /railroad/contact
     </div>
 
   </div>
+</div>
+</div>
 </div>
 
 <script>

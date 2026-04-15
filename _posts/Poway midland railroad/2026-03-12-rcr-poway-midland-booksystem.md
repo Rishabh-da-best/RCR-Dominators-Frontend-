@@ -25,8 +25,7 @@ permalink: /railroad/book
   * { box-sizing: border-box; }
 
     .bk-wrap {
-    width: 100vw;
-    height: 100vh;
+    width: 100%;
     max-width: none;
     margin: 0;
     padding: 0;
@@ -45,7 +44,7 @@ permalink: /railroad/book
   .bk-back:hover { background:#f5f5f5; }
 
   /* Main content area - horizontal layout */
-  .main-content { display: flex; flex: 1; overflow-y: hidden; }
+  .main-content { display: flex; flex: 1; }
 
   /* Ride summary card */
   .bk-ride-card { background:var(--white); border-right:1px solid var(--border); padding:30px 25px; flex: 0 0 35%; overflow-y: auto; border-top: none; }
@@ -136,7 +135,7 @@ permalink: /railroad/book
 
 </style>
 
-<div style="background:#ffffff;display:flex;flex-direction:column;height:100vh;width:100vw;position:fixed;top:0;left:0;">
+<div style="background:#ffffff;display:flex;flex-direction:column;min-height:100vh;">
 <div class="bk-wrap">
 
   <!-- Header -->

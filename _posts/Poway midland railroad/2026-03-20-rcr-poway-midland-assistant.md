@@ -6,64 +6,75 @@ permalink: /railroad/assistant
 
 <style>
   :root {
-    --coal:#ffffff;--iron:#faf8f5;--iron2:#f0ebe2;--iron3:#251e18;
-    --rust:#b94a1c;--ember:#e8621a;--gold:#c9943a;--gold2:#f0c060;
-    --steam:#2c1f0e;--smoke:#7a6a58;--green:#2d6a4f;
+    --background:#ffffff; --white:#ffffff; --text:#000000; --subtext:#666666;
+    --border:#cccccc; --input-bg:#f7f7f7; --input-border:#dddddd;
+    --rust:#000000; --ember:#333333; --accent:#000000;
+    --success:#2d6a4f; --error:#b94a1c;
   }
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  body { background: var(--coal); color: var(--steam); font-family: 'Georgia', serif; padding-top: 56px; }
+  html, body { width: 100%; height: 100%; }
+  body { background: var(--background); color: var(--text); font-family: 'Georgia', serif; }
+  .page-content, .wrapper { max-width: none !important; padding: 0 !important; }
+
+  .assistant-page { width: 100%; min-height: 100vh; background: var(--background); color: var(--text); }
+  .assistant-wrap { display: flex; flex-direction: column; width: 100%; min-height: 100%; overflow: visible; }
 
   .rr-hero {
-    padding: 52px 24px 40px; text-align: center;
-    background: radial-gradient(ellipse at 50% 0%, #3d2a18 0%, var(--coal) 70%);
-    border-bottom: 1px solid rgba(255,255,255,0.06);
+    padding: 32px 34px 26px;
+    text-align: left;
+    background: var(--background);
+    border-bottom: 1px solid var(--border);
+    flex-shrink: 0;
   }
-  .rr-hero-tag { font-family:'Courier New',monospace; font-size:10px; letter-spacing:0.3em;
-    text-transform:uppercase; color:var(--gold); margin-bottom:10px; opacity:0.8; }
-  .rr-hero h1 { font-size:clamp(28px,5vw,52px); font-weight:700; color:var(--steam); line-height:1; margin-bottom:10px; }
+  .rr-hero-tag { font-family:'Courier New',monospace; font-size:10px; letter-spacing:0.25em;
+    text-transform:uppercase; color:var(--subtext); margin-bottom:10px; opacity:0.9; }
+  .rr-hero h1 { font-size:clamp(28px,4vw,48px); font-weight:700; color:var(--text); line-height:1.05; margin-bottom:12px; }
   .rr-hero h1 em { font-style:italic; color:var(--ember); }
-  .rr-hero p { font-size:14px; color:var(--smoke); max-width:520px; margin:0 auto; line-height:1.7; }
+  .rr-hero p { font-size:14px; color:var(--subtext); max-width:700px; line-height:1.7; }
 
-  .rr-wrap { max-width:1100px; margin:0 auto; padding:40px 20px 80px; }
+  .rr-wrap { display: flex; flex: 1; width: 100%; overflow: visible; padding: 24px 24px 24px; }
+  .rr-grid-2 { display: grid; grid-template-columns: 0.45fr 0.55fr; gap: 22px; width: 100%; min-height: 0; }
+  .rr-grid-2 > div { min-height: 0; }
+  @media(max-width:900px) { .rr-grid-2 { grid-template-columns: 1fr; } }
 
   .rr-card {
-    background:var(--iron); border:1px solid rgba(255,255,255,0.07);
-    border-radius:12px; padding:24px; border-top:3px solid var(--rust);
-    max-width: 600px;
-    margin: 0 auto;
+    background: var(--white); border: 1px solid var(--border);
+    border-radius: 16px; padding: 26px; border-top: 3px solid var(--accent);
+    box-shadow: 0 12px 28px rgba(0,0,0,0.05);
+    min-height: 0; overflow: auto;
   }
   .rr-card-title {
     font-family:'Courier New',monospace; font-size:10px; letter-spacing:0.2em;
-    text-transform:uppercase; color:var(--gold); margin-bottom:16px;
-    padding-bottom:10px; border-bottom:1px solid rgba(255,255,255,0.07);
+    text-transform:uppercase; color:var(--text); margin-bottom:16px;
+    padding-bottom:10px; border-bottom:1px solid var(--border);
     display:flex; align-items:center; gap:8px;
   }
 
   /* Chat */
   .chat-window {
-    background:var(--iron2); border-radius:8px; padding:14px;
+    background:var(--input-bg); border-radius:8px; padding:14px;
     height:320px; overflow-y:auto; margin-bottom:14px;
-    border:1px solid rgba(255,255,255,0.06);
+    border:1px solid var(--border);
     display:flex; flex-direction:column; gap:10px;
   }
   .chat-message { padding:10px 14px; border-radius:8px; font-size:13px; line-height:1.6; max-width:88%; }
   .chat-message.assistant {
-    background:rgba(185,74,28,0.15); border:1px solid rgba(185,74,28,0.25);
-    color:var(--steam); align-self:flex-start;
+    background:rgba(0,0,0,0.06); border:1px solid rgba(0,0,0,0.08);
+    color:var(--text); align-self:flex-start;
   }
   .chat-message.user {
-    background:rgba(201,148,58,0.15); border:1px solid rgba(201,148,58,0.25);
-    color:var(--steam); align-self:flex-end; text-align:right;
+    background:rgba(0,0,0,0.04); border:1px solid rgba(0,0,0,0.08);
+    color:var(--text); align-self:flex-end; text-align:right;
   }
   .rr-label { font-family:'Courier New',monospace; font-size:10px; letter-spacing:0.1em;
-    text-transform:uppercase; color:var(--smoke); margin-bottom:6px; display:block; }
+    text-transform:uppercase; color:var(--subtext); margin-bottom:6px; display:block; }
   .rr-textarea {
-    width:100%; padding:10px 14px; background:var(--iron2);
-    border:1px solid rgba(255,255,255,0.1); border-radius:6px;
-    color:var(--steam); font-family:'Georgia',serif; font-size:13px;
+    width:100%; padding:10px 14px; background:var(--input-bg);
+    border:1px solid var(--border); border-radius:6px;
+    color:var(--text); font-family:'Georgia',serif; font-size:13px;
     resize:vertical; margin-bottom:10px; transition:border-color 0.2s;
   }
-  .rr-textarea:focus { outline:none; border-color:var(--gold); }
+  .rr-textarea:focus { outline:none; border-color:var(--text); box-shadow:0 0 0 3px rgba(0,0,0,0.08); }
   .rr-btn-row { display:flex; gap:8px; }
   .rr-btn {
     padding:10px 20px; border:none; border-radius:6px; cursor:pointer;
@@ -72,10 +83,12 @@ permalink: /railroad/assistant
   }
   .rr-btn-primary { background:var(--rust); color:#fff; }
   .rr-btn-primary:hover { background:var(--ember); transform:translateY(-1px); }
-  .rr-btn-secondary { background:var(--iron2); color:var(--smoke); border:1px solid rgba(255,255,255,0.1); }
-  .rr-btn-secondary:hover { color:var(--steam); border-color:var(--gold); }
+  .rr-btn-secondary { background:var(--input-bg); color:var(--text); border:1px solid var(--border); }
+  .rr-btn-secondary:hover { color:var(--text); border-color:var(--text); }
 </style>
 
+<div class="assistant-page">
+<div class="assistant-wrap">
 <div class="rr-hero">
   <div class="rr-hero-tag">AI Powered · Poway–Midland Railroad</div>
   <h1>Visitor <em>Assistant</em></h1>
@@ -93,6 +106,8 @@ permalink: /railroad/assistant
       <button class="rr-btn rr-btn-secondary" id="clearBtn">Clear</button>
     </div>
   </div>
+</div>
+</div>
 </div>
 
 <script>
