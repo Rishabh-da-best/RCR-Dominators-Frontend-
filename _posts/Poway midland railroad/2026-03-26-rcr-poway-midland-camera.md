@@ -22,7 +22,7 @@ permalink: /railroad/camera
 
   .rr-section{margin-bottom:48px;}
   .rr-section-title{font-family:'Courier New',monospace;font-size:10px;letter-spacing:0.3em;text-transform:uppercase;color:var(--gold);margin-bottom:20px;display:flex;align-items:center;gap:12px;}
-  .rr-section-title::after{content:'';flex:1;height:1px;background:rgba(255,255,255,0.08);}
+  .rr-section-title::after{content:'';flex:1;height:1px;background:#cccccc;}
 
   .rr-card{background:var(--iron);border:1px solid #cccccc;border-radius:12px;padding:24px;border-top:3px solid var(--rust);}
 

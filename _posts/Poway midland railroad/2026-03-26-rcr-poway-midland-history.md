@@ -31,7 +31,7 @@ permalink: /railroad/history
 /* Section label */
 .hs-label{font-family:'Courier New',monospace;font-size:10px;letter-spacing:0.3em;text-transform:uppercase;
   color:var(--gold);margin-bottom:20px;display:flex;align-items:center;gap:12px;}
-.hs-label::after{content:'';flex:1;height:1px;background:rgba(255,255,255,0.08);}
+.hs-label::after{content:'';flex:1;height:1px;background:#cccccc;}
 
 /* ── TIMELINE ── */
 .hs-timeline{position:relative;padding-left:32px;margin-bottom:64px;}

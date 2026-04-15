@@ -309,7 +309,7 @@ permalink: /railroad/home
     color:var(--gold); margin-bottom:24px;
     display:flex; align-items:center; gap:12px;
   }
-  .rr-section-title::after { content:''; flex:1; height:1px; background:rgba(255,255,255,0.08); }
+  .rr-section-title::after { content:''; flex:1; height:1px; background:#cccccc; }
 
   /* Quick links */
   .rr-quick {

@@ -35,7 +35,7 @@ permalink: /railroad/forecast
   @keyframes blink{0%,100%{opacity:1;}50%{opacity:0.3;}}
 
   .fc-card{background:var(--iron);border:1px solid rgba(255,255,255,0.07);border-radius:12px;padding:22px;margin-bottom:18px;}
-  .fc-card-title{font-family:'Playfair Display',serif;font-size:16px;font-weight:700;color:var(--gold);margin-bottom:14px;padding-bottom:10px;border-bottom:1px solid rgba(255,255,255,0.08);}
+  .fc-card-title{font-family:'Playfair Display',serif;font-size:16px;font-weight:700;color:var(--gold);margin-bottom:14px;padding-bottom:10px;border-bottom:1px solid #cccccc;}
 
   /* Time grid */
   .fc-time-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(110px,1fr));gap:8px;}
@@ -68,7 +68,7 @@ permalink: /railroad/forecast
   .fc-big-unit{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:0.15em;text-transform:uppercase;color:var(--smoke);margin-top:6px;}
   .fc-crowd-wrap{margin-top:20px;}
   .fc-crowd-sublabel{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.15em;text-transform:uppercase;color:var(--smoke);margin-bottom:8px;}
-  .fc-crowd-bar-bg{height:14px;background:rgba(255,255,255,0.08);border-radius:7px;overflow:hidden;}
+  .fc-crowd-bar-bg{height:14px;background:#cccccc;border-radius:7px;overflow:hidden;}
   .fc-crowd-bar-fill{height:100%;border-radius:7px;transition:width 1.2s cubic-bezier(0.4,0,0.2,1);}
   .fc-crowd-pct-text{font-family:'Playfair Display',serif;font-size:18px;font-weight:700;margin-top:8px;}
 
@@ -95,7 +95,7 @@ permalink: /railroad/forecast
 
   /* Feature weights */
   .fc-wt{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:12px;display:flex;align-items:center;gap:8px;}
-  .fc-wt::after{content:'';flex:1;height:1px;background:rgba(255,255,255,0.08);}
+  .fc-wt::after{content:'';flex:1;height:1px;background:#cccccc;}
   .fc-wr{display:flex;align-items:center;gap:10px;margin-bottom:7px;}
   .fc-wn{font-family:'DM Mono',monospace;font-size:10px;color:var(--smoke);width:120px;flex-shrink:0;text-transform:uppercase;letter-spacing:0.05em;}
   .fc-wb-bg{flex:1;height:8px;background:rgba(255,255,255,0.06);border-radius:4px;overflow:hidden;}

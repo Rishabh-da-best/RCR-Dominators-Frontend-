@@ -61,7 +61,7 @@ permalink: /railroad/schedule
 
   .rr-date-switcher { display:flex; align-items:center; gap:10px; background:var(--track); border:1px solid var(--border); border-radius:10px; padding:12px 18px; margin-bottom:16px; flex-wrap:wrap; }
   .rr-date-switcher label { font-family:'Courier New',monospace; font-size:10px; letter-spacing:0.15em; text-transform:uppercase; color:var(--gold); white-space:nowrap; }
-  .rr-date-input { background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.15); border-radius:6px; color:#2c1f0e; font-family:'Courier New',monospace; font-size:12px; padding:6px 10px; cursor:pointer; }
+  .rr-date-input { background:#cccccc; border:1px solid #cccccc; border-radius:6px; color:#2c1f0e; font-family:'Courier New',monospace; font-size:12px; padding:6px 10px; cursor:pointer; }
   .rr-date-input:focus { outline:none; border-color:var(--gold); }
   .rr-date-today { background:rgba(201,148,58,0.15); border:1px solid var(--gold); color:var(--gold); font-family:'Courier New',monospace; font-size:11px; letter-spacing:0.08em; padding:6px 12px; border-radius:6px; cursor:pointer; transition:background 0.2s; white-space:nowrap; }
   .rr-date-today:hover { background:rgba(201,148,58,0.3); }
@@ -107,7 +107,7 @@ permalink: /railroad/schedule
   .rr-divider { height:1px; background:var(--border); margin:10px 0; }
   .rr-info-row { display:flex; justify-content:space-between; font-size:12px; color:var(--smoke); margin-bottom:4px; }
   .rr-info-row span:last-child { color:#7a6a58; font-weight:500; }
-  .rr-card-bar { height:4px; background:rgba(255,255,255,0.08); border-radius:2px; overflow:hidden; margin-top:10px; }
+  .rr-card-bar { height:4px; background:#cccccc; border-radius:2px; overflow:hidden; margin-top:10px; }
   .rr-card-fill { height:100%; border-radius:2px; transition:width 0.5s; }
   .rr-alert { margin-top:10px; font-size:11px; font-family:'Courier New',monospace; padding:6px 10px; border-radius:6px; border-left:3px solid; }
   .alert-full { background:rgba(255,255,255,0.04); color:var(--smoke); border-color:#555; }
