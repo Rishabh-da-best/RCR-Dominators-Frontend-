@@ -1,9 +1,36 @@
 <head>
     <title>Site Title</title>
     <style>
+        /* Global styles - prevent fixed header from covering content */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Auto-add top padding to all common content containers */
+        body > :not(.site-header):not(header):not(script):not(style) {
+            scroll-margin-top: 54px;
+        }
+        
+        /* Add padding-top to common main content containers */
+        main, .main-content, .content, .page-content, [role="main"], article, .container, .wrapper:not(.site-header .wrapper) {
+            padding-top: 54px;
+        }
+        
+        body {
+            padding-top: 0;
+        }
+        
+        /* Fallback: anchor scroll offset to prevent covering */
+        html {
+            scroll-padding-top: 54px;
+            scroll-behavior: smooth;
+        }
+
         .site-header {
             backdrop-filter: blur(30px);
-            border-bottom: 3px solid #b94a1c;
+            border-bottom: none;
             background: rgba(26, 20, 16, 0.95);
             z-index: 999999999;
             position: fixed;
@@ -11,6 +38,7 @@
             top: 0;
             height: 54px;
         }
+        
         .site-header .wrapper {
             max-width: 100% !important;
             display: flex;
@@ -20,6 +48,8 @@
             padding: 0 20px;
             position: relative;
         }
+        
+        /* Logo stays on the left side */
         .site-title {
             position: absolute;
             left: 20px;
@@ -29,149 +59,335 @@
             text-decoration: none;
             padding-right: 12px;
             border-right: 1px solid rgba(255,255,255,0.1);
+            z-index: 10;
         }
+        
         .site-title:visited { text-decoration: none; }
-        .site-nav { display: flex; align-items: center; height: 54px; }
-
-        .rr-nav { display: flex; align-items: center; flex-wrap: nowrap; height: 54px; }
-        .rr-item { position: relative; height: 54px; display: flex; align-items: center; }
-        .rr-link {
-            display: flex; align-items: center; gap: 6px;
-            color: #e8e0d0 !important; text-decoration: none !important;
-            font-family: 'Courier New', monospace;
-            font-size: 15px; letter-spacing: 0.12em; text-transform: uppercase;
-            padding: 0 18px; height: 54px; line-height: 54px;
-            border-bottom: 3px solid transparent;
-            transition: all 0.2s; cursor: pointer; white-space: nowrap;
-            background: none; border-top: none; border-left: none; border-right: none;
-            font-weight: normal;
+        
+        /* Navigation wrapper - takes full width for proper centering */
+        .site-nav { 
+            display: flex; 
+            align-items: center; 
+            justify-content: center;
+            height: 54px;
+            width: 100%;
         }
-        .rr-link:hover { color: #c9943a !important; border-bottom-color: #c9943a; }
-        .rr-arr { font-size: 8px; transition: transform 0.2s; }
-        .rr-item.open .rr-arr { transform: rotate(180deg); }
+
+        /* Main nav container - centered as a whole block including all items and auth area */
+        .rr-nav { 
+            display: flex; 
+            align-items: center; 
+            justify-content: center;
+            flex-wrap: nowrap; 
+            height: 54px;
+            position: relative;
+        }
+        
+        .rr-item { 
+            position: relative; 
+            height: 54px; 
+            display: flex; 
+            align-items: center; 
+        }
+        
+        .rr-link {
+            display: flex; 
+            align-items: center; 
+            justify-content: center;
+            gap: 6px;
+            color: #e8e0d0 !important; 
+            text-decoration: none !important;
+            font-family: 'Courier New', monospace;
+            font-size: 15px; 
+            letter-spacing: 0.12em; 
+            text-transform: uppercase;
+            padding: 0 18px; 
+            height: 54px; 
+            line-height: 1;
+            border-bottom: 3px solid transparent;
+            transition: all 0.2s; 
+            cursor: pointer; 
+            white-space: nowrap;
+            background: none; 
+            border-top: none; 
+            border-left: none; 
+            border-right: none;
+            font-weight: normal;
+            /* Shift text downward by 2px */
+            transform: translateY(2px);
+        }
+        
+        .rr-link:hover { 
+            color: #c9943a !important; 
+            border-bottom-color: #c9943a; 
+        }
+        
+        .rr-arr { 
+            font-size: 8px; 
+            transition: transform 0.2s; 
+            display: inline-block;
+            line-height: 1;
+            /* Shift arrow downward along with text */
+            transform: translateY(0px);
+        }
+        
+        .rr-link .rr-arr {
+            transform: translateY(2px);
+        }
+        
+        .rr-item.open .rr-arr { 
+            transform: translateY(2px) rotate(180deg); 
+        }
+        
         .rr-drop {
-            display: none; position: absolute; top: 54px; left: 0;
+            display: none; 
+            position: absolute; 
+            top: 54px; 
+            left: 0;
             background: rgba(42, 31, 24, 0.98);
             border: 1px solid rgba(255,255,255,0.1);
             border-top: 2px solid #b94a1c;
             border-radius: 0 0 8px 8px;
             min-width: 220px;
             box-shadow: 0 8px 24px rgba(0,0,0,0.5);
-            overflow: hidden; z-index: 200;
+            overflow: hidden; 
+            z-index: 200;
         }
-        .rr-item.open .rr-drop { display: block; animation: rrIn 0.2s ease; }
-        @keyframes rrIn { from { opacity: 0; transform: translateY(-4px); } to { opacity: 1; transform: none; } }
+        
+        .rr-item.open .rr-drop { 
+            display: block; 
+            animation: rrIn 0.2s ease; 
+        }
+        
+        @keyframes rrIn { 
+            from { opacity: 0; transform: translateY(-4px); } 
+            to { opacity: 1; transform: none; } 
+        }
+        
         .rr-drop a {
-            display: block; padding: 12px 20px;
-            color: #8c7f6e !important; text-decoration: none !important;
+            display: block; 
+            padding: 12px 20px;
+            color: #8c7f6e !important; 
+            text-decoration: none !important;
             font-family: 'Courier New', monospace;
-            font-size: 13px; letter-spacing: 0.1em; text-transform: uppercase;
-            transition: all 0.15s; white-space: nowrap;
+            font-size: 13px; 
+            letter-spacing: 0.1em; 
+            text-transform: uppercase;
+            transition: all 0.15s; 
+            white-space: nowrap;
             border-bottom: 1px solid rgba(255,255,255,0.05);
         }
-        .rr-drop a:last-child { border-bottom: none; }
-        .rr-drop a:hover { background: rgba(201,148,58,0.15); color: #c9943a !important; padding-left: 26px; }
-
-        /* Auth area */
-        #rrAuthArea { margin-left: 4px; display: flex; align-items: center; }
-        #rrLoginLink {
-            display: flex; align-items: center; gap: 6px;
-            color: #e8e0d0 !important; text-decoration: none !important;
-            font-family: 'Courier New', monospace;
-            font-size: 15px; letter-spacing: 0.12em; text-transform: uppercase;
-            padding: 0 18px; height: 54px;
-            border-bottom: 3px solid transparent;
-            transition: all 0.2s; white-space: nowrap;
-            font-weight: normal;
+        
+        .rr-drop a:last-child { 
+            border-bottom: none; 
         }
-        #rrLoginLink:hover { color: #c9943a !important; border-bottom-color: #c9943a; }
+        
+        .rr-drop a:hover { 
+            background: rgba(201,148,58,0.15); 
+            color: #c9943a !important; 
+            padding-left: 26px; 
+        }
 
-        #rrProfileItem { display: none; position: relative; height: 54px; align-items: center; }
-        #rrProfileItem.visible { display: flex; }
+        /* Auth area - also centered as part of navigation */
+        #rrAuthArea { 
+            margin-left: 4px; 
+            display: flex; 
+            align-items: center; 
+        }
+        
+        #rrLoginLink {
+            display: flex; 
+            align-items: center; 
+            justify-content: center;
+            gap: 6px;
+            color: #e8e0d0 !important; 
+            text-decoration: none !important;
+            font-family: 'Courier New', monospace;
+            font-size: 15px; 
+            letter-spacing: 0.12em; 
+            text-transform: uppercase;
+            padding: 0 18px; 
+            height: 54px;
+            border-bottom: 3px solid transparent;
+            transition: all 0.2s; 
+            white-space: nowrap;
+            font-weight: normal;
+            line-height: 1;
+            /* Shift text downward by 2px */
+            transform: translateY(2px);
+        }
+        
+        #rrLoginLink:hover { 
+            color: #c9943a !important; 
+            border-bottom-color: #c9943a; 
+        }
+
+        #rrProfileItem { 
+            display: none; 
+            position: relative; 
+            height: 54px; 
+            align-items: center; 
+        }
+        
+        #rrProfileItem.visible { 
+            display: flex; 
+        }
+        
         #rrProfileBtn {
-            display: flex; align-items: center; gap: 8px;
+            display: flex; 
+            align-items: center; 
+            justify-content: center;
+            gap: 8px;
             background: rgba(201,148,58,0.12);
             border: 1px solid rgba(201,148,58,0.3);
             border-radius: 6px;
-            padding: 6px 14px; margin: 0 8px;
-            cursor: pointer; transition: background 0.2s;
+            padding: 6px 14px; 
+            margin: 0 8px;
+            cursor: pointer; 
+            transition: background 0.2s;
             color: #c9943a;
             font-family: 'Courier New', monospace;
-            font-size: 13px; letter-spacing: 0.1em; text-transform: uppercase;
+            font-size: 13px; 
+            letter-spacing: 0.1em; 
+            text-transform: uppercase;
+            line-height: 1;
+            /* Shift text downward by 2px */
+            transform: translateY(2px);
         }
-        #rrProfileBtn:hover { background: rgba(201,148,58,0.25); }
+        
+        #rrProfileBtn:hover { 
+            background: rgba(201,148,58,0.25); 
+        }
+        
         .rr-avatar {
-            width: 28px; height: 28px; border-radius: 50%;
-            background: #b94a1c; color: #fff;
-            display: flex; align-items: center; justify-content: center;
-            font-size: 13px; font-weight: 700; flex-shrink: 0;
+            width: 28px; 
+            height: 28px; 
+            border-radius: 50%;
+            background: #b94a1c; 
+            color: #fff;
+            display: flex; 
+            align-items: center; 
+            justify-content: center;
+            font-size: 13px; 
+            font-weight: 700; 
+            flex-shrink: 0;
+            line-height: 1;
+            /* Keep avatar centered, not shifted */
+            transform: translateY(0px);
         }
+        
         #rrProfileDrop {
-            display: none; position: absolute; top: 54px; right: 0;
+            display: none; 
+            position: absolute; 
+            top: 54px; 
+            right: 0;
             background: rgba(42,31,24,0.98);
             border: 1px solid rgba(255,255,255,0.1);
             border-top: 2px solid #b94a1c;
             border-radius: 0 0 8px 8px;
             min-width: 200px;
             box-shadow: 0 8px 24px rgba(0,0,0,0.5);
-            overflow: hidden; z-index: 300;
+            overflow: hidden; 
+            z-index: 300;
         }
-        #rrProfileItem.open #rrProfileDrop { display: block; animation: rrIn 0.2s ease; }
+        
+        #rrProfileItem.open #rrProfileDrop { 
+            display: block; 
+            animation: rrIn 0.2s ease; 
+        }
+        
         .rr-profile-name {
             padding: 14px 20px 10px;
-            font-family: 'Courier New', monospace; font-size: 13px;
+            font-family: 'Courier New', monospace; 
+            font-size: 13px;
             color: #e8e0d0;
             border-bottom: 1px solid rgba(255,255,255,0.08);
         }
-        .rr-profile-name span { display: block; font-size: 10px; color: #8c7f6e; margin-top: 2px; }
+        
+        .rr-profile-name span { 
+            display: block; 
+            font-size: 10px; 
+            color: #8c7f6e; 
+            margin-top: 2px; 
+        }
+        
         #rrProfileDrop a, #rrLogoutBtn {
-            display: block; width: 100%; text-align: left;
+            display: block; 
+            width: 100%; 
+            text-align: left;
             padding: 11px 20px;
-            color: #8c7f6e !important; text-decoration: none !important;
+            color: #8c7f6e !important; 
+            text-decoration: none !important;
             font-family: 'Courier New', monospace;
-            font-size: 13px; letter-spacing: 0.1em; text-transform: uppercase;
-            transition: all 0.15s; white-space: nowrap;
+            font-size: 13px; 
+            letter-spacing: 0.1em; 
+            text-transform: uppercase;
+            transition: all 0.15s; 
+            white-space: nowrap;
             border-bottom: 1px solid rgba(255,255,255,0.05);
-            background: none; border-left: none; border-right: none; border-top: none;
+            background: none; 
+            border-left: none; 
+            border-right: none; 
+            border-top: none;
             cursor: pointer;
         }
-        #rrProfileDrop a:last-child, #rrLogoutBtn { border-bottom: none; }
-        #rrProfileDrop a:hover, #rrLogoutBtn:hover { background: rgba(201,148,58,0.15); color: #c9943a !important; padding-left: 26px; }
-        #rrLogoutBtn { color: #e07050 !important; }
-        #rrLogoutBtn:hover { color: #fb923c !important; background: rgba(185,74,28,0.15); }
+        
+        #rrProfileDrop a:last-child, #rrLogoutBtn { 
+            border-bottom: none; 
+        }
+        
+        #rrProfileDrop a:hover, #rrLogoutBtn:hover { 
+            background: rgba(201,148,58,0.15); 
+            color: #c9943a !important; 
+            padding-left: 26px; 
+        }
+        
+        #rrLogoutBtn { 
+            color: #e07050 !important; 
+        }
+        
+        #rrLogoutBtn:hover { 
+            color: #fb923c !important; 
+            background: rgba(185,74,28,0.15); 
+        }
 
-        @media screen and (max-width: 999px) { .rr-nav { display: none; } }
+        @media screen and (max-width: 999px) { 
+            .rr-nav { 
+                display: none; 
+            } 
+        }
     </style>
 </head>
 
 <body>
     <header class="site-header">
         <div class="wrapper">
+            <!-- Logo stays on the left side -->
             <a class="site-title" rel="author" href="{{ "/" | relative_url }}">
                 <img src="{{ site.baseurl }}/assets/images/PMRR-Logo.png" alt="Poway Midland Railroad" style="height:46px;">
             </a>
 
+            <!-- Navigation and auth area are fully centered horizontally -->
             <nav class="site-nav">
                 <div class="rr-nav">
-
                     <div class="rr-item">
                         <a href="{{ "/railroad/home" | relative_url }}" class="rr-link"> Home</a>
                     </div>
 
                     <div class="rr-item" id="rrSched">
                         <button class="rr-link" onclick="toggleRR('rrSched')">
-                             Schedule <span class="rr-arr">▼</span>
+                            Schedule <span class="rr-arr">▼</span>
                         </button>
                         <div class="rr-drop">
                             <a href="{{ "/railroad/schedule" | relative_url }}"> Train Schedule</a>
-                            <a href="{{ "/railroad/volunteer-schedule" | relative_url }}">👷 Volunteer Schedule</a>
+                            <a href="{{ "/railroad/volunteer-schedule" | relative_url }}"> Volunteer Schedule</a>
                             <a href="{{ "/railroad/calendar" | relative_url }}"> Book a Ride</a>
                         </div>
                     </div>
 
                     <div class="rr-item" id="rrAbout">
                         <button class="rr-link" onclick="toggleRR('rrAbout')">
-                             About Us <span class="rr-arr">▼</span>
+                            About Us <span class="rr-arr">▼</span>
                         </button>
                         <div class="rr-drop">
                             <a href="{{ site.baseurl }}/railroad/trains"> Our Trains</a>
@@ -206,12 +422,11 @@
                                     Loading...
                                     <span id="rrDropEmail"></span>
                                 </div>
-                                <a href="{{ site.baseurl }}/railroad/profile">👤 My Profile</a>
-                                <button id="rrLogoutBtn" onclick="rrNavLogout()">🚪 Logout</button>
+                                <a href="{{ site.baseurl }}/railroad/profile"> My Profile</a>
+                                <button id="rrLogoutBtn" onclick="rrNavLogout()"> Logout</button>
                             </div>
                         </div>
                     </div>
-
                 </div>
             </nav>
         </div>
@@ -220,6 +435,7 @@
     <script>
         const RR_BACKEND = 'http://localhost:8428';
 
+        // Toggle dropdown menu
         function toggleRR(id) {
             const item = document.getElementById(id);
             const isOpen = item.classList.contains('open');
@@ -227,12 +443,14 @@
             if (!isOpen) item.classList.add('open');
         }
 
+        // Close dropdown when clicking outside
         document.addEventListener('click', e => {
             if (!e.target.closest('.rr-item') && !e.target.closest('#rrProfileItem')) {
                 document.querySelectorAll('.rr-item.open').forEach(el => el.classList.remove('open'));
             }
         });
 
+        // Check authentication status
         async function rrCheckAuth() {
             try {
                 const res = await fetch(`${RR_BACKEND}/api/auth/status`, { credentials: 'include' });
@@ -242,6 +460,7 @@
             } catch { rrShowGuest(); }
         }
 
+        // Show logged-in UI
         function rrShowLoggedIn(user) {
             document.getElementById('rrLoginLink').style.display = 'none';
             const profileItem = document.getElementById('rrProfileItem');
@@ -252,17 +471,36 @@
             document.getElementById('rrDropEmail').textContent = user.email;
         }
 
+        // Show guest UI
         function rrShowGuest() {
             document.getElementById('rrLoginLink').style.display = 'flex';
             document.getElementById('rrProfileItem').classList.remove('visible');
         }
 
+        // Handle logout
         async function rrNavLogout() {
             try { await fetch(`${RR_BACKEND}/api/auth/logout`, { method: 'POST', credentials: 'include' }); } catch {}
             rrShowGuest();
             if (window.location.pathname === '{{ site.baseurl }}/railroad/profile') window.location.href = '{{ site.baseurl }}/railroad/login';
         }
 
+        // Dynamically add fallback styles to prevent content overlap
+        (function preventContentOverlap() {
+            const style = document.createElement('style');
+            style.textContent = `
+                /* Dynamic fallback: add top margin to the first non-header element */
+                body > :first-child:not(.site-header):not(header) {
+                    margin-top: 54px;
+                }
+                /* Fallback for pages without main container */
+                body:has(:not(.site-header):not(header):not(script):not(style)) {
+                    padding-top: 0;
+                }
+            `;
+            document.head.appendChild(style);
+        })();
+
+        // Initialize auth check
         rrCheckAuth();
     </script>
 </body>
