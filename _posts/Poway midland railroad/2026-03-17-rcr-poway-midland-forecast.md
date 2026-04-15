@@ -9,52 +9,56 @@ permalink: /railroad/forecast
 <style>
   :root{--coal:#ffffff;--iron:#ffffff;--iron2:#f5f5f5;--rust:#000000;--ember:#333333;--gold:#000000;--steam:#000000;--smoke:#666666;--text:#000000;--subtext:#666666;--background:#ffffff;}
   *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
-  .fc-page{background:var(--coal);min-height:100vh;font-family:'Source Serif 4',Georgia,serif;color:var(--steam);}
+  body{overflow-x:visible;overflow-y:auto;}
+  .fc-page{background:var(--coal);min-height:100vh;font-family:'Source Serif 4',Georgia,serif;color:var(--steam);width:100%;overflow:visible;}
 
-  .fc-hero{position:relative;padding:50px 24px 40px;text-align:center;background:linear-gradient(180deg,#2a1a0e 0%,var(--coal) 100%);}
+  .fc-hero{position:relative;padding:60px 24px 50px;text-align:center;background:#2a1a0e;border-bottom:1px solid #cccccc;}
   .fc-hero-icon{font-size:60px;display:block;margin-bottom:12px;animation:fc-chug 2.5s ease-in-out infinite;}
   @keyframes fc-chug{0%,100%{transform:translateX(0);}25%{transform:translateX(3px);}75%{transform:translateX(-3px);}}
   .fc-hero-tag{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.3em;text-transform:uppercase;color:#ffffff;margin-bottom:10px;opacity:0.8;}
-  .fc-hero-title{font-family:'Playfair Display',serif;font-size:clamp(28px,5vw,56px);font-weight:900;line-height:1;margin-bottom:8px;color:#ffffff;}
+  .fc-hero-title{font-family:'Playfair Display',serif;font-size:clamp(32px,5vw,64px);font-weight:900;line-height:1;margin-bottom:12px;color:#ffffff;}
   .fc-hero-title em{font-style:italic;color:#ffffff;}
-  .fc-hero-sub{font-size:14px;color:#ffffff;max-width:500px;margin:8px auto 0;line-height:1.7;font-weight:300;}
+  .fc-hero-sub{font-size:16px;color:#ffffff;max-width:600px;margin:12px auto 0;line-height:1.7;font-weight:400;}
 
-  .fc-wrap{max-width:1000px;margin:0 auto;padding:32px 20px 80px;}
+  .fc-wrap{max-width:1200px;margin:0 auto;padding:48px 24px 100px;}
 
   /* Date banner */
-  .fc-date-banner{background:var(--iron);border:1px solid rgba(255,255,255,0.07);border-radius:12px;padding:20px 24px;margin-bottom:20px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;border-left:4px solid var(--gold);}
-  .fc-date-label{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:var(--smoke);margin-bottom:4px;}
-  .fc-date-value{font-family:'Playfair Display',serif;font-size:clamp(18px,3vw,26px);font-weight:700;color:var(--steam);}
-  .fc-date-holiday{font-size:13px;color:var(--gold);margin-top:4px;font-family:'DM Mono',monospace;letter-spacing:0.05em;}
-  .fc-weather-panel{display:flex;align-items:center;gap:20px;flex-wrap:wrap;}
+  .fc-date-banner{background:var(--iron);border:1px solid #cccccc;border-radius:16px;padding:28px 32px;margin-bottom:32px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:20px;border-left:5px solid var(--gold);box-shadow:0 2px 8px rgba(0,0,0,0.1);}
+  .fc-date-label{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:var(--smoke);margin-bottom:6px;font-weight:600;}
+  .fc-date-value{font-family:'Playfair Display',serif;font-size:clamp(22px,3vw,32px);font-weight:700;color:var(--steam);}
+  .fc-date-holiday{font-size:14px;color:var(--gold);margin-top:6px;font-family:'DM Mono',monospace;letter-spacing:0.05em;font-weight:500;}
+  .fc-weather-panel{display:flex;align-items:center;gap:24px;flex-wrap:wrap;}
   .fc-wx-item{text-align:center;}
-  .fc-wx-icon{font-size:28px;display:block;}
-  .fc-wx-label{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:0.1em;text-transform:uppercase;color:var(--smoke);margin-top:3px;}
-  .fc-wx-val{font-size:15px;font-weight:700;color:var(--steam);}
-  .fc-wx-loading{font-family:'DM Mono',monospace;font-size:11px;color:var(--smoke);animation:blink 1s infinite;}
+  .fc-wx-icon{font-size:32px;display:block;}
+  .fc-wx-label{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:var(--smoke);margin-top:4px;font-weight:500;}
+  .fc-wx-val{font-size:16px;font-weight:700;color:var(--steam);}
+  .fc-wx-loading{font-family:'DM Mono',monospace;font-size:12px;color:var(--smoke);animation:blink 1s infinite;}
   @keyframes blink{0%,100%{opacity:1;}50%{opacity:0.3;}}
 
-  .fc-card{background:var(--iron);border:1px solid rgba(255,255,255,0.07);border-radius:12px;padding:22px;margin-bottom:18px;}
-  .fc-card-title{font-family:'Playfair Display',serif;font-size:16px;font-weight:700;color:var(--gold);margin-bottom:14px;padding-bottom:10px;border-bottom:1px solid #cccccc;}
+  .fc-card{background:var(--iron);border:1px solid #cccccc;border-radius:16px;padding:32px;margin-bottom:24px;box-shadow:0 2px 12px rgba(0,0,0,0.08);transition:box-shadow 0.3s ease;}
+  .fc-card:hover{box-shadow:0 4px 20px rgba(0,0,0,0.12);}
+  .fc-card-title{font-family:'Playfair Display',serif;font-size:18px;font-weight:700;color:var(--gold);margin-bottom:20px;padding-bottom:12px;border-bottom:2px solid #cccccc;}
 
   /* Time grid */
-  .fc-time-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(110px,1fr));gap:8px;}
-  .fc-time-btn{display:flex;flex-direction:column;align-items:center;gap:3px;padding:12px 8px;border-radius:8px;border:1px solid rgba(255,255,255,0.1);background:var(--iron2);cursor:pointer;transition:all 0.2s;}
-  .fc-time-btn:has(input:checked){border-color:var(--gold);background:rgba(201,148,58,0.15);}
+  .fc-time-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:12px;}
+  .fc-time-btn{display:flex;flex-direction:column;align-items:center;gap:4px;padding:16px 12px;border-radius:12px;border:2px solid #cccccc;background:var(--iron2);cursor:pointer;transition:all 0.3s;font-weight:500;}
+  .fc-time-btn:hover{border-color:#999999;background:#e8e8e8;}
+  .fc-time-btn:has(input:checked){border-color:var(--gold);background:#f5f5f5;}
   .fc-time-btn input{display:none;}
-  .fc-time-label{font-family:'DM Mono',monospace;font-size:12px;font-weight:700;color:var(--steam);}
-  .fc-time-temp{font-size:11px;color:var(--smoke);}
-  .fc-time-busy{font-size:10px;font-family:'DM Mono',monospace;letter-spacing:0.05em;}
+  .fc-time-label{font-family:'DM Mono',monospace;font-size:13px;font-weight:700;color:var(--steam);}
+  .fc-time-temp{font-size:12px;color:var(--smoke);font-weight:500;}
+  .fc-time-busy{font-size:11px;font-family:'DM Mono',monospace;letter-spacing:0.05em;font-weight:600;}
   .busy-low{color:#4caf82;}.busy-mid{color:#f59e0b;}.busy-peak{color:#ef4444;}
 
   /* Event checkboxes */
-  .fc-event-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:8px;}
-  .fc-event-btn{display:flex;align-items:center;gap:8px;padding:10px 14px;border-radius:8px;border:1px solid rgba(255,255,255,0.1);background:var(--iron2);cursor:pointer;font-size:13px;color:var(--smoke);transition:all 0.2s;}
-  .fc-event-btn:has(input:checked){border-color:var(--gold);color:var(--gold);background:rgba(201,148,58,0.12);}
+  .fc-event-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:12px;}
+  .fc-event-btn{display:flex;align-items:center;gap:10px;padding:14px 18px;border-radius:12px;border:2px solid #cccccc;background:var(--iron2);cursor:pointer;font-size:14px;color:var(--smoke);transition:all 0.3s;font-weight:500;}
+  .fc-event-btn:hover{border-color:#999999;background:#e8e8e8;}
+  .fc-event-btn:has(input:checked){border-color:var(--gold);color:var(--gold);background:#f5f5f5;}
   .fc-event-btn input{display:none;}
 
-  .fc-btn{width:100%;padding:14px;background:linear-gradient(135deg,var(--rust),var(--ember));border:none;border-radius:8px;color:#fff;font-family:'DM Mono',monospace;font-size:13px;letter-spacing:0.1em;text-transform:uppercase;cursor:pointer;transition:all 0.2s;margin-top:4px;}
-  .fc-btn:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(185,74,28,0.4);}
+  .fc-btn{width:100%;padding:18px;background:#2a1a0e;border:none;border-radius:12px;color:#ffffff;font-family:'DM Mono',monospace;font-size:14px;letter-spacing:0.1em;text-transform:uppercase;cursor:pointer;transition:all 0.3s;margin-top:8px;font-weight:600;}
+  .fc-btn:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(42,26,14,0.4);background:#1a0f08;}
   .fc-btn:disabled{opacity:0.5;cursor:not-allowed;transform:none;}
 
   .fc-result{display:none;}
@@ -62,15 +66,15 @@ permalink: /railroad/forecast
   @keyframes fc-fade{from{opacity:0;transform:translateY(12px);}to{opacity:1;transform:none;}}
 
   /* Big number */
-  .fc-big{background:linear-gradient(135deg,rgba(185,74,28,0.25),rgba(185,74,28,0.05));border:1px solid rgba(185,74,28,0.4);border-radius:14px;padding:32px;text-align:center;margin-bottom:18px;}
-  .fc-big-time{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:8px;}
-  .fc-big-num{font-family:'Playfair Display',serif;font-size:clamp(56px,10vw,88px);font-weight:900;color:var(--ember);line-height:1;}
-  .fc-big-unit{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:0.15em;text-transform:uppercase;color:var(--smoke);margin-top:6px;}
-  .fc-crowd-wrap{margin-top:20px;}
-  .fc-crowd-sublabel{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.15em;text-transform:uppercase;color:var(--smoke);margin-bottom:8px;}
-  .fc-crowd-bar-bg{height:14px;background:#cccccc;border-radius:7px;overflow:hidden;}
-  .fc-crowd-bar-fill{height:100%;border-radius:7px;transition:width 1.2s cubic-bezier(0.4,0,0.2,1);}
-  .fc-crowd-pct-text{font-family:'Playfair Display',serif;font-size:18px;font-weight:700;margin-top:8px;}
+  .fc-big{background:#f8f9fa;border:2px solid #cccccc;border-radius:20px;padding:48px;text-align:center;margin-bottom:24px;box-shadow:0 4px 16px rgba(0,0,0,0.1);}
+  .fc-big-time{font-family:'DM Mono',monospace;font-size:12px;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:12px;font-weight:600;}
+  .fc-big-num{font-family:'Playfair Display',serif;font-size:clamp(64px,12vw,96px);font-weight:900;color:var(--ember);line-height:1;}
+  .fc-big-unit{font-family:'DM Mono',monospace;font-size:12px;letter-spacing:0.15em;text-transform:uppercase;color:var(--smoke);margin-top:8px;font-weight:500;}
+  .fc-crowd-wrap{margin-top:24px;}
+  .fc-crowd-sublabel{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:0.15em;text-transform:uppercase;color:var(--smoke);margin-bottom:12px;font-weight:600;}
+  .fc-crowd-bar-bg{height:16px;background:#cccccc;border-radius:8px;overflow:hidden;border:1px solid #999999;}
+  .fc-crowd-bar-fill{height:100%;border-radius:8px;transition:width 1.2s cubic-bezier(0.4,0,0.2,1);}
+  .fc-crowd-pct-text{font-family:'Playfair Display',serif;font-size:20px;font-weight:700;margin-top:12px;}
 
   /* Factors */
   .fc-factors{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:18px;}
@@ -79,28 +83,28 @@ permalink: /railroad/forecast
   .fc-factor.neg{background:rgba(185,74,28,0.15);color:#fb923c;border-color:rgba(185,74,28,0.3);}
   .fc-factor.neu{background:rgba(255,255,255,0.05);color:var(--smoke);border-color:rgba(255,255,255,0.1);}
 
-  .fc-tip{border-radius:8px;padding:14px 16px;margin-bottom:18px;font-size:13px;line-height:1.6;}
-  .fc-tip.busy{background:rgba(239,68,68,0.1);border:1px solid rgba(239,68,68,0.3);color:#fca5a5;}
-  .fc-tip.mod{background:rgba(245,158,11,0.1);border:1px solid rgba(245,158,11,0.3);color:#fcd34d;}
-  .fc-tip.quiet{background:rgba(45,106,79,0.15);border:1px solid rgba(76,175,130,0.3);color:#a7f3d0;}
+  .fc-tip{border-radius:12px;padding:18px 20px;margin-bottom:24px;font-size:14px;line-height:1.6;font-weight:400;}
+  .fc-tip.busy{background:#fef2f2;border:2px solid #fca5a5;color:#dc2626;}
+  .fc-tip.mod{background:#fefce8;border:2px solid #fcd34d;color:#d97706;}
+  .fc-tip.quiet{background:#f0fdf4;border:2px solid #a7f3d0;color:#166534;}
 
   /* Hourly chart */
-  .fc-hour-row{display:flex;align-items:center;gap:10px;margin-bottom:7px;}
-  .fc-hour-time{font-family:'DM Mono',monospace;font-size:10px;color:var(--smoke);width:70px;flex-shrink:0;text-align:right;}
-  .fc-hour-bar-bg{flex:1;height:22px;background:rgba(255,255,255,0.06);border-radius:4px;overflow:hidden;}
-  .fc-hour-bar{height:100%;border-radius:4px;transition:width 1s cubic-bezier(0.4,0,0.2,1);display:flex;align-items:center;padding-left:8px;}
-  .fc-hour-txt{font-family:'DM Mono',monospace;font-size:10px;color:var(--text);white-space:nowrap;}
-  .fc-hour-temp{font-family:'DM Mono',monospace;font-size:10px;color:var(--smoke);width:38px;flex-shrink:0;}
+  .fc-hour-row{display:flex;align-items:center;gap:12px;margin-bottom:10px;padding:8px 0;border-bottom:1px solid #f0f0f0;}
+  .fc-hour-time{font-family:'DM Mono',monospace;font-size:11px;color:var(--smoke);width:80px;flex-shrink:0;text-align:right;font-weight:600;}
+  .fc-hour-bar-bg{flex:1;height:24px;background:#cccccc;border-radius:6px;overflow:hidden;border:1px solid #999999;}
+  .fc-hour-bar{height:100%;border-radius:6px;transition:width 1s cubic-bezier(0.4,0,0.2,1);display:flex;align-items:center;padding-left:10px;}
+  .fc-hour-txt{font-family:'DM Mono',monospace;font-size:11px;color:var(--text);white-space:nowrap;font-weight:600;}
+  .fc-hour-temp{font-family:'DM Mono',monospace;font-size:11px;color:var(--smoke);width:45px;flex-shrink:0;font-weight:500;}
   .fc-active-hour .fc-hour-time{color:var(--gold);font-weight:700;}
 
   /* Feature weights */
-  .fc-wt{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:12px;display:flex;align-items:center;gap:8px;}
-  .fc-wt::after{content:'';flex:1;height:1px;background:#cccccc;}
-  .fc-wr{display:flex;align-items:center;gap:10px;margin-bottom:7px;}
-  .fc-wn{font-family:'DM Mono',monospace;font-size:10px;color:var(--smoke);width:120px;flex-shrink:0;text-transform:uppercase;letter-spacing:0.05em;}
-  .fc-wb-bg{flex:1;height:8px;background:rgba(255,255,255,0.06);border-radius:4px;overflow:hidden;}
-  .fc-wb{height:100%;border-radius:4px;background:var(--gold);opacity:0.7;transition:width 1s cubic-bezier(0.4,0,0.2,1);}
-  .fc-wp{font-family:'DM Mono',monospace;font-size:10px;color:var(--gold);width:36px;text-align:right;flex-shrink:0;}
+  .fc-wt{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:16px;display:flex;align-items:center;gap:8px;font-weight:600;}
+  .fc-wt::after{content:'';flex:1;height:2px;background:#cccccc;}
+  .fc-wr{display:flex;align-items:center;gap:12px;margin-bottom:10px;padding:8px 0;border-bottom:1px solid #f0f0f0;}
+  .fc-wn{font-family:'DM Mono',monospace;font-size:11px;color:var(--smoke);width:130px;flex-shrink:0;text-transform:uppercase;letter-spacing:0.05em;font-weight:500;}
+  .fc-wb-bg{flex:1;height:10px;background:#cccccc;border-radius:5px;overflow:hidden;border:1px solid #999999;}
+  .fc-wb{height:100%;border-radius:5px;background:var(--gold);opacity:0.8;transition:width 1s cubic-bezier(0.4,0,0.2,1);}
+  .fc-wp{font-family:'DM Mono',monospace;font-size:11px;color:var(--gold);width:40px;text-align:right;flex-shrink:0;font-weight:600;}
 
   .fc-error{display:none;margin-top:12px;padding:12px 16px;background:rgba(127,29,29,0.3);border:1px solid rgba(185,74,28,0.4);border-radius:8px;font-size:13px;color:#fca5a5;}
 </style>
@@ -108,9 +112,9 @@ permalink: /railroad/forecast
 <div class="fc-page">
   <div class="fc-hero">
     <span class="fc-hero-icon"></span>
-    <div class="fc-hero-tag">ML Powered · Poway–Midland Railroad</div>
-    <h1 class="fc-hero-title">Tomorrow's<br><em>Crowd Forecast</em></h1>
-    <p class="fc-hero-sub">Real weather data + machine learning. Know how busy PMRR will be before you arrive — down to the hour.</p>
+    <div class="fc-hero-tag">AI-Powered Analytics · Poway–Midland Railroad</div>
+    <h1 class="fc-hero-title">Visitor Flow<br><em>Intelligence</em></h1>
+    <p class="fc-hero-sub">Advanced machine learning algorithms analyze real-time weather patterns, historical data, and seasonal trends to provide precise crowd predictions for the Poway–Midland Railroad experience.</p>
   </div>
 
   <div class="fc-wrap">
@@ -129,13 +133,13 @@ permalink: /railroad/forecast
 
     <!-- Time selector -->
     <div class="fc-card">
-      <div class="fc-card-title">⏰ When Are You Arriving?</div>
+      <div class="fc-card-title">🕐 Arrival Time Selection</div>
       <div class="fc-time-grid" id="fcTimeGrid">
         <div style="font-family:'DM Mono',monospace;font-size:11px;color:var(--smoke);">Loading...</div>
       </div>
     </div>
 
-    <button class="fc-btn" id="fcBtn" onclick="fcPredict()">📈 Generate Forecast</button>
+    <button class="fc-btn" id="fcBtn" onclick="fcPredict()">📈 Generate Intelligence Report</button>
     <div class="fc-error" id="fcError"></div>
 
     <!-- Result -->
@@ -155,13 +159,13 @@ permalink: /railroad/forecast
       <div class="fc-tip" id="fcTip"></div>
 
       <div class="fc-card">
-        <div class="fc-card-title"> Full Day Breakdown</div>
+        <div class="fc-card-title">📊 Complete Daily Forecast</div>
         <div id="fcHourly"></div>
       </div>
 
       <div class="fc-card">
-        <div class="fc-card-title"> Feature Importance</div>
-        <div class="fc-wt">What the model learned</div>
+        <div class="fc-card-title">🔍 Predictive Model Insights</div>
+        <div class="fc-wt">Algorithm Decision Factors</div>
         <div id="fcWeights"></div>
       </div>
     </div>
