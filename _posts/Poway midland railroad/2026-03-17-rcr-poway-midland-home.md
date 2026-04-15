@@ -495,26 +495,10 @@ permalink: /railroad/home
     </div>
   </div>
 
-  <div class="rr-section-title">Information</div>
-  <div class="rr-contact">
-    <div>
-      <h2>🚉 Information</h2>
-      <p>
-        <span>📞</span> (858) 748-0379<br>
-        <span>📧</span> info@powaymidlandrr.org<br>
-        <span>📍</span> 14134 Midland Rd, Poway, CA 92064<br>
-        <span>🕐</span> Saturdays &amp; Select Sundays · 10am – 2pm
-      </p>
-    </div>
-    <a href="https://powaymidlandrr.org" target="_blank" class="rr-btn-primary">Visit Official Site →</a>
-  </div>
-</div>
+
 
 <a href="{{ "/railroad/assistant" | relative_url }}" class="rr-ai-fab">
   <span class="rr-ai-fab-icon"></span>
   AI Assistant
 </a>
 
-<div class="rr-footer">
-  © 2026 Poway–Midland Railroad · All aboard for a journey through rail heritage
-</div>

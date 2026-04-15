@@ -1,0 +1,260 @@
+<style>
+  /* ========== Footer 样式 ========== */
+  .rr-footer {
+    background: #1a1612;
+    color: #c8bcae;
+    width: 100%;
+    margin-top: 0;
+    padding: 3rem 0 1.5rem 0;
+    font-family: 'Georgia', serif;
+  }
+
+  .footer-container {
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 2rem;
+    border-bottom: 1px solid rgba(201, 148, 58, 0.2);
+    padding-bottom: 2.5rem;
+  }
+
+  .footer-col {
+    flex: 1;
+    min-width: 220px;
+  }
+
+  .footer-col h3 {
+    color: #c9943a;
+    font-family: 'Courier New', monospace;
+    font-size: 0.9rem;
+    letter-spacing: 0.15em;
+    margin-bottom: 1.2rem;
+    text-transform: uppercase;
+  }
+
+  .footer-col p {
+    font-size: 0.85rem;
+    line-height: 1.7;
+    color: #bcb0a2;
+    margin-bottom: 0.5rem;
+  }
+
+  .map-link a {
+    color: #c9943a;
+    text-decoration: none;
+    font-size: 0.8rem;
+    font-family: monospace;
+  }
+
+  .map-link a:hover {
+    text-decoration: underline;
+  }
+
+  .newsletter-desc {
+    font-size: 0.8rem;
+    margin-bottom: 0.8rem;
+  }
+
+  .newsletter-form {
+    display: flex;
+    gap: 0.5rem;
+    margin: 0.8rem 0;
+    flex-wrap: wrap;
+  }
+
+  .newsletter-form input {
+    flex: 1;
+    padding: 0.7rem 1rem;
+    background: #2c2620;
+    border: 1px solid #4a4036;
+    border-radius: 40px;
+    color: #f0e6da;
+    font-size: 0.8rem;
+    outline: none;
+  }
+
+  .newsletter-form input:focus {
+    border-color: #c9943a;
+  }
+
+  .newsletter-form button {
+    background: #b94a1c;
+    border: none;
+    padding: 0.7rem 1.2rem;
+    border-radius: 40px;
+    color: white;
+    font-family: monospace;
+    font-weight: bold;
+    font-size: 0.7rem;
+    letter-spacing: 0.08em;
+    cursor: pointer;
+    transition: 0.2s;
+  }
+
+  .newsletter-form button:hover {
+    background: #e8621a;
+    transform: translateY(-1px);
+  }
+
+  .privacy-note {
+    font-size: 0.65rem;
+    color: #8a7e70;
+    margin-top: 0.8rem;
+    line-height: 1.4;
+  }
+
+  .footer-col ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  .footer-col ul li {
+    margin-bottom: 0.6rem;
+  }
+
+  .footer-col ul li a {
+    color: #bcb0a2;
+    text-decoration: none;
+    font-size: 0.85rem;
+    transition: color 0.2s;
+  }
+
+  .footer-col ul li a:hover {
+    color: #c9943a;
+  }
+
+  .footer-bottom {
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 1.5rem 2rem 0.5rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    font-size: 0.7rem;
+    font-family: 'Courier New', monospace;
+  }
+
+  .footer-copyright {
+    color: #8a7e70;
+  }
+
+  .footer-legal {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    align-items: center;
+    color: #8a7e70;
+  }
+
+  .footer-legal a {
+    color: #bcb0a2;
+    text-decoration: none;
+  }
+
+  .footer-legal a:hover {
+    color: #c9943a;
+  }
+
+  .separator {
+    color: #4a4036;
+  }
+
+  @media (max-width: 800px) {
+    .footer-container {
+      flex-direction: column;
+      gap: 2rem;
+    }
+    .footer-bottom {
+      flex-direction: column;
+      text-align: center;
+    }
+    .footer-legal {
+      justify-content: center;
+    }
+  }
+</style>
+
+<footer class="rr-footer">
+  <div class="footer-container">
+    <!-- 左侧：联系信息 + 地址 -->
+    <div class="footer-col">
+      <h3>🚂 Poway-Midland Railroad</h3>
+      <p>
+        14134 Midland Rd<br>
+        Poway, CA 92064<br>
+        📞 (858) 748-0379<br>
+        ✉️ info@powaymidlandrr.org
+      </p>
+      <div class="map-link">
+        <a href="https://maps.google.com/?q=14134+Midland+Rd+Poway+CA" target="_blank">
+          🗺️ View on Google Maps
+        </a>
+      </div>
+    </div>
+
+    <!-- 中间：邮件订阅 -->
+    <div class="footer-col">
+      <h3>📬 Join our newsletter</h3>
+      <p class="newsletter-desc">
+        Get information about all the fun happenings at the railroad!
+      </p>
+      <form class="newsletter-form" id="footer-newsletter-form">
+        <input type="email" placeholder="Your email address" required>
+        <button type="submit">Subscribe</button>
+      </form>
+      <p class="privacy-note">
+        Information is strictly for communication purposes only.<br>
+        We do not sell or give your email address to third parties.
+      </p>
+    </div>
+
+    <!-- 右侧：快速链接 -->
+    <div class="footer-col">
+      <h3>🔗 Quick Links</h3>
+      <ul>
+        <li><a href="/railroad/calendar">Book a Ride</a></li>
+        <li><a href="/railroad/trains">Our Fleet</a></li>
+        <li><a href="/railroad/schedule">Schedule</a></li>
+        <li><a href="/railroad/events">Events</a></li>
+        <li><a href="#">Volunteer</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- 底部版权 + 法律信息 -->
+  <div class="footer-bottom">
+    <div class="footer-copyright">
+      © 2026 Poway–Midland Railroad · All aboard for a journey through rail heritage
+    </div>
+    <div class="footer-legal">
+      <span>Poway-Midland Railroad is a 501(c)(3) nonprofit organization</span>
+      <span class="separator">|</span>
+      <a href="#">Privacy Policy</a>
+      <span class="separator">|</span>
+      <a href="#">Terms of Use</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  (function() {
+    var form = document.getElementById('footer-newsletter-form');
+    if (form) {
+      form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        var email = this.querySelector('input[type="email"]').value;
+        if (email && email.indexOf('@') > -1) {
+          alert('Thank you for subscribing! 🚂');
+          this.reset();
+        } else {
+          alert('Please enter a valid email address.');
+        }
+      });
+    }
+  })();
+</script>
