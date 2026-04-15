@@ -7,17 +7,17 @@ permalink: /railroad/forecast
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Mono:wght@400;500&family=Source+Serif+4:wght@300;400;600&display=swap" rel="stylesheet">
 
 <style>
-  :root{--coal:#ffffff;--iron:#faf8f5;--iron2:#f0ebe2;--rust:#b94a1c;--ember:#e8621a;--gold:#c9943a;--steam:#2c1f0e;--smoke:#7a6a58;}
+  :root{--coal:#ffffff;--iron:#ffffff;--iron2:#f5f5f5;--rust:#000000;--ember:#333333;--gold:#000000;--steam:#000000;--smoke:#666666;--text:#000000;--subtext:#666666;--background:#ffffff;}
   *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
   .fc-page{background:var(--coal);min-height:100vh;font-family:'Source Serif 4',Georgia,serif;color:var(--steam);}
 
   .fc-hero{position:relative;padding:50px 24px 40px;text-align:center;background:linear-gradient(180deg,#2a1a0e 0%,var(--coal) 100%);}
   .fc-hero-icon{font-size:60px;display:block;margin-bottom:12px;animation:fc-chug 2.5s ease-in-out infinite;}
   @keyframes fc-chug{0%,100%{transform:translateX(0);}25%{transform:translateX(3px);}75%{transform:translateX(-3px);}}
-  .fc-hero-tag{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.3em;text-transform:uppercase;color:var(--gold);margin-bottom:10px;opacity:0.8;}
-  .fc-hero-title{font-family:'Playfair Display',serif;font-size:clamp(28px,5vw,56px);font-weight:900;line-height:1;margin-bottom:8px;}
-  .fc-hero-title em{font-style:italic;color:var(--ember);}
-  .fc-hero-sub{font-size:14px;color:var(--smoke);max-width:500px;margin:8px auto 0;line-height:1.7;font-weight:300;}
+  .fc-hero-tag{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.3em;text-transform:uppercase;color:#ffffff;margin-bottom:10px;opacity:0.8;}
+  .fc-hero-title{font-family:'Playfair Display',serif;font-size:clamp(28px,5vw,56px);font-weight:900;line-height:1;margin-bottom:8px;color:#ffffff;}
+  .fc-hero-title em{font-style:italic;color:#ffffff;}
+  .fc-hero-sub{font-size:14px;color:#ffffff;max-width:500px;margin:8px auto 0;line-height:1.7;font-weight:300;}
 
   .fc-wrap{max-width:1000px;margin:0 auto;padding:32px 20px 80px;}
 
@@ -89,7 +89,7 @@ permalink: /railroad/forecast
   .fc-hour-time{font-family:'DM Mono',monospace;font-size:10px;color:var(--smoke);width:70px;flex-shrink:0;text-align:right;}
   .fc-hour-bar-bg{flex:1;height:22px;background:rgba(255,255,255,0.06);border-radius:4px;overflow:hidden;}
   .fc-hour-bar{height:100%;border-radius:4px;transition:width 1s cubic-bezier(0.4,0,0.2,1);display:flex;align-items:center;padding-left:8px;}
-  .fc-hour-txt{font-family:'DM Mono',monospace;font-size:10px;color:rgba(255,255,255,0.85);white-space:nowrap;}
+  .fc-hour-txt{font-family:'DM Mono',monospace;font-size:10px;color:var(--text);white-space:nowrap;}
   .fc-hour-temp{font-family:'DM Mono',monospace;font-size:10px;color:var(--smoke);width:38px;flex-shrink:0;}
   .fc-active-hour .fc-hour-time{color:var(--gold);font-weight:700;}
 

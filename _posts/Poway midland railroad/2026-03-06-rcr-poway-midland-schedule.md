@@ -6,16 +6,19 @@ permalink: /railroad/schedule
 
 <style>
   :root {
-    --rust:  #b94a1c;
-    --gold:  #c9943a;
+    --rust:  #000000;
+    --gold:  #000000;
     --green: #2d6a4f;
     --amber: #e8a020;
     --red:   #c0392b;
     --steel: #5a6872;
-    --smoke: #8c7f6e;
-    --track: #f0ebe2;
+    --smoke: #666666;
+    --track: #f5f5f5;
     --card:  #ffffff;
-    --border: #e8e0d0;
+    --border: #cccccc;
+    --text: #000000;
+    --subtext: #666666;
+    --background: #ffffff;
   }
 
     .rr-wrap {

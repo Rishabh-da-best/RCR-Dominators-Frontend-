@@ -5,9 +5,12 @@ permalink: /railroad/history
 ---
 
 <style>
-:root{--coal:#ffffff;--iron:#faf8f5;--iron2:#f0ebe2;--rust:#b94a1c;--ember:#e8621a;--gold:#c9943a;--steam:#2c1f0e;--smoke:#7a6a58;}
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
-body{background:var(--coal);color:var(--steam);font-family:'Georgia',serif;padding-top:56px;}
+:root{--coal:#ffffff;--iron:#ffffff;--iron2:#f5f5f5;--rust:#000000;--ember:#333333;--gold:#000000;--steam:#000000;--smoke:#666666;--text:#000000;--subtext:#666666;--background:#ffffff;}
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+  body{background:var(--coal);color:var(--steam);font-family:'Georgia',serif;padding-top:56px;}
+
+  .page-content { max-width: none !important; padding: 0 !important; background: #ffffff; }
+  .wrapper { max-width: none !important; padding: 0 !important; }
 
 /* Hero */
 .hs-hero{position:relative;padding:60px 24px 50px;text-align:center;overflow:hidden;
@@ -17,10 +20,10 @@ body{background:var(--coal);color:var(--steam);font-family:'Georgia',serif;paddi
   pointer-events:none;}
 .hs-track{position:absolute;bottom:0;left:0;right:0;height:16px;
   background:repeating-linear-gradient(90deg,#4a3f35 0,#4a3f35 30px,transparent 30px,transparent 50px);opacity:0.5;}
-.hs-tag{font-family:'Courier New',monospace;font-size:10px;letter-spacing:0.3em;text-transform:uppercase;color:var(--gold);margin-bottom:12px;opacity:0.8;}
-.hs-hero h1{font-size:clamp(32px,6vw,64px);font-weight:700;line-height:1;margin-bottom:10px;}
-.hs-hero h1 em{font-style:italic;color:var(--ember);}
-.hs-hero p{font-size:14px;color:var(--smoke);max-width:540px;margin:0 auto;line-height:1.7;}
+.hs-tag{font-family:'Courier New',monospace;font-size:10px;letter-spacing:0.3em;text-transform:uppercase;color:#ffffff;margin-bottom:12px;opacity:0.8;}
+  .hs-hero h1{font-size:clamp(32px,6vw,64px);font-weight:700;line-height:1;margin-bottom:10px;color:#ffffff;}
+  .hs-hero h1 em{font-style:italic;color:#ffffff;}
+  .hs-hero p{font-size:14px;color:#ffffff;max-width:540px;margin:0 auto;line-height:1.7;}
 
 /* Wrap */
 .hs-wrap{max-width:1100px;margin:0 auto;padding:48px 20px 80px;}

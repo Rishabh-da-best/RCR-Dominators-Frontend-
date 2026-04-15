@@ -6,9 +6,10 @@ permalink: /railroad/login
 
 <style>
   :root {
-    --coal:#ffffff;--iron:#faf8f5;--iron2:#f0ebe2;
-    --rust:#b94a1c;--ember:#e8621a;--gold:#c9943a;
-    --steam:#2c1f0e;--smoke:#7a6a58;
+    --coal:#ffffff;--iron:#ffffff;--iron2:#f5f5f5;
+    --rust:#000000;--ember:#333333;--gold:#000000;
+    --steam:#000000;--smoke:#666666;
+    --text:#000000; --subtext:#666666; --background:#ffffff;
   }
   *, *::before, *::after { box-sizing:border-box; margin:0; padding:0; }
   body { background:var(--coal); color:var(--steam); font-family:'Georgia',serif; padding-top:56px; }
@@ -17,10 +18,10 @@ permalink: /railroad/login
     background:radial-gradient(ellipse at 50% 0%,#3d2a18 0%,var(--coal) 70%);
     border-bottom:1px solid rgba(255,255,255,0.06); }
   .rr-hero-tag { font-family:'Courier New',monospace; font-size:10px; letter-spacing:0.3em;
-    text-transform:uppercase; color:var(--gold); margin-bottom:10px; opacity:0.8; }
-  .rr-hero h1 { font-size:clamp(28px,5vw,52px); font-weight:700; line-height:1; margin-bottom:10px; }
-  .rr-hero h1 em { font-style:italic; color:var(--ember); }
-  .rr-hero p { font-size:14px; color:var(--smoke); max-width:520px; margin:0 auto 6px; line-height:1.7; }
+    text-transform:uppercase; color:#ffffff; margin-bottom:10px; opacity:0.8; }
+  .rr-hero h1 { font-size:clamp(28px,5vw,52px); font-weight:700; line-height:1; margin-bottom:10px; color:#ffffff; }
+  .rr-hero h1 em { font-style:italic; color:#ffffff; }
+  .rr-hero p { font-size:14px; color:#ffffff; max-width:520px; margin:0 auto 6px; line-height:1.7; }
   .rr-hero-note { font-family:'Courier New',monospace; font-size:11px; color:var(--gold);
     background:rgba(201,148,58,0.1); border:1px solid rgba(201,148,58,0.2);
     border-radius:4px; padding:6px 14px; display:inline-block; margin-top:8px; }

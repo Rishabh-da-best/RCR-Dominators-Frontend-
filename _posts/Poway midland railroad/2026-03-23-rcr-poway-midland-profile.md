@@ -6,9 +6,10 @@ permalink: /railroad/profile
 
 <style>
   :root {
-    --coal:#ffffff;--iron:#faf8f5;--iron2:#f0ebe2;
-    --rust:#b94a1c; --ember:#e8621a; --gold:#c9943a;
-    --steam:#2c1f0e;--smoke:#7a6a58; --green:#2d6a4f;
+    --coal:#ffffff;--iron:#ffffff;--iron2:#f5f5f5;
+    --rust:#000000; --ember:#333333; --gold:#000000;
+    --steam:#000000;--smoke:#666666; --green:#2d6a4f;
+    --text:#000000; --subtext:#666666; --background:#ffffff;
   }
   *, *::before, *::after { box-sizing:border-box; margin:0; padding:0; }
   body { background:var(--coal); color:var(--steam); font-family:'Georgia',serif; padding-top:56px; }
@@ -25,8 +26,8 @@ permalink: /railroad/profile
     font-size: 36px; font-weight: 700; color: #fff;
     margin: 0 auto 14px;
   }
-  .pf-name { font-size: clamp(22px,4vw,34px); font-weight: 700; color: var(--steam); margin-bottom: 4px; }
-  .pf-email { font-family: 'Courier New', monospace; font-size: 12px; color: var(--smoke); }
+  .pf-name { font-size: clamp(22px,4vw,34px); font-weight: 700; color: #ffffff; margin-bottom: 4px; }
+  .pf-email { font-family: 'Courier New', monospace; font-size: 12px; color: #ffffff; }
   .pf-tag {
     display: inline-block; margin-top: 10px;
     font-family: 'Courier New', monospace; font-size: 10px; letter-spacing: 0.2em;

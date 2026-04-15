@@ -8,15 +8,15 @@ permalink: /railroad/camera
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pannellum@2.5.6/build/pannellum.css">
 
 <style>
-  :root{--coal:#ffffff;--iron:#faf8f5;--iron2:#f0ebe2;--rust:#b94a1c;--ember:#e8621a;--gold:#c9943a;--steam:#2c1f0e;--smoke:#7a6a58;}
+  :root{--coal:#ffffff;--iron:#ffffff;--iron2:#f5f5f5;--rust:#000000;--ember:#333333;--gold:#000000;--steam:#000000;--smoke:#666666;--text:#000000;--subtext:#666666;--background:#ffffff;}
   *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
   body{background:var(--coal);color:var(--steam);font-family:'Georgia',serif;padding-top:56px;}
 
   .rr-hero{padding:52px 24px 40px;text-align:center;background:radial-gradient(ellipse at 50% 0%,#3d2a18 0%,var(--coal) 70%);border-bottom:1px solid rgba(255,255,255,0.06);}
-  .rr-hero-tag{font-family:'Courier New',monospace;font-size:10px;letter-spacing:0.3em;text-transform:uppercase;color:var(--gold);margin-bottom:10px;opacity:0.8;}
-  .rr-hero h1{font-size:clamp(28px,5vw,52px);font-weight:700;line-height:1;margin-bottom:10px;}
-  .rr-hero h1 em{font-style:italic;color:var(--ember);}
-  .rr-hero p{font-size:14px;color:var(--smoke);max-width:560px;margin:0 auto;line-height:1.7;}
+  .rr-hero-tag{font-family:'Courier New',monospace;font-size:10px;letter-spacing:0.3em;text-transform:uppercase;color:#ffffff;margin-bottom:10px;opacity:0.8;}
+  .rr-hero h1{font-size:clamp(28px,5vw,52px);font-weight:700;line-height:1;margin-bottom:10px;color:#ffffff;}
+  .rr-hero h1 em{font-style:italic;color:#ffffff;}
+  .rr-hero p{font-size:14px;color:#ffffff;max-width:560px;margin:0 auto;line-height:1.7;}
 
   .rr-wrap{max-width:1100px;margin:0 auto;padding:40px 20px 80px;}
 

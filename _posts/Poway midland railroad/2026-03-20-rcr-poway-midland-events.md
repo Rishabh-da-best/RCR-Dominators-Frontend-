@@ -5,16 +5,20 @@ permalink: /railroad/events
 ---
 
 <style>
-  :root{--coal:#ffffff;--iron:#faf8f5;--iron2:#f0ebe2;--rust:#b94a1c;--ember:#e8621a;--gold:#c9943a;--steam:#2c1f0e;--smoke:#7a6a58;}
+  :root{--coal:#ffffff;--iron:#ffffff;--iron2:#f5f5f5;--rust:#000000;--ember:#333333;--gold:#000000;--steam:#000000;--smoke:#666666;--text:#000000;--subtext:#666666;--background:#ffffff;}
   *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
 
   .ev-page{background:var(--coal);min-height:100vh;font-family:'Georgia',serif;color:var(--steam);}
 
+  body { background: #ffffff; }
+  .page-content { max-width: none !important; padding: 0 !important; background: #ffffff; }
+  .wrapper { max-width: none !important; padding: 0 !important; }
+
   .rr-hero{padding:52px 24px 40px;text-align:center;background:radial-gradient(ellipse at 50% 0%,#3d2a18 0%,var(--coal) 70%);border-bottom:1px solid rgba(255,255,255,0.06);}
-  .rr-hero-tag{font-family:'Courier New',monospace;font-size:10px;letter-spacing:0.3em;text-transform:uppercase;color:var(--gold);margin-bottom:10px;opacity:0.8;}
-  .rr-hero h1{font-size:clamp(28px,5vw,52px);font-weight:700;line-height:1;margin-bottom:10px;}
-  .rr-hero h1 em{font-style:italic;color:var(--ember);}
-  .rr-hero p{font-size:14px;color:var(--smoke);max-width:520px;margin:0 auto;line-height:1.7;}
+  .rr-hero-tag{font-family:'Courier New',monospace;font-size:10px;letter-spacing:0.3em;text-transform:uppercase;color:#ffffff;margin-bottom:10px;opacity:0.8;}
+  .rr-hero h1{font-size:clamp(28px,5vw,52px);font-weight:700;line-height:1;margin-bottom:10px;color:#ffffff;}
+  .rr-hero h1 em{font-style:italic;color:#ffffff;}
+  .rr-hero p{font-size:14px;color:#ffffff;max-width:520px;margin:0 auto;line-height:1.7;}
 
   .rr-wrap{max-width:1000px;margin:0 auto;padding:40px 20px 80px;}
   .rr-grid-2{display:grid;grid-template-columns:280px 1fr;gap:20px;}
