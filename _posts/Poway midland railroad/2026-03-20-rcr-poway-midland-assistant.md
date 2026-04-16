@@ -1,185 +1,264 @@
 ---
+
 layout: base
 title: AI Visitor Assistant
 permalink: /assistant
----
+---------------------
 
 <style>
-  :root {
-    --background:#ffffff; --white:#ffffff; --text:#000000; --subtext:#666666;
-    --border:#cccccc; --input-bg:#f7f7f7; --input-border:#dddddd;
-    --rust:#000000; --ember:#333333; --accent:#000000;
-    --success:#2d6a4f; --error:#b94a1c;
-  }
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  html, body { width: 100%; height: 100%; }
-  body { background: var(--background); color: var(--text); font-family: 'Georgia', serif; }
-  .page-content, .wrapper { max-width: none !important; padding: 0 !important; }
+:root {
+  --background:#ffffff; --white:#ffffff; --text:#000000; --subtext:#666666;
+  --border:#cccccc; --input-bg:#f7f7f7;
+  --rust:#2a1a0e; --ember:#3a2415;
+}
 
-  .assistant-page { width: 100%; min-height: 100vh; background: var(--background); color: var(--text); }
-  .assistant-wrap { display: flex; flex-direction: column; width: 100%; min-height: 100%; overflow: visible; }
+* { box-sizing: border-box; margin: 0; padding: 0; }
 
-  .rr-hero {
-    padding: 60px 24px 40px;
-    min-height: 320px;
-    text-align: center;
-    background: #2a1a0e;
-    border-bottom: 1px solid var(--border);
-    flex-shrink: 0;
-    position: relative;
-    overflow: hidden;
-  }
-  .rr-hero::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background-image: repeating-linear-gradient(
-      90deg, transparent, transparent 40px,
-      rgba(0,0,0,0.02) 40px, rgba(0,0,0,0.02) 41px
-    );
-    pointer-events: none;
-  }
-  .rr-hero-track {
-    position: absolute;
-    bottom: 0; left: 0; right: 0;
-    height: 20px;
-    background: repeating-linear-gradient(
-      90deg,
-      #cccccc 0px, #cccccc 30px,
-      transparent 30px, transparent 50px
-    );
-    opacity: 0.3;
-  }
-  .rr-hero-track::before, .rr-hero-track::after {
-    content: '';
-    position: absolute;
-    left: 0; right: 0;
-    height: 3px;
-    background: #cccccc;
-    opacity: 0.4;
-  }
-  .rr-hero-track::before { top: 4px; }
-  .rr-hero-track::after  { bottom: 4px; }
-  .rr-hero-tag { font-family:'Courier New',monospace; font-size:10px; letter-spacing:0.25em;
-    text-transform:uppercase; color:#ffffff; margin-bottom:16px; opacity:0.7; font-weight:600; }
-  .rr-hero h1 { font-size:clamp(42px,8vw,88px); font-weight:900; color:#ffffff; line-height:0.95; letter-spacing:-0.02em; margin-bottom:20px; }
-  .rr-hero h1 em { font-style:italic; color:#ffffff; display:block; }
-  .rr-hero p { font-size:16px; color:#ffffff; max-width:520px; margin:0 auto 40px; line-height:1.7; font-weight:300; }
+body {
+  background: var(--background);
+  color: var(--text);
+  font-family: 'Georgia', serif;
+}
 
-  .rr-wrap { display: flex; flex: 1; width: 100%; overflow: visible; padding: 24px 24px 24px; }
-  .rr-grid-2 { display: grid; grid-template-columns: 0.45fr 0.55fr; gap: 22px; width: 100%; min-height: 0; }
-  .rr-grid-2 > div { min-height: 0; }
-  @media(max-width:900px) { .rr-grid-2 { grid-template-columns: 1fr; } }
+.page-content, .wrapper {
+  max-width: none !important;
+  padding: 0 !important;
+}
 
-  .rr-card {
-    background: var(--white); border: 1px solid var(--border);
-    border-radius: 16px; padding: 26px; border-top: 3px solid var(--accent);
-    box-shadow: 0 12px 28px rgba(0,0,0,0.05);
-    min-height: 0; overflow: auto;
-  }
-  .rr-card-title {
-    font-family:'Courier New',monospace; font-size:10px; letter-spacing:0.2em;
-    text-transform:uppercase; color:var(--text); margin-bottom:16px;
-    padding-bottom:10px; border-bottom:1px solid var(--border);
-    display:flex; align-items:center; gap:8px;
-  }
+/* Layout */
+.assistant-page {
+  width: 100%;
+  min-height: 100vh;
+}
 
-  /* Chat */
-  .chat-window {
-    background:var(--input-bg); border-radius:8px; padding:14px;
-    height:320px; overflow-y:auto; margin-bottom:14px;
-    border:1px solid var(--border);
-    display:flex; flex-direction:column; gap:10px;
-  }
-  .chat-message { padding:10px 14px; border-radius:8px; font-size:13px; line-height:1.6; max-width:88%; }
-  .chat-message.assistant {
-    background:rgba(0,0,0,0.06); border:1px solid rgba(0,0,0,0.08);
-    color:var(--text); align-self:flex-start;
-  }
-  .chat-message.user {
-    background:rgba(0,0,0,0.04); border:1px solid rgba(0,0,0,0.08);
-    color:var(--text); align-self:flex-end; text-align:right;
-  }
-  .rr-label { font-family:'Courier New',monospace; font-size:10px; letter-spacing:0.1em;
-    text-transform:uppercase; color:var(--subtext); margin-bottom:6px; display:block; }
-  .rr-textarea {
-    width:100%; padding:10px 14px; background:var(--input-bg);
-    border:1px solid var(--border); border-radius:6px;
-    color:var(--text); font-family:'Georgia',serif; font-size:13px;
-    resize:vertical; margin-bottom:10px; transition:border-color 0.2s;
-  }
-  .rr-textarea:focus { outline:none; border-color:var(--text); box-shadow:0 0 0 3px rgba(0,0,0,0.08); }
-  .rr-btn-row { display:flex; gap:8px; }
-  .rr-btn {
-    padding:10px 20px; border:none; border-radius:6px; cursor:pointer;
-    font-family:'Courier New',monospace; font-size:11px; letter-spacing:0.1em;
-    text-transform:uppercase; transition:all 0.2s;
-  }
-  .rr-btn-primary { background:var(--rust); color:#fff; }
-  .rr-btn-primary:hover { background:var(--ember); transform:translateY(-1px); }
-  .rr-btn-secondary { background:var(--input-bg); color:var(--text); border:1px solid var(--border); }
-  .rr-btn-secondary:hover { color:var(--text); border-color:var(--text); }
+.assistant-wrap {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+}
+
+/* Hero */
+.rr-hero {
+  padding: 60px 24px 40px;
+  text-align: center;
+  background: #2a1a0e;
+  color: #fff;
+}
+
+.rr-hero h1 {
+  font-size: 48px;
+  margin-bottom: 10px;
+}
+
+.rr-hero p {
+  font-size: 14px;
+  opacity: 0.85;
+}
+
+/* Card */
+.rr-wrap {
+  padding: 24px;
+  display: flex;
+  justify-content: center;
+}
+
+.rr-card {
+  width: 420px;
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 20px;
+}
+
+/* Chat */
+.chat-window {
+  background: var(--input-bg);
+  border-radius: 8px;
+  padding: 14px;
+  height: 320px;
+  overflow-y: auto;
+  margin-bottom: 10px;
+  border: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.chat-message {
+  padding: 10px 14px;
+  border-radius: 8px;
+  font-size: 13px;
+  max-width: 85%;
+  line-height: 1.6;
+}
+
+.chat-message.assistant {
+  background: #eeeeee;
+  align-self: flex-start;
+}
+
+.chat-message.user {
+  background: #dddddd;
+  align-self: flex-end;
+  text-align: right;
+}
+
+/* Input */
+.rr-textarea {
+  width: 100%;
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid var(--border);
+  margin-bottom: 8px;
+  font-size: 13px;
+}
+
+.rr-btn {
+  padding: 10px;
+  border: none;
+  cursor: pointer;
+  border-radius: 6px;
+  width: 100%;
+  background: var(--rust);
+  color: #fff;
+  font-weight: 600;
+}
+
+/* Suggestions */
+#suggestions {
+  margin-top: 10px;
+}
+
+#suggestions button {
+  margin: 4px;
+  padding: 6px 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  cursor: pointer;
+  background: #fff;
+  font-size: 12px;
+}
 </style>
 
 <div class="assistant-page">
-<div class="assistant-wrap">
+  <div class="assistant-wrap">
+
+```
 <div class="rr-hero">
-  <div class="rr-hero-tag">AI Powered · Poway–Midland Railroad</div>
-  <h1>Visitor <em>Assistant</em></h1>
-  <p>Ask for visit recommendations, plan your trip, or explore engagement insights.</p>
-  <div class="rr-hero-track"></div>
+  <h1>Visitor Assistant</h1>
+  <p>Ask anything about tickets, trains, events, or your visit.</p>
 </div>
 
 <div class="rr-wrap">
   <div class="rr-card">
-    <div class="rr-card-title"> Visitor Assistant</div>
+
     <div class="chat-window" id="chatWindow"></div>
-    <label class="rr-label" for="aiInput">Ask for a recommendation</label>
-    <textarea class="rr-textarea" id="aiInput" rows="3" placeholder="e.g. Suggest a 45-minute family visit plan"></textarea>
-    <div class="rr-btn-row">
-      <button class="rr-btn rr-btn-primary" id="sendBtn"> Get Recommendation</button>
-      <button class="rr-btn rr-btn-secondary" id="clearBtn">Clear</button>
-    </div>
+
+    <textarea id="aiInput" class="rr-textarea" placeholder="Ask something..."></textarea>
+
+    <button id="sendBtn" class="rr-btn">Send</button>
+
+    <div id="suggestions"></div>
+
   </div>
 </div>
-</div>
+```
+
+  </div>
 </div>
 
 <script>
+// ===== 知识库 =====
+const pages = [
+  { name:'Schedule', url:'/schedule', keywords:['ticket','book','ride','time','schedule'], desc:'View train times and book rides.' },
+  { name:'Calendar', url:'/calendar', keywords:['date','open','day'], desc:'Check open days and train availability.' },
+  { name:'Login / Profile', url:'/login', keywords:['login','account','record','history booking'], desc:'Log in to view your bookings.' },
+  { name:'Trains', url:'/trains', keywords:['train','steam','locomotive'], desc:'Explore different trains and their history.' },
+  { name:'Events', url:'/events', keywords:['event','activity','festival'], desc:'See special events at the park.' },
+  { name:'Forecast', url:'/forecast', keywords:['busy','wait','crowd'], desc:'Check crowd levels and wait times.' },
+  { name:'Camera', url:'/camera', keywords:['map','view','camera','360'], desc:'Explore the park in 360° view.' },
+  { name:'Notes', url:'/notes', keywords:['review','comment','experience'], desc:'Read or share visitor experiences.' },
+  { name:'History', url:'/history', keywords:['history','story'], desc:'Learn about the railroad history.' },
+  { name:'Contact', url:'/contact', keywords:['contact','help','email','phone'], desc:'Contact the railroad or send a message.' },
+  { name:'Volunteer', url:'/volunteer-schedule', keywords:['volunteer','join','signup'], desc:'Sign up for volunteering opportunities.' }
+];
+
+// ===== UI =====
 const chatWindow = document.getElementById('chatWindow');
-const aiInput    = document.getElementById('aiInput');
+const aiInput = document.getElementById('aiInput');
 
 function addMsg(role, text) {
   const d = document.createElement('div');
-  d.className = `chat-message ${role}`;
-  d.textContent = text;
+  d.className = 'chat-message ' + role;
+  d.innerHTML = text;
   chatWindow.appendChild(d);
   chatWindow.scrollTop = chatWindow.scrollHeight;
 }
 
+// ===== AI逻辑 =====
 function getReply(p) {
   const lp = p.toLowerCase();
-  if (lp.includes('family')||lp.includes('kids'))
-    return 'Recommendation: Start with the route map, ride the steam train before noon, then finish with the history timeline for a perfect 45-minute family visit.';
-  if (lp.includes('history')||lp.includes('learn'))
-    return 'Recommendation: Begin with hotspots 1 and 2, then open the 1995 and 1996 timeline cards for a focused history walkthrough.';
-  if (lp.includes('volunteer')||lp.includes('help'))
-    return "Recommendation: Use the contact form with subject 'Volunteer Opportunities' and mention your preferred weekend availability.";
-  return 'Recommendation: Explore panoramas first, then route map markers, and finish with announcements to check upcoming events.';
+
+  for (let page of pages) {
+    for (let k of page.keywords) {
+      if (lp.includes(k)) {
+        return `
+Here’s what you’re looking for:
+
+👉 <a href="${page.url}"><strong>${page.name}</strong></a><br>
+${page.desc}
+        `;
+      }
+    }
+  }
+
+  if (lp.includes('family') || lp.includes('kids')) {
+    return `
+Planning a family visit?
+
+👉 <a href="/schedule">Check Train Schedule</a><br>
+Steam trains are great for kids!
+    `;
+  }
+
+  return `
+I can help with:
+
+👉 <a href="/schedule">Tickets</a><br>
+👉 <a href="/events">Events</a><br>
+👉 <a href="/trains">Trains</a><br>
+👉 <a href="/contact">Contact</a><br>
+
+Try asking about booking, trains, or activities!
+  `;
 }
 
-document.getElementById('sendBtn').addEventListener('click', () => {
+// ===== 发送 =====
+document.getElementById('sendBtn').onclick = () => {
   const p = aiInput.value.trim();
   if (!p) return;
   addMsg('user', p);
   addMsg('assistant', getReply(p));
   aiInput.value = '';
+};
+
+// ===== 猜你想问 =====
+const suggestions = [
+  "How do I book a ticket?",
+  "What trains are there?",
+  "Is it busy today?",
+  "Are there events?",
+  "How to volunteer?"
+];
+
+const sugBox = document.getElementById('suggestions');
+suggestions.forEach(q => {
+  const b = document.createElement('button');
+  b.textContent = q;
+  b.onclick = () => aiInput.value = q;
+  sugBox.appendChild(b);
 });
 
-document.getElementById('clearBtn').addEventListener('click', () => {
-  chatWindow.innerHTML = '';
-  addMsg('assistant', 'Chat reset. Ask a new question to get recommendations.');
-});
-
-addMsg('assistant', 'Hello! Ask for visit ideas, family plans, or volunteer recommendations. ');
+// ===== 初始消息 =====
+addMsg('assistant', 'Hi! I can help you navigate the railroad website. Try asking something!');
 </script>
