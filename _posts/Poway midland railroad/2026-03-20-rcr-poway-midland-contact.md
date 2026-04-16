@@ -20,6 +20,7 @@ permalink: /contact
     background: var(--background);
     color: var(--text);
     font-family: 'Georgia', serif;
+    padding-top: 54px !important;
   }
 
   .page-content, .wrapper { max-width: none !important; padding: 0 !important; }

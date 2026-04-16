@@ -32,6 +32,8 @@ permalink: /schedule
   body {
   background: #ffffff;
   color: #2c1f0e;
+  padding-top: 54px !important;
+
 }
 
 /* 内容更舒展 */

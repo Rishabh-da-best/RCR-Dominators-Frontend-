@@ -10,7 +10,7 @@ permalink: /events
 
   .ev-page{background:var(--coal);min-height:100vh;font-family:'Georgia',serif;color:var(--steam);}
 
-  body { background: #ffffff; }
+  body { background: #ffffff; padding-top: 54px !important;}
   .page-content { max-width: none !important; padding: 0 !important; background: #ffffff; }
   .wrapper { max-width: none !important; padding: 0 !important; }
 

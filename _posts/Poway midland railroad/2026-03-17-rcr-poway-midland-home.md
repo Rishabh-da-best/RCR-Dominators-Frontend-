@@ -18,7 +18,7 @@ permalink: /
       min-height: 100vh;
       display: flex;
       flex-direction: column;
-      padding-top: 0px;
+      padding-top: 54px !important;
       margin: 0;
       position: relative;
       isolation: isolate;
@@ -221,7 +221,6 @@ permalink: /
     /* base link styles */
     a { text-decoration: none; }
   </style>
-</head>
 <body>
 
 <!-- HERO - 图片背景版本 -->

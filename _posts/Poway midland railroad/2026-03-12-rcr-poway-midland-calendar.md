@@ -77,7 +77,8 @@ permalink: /calendar
 
   /* Remove Minima width constraints and keep full-screen layout */
   .page-content, .wrapper { max-width: none !important; padding: 0 !important; }
-  body { background: #ffffff; color: #000000; }
+  body { background: #ffffff; color: #000000; padding-top: 54px !important;
+ }
 
   @media(max-width:580px){
     .cal-cell{min-height:64px;padding:5px;}

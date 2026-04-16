@@ -7,7 +7,7 @@ permalink: /history
 <style>
 :root{--coal:#ffffff;--iron:#ffffff;--iron2:#f5f5f5;--rust:#000000;--ember:#333333;--gold:#000000;--steam:#000000;--smoke:#666666;--text:#000000;--subtext:#666666;--background:#ffffff;}
   *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
-  body{background:var(--coal);color:var(--steam);font-family:'Georgia',serif;padding-top:56px;}
+  body{background:var(--coal);color:var(--steam);font-family:'Georgia',serif;padding-top:56px; padding-top: 54px !important;}
 
   .page-content { max-width: none !important; padding: 0 !important; background: #ffffff; }
   .wrapper { max-width: none !important; padding: 0 !important; }

@@ -29,7 +29,8 @@ AI: true
 }
 
   body { background: #ffffff; }
-  .page-content { max-width: none !important; padding: 0 !important; background: #ffffff; }
+  .page-content { max-width: none !important; padding: 0 !important; background: #ffffff; padding-top: 54px !important;
+ }
   .wrapper { max-width: none !important; padding: 0 !important; }
 
   .vol-page {
