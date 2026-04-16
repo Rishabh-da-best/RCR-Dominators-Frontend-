@@ -25,20 +25,7 @@ body {
   isolation: isolate;
 }
 
-body::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background-image: repeating-linear-gradient(
-    45deg, 
-    rgba(185,74,28,0.02) 0px, 
-    rgba(185,74,28,0.02) 2px,
-    transparent 2px,
-    transparent 8px
-  );
-  pointer-events: none;
-  z-index: 0;
-}
+
 
     /* ── PAGE CONTENT — all content sits directly on clean background ── */
     .rr-hero, .rr-wrap, .rr-footer, .rr-ai-fab { position: relative; z-index: 10; }
