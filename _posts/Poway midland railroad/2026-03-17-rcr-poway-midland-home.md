@@ -11,32 +11,31 @@ permalink: /
       --steam: #2c1f0e; --smoke: #7a6a58; --rail:  #4a3f35;
     }
 
+    body {
+      background: var(--coal);
+      color: var(--steam);
+      font-family: 'Georgia', serif;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      padding-top: 0px;
+      margin: 0;
+      position: relative;
+      isolation: isolate;
+    }
 
-body {
-  background: var(--coal);
-  color: var(--steam);
-  font-family: 'Georgia', serif;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  padding-top: 0px;
-  margin: 0;
-  position: relative;
-  isolation: isolate;
-}
+    .page-content {
+      max-width: none !important;
+      padding: 0 !important;
+    }
 
-  .page-content {
-    max-width: none !important;
-    padding: 0 !important;
-  }
-
-  .wrapper {
-    max-width: none !important;
-    padding: 0 !important;
-  }
+    .wrapper {
+      max-width: none !important;
+      padding: 0 !important;
+    }
 
     /* ── PAGE CONTENT — all content sits directly on clean background ── */
-    .rr-hero, .rr-wrap, .rr-footer, .rr-ai-fab { position: relative; z-index: 10; }
+    .rr-hero, .rr-wrap, .rr-footer { position: relative; z-index: 10; }
 
     /* ── HERO ── */
     .rr-hero {
@@ -57,43 +56,38 @@ body {
       pointer-events: none;
     }
     /* 图片背景 Hero */
-.rr-hero-image {
-  background-image: url('/images/rcr/train1.png'); /* 替换成你的图片地址 */
-  background-size: cover;
-  background-position: center 30%;
-  background-repeat: no-repeat;
-  position: relative;
-  min-height: 500px;
-  display: flex;
-  align-items: center;
-}
-
-.rr-hero-overlay {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(135deg, rgba(0,0,0,0.65) 0%, rgba(0,0,0,0.4) 100%);
-  pointer-events: none;
-}
-
-.rr-hero-content {
-  position: relative;
-  z-index: 2;
-  max-width: 800px;
-  margin: 0 auto;
-  text-align: center;
-  padding: 60px 24px;
-}
-
-/* 确保文字在图片上清晰可见 */
-.rr-hero-image .rr-hero-badge,
-.rr-hero-image .rr-hero-sub {
-  text-shadow: 0 2px 4px rgba(0,0,0,0.5);
-}
-
-.rr-hero-image .rr-main-title .white-part,
-.rr-hero-image .rr-main-title .orange-part {
-  text-shadow: 0 2px 8px rgba(0,0,0,0.6);
-}
+    .rr-hero-image {
+      background-image: url('/images/rcr/train1.png');
+      background-size: cover;
+      background-position: center 30%;
+      background-repeat: no-repeat;
+      position: relative;
+      min-height: 500px;
+      display: flex;
+      align-items: center;
+    }
+    .rr-hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(0,0,0,0.65) 0%, rgba(0,0,0,0.4) 100%);
+      pointer-events: none;
+    }
+    .rr-hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 800px;
+      margin: 0 auto;
+      text-align: center;
+      padding: 60px 24px;
+    }
+    .rr-hero-image .rr-hero-badge,
+    .rr-hero-image .rr-hero-sub {
+      text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+    }
+    .rr-hero-image .rr-main-title .white-part,
+    .rr-hero-image .rr-main-title .orange-part {
+      text-shadow: 0 2px 8px rgba(0,0,0,0.6);
+    }
     .rr-hero-track {
       position: absolute; bottom: 0; left: 0; right: 0; height: 20px;
       background: repeating-linear-gradient(
@@ -220,34 +214,15 @@ body {
       letter-spacing:0.1em; text-transform:uppercase; color:var(--smoke);
     }
 
-    /* Floating AI button */
-    .rr-ai-fab {
-      position:fixed; bottom:28px; right:28px;
-      display:flex; align-items:center; gap:10px;
-      background:linear-gradient(135deg,var(--rust),var(--ember));
-      color:#fff; text-decoration:none;
-      padding:12px 20px 12px 14px; border-radius:50px;
-      box-shadow:0 4px 20px rgba(185,74,28,0.5);
-      font-family:'Courier New',monospace; font-size:11px;
-      letter-spacing:0.1em; text-transform:uppercase;
-      z-index:9999; transition:all 0.2s;
-      border:1px solid rgba(255,255,255,0.2);
-    }
-    .rr-ai-fab:hover { transform:translateY(-3px); box-shadow:0 8px 28px rgba(185,74,28,0.6); }
-    .rr-ai-fab-icon { font-size:22px; line-height:1; }
-
     @media(max-width:600px){
       .rr-contact{ flex-direction:column; }
-      .rr-ai-fab{ bottom:16px; right:16px; padding:10px 16px 10px 12px; font-size:10px; }
     }
 
     /* base link styles */
     a { text-decoration: none; }
   </style>
+</head>
 <body>
-
-<!-- BACKGROUND COMPLETELY REMOVED: no moving train, no hills, no clouds, no rail tracks, no sky glow -->
-<!-- Only the main content remains, no animated background elements -->
 
 <!-- HERO - 图片背景版本 -->
 <div class="rr-hero rr-hero-image">
@@ -303,7 +278,3 @@ body {
       <span class="rr-news-tag">preservation</span>
     </div>
   </div>
-
-<a href="/assistant" class="rr-ai-fab">
-  AI Assistant
-</a>
