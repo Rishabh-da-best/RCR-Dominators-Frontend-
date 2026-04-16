@@ -13,13 +13,16 @@ permalink: /railroad/history
   .wrapper { max-width: none !important; padding: 0 !important; }
 
 /* Hero */
-.hs-hero{position:relative;padding:60px 24px 50px;text-align:center;overflow:hidden;
+.hs-hero{position:relative;padding:60px 24px 40px;min-height:320px;text-align:center;overflow:hidden;
   background:#2a1a0e;}
 .hs-hero::before{content:'';position:absolute;inset:0;
-  background-image:repeating-linear-gradient(90deg,transparent,transparent 60px,rgba(255,255,255,0.01) 60px,rgba(255,255,255,0.01) 61px);
+  background-image:repeating-linear-gradient(90deg,transparent,transparent 40px,rgba(0,0,0,0.02) 40px,rgba(0,0,0,0.02) 41px);
   pointer-events:none;}
-.hs-track{position:absolute;bottom:0;left:0;right:0;height:16px;
-  background:repeating-linear-gradient(90deg,#4a3f35 0,#4a3f35 30px,transparent 30px,transparent 50px);opacity:0.5;}
+.hs-track{position:absolute;bottom:0;left:0;right:0;height:20px;
+  background:repeating-linear-gradient(90deg,#cccccc 0px,#cccccc 30px,transparent 30px,transparent 50px);opacity:0.3;}
+.hs-track::before,.hs-track::after{content:'';position:absolute;left:0;right:0;height:3px;background:#cccccc;opacity:0.4;}
+.hs-track::before{top:4px;}
+.hs-track::after{bottom:4px;}
 .hs-tag{font-family:'Courier New',monospace;font-size:10px;letter-spacing:0.3em;text-transform:uppercase;color:#ffffff;margin-bottom:12px;opacity:0.8;}
   .hs-hero h1{font-size:clamp(32px,6vw,64px);font-weight:700;line-height:1;margin-bottom:10px;color:#ffffff;}
   .hs-hero h1 em{font-style:italic;color:#ffffff;}

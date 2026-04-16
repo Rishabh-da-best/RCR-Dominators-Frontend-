@@ -14,7 +14,12 @@ permalink: /railroad/forecast
   .page-content, .wrapper { max-width: none !important; padding: 0 !important; }
   .fc-page{background:var(--coal);min-height:100vh;font-family:'Source Serif 4',Georgia,serif;color:var(--steam);width:100%;overflow:visible;}
 
-  .fc-hero{position:relative;padding:60px 24px 50px;text-align:center;background:#2a1a0e;border-bottom:1px solid #cccccc;}
+  .fc-hero{position:relative;padding:60px 24px 40px;min-height:320px;text-align:center;background:#2a1a0e;border-bottom:1px solid #cccccc;overflow:hidden;}
+  .fc-hero::before{content:'';position:absolute;inset:0;background-image:repeating-linear-gradient(90deg,transparent,transparent 40px,rgba(0,0,0,0.02) 40px,rgba(0,0,0,0.02) 41px);pointer-events:none;}
+  .fc-track{position:absolute;bottom:0;left:0;right:0;height:20px;background:repeating-linear-gradient(90deg,#cccccc 0px,#cccccc 30px,transparent 30px,transparent 50px);opacity:0.3;}
+  .fc-track::before,.fc-track::after{content:'';position:absolute;left:0;right:0;height:3px;background:#cccccc;opacity:0.4;}
+  .fc-track::before{top:4px;}
+  .fc-track::after{bottom:4px;}
   .fc-hero-icon{font-size:60px;display:block;margin-bottom:12px;animation:fc-chug 2.5s ease-in-out infinite;}
   @keyframes fc-chug{0%,100%{transform:translateX(0);}25%{transform:translateX(3px);}75%{transform:translateX(-3px);}}
   .fc-hero-tag{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.3em;text-transform:uppercase;color:#ffffff;margin-bottom:10px;opacity:0.8;}
@@ -117,6 +122,7 @@ permalink: /railroad/forecast
     <div class="fc-hero-tag">AI-Powered Analytics · Poway–Midland Railroad</div>
     <h1 class="fc-hero-title">Visitor Flow<br><em>Intelligence</em></h1>
     <p class="fc-hero-sub">Advanced machine learning algorithms analyze real-time weather patterns, historical data, and seasonal trends to provide precise crowd predictions for the Poway–Midland Railroad experience.</p>
+    <div class="fc-track"></div>
   </div>
 
   <div class="fc-wrap">

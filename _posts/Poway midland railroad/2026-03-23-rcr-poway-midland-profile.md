@@ -15,7 +15,7 @@ permalink: /railroad/profile
   body { background:var(--coal); color:var(--steam); font-family:'Georgia',serif; padding-top:56px; }
 
   .pf-hero {
-    padding: 60px 24px 40px; text-align: center;
+    padding: 60px 24px 40px; min-height:320px; text-align: center;
     background: #2a1a0e;
     border-bottom: 1px solid #cccccc;
     position: relative;

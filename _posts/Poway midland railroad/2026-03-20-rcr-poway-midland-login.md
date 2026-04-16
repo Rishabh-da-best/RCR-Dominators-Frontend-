@@ -14,7 +14,7 @@ permalink: /railroad/login
   *, *::before, *::after { box-sizing:border-box; margin:0; padding:0; }
   body { background:var(--coal); color:var(--steam); font-family:'Georgia',serif; padding-top:56px; }
 
-  .rr-hero { padding:60px 24px 40px; text-align:center;
+  .rr-hero { padding:60px 24px 40px; min-height:320px; text-align:center;
     background:#2a1a0e;
     border-bottom:1px solid #cccccc;
     position: relative;

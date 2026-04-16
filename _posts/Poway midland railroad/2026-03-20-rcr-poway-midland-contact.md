@@ -29,6 +29,7 @@ permalink: /railroad/contact
 
   .rr-hero {
     padding: 60px 24px 40px;
+    min-height: 320px;
     text-align: left;
     background: #2a1a0e;
     border-bottom: 1px solid var(--border);

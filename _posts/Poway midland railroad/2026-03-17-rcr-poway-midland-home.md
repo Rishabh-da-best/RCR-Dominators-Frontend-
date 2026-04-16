@@ -26,6 +26,45 @@ body {
 }
 
 
+<<<<<<< HEAD
+=======
+  /* ── HERO ── */
+  .rr-hero {
+    padding: 60px 24px 40px;
+    min-height: 320px;
+    text-align: center;
+    background: #2a1a0e;
+    overflow: hidden;
+    max-width: 1400px;
+    margin: 0 auto;
+    width: 100%;
+    box-sizing: border-box;
+    position: relative;
+  }
+  .rr-hero::before {
+    content: ''; position: absolute; inset: 0;
+    background-image: repeating-linear-gradient(
+      90deg, transparent, transparent 60px,
+      rgba(255,255,255,0.012) 60px, rgba(255,255,255,0.012) 61px);
+    pointer-events: none;
+  }
+  .rr-hero-track {
+    position: absolute; bottom: 0; left: 0; right: 0; height: 20px;
+    background: repeating-linear-gradient(
+      90deg, var(--rail) 0px, var(--rail) 30px, transparent 30px, transparent 50px);
+    opacity: 0.4;
+  }
+  .rr-hero-icon { font-size:72px; display:block; margin-bottom:16px; animation:rr-chug 3s ease-in-out infinite; }
+  @keyframes rr-chug {
+    0%,100% { transform:translateX(0); }
+    25%     { transform:translateX(4px); }
+    75%     { transform:translateX(-4px); }
+  }
+  .rr-main-title {
+    margin: 8px 0 12px 0;
+    line-height: 1.2;
+    font-family: "Goudy Old Style", "Goudy Bold", "Goudy", Georgia, serif;
+>>>>>>> 3427857b3 (hero fixed)
 
     /* ── PAGE CONTENT — all content sits directly on clean background ── */
     .rr-hero, .rr-wrap, .rr-footer, .rr-ai-fab { position: relative; z-index: 10; }
