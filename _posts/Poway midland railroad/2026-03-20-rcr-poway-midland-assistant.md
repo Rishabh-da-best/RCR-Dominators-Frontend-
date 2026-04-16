@@ -1,7 +1,7 @@
 ---
 layout: base
 title: AI Visitor Assistant
-permalink: /railroad/assistant
+permalink: /assistant
 ---
 
 <style>

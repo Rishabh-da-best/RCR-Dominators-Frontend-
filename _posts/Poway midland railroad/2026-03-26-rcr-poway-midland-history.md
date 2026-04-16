@@ -1,7 +1,7 @@
 ---
 layout: base
 title: Railroad History
-permalink: /railroad/history
+permalink: /history
 ---
 
 <style>

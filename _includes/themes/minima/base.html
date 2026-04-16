@@ -13,25 +13,15 @@
           </div>
         {% endif %}
 
-        {% if page.feedback  %}
-          {% include feedback_foundation.html %}
-        {% endif %}
-
         {% if page.admin %}
           {% include admin_foundation.html %}
         {% endif %}
 
-        {% if page.grading %}
-          <div class="grading-actions-wrapper">
-            {% include grading_foundation.html %}
-          </div>
-        {% endif %}
-
 
         <main class="page-content" aria-label="Content">
-            <div class="opencs_root full-width">
+       
               {{ content }}
-            </div>
+
         </main>
 
         {%- include themes/minima/footer.html -%}

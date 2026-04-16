@@ -1,7 +1,7 @@
 ---
 layout: base
 title: Book a Train Ride
-permalink: /railroad/book
+permalink: /book
 ---
 
 <style>
@@ -258,7 +258,7 @@ permalink: /railroad/book
         <div class="bk-confirm-sub">Your spot has been reserved. Please pay at the depot on the day of your ride.</div>
         <div class="bk-confirm-code" id="bkConfirmCode">PMR-000000</div>
         <div class="bk-confirm-details" id="bkConfirmDetails"></div>
-        <a href="/railroad/schedule" class="bk-confirm-back">← Back to Schedule</a>
+        <a href="/schedule" class="bk-confirm-back">← Back to Schedule</a>
       </div>
     </div>
   </div>
@@ -279,7 +279,7 @@ permalink: /railroad/book
     bkRideType = params.get('type') || '';
 
     // Back button goes back to schedule with same date
-    const backUrl = bkRideDate ? `/railroad/schedule?date=${bkRideDate}` : '/railroad/schedule';
+    const backUrl = bkRideDate ? `/schedule?date=${bkRideDate}` : '/schedule';
     document.getElementById('bkBackBtn').href = backUrl;
 
     // Fill ride summary

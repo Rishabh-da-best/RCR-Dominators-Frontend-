@@ -1,7 +1,7 @@
 ---
 layout: base
 title: Volunteer Schedule
-permalink: /railroad/volunteer-schedule
+permalink: /volunteer-schedule
 AI: true
 ---
 
@@ -158,7 +158,7 @@ AI: true
         <p>Poway–Midland Railroad · Operations Sign-up</p>
       </div>
     </div>
-    <a href="{{ "/railroad/calendar" | relative_url }}" class="vol-back">← Back to Calendar</a>
+    <a href="{{ "/calendar" | relative_url }}" class="vol-back">← Back to Calendar</a>
   </div>
 
   <div class="stats-row" id="statsContainer">

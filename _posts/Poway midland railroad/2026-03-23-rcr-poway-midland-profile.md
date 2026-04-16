@@ -1,7 +1,7 @@
 ---
 layout: base
 title: My Profile
-permalink: /railroad/profile
+permalink: /profile
 ---
 
 <style>
@@ -172,7 +172,7 @@ permalink: /railroad/profile
   <div class="pf-gate-icon">🔒</div>
   <h2>Members Only</h2>
   <p>Sign in to view your profile, booking history, and account settings.</p>
-  <a href="{{ "/railroad/login" | relative_url }}">Sign In →</a>
+  <a href="{{ "/login" | relative_url }}">Sign In →</a>
 </div>
 
 <!-- Profile content -->
@@ -286,7 +286,7 @@ permalink: /railroad/profile
       const mine = data.filter(r => r.email && r.email.toLowerCase() === email.toLowerCase());
 
       if (!mine.length) {
-        list.innerHTML = `<div class="pf-empty">No bookings yet. <a href="{{ "/railroad/schedule" | relative_url }}">Book a ride →</a></div>`;
+        list.innerHTML = `<div class="pf-empty">No bookings yet. <a href="{{ "/schedule" | relative_url }}">Book a ride →</a></div>`;
         return;
       }
 
@@ -354,7 +354,7 @@ permalink: /railroad/profile
 
   async function pfLogout() {
     try { await fetch(`${BACKEND}/api/auth/logout`, { method: 'POST', credentials: 'include' }); } catch {}
-    window.location.href = '{{ "/railroad/login" | relative_url }}';
+    window.location.href = '{{ "/login" | relative_url }}';
   }
 
   pfInit();

@@ -1,7 +1,7 @@
 ---
 layout: base
 title: Our Trains
-permalink: /railroad/trains
+permalink: /trains
 ---
 
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Source+Serif+4:ital,wght@0,300;0,400;0,600;1,300&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">

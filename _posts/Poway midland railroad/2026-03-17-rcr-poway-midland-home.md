@@ -1,7 +1,7 @@
 ---
 layout: base
 title: Home page of the project
-permalink: /railroad/home
+permalink: /
 ---
 
   <style>
@@ -25,7 +25,15 @@ body {
   isolation: isolate;
 }
 
+  .page-content {
+    max-width: none !important;
+    padding: 0 !important;
+  }
 
+  .wrapper {
+    max-width: none !important;
+    padding: 0 !important;
+  }
 
     /* ── PAGE CONTENT — all content sits directly on clean background ── */
     .rr-hero, .rr-wrap, .rr-footer, .rr-ai-fab { position: relative; z-index: 10; }
@@ -255,8 +263,8 @@ body {
     <p class="rr-hero-sub">Your digital depot for steam, steel, and stories. Explore vintage locomotives, real-time schedules, and the volunteers who keep the iron horse alive every weekend in Poway, CA.</p>
     
     <div class="rr-hero-btns">
-      <a href="/railroad/calendar" class="rr-btn-primary">Book a Ride</a>
-      <a href="/railroad/trains" class="rr-btn-secondary">Our Fleet</a>
+      <a href="/calendar" class="rr-btn-primary">Book a Ride</a>
+      <a href="/trains" class="rr-btn-secondary">Our Fleet</a>
     </div>
   </div>
   <div class="rr-hero-track"></div>
@@ -265,13 +273,13 @@ body {
 <div class="rr-wrap">
   <div class="rr-section-title">Quick Access</div>
   <div class="rr-quick">
-    <a href="/railroad/schedule" class="rr-quick-card"><span class="rr-quick-icon">📅</span><div class="rr-quick-label">Schedule</div><div class="rr-quick-sub">View today's rides</div></a>
-    <a href="/railroad/calendar" class="rr-quick-card"><span class="rr-quick-icon">🎟️</span><div class="rr-quick-label">Book a Ride</div><div class="rr-quick-sub">Reserve your seat</div></a>
-    <a href="/railroad/trains" class="rr-quick-card"><span class="rr-quick-icon">🚆</span><div class="rr-quick-label">Our Fleet</div><div class="rr-quick-sub">Meet the trains</div></a>
-    <a href="/railroad/notes" class="rr-quick-card"><span class="rr-quick-icon">📝</span><div class="rr-quick-label">Notes</div><div class="rr-quick-sub">Share your experience</div></a>
-    <a href="/railroad/forecast" class="rr-quick-card"><span class="rr-quick-icon">🌤️</span><div class="rr-quick-label">Visitor Forecast</div><div class="rr-quick-sub">ML prediction</div></a>
-    <a href="/railroad/events" class="rr-quick-card"><span class="rr-quick-icon">🎉</span><div class="rr-quick-label">Events</div><div class="rr-quick-sub">Upcoming activities</div></a>
-    <a href="/railroad/camera" class="rr-quick-card"><span class="rr-quick-icon">📹</span><div class="rr-quick-label">Live Camera</div><div class="rr-quick-sub">Watch the park live</div></a>
+    <a href="/schedule" class="rr-quick-card"><span class="rr-quick-icon">📅</span><div class="rr-quick-label">Schedule</div><div class="rr-quick-sub">View today's rides</div></a>
+    <a href="/calendar" class="rr-quick-card"><span class="rr-quick-icon">🎟️</span><div class="rr-quick-label">Book a Ride</div><div class="rr-quick-sub">Reserve your seat</div></a>
+    <a href="/trains" class="rr-quick-card"><span class="rr-quick-icon">🚆</span><div class="rr-quick-label">Our Fleet</div><div class="rr-quick-sub">Meet the trains</div></a>
+    <a href="/notes" class="rr-quick-card"><span class="rr-quick-icon">📝</span><div class="rr-quick-label">Notes</div><div class="rr-quick-sub">Share your experience</div></a>
+    <a href="/forecast" class="rr-quick-card"><span class="rr-quick-icon">🌤️</span><div class="rr-quick-label">Visitor Forecast</div><div class="rr-quick-sub">ML prediction</div></a>
+    <a href="/events" class="rr-quick-card"><span class="rr-quick-icon">🎉</span><div class="rr-quick-label">Events</div><div class="rr-quick-sub">Upcoming activities</div></a>
+    <a href="/camera" class="rr-quick-card"><span class="rr-quick-icon">📹</span><div class="rr-quick-label">Live Camera</div><div class="rr-quick-sub">Watch the park live</div></a>
   </div>
 
   <div class="rr-section-title">Latest News from the Line</div>
@@ -296,6 +304,6 @@ body {
     </div>
   </div>
 
-<a href="/railroad/assistant" class="rr-ai-fab">
+<a href="/assistant" class="rr-ai-fab">
   AI Assistant
 </a>

@@ -1,7 +1,7 @@
 ---
 layout: base
 title: Login
-permalink: /railroad/login
+permalink: /login
 ---
 
 <style>
@@ -13,6 +13,16 @@ permalink: /railroad/login
   }
   *, *::before, *::after { box-sizing:border-box; margin:0; padding:0; }
   body { background:var(--coal); color:var(--steam); font-family:'Georgia',serif; padding-top:56px; }
+
+    .page-content {
+    max-width: none !important;
+    padding: 0 !important;
+  }
+
+  .wrapper {
+    max-width: none !important;
+    padding: 0 !important;
+  }
 
   .rr-hero { padding:60px 24px 40px; min-height:320px; text-align:center;
     background:#2a1a0e;
@@ -164,8 +174,8 @@ permalink: /railroad/login
 
 <script>
 const BACKEND = 'http://localhost:8428';
-const REDIRECT_AFTER_LOGIN   = '{{ "/railroad/home" | relative_url }}';
-const REDIRECT_AFTER_SIGNUP  = '{{ "/railroad/home" | relative_url }}';
+const REDIRECT_AFTER_LOGIN   = '{{ "/" | relative_url }}';
+const REDIRECT_AFTER_SIGNUP  = '{{ "/" | relative_url }}';
 const validateEmail = e => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(e);
 
 function setFeedback(el, msg, type) {

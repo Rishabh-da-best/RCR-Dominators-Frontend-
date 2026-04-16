@@ -1,7 +1,7 @@
 ---
 layout: base
 title: Contact & Feedback
-permalink: /railroad/contact
+permalink: /contact
 ---
 
 <style>

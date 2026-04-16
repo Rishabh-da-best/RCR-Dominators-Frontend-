@@ -1,7 +1,7 @@
 ---
 layout: base
 title: Events & Announcements
-permalink: /railroad/events
+permalink: /events
 ---
 
 <style>

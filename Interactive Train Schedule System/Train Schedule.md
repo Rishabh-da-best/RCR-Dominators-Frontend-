@@ -1,7 +1,7 @@
 ---
 layout: base
 title: Train Schedule & Tracker
-permalink: /railroad/schedule
+permalink: /schedule
 ---
 
 <style>

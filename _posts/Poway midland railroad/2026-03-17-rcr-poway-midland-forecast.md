@@ -1,7 +1,7 @@
 ---
 layout: base
 title: Tomorrow's Visitor Forecast
-permalink: /railroad/forecast
+permalink: /forecast
 ---
 
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Mono:wght@400;500&family=Source+Serif+4:wght@300;400;600&display=swap" rel="stylesheet">

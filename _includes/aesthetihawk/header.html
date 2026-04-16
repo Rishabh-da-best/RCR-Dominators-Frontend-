@@ -155,7 +155,7 @@
                 <div class="rr-nav">
 
                     <div class="rr-item">
-                        <a href="{{ "/railroad/home" | relative_url }}" class="rr-link"> Home</a>
+                        <a href="{{ "/home" | relative_url }}" class="rr-link"> Home</a>
                     </div>
 
                     <div class="rr-item" id="rrSched">
@@ -163,9 +163,9 @@
                              Schedule <span class="rr-arr">▼</span>
                         </button>
                         <div class="rr-drop">
-                            <a href="{{ "/railroad/schedule" | relative_url }}"> Train Schedule</a>
-                            <a href="{{ "/railroad/volunteer-schedule" | relative_url }}">👷 Volunteer Schedule</a>
-                            <a href="{{ "/railroad/calendar" | relative_url }}"> Book a Ride</a>
+                            <a href="{{ "/schedule" | relative_url }}"> Train Schedule</a>
+                            <a href="{{ "/volunteer-schedule" | relative_url }}">👷 Volunteer Schedule</a>
+                            <a href="{{ "/calendar" | relative_url }}"> Book a Ride</a>
                         </div>
                     </div>
 
@@ -174,9 +174,9 @@
                              About Us <span class="rr-arr">▼</span>
                         </button>
                         <div class="rr-drop">
-                            <a href="{{ site.baseurl }}/railroad/trains"> Our Trains</a>
-                            <a href="{{ site.baseurl }}/railroad/history"> History</a>
-                            <a href="{{ site.baseurl }}/railroad/contact"> Contact</a>
+                            <a href="{{ site.baseurl }}/trains"> Our Trains</a>
+                            <a href="{{ site.baseurl }}/history"> History</a>
+                            <a href="{{ site.baseurl }}/contact"> Contact</a>
                         </div>
                     </div>
 
@@ -185,15 +185,15 @@
                             Explore <span class="rr-arr">▼</span>
                         </button>
                         <div class="rr-drop">
-                            <a href="{{ site.baseurl }}/railroad/events"> Events</a>
-                            <a href="{{ site.baseurl }}/railroad/camera"> Live Camera</a>
-                            <a href="{{ site.baseurl }}/railroad/assistant"> AI Assistant</a>
-                            <a href="{{ site.baseurl }}/railroad/forecast"> Visitor Forecast</a>
+                            <a href="{{ site.baseurl }}/events"> Events</a>
+                            <a href="{{ site.baseurl }}/camera"> Live Camera</a>
+                            <a href="{{ site.baseurl }}/assistant"> AI Assistant</a>
+                            <a href="{{ site.baseurl }}/forecast"> Visitor Forecast</a>
                         </div>
                     </div>
 
                     <div id="rrAuthArea">
-                        <a id="rrLoginLink" href="{{ site.baseurl }}/railroad/login"> Login</a>
+                        <a id="rrLoginLink" href="{{ site.baseurl }}/login"> Login</a>
 
                         <div class="rr-item" id="rrProfileItem">
                             <button id="rrProfileBtn" onclick="toggleRR('rrProfileItem')">
@@ -206,7 +206,7 @@
                                     Loading...
                                     <span id="rrDropEmail"></span>
                                 </div>
-                                <a href="{{ site.baseurl }}/railroad/profile">👤 My Profile</a>
+                                <a href="{{ site.baseurl }}/profile">👤 My Profile</a>
                                 <button id="rrLogoutBtn" onclick="rrNavLogout()">🚪 Logout</button>
                             </div>
                         </div>
@@ -260,7 +260,7 @@
         async function rrNavLogout() {
             try { await fetch(`${RR_BACKEND}/api/auth/logout`, { method: 'POST', credentials: 'include' }); } catch {}
             rrShowGuest();
-            if (window.location.pathname === '{{ site.baseurl }}/railroad/profile') window.location.href = '{{ site.baseurl }}/railroad/login';
+            if (window.location.pathname === '{{ site.baseurl }}/profile') window.location.href = '{{ site.baseurl }}/login';
         }
 
         rrCheckAuth();

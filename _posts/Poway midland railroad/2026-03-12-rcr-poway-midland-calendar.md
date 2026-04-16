@@ -1,7 +1,7 @@
 ---
 layout: base
 title: Railroad Operations Calendar
-permalink: /railroad/calendar
+permalink: /calendar
 ---
 
 <style>
@@ -101,7 +101,7 @@ permalink: /railroad/calendar
         <div class="cal-subtitle">Poway–Midland Railroad · Old Poway Park</div>
       </div>
     </div>
-    <a href="{{ "/railroad/schedule" | relative_url }}" class="cal-back">← Schedule &amp; Tracker</a>
+    <a href="{{ "/schedule" | relative_url }}" class="cal-back">← Schedule &amp; Tracker</a>
   </div>
 
   <div class="main-cal-content">
@@ -182,7 +182,7 @@ permalink: /railroad/calendar
     none:   {cls:'event-none',   label:'No Operation',       time:''},
   };
   let calYear, calMonth;
-  const calScheduleBase = '{{ "/railroad/schedule" | relative_url }}';
+  const calScheduleBase = '{{ "/schedule" | relative_url }}';
 
   function calInit(){const now=new Date();calYear=now.getFullYear();calMonth=now.getMonth();calRender();}
   function calChangeMonth(d){calMonth+=d;if(calMonth>11){calMonth=0;calYear++;}if(calMonth<0){calMonth=11;calYear--;}calRender();}
