@@ -30,7 +30,7 @@ permalink: /contact
   .rr-hero {
     padding: 60px 24px 40px;
     min-height: 320px;
-    text-align: left;
+    text-align: center;
     background: #2a1a0e;
     border-bottom: 1px solid var(--border);
     flex-shrink: 0;
@@ -71,29 +71,33 @@ permalink: /contact
   .rr-hero-tag {
     font-family: 'Courier New', monospace;
     font-size: 10px;
-    letter-spacing: 0.25em;
+    letter-spacing: 0.3em;
     text-transform: uppercase;
     color: #ffffff;
-    margin-bottom: 10px;
-    opacity: 0.9;
+    margin-bottom: 16px;
+    opacity: 0.7;
+    font-weight: 600;
   }
   .rr-hero h1 {
-    font-size: clamp(28px, 4vw, 48px);
-    font-weight: 700;
-    line-height: 1.05;
-    margin-bottom: 12px;
+    font-size: clamp(42px, 8vw, 88px);
+    font-weight: 900;
+    line-height: 0.95;
+    letter-spacing: -0.02em;
+    margin-bottom: 20px;
     color: #ffffff;
   }
   .rr-hero h1 em {
     font-style: italic;
     color: #ffffff;
+    display: block;
   }
   .rr-hero p {
-    font-size: 14px;
-    color: var(--subtext);
-    max-width: 640px;
-    margin: 0;
+    font-size: 16px;
+    color: #ffffff;
+    max-width: 520px;
+    margin: 0 auto 40px;
     line-height: 1.7;
+    font-weight: 300;
   }
 
   .rr-wrap { display: flex; flex: 1; width: 100%; overflow: visible; padding: 24px 24px 24px; }

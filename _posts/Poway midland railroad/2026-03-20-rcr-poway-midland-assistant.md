@@ -22,7 +22,7 @@ permalink: /assistant
   .rr-hero {
     padding: 60px 24px 40px;
     min-height: 320px;
-    text-align: left;
+    text-align: center;
     background: #2a1a0e;
     border-bottom: 1px solid var(--border);
     flex-shrink: 0;
@@ -61,10 +61,10 @@ permalink: /assistant
   .rr-hero-track::before { top: 4px; }
   .rr-hero-track::after  { bottom: 4px; }
   .rr-hero-tag { font-family:'Courier New',monospace; font-size:10px; letter-spacing:0.25em;
-    text-transform:uppercase; color:#ffffff; margin-bottom:10px; opacity:0.9; }
-  .rr-hero h1 { font-size:clamp(28px,4vw,48px); font-weight:700; color:#ffffff; line-height:1.05; margin-bottom:12px; }
-  .rr-hero h1 em { font-style:italic; color:#ffffff; }
-  .rr-hero p { font-size:14px; color:#ffffff; max-width:700px; line-height:1.7; }
+    text-transform:uppercase; color:#ffffff; margin-bottom:16px; opacity:0.7; font-weight:600; }
+  .rr-hero h1 { font-size:clamp(42px,8vw,88px); font-weight:900; color:#ffffff; line-height:0.95; letter-spacing:-0.02em; margin-bottom:20px; }
+  .rr-hero h1 em { font-style:italic; color:#ffffff; display:block; }
+  .rr-hero p { font-size:16px; color:#ffffff; max-width:520px; margin:0 auto 40px; line-height:1.7; font-weight:300; }
 
   .rr-wrap { display: flex; flex: 1; width: 100%; overflow: visible; padding: 24px 24px 24px; }
   .rr-grid-2 { display: grid; grid-template-columns: 0.45fr 0.55fr; gap: 22px; width: 100%; min-height: 0; }
