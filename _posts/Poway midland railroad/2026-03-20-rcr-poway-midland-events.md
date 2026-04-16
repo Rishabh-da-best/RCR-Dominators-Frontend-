@@ -80,6 +80,7 @@ permalink: /railroad/events
   <div class="rr-hero-tag">Latest News · Poway–Midland Railroad</div>
   <h1>Events <em>&amp; Announcements</em></h1>
   <p>Search and filter operational updates and event announcements.</p>
+  <div class="rr-hero-track"></div>
 </div>
 
 <div class="rr-wrap">

@@ -247,6 +247,7 @@ permalink: /railroad/contact
   <div class="rr-hero-tag">Get in Touch · Poway–Midland Railroad</div>
   <h1>Contact <em>&amp; Feedback</em></h1>
   <p>Share group requests, volunteer interest, and event support needs.</p>
+  <div class="rr-hero-track"></div>
 </div>
 
 <div class="rr-wrap">

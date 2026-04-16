@@ -108,6 +108,7 @@ permalink: /railroad/camera
   <div class="rr-hero-tag">Explorer · Poway–Midland Railroad</div>
   <h1>Railroad <em>Explorer</em></h1>
   <p>Panoramas, route map, history hotspots, and timeline — all in one place.</p>
+  <div class="rr-hero-track"></div>
 </div>
 
 <div class="rr-wrap">

@@ -127,6 +127,7 @@ permalink: /railroad/assistant
   <div class="rr-hero-tag">AI Powered · Poway–Midland Railroad</div>
   <h1>Visitor <em>Assistant</em></h1>
   <p>Ask for visit recommendations, plan your trip, or explore engagement insights.</p>
+  <div class="rr-hero-track"></div>
 </div>
 
 <div class="rr-wrap">

@@ -110,6 +110,7 @@ permalink: /railroad/login
   <h1>Account <em>Access</em></h1>
   <p>Sign in or register to unlock member-mode messages and personalized recommendations.</p>
   <div class="rr-hero-note" id="authViewMsg">Public View: Sign in to unlock member tools.</div>
+  <div class="rr-hero-track"></div>
 </div>
 
 <div class="rr-wrap">
