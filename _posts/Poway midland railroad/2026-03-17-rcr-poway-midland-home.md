@@ -245,17 +245,6 @@ permalink: /
 </div>
 
 <div class="rr-wrap">
-  <div class="rr-section-title">Quick Access</div>
-  <div class="rr-quick">
-    <a href="/schedule" class="rr-quick-card"><span class="rr-quick-icon">📅</span><div class="rr-quick-label">Schedule</div><div class="rr-quick-sub">View today's rides</div></a>
-    <a href="/calendar" class="rr-quick-card"><span class="rr-quick-icon">🎟️</span><div class="rr-quick-label">Book a Ride</div><div class="rr-quick-sub">Reserve your seat</div></a>
-    <a href="/trains" class="rr-quick-card"><span class="rr-quick-icon">🚆</span><div class="rr-quick-label">Our Fleet</div><div class="rr-quick-sub">Meet the trains</div></a>
-    <a href="/notes" class="rr-quick-card"><span class="rr-quick-icon">📝</span><div class="rr-quick-label">Notes</div><div class="rr-quick-sub">Share your experience</div></a>
-    <a href="/forecast" class="rr-quick-card"><span class="rr-quick-icon">🌤️</span><div class="rr-quick-label">Visitor Forecast</div><div class="rr-quick-sub">ML prediction</div></a>
-    <a href="/events" class="rr-quick-card"><span class="rr-quick-icon">🎉</span><div class="rr-quick-label">Events</div><div class="rr-quick-sub">Upcoming activities</div></a>
-    <a href="/camera" class="rr-quick-card"><span class="rr-quick-icon">📹</span><div class="rr-quick-label">Live Camera</div><div class="rr-quick-sub">Watch the park live</div></a>
-  </div>
-
   <div class="rr-section-title">Latest News from the Line</div>
   <div class="rr-news-grid">
     <div class="rr-news-card">
@@ -276,4 +265,15 @@ permalink: /
       <p>The historic Midland depot is getting a faithful renovation. Volunteer carpenters and historians are working to preserve the 1890s structure.</p>
       <span class="rr-news-tag">preservation</span>
     </div>
+  </div>
+
+  <div class="rr-section-title">Quick Access</div>
+  <div class="rr-quick">
+    <a href="/schedule" class="rr-quick-card"><span class="rr-quick-icon">📅</span><div class="rr-quick-label">Schedule</div><div class="rr-quick-sub">View today's rides</div></a>
+    <a href="/calendar" class="rr-quick-card"><span class="rr-quick-icon">🎟️</span><div class="rr-quick-label">Book a Ride</div><div class="rr-quick-sub">Reserve your seat</div></a>
+    <a href="/trains" class="rr-quick-card"><span class="rr-quick-icon">🚆</span><div class="rr-quick-label">Our Fleet</div><div class="rr-quick-sub">Meet the trains</div></a>
+    <a href="/notes" class="rr-quick-card"><span class="rr-quick-icon">📝</span><div class="rr-quick-label">Notes</div><div class="rr-quick-sub">Share your experience</div></a>
+    <a href="/forecast" class="rr-quick-card"><span class="rr-quick-icon">🌤️</span><div class="rr-quick-label">Visitor Forecast</div><div class="rr-quick-sub">ML prediction</div></a>
+    <a href="/events" class="rr-quick-card"><span class="rr-quick-icon">🎉</span><div class="rr-quick-label">Events</div><div class="rr-quick-sub">Upcoming activities</div></a>
+    <a href="/camera" class="rr-quick-card"><span class="rr-quick-icon">📹</span><div class="rr-quick-label">Live Camera</div><div class="rr-quick-sub">Watch the park live</div></a>
   </div>
