@@ -14,7 +14,7 @@ permalink: /forecast
   .page-content, .wrapper { max-width: none !important; padding: 0 !important; }
   .fc-page{background:var(--coal);min-height:100vh;font-family:'Source Serif 4',Georgia,serif;color:var(--steam);width:100%;overflow:visible;}
 
-  .fc-hero{position:relative;padding:60px 24px 40px;min-height:320px;text-align:center;background:#2a1a0e;border-bottom:1px solid #cccccc;overflow:hidden;}
+  .fc-hero{position:relative;padding:60px 24px 40px;min-height:200px;text-align:center;background:#2a1a0e;border-bottom:1px solid #cccccc;overflow:hidden;}
   .fc-hero::before{content:'';position:absolute;inset:0;background-image:repeating-linear-gradient(90deg,transparent,transparent 40px,rgba(0,0,0,0.02) 40px,rgba(0,0,0,0.02) 41px);pointer-events:none;}
   .fc-track{position:absolute;bottom:0;left:0;right:0;height:20px;background:repeating-linear-gradient(90deg,#cccccc 0px,#cccccc 30px,transparent 30px,transparent 50px);opacity:0.3;}
   .fc-track::before,.fc-track::after{content:'';position:absolute;left:0;right:0;height:3px;background:#cccccc;opacity:0.4;}

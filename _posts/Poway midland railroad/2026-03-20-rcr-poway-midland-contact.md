@@ -30,7 +30,7 @@ permalink: /contact
 
   .rr-hero {
     padding: 60px 24px 40px;
-    min-height: 320px;
+    min-height: 200px;
     text-align: center;
     background: #2a1a0e;
     border-bottom: 1px solid var(--border);

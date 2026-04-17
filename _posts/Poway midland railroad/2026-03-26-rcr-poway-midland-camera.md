@@ -12,7 +12,7 @@ permalink: /camera
   *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
   body{background:var(--coal);color:var(--steam);font-family:'Georgia',serif;padding-top:56px; padding-top: 54px !important;}
 
-  .rr-hero{position:relative;padding:60px 24px 40px;min-height:320px;text-align:center;background:#2a1a0e;border-bottom:1px solid #cccccc;overflow:hidden;}
+  .rr-hero{position:relative;padding:60px 24px 40px;min-height:200px;text-align:center;background:#2a1a0e;border-bottom:1px solid #cccccc;overflow:hidden;}
   .rr-hero::before {
     content: '';
     position: absolute;

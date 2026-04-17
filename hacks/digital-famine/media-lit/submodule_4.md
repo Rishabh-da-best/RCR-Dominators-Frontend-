@@ -92,7 +92,7 @@ line-height: 1.5;
       background: rgba(190, 192, 246, 0.75);
       border-radius:12px;
       padding:16px;
-      min-height:320px;
+      min-height:200px;
       box-shadow: 0 4px 12px rgba(2,22,36,0.04) inset;
     }
     .items { display:flex; flex-wrap:wrap; gap:12px; margin-top:8px; }

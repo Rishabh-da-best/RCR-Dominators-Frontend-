@@ -24,7 +24,7 @@ permalink: /login
     padding: 0 !important;
   }
 
-  .rr-hero { padding:60px 24px 40px; min-height:320px; text-align:center;
+  .rr-hero { padding:60px 24px 40px; min-height:200px; text-align:center;
     background:#2a1a0e;
     border-bottom:1px solid #cccccc;
     position: relative;

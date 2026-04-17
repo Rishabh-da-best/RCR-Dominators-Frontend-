@@ -13,7 +13,7 @@ permalink: /history
   .wrapper { max-width: none !important; padding: 0 !important; }
 
 /* Hero */
-.hs-hero{position:relative;padding:60px 24px 40px;min-height:320px;text-align:center;overflow:hidden;
+.hs-hero{position:relative;padding:60px 24px 40px;min-height:200px;text-align:center;overflow:hidden;
   background:#2a1a0e;}
 .hs-hero::before{content:'';position:absolute;inset:0;
   background-image:repeating-linear-gradient(90deg,transparent,transparent 40px,rgba(0,0,0,0.02) 40px,rgba(0,0,0,0.02) 41px);

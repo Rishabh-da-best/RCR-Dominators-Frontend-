@@ -2,7 +2,6 @@
 layout: base
 title: Volunteer Schedule
 permalink: /volunteer-schedule
-AI: true
 ---
 
 <style>

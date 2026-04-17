@@ -14,7 +14,7 @@ permalink: /events
   .page-content { max-width: none !important; padding: 0 !important; background: #ffffff; }
   .wrapper { max-width: none !important; padding: 0 !important; }
 
-  .rr-hero{position:relative;padding:60px 24px 40px;min-height:320px;text-align:center;background:#2a1a0e;border-bottom:1px solid #cccccc;overflow:hidden;}
+  .rr-hero{position:relative;padding:60px 24px 40px;min-height:200px;text-align:center;background:#2a1a0e;border-bottom:1px solid #cccccc;overflow:hidden;}
   .rr-hero::before {
     content: '';
     position: absolute;
