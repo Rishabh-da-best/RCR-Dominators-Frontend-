@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="{{ page.lang | default: site.lang | default: 'en' }}">
 
-
     {%- include head.html -%}
 
     <body>
@@ -17,15 +16,67 @@
           {% include admin_foundation.html %}
         {% endif %}
 
-
         <main class="page-content" aria-label="Content">
        
               {{ content }}
+
+              <!-- 👇 AI 放这里 -->
+              <div id="ai-assistant" style="
+                position: fixed;
+                bottom: 20px;
+                right: 20px;
+                width: 300px;
+                background: white;
+                border: 1px solid #ccc;
+                border-radius: 10px;
+                box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+                padding: 10px;
+                z-index: 9999;
+              ">
+                <div style="font-weight: bold; margin-bottom: 8px;">
+                  AI Assistant
+                </div>
+                <div id="ai-messages" style="height: 150px; overflow-y: auto; font-size: 14px;"></div>
+                <input id="ai-input" type="text" placeholder="Ask something..."
+                  style="width: 100%; margin-top: 8px; padding: 6px;" />
+              </div>
 
         </main>
 
         {%- include themes/minima/footer.html -%}
 
         {%- include mermaid.html -%}
+
+        <!-- 👇 AI JS -->
+        <script>
+          const input = document.getElementById("ai-input");
+          const messages = document.getElementById("ai-messages");
+
+          if (input) {
+            input.addEventListener("keydown", function(e) {
+              if (e.key === "Enter") {
+                const text = input.value.trim();
+                if (!text) return;
+
+                const userMsg = document.createElement("div");
+                userMsg.textContent = "You: " + text;
+                messages.appendChild(userMsg);
+
+                // 假AI回复（你之后可以接API）
+                const botMsg = document.createElement("div");
+                botMsg.textContent = "AI: thinking...";
+                messages.appendChild(botMsg);
+
+                setTimeout(() => {
+                  botMsg.textContent = "AI: (这里接你的AI接口)";
+                }, 500);
+
+                input.value = "";
+                messages.scrollTop = messages.scrollHeight;
+              }
+            });
+          }
+        </script>
+
     </body>
 </html>
