@@ -64,14 +64,6 @@
         
         .site-title:visited { text-decoration: none; }
         
-        /* Navigation wrapper - takes full width for proper centering */
-        .site-nav { 
-            display: flex; 
-            align-items: center; 
-            justify-content: center;
-            height: 54px;
-            width: 100%;
-        }
 
         /* Main nav container - centered as a whole block including all items and auth area */
         .rr-nav { 
@@ -115,11 +107,16 @@
             font-weight: normal;
             transform: translateY(2px);
         }
-        
         .rr-link:hover { 
-            color: #c9943a !important; 
-            border-bottom-color: #c9943a; 
-        }
+    color: #c9943a !important; 
+    border-bottom-color: #c9943a;
+    background: transparent !important;
+    background-color: transparent !important;
+}
+.rr-link {
+    padding-top: 1px;     
+    padding-bottom: 0;    
+}
         
         .rr-arr { 
             font-size: 8px; 
@@ -140,11 +137,10 @@
         .rr-drop {
             display: none; 
             position: absolute; 
-            top: 54px; 
+            top: 56px; 
             left: 0;
             background: rgba(42, 31, 24, 0.98);
             border: 1px solid rgba(255,255,255,0.1);
-            border-top: 2px solid #b94a1c;
             border-radius: 0 0 8px 8px;
             min-width: 220px;
             box-shadow: 0 8px 24px rgba(0,0,0,0.5);
@@ -380,27 +376,27 @@
                         </div>
                     </div>
 
-                    <div class="rr-item" id="rrAbout">
-                        <button class="rr-link" onclick="toggleRR('rrAbout')">
-                            About Us <span class="rr-arr">▼</span>
-                        </button>
-                        <div class="rr-drop">
-                            <a href="{{ site.baseurl }}/trains"> Our Trains</a>
-                            <a href="{{ site.baseurl }}/history"> History</a>
-                            <a href="{{ site.baseurl }}/contact"> Contact</a>
-                        </div>
-                    </div>
+<div class="rr-item" id="rrExplore">
+    <button class="rr-link" onclick="toggleRR('rrExplore')">
+        Explore <span class="rr-arr">▼</span>
+    </button>
+    <div class="rr-drop">
+        <a href="{{ site.baseurl }}/events"> Events</a>
+        <a href="{{ site.baseurl }}/camera"> Live Camera</a>
+        <a href="{{ site.baseurl }}/forecast"> Visitor Forecast</a>
+    </div>
+</div>
 
-                    <div class="rr-item" id="rrExplore">
-                        <button class="rr-link" onclick="toggleRR('rrExplore')">
-                            Explore <span class="rr-arr">▼</span>
-                        </button>
-                        <div class="rr-drop">
-                            <a href="{{ site.baseurl }}/events"> Events</a>
-                            <a href="{{ site.baseurl }}/camera"> Live Camera</a>
-                            <a href="{{ site.baseurl }}/forecast"> Visitor Forecast</a>
-                        </div>
-                    </div>
+<div class="rr-item" id="rrAbout">
+    <button class="rr-link" onclick="toggleRR('rrAbout')">
+        About Us <span class="rr-arr">▼</span>
+    </button>
+    <div class="rr-drop">
+        <a href="{{ site.baseurl }}/trains"> Our Trains</a>
+        <a href="{{ site.baseurl }}/history"> History</a>
+        <a href="{{ site.baseurl }}/contact"> Contact</a>
+    </div>
+</div>
 
                     <div id="rrAuthArea">
                         <a id="rrLoginLink" href="{{ site.baseurl }}/login"> Login</a>
