@@ -5,6 +5,7 @@ permalink: /
 ---
 
   <style>
+    
     :root {
       --rust:  #b94a1c; --ember: #e8621a; --gold:  #c9943a;
       --coal:  #faf8f5; --iron:  #ffffff; --iron2: #f0ebe2;
@@ -73,7 +74,16 @@ permalink: /
       pointer-events: none;
     }
     .rr-hero-content {
-      position: relative;
+  position: relative;
+  z-index: 2;
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+  padding: 60px 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}      position: relative;
       z-index: 2;
       max-width: 800px;
       margin: 0 auto;
@@ -134,11 +144,19 @@ permalink: /
       font-size:16px; color:#ffffff; max-width:800px;
       margin:0 auto 36px; line-height:1.7;
     }
-    .rr-hero-btns { display:flex; gap:12px; justify-content:center; flex-wrap:wrap; }
+    .rr-hero-btns { 
+  display: flex; 
+  gap: 12px; 
+  justify-content: center; 
+  flex-wrap: wrap; 
+  margin: 0 auto; 
+  text-align: center; 
+}
     .rr-btn-primary {
       padding:14px 28px; background:var(--rust); border:none;
-      border-radius:4px; color:#fff; text-decoration:none;
+      border-radius:4px; color:#fff!important; text-decoration:none;
       font-family:'Courier New',monospace; font-size:12px;
+      vertical-align: middle;
       letter-spacing:0.12em; text-transform:uppercase;
       transition:background 0.2s, transform 0.15s; cursor:pointer;
       display: inline-block;
@@ -147,7 +165,7 @@ permalink: /
     .rr-btn-secondary {
       padding:14px 28px; background:transparent;
       border:1px solid var(--gold); border-radius:4px;
-      color:var(--gold); text-decoration:none;
+      color:var(--gold)!important; text-decoration:none;
       font-family:'Courier New',monospace; font-size:12px;
       letter-spacing:0.12em; text-transform:uppercase; transition:all 0.2s;
       display: inline-block;
@@ -179,8 +197,8 @@ permalink: /
     }
     .rr-quick-card:hover { background:rgba(58,46,40,0.95); transform:translateY(-3px); border-color:var(--gold); }
     .rr-quick-icon { font-size:32px; display:block; margin-bottom:10px; }
-    .rr-quick-label { font-family:'Courier New',monospace; font-size:10px; letter-spacing:0.15em; text-transform:uppercase; color:var(--gold); }
-    .rr-quick-sub { font-size:12px; color:var(--smoke); margin-top:4px; }
+    .rr-quick-label { font-family:'Courier New',monospace; font-size:10px; letter-spacing:0.15em; text-transform:uppercase; color: var(--gold); }
+    .rr-quick-sub { font-size:12px; color: #ffffff; margin-top:4px; }
 
     /* News */
     .rr-news-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(300px,1fr)); gap:16px; margin-bottom:60px; }
