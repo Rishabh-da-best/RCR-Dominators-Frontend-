@@ -252,7 +252,7 @@ permalink: /
       <span class="orange-part">Railroad</span>
     </div>
     
-    <p class="rr-hero-sub">Your digital depot for steam, steel, and stories. Explore vintage locomotives, real-time schedules, and the volunteers who keep the iron horse alive every weekend in Poway, CA.</p>
+    <p class="rr-hero-sub">Experience the charm of vintage railroading in the heart of Old Poway Park. Our historic locomotive, and other engines and cars, offer an unforgettable journey into the past, perfect for families, train enthusiasts, and history lovers alike.</p>
     
     <div class="rr-hero-btns">
       <a href="/calendar" class="rr-btn-primary">Book a Ride</a>
