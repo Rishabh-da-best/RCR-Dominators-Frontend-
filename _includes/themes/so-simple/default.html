@@ -1,23 +1,76 @@
 <!DOCTYPE html>
 <!--
     So Simple Jekyll Theme 3.2.0
-    Copyright 2013-2019 Michael Rose - mademistakes.com | @mmistakes
-    Free for personal and commercial use under the MIT license
-    https://github.com/mmistakes/so-simple-theme/blob/master/LICENSE
 -->
 <html lang="{{ page.lang | default: site.lang | default: 'en-US' }}" class="no-js">
   {% include head.html %}
 
   <body class="layout--{{ page.layout | default: layout.layout }}{% if page.classes or layout.classes %}{{ page.classes | default: layout.classes | join: ' ' | prepend: ' ' }}{% endif %} {% if page.entries_layout == 'grid' %}page--wide{% endif %} {{ page.title | slugify }}">
+    
     {% include skip-links.html %}
     {% include navigation.html %}
     {% include masthead.html %}
 
     {{ content }}
 
+    <!-- 👇 AI Assistant -->
+    <div id="ai-assistant" style="
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      width: 300px;
+      background: white;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      padding: 10px;
+      z-index: 9999;
+      font-family: sans-serif;
+    ">
+      <div style="display:flex; justify-content:space-between; align-items:center; font-weight:bold; margin-bottom:8px;">
+        <span>AI Assistant</span>
+        <button onclick="document.getElementById('ai-assistant').style.display='none'" style="border:none;background:none;cursor:pointer;">×</button>
+      </div>
+      <div id="ai-messages" style="height:150px; overflow-y:auto; font-size:14px; margin-bottom:6px;"></div>
+      <input id="ai-input" type="text" placeholder="Ask something..."
+        style="width:100%; padding:6px;" />
+    </div>
+
     {% include footer.html %}
     {% include scripts.html %}
     {%- include mermaid.html -%}
-  </body>
 
+    <!-- 👇 AI JS -->
+    <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      const input = document.getElementById("ai-input");
+      const messages = document.getElementById("ai-messages");
+
+      if (!input) return;
+
+      input.addEventListener("keydown", function(e) {
+        if (e.key === "Enter") {
+          const text = input.value.trim();
+          if (!text) return;
+
+          const userMsg = document.createElement("div");
+          userMsg.textContent = "You: " + text;
+          messages.appendChild(userMsg);
+
+          const botMsg = document.createElement("div");
+          botMsg.textContent = "AI: thinking...";
+          messages.appendChild(botMsg);
+
+          setTimeout(() => {
+            botMsg.textContent = "AI: (这里接你的AI接口)";
+          }, 500);
+
+          input.value = "";
+          messages.scrollTop = messages.scrollHeight;
+        }
+      });
+    });
+    </script>
+
+  </body>
 </html>
