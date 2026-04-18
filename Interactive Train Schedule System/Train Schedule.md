@@ -7,7 +7,7 @@ permalink: /schedule
 <style>
   :root {
     --rust:  #b94a1c;
-    --gold:  #c9943a;
+    --gold:  #eca52b;
     --green: #2d6a4f;
     --amber: #e8a020;
     --red:   #c0392b;

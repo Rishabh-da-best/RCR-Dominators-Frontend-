@@ -10,8 +10,8 @@ permalink: /donate
     --iron: #2a1f18;
     --iron2: #2a1a0e;
     --rust: #b94a1c;
-    --ember: #c9943a;
-    --gold: #c9943a;
+    --ember: #eca52b;
+    --gold: #eca52b;
     --steam: #e8e0d0;
     --smoke: #b8aa8a;
     --text: #e8e0d0;
@@ -72,7 +72,7 @@ permalink: /donate
     height: 20px;
     background: repeating-linear-gradient(
       90deg,
-      #c9943a 0px, #c9943a 30px,
+      #eca52b 0px, #eca52b 30px,
       transparent 30px, transparent 50px
     );
     opacity: 0.3;
@@ -84,7 +84,7 @@ permalink: /donate
     left: 0;
     right: 0;
     height: 3px;
-    background: #c9943a;
+    background: #eca52b;
     opacity: 0.4;
   }
   
@@ -96,7 +96,7 @@ permalink: /donate
     font-size: 10px;
     letter-spacing: 0.3em;
     text-transform: uppercase;
-    color: #c9943a;
+    color: #eca52b;
     margin-bottom: 10px;
     opacity: 0.8;
   }
@@ -111,7 +111,7 @@ permalink: /donate
   
   .rr-hero h1 em {
     font-style: italic;
-    color: #c9943a;
+    color: #eca52b;
   }
   
   .rr-hero p {
@@ -188,7 +188,7 @@ permalink: /donate
     font-family: 'Courier New', monospace;
     font-size: 18px;
     letter-spacing: 0.15em;
-    color: #c9943a;
+    color: #eca52b;
     margin-bottom: 15px;
     text-transform: uppercase;
   }
@@ -237,8 +237,8 @@ permalink: /donate
   
   .btn-secondary {
     background: transparent;
-    border: 2px solid #c9943a;
-    color: #c9943a;
+    border: 2px solid #eca52b;
+    color: #eca52b;
   }
   
   .btn-secondary:hover {
@@ -255,7 +255,7 @@ permalink: /donate
   
   .support-card {
     background: rgba(42, 31, 24, 0.8);
-    border-left: 3px solid #c9943a;
+    border-left: 3px solid #eca52b;
     padding: 24px;
     transition: all 0.3s ease;
   }
@@ -269,7 +269,7 @@ permalink: /donate
     font-family: 'Courier New', monospace;
     font-size: 14px;
     letter-spacing: 0.15em;
-    color: #c9943a;
+    color: #eca52b;
     margin-bottom: 12px;
     text-transform: uppercase;
   }
@@ -287,7 +287,7 @@ permalink: /donate
   }
   
   .social-link {
-    color: #c9943a;
+    color: #eca52b;
     text-decoration: none;
     font-family: 'Courier New', monospace;
     font-size: 11px;

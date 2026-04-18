@@ -167,7 +167,7 @@ permalink: /schedule
       </div>
     </div>
     <div style="display:flex;align-items:center;gap:12px;">
-      <a href="{{ "/calendar" | relative_url }}" title="View Operations Calendar" style="display:flex;align-items:center;justify-content:center;width:44px;height:44px;border-radius:10px;background:rgba(201,148,58,0.15);border:1px solid #c9943a;font-size:22px;text-decoration:none;flex-shrink:0;transition:background 0.2s,transform 0.15s;" onmouseover="this.style.background='rgba(201,148,58,0.3)';this.style.transform='translateY(-2px)'" onmouseout="this.style.background='rgba(201,148,58,0.15)';this.style.transform='none'"></a>
+      <a href="{{ "/calendar" | relative_url }}" title="View Operations Calendar" style="display:flex;align-items:center;justify-content:center;width:44px;height:44px;border-radius:10px;background:rgba(201,148,58,0.15);border:1px solid #eca52b;font-size:22px;text-decoration:none;flex-shrink:0;transition:background 0.2s,transform 0.15s;" onmouseover="this.style.background='rgba(201,148,58,0.3)';this.style.transform='translateY(-2px)'" onmouseout="this.style.background='rgba(201,148,58,0.15)';this.style.transform='none'"></a>
       <div class="rr-clock">
         <div class="time" id="rrTime">--:--:--</div>
         <div class="date" id="rrDate">---</div>

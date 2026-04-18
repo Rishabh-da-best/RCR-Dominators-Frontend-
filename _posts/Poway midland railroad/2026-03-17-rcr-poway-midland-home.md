@@ -7,7 +7,7 @@ permalink: /
   <style>
     
     :root {
-      --rust:  #b94a1c; --ember: #e8621a; --gold:  #c9943a;
+      --rust:  #b94a1c; --ember: #e8621a; --gold:  #eca52b;
       --coal:  #faf8f5; --iron:  #ffffff; --iron2: #f0ebe2;
       --steam: #2c1f0e; --smoke: #7a6a58; --rail:  #4a3f35;
     }
