@@ -119,7 +119,7 @@ permalink: /history
 <div class="hs-hero">
   <div class="hs-tag">Since 1880s · Poway–Midland Railroad</div>
   <h1>Iron Horse <em>History</em></h1>
-  <p>From valley settlers dreaming of rail lines to the volunteers keeping the steam alive — the full story of the Poway Midland Railroad.</p>
+  <p>The Poway-Midland Railroad is a non-profit organization dedicated to preserving and operating historical railroad equipment. We run Steam Locomotive, Cable Car, and Speeder rides throughout the year with the help of passionate volunteers.</p>
   <div class="hs-track"></div>
 </div>
 

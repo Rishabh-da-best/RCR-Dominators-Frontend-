@@ -185,7 +185,7 @@ permalink: /
     /* Quick links */
     .rr-quick {
       display:grid; grid-template-columns:repeat(4,1fr);
-      gap:12px; margin-bottom:60px;
+      gap:12px;
     }
     @media(max-width:900px){ .rr-quick{ grid-template-columns:repeat(2,1fr); } }
     .rr-quick-card {

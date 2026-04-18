@@ -251,7 +251,8 @@ permalink: /contact
 <div class="rr-hero">
   <div class="rr-hero-tag">Get in Touch · Poway–Midland Railroad</div>
   <h1>Contact <em>&amp; Feedback</em></h1>
-  <p>Share group requests, volunteer interest, and event support needs.</p>
+  <p>Looking for a unique event?
+We offer private train rides for groups, birthdays, and special occassions.</p>
   <div class="rr-hero-track"></div>
 </div>
 
@@ -293,15 +294,6 @@ permalink: /contact
     </div>
 
     <div>
-      <div class="rr-card" style="margin-bottom:16px;">
-        <div class="rr-card-title">✅ Form UX Checklist</div>
-        <ul class="rr-checklist">
-          <li>Client-side validation runs before submit</li>
-          <li>Errors shown per field in plain language</li>
-          <li>Success and failure states clearly visible</li>
-          <li>Keyboard users can complete every action</li>
-        </ul>
-      </div>
       <div class="rr-card">
         <div class="rr-card-title">📍 Direct Contact</div>
         <div class="rr-contact-info">
