@@ -18,8 +18,7 @@ permalink: /calendar
   .cal-wrap{display:flex;flex-direction:column;min-height:100vh;margin:0;padding:0;}
 
   .cal-header{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:14px;padding:20px;background:var(--coal);border-bottom:1px solid var(--border);flex-shrink:0;}
-  .cal-header-left{display:flex;align-items:center;gap:12px;}
-  .cal-logo{font-size:28px;background:var(--rust);border-radius:10px;width:48px;height:48px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+  .cal-header-left{display:flex;align-items:center;gap:12px;}height:48px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
   .cal-title{font-size:clamp(16px,2.5vw,20px);font-weight:700;color:var(--steam);margin:0;}
   .cal-subtitle{font-size:11px;color:var(--subtext);letter-spacing:0.1em;text-transform:uppercase;margin-top:2px;}
 
@@ -96,7 +95,6 @@ permalink: /calendar
 
   <div class="cal-header">
     <div class="cal-header-left">
-      <div class="cal-logo"></div>
       <div>
         <div class="cal-title">Operations Calendar</div>
         <div class="cal-subtitle">Poway–Midland Railroad · Old Poway Park</div>

@@ -172,8 +172,10 @@ permalink: /login
   </div>
 </div>
 
-<script>
-const BACKEND = 'http://localhost:8428';
+<script type = "module">
+import pythonURI from "/assets/js/api/config.js"
+
+const BACKEND = pythonURI;
 const REDIRECT_AFTER_LOGIN   = '{{ "/" | relative_url }}';
 const REDIRECT_AFTER_SIGNUP  = '{{ "/" | relative_url }}';
 const validateEmail = e => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(e);

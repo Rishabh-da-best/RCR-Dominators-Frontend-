@@ -247,7 +247,7 @@ permalink: /profile
 </div>
 
 <script>
-  const BACKEND = 'http://localhost:8428';
+  const BACKEND = pythonURI;
   let pfUser = null;
 
   async function pfInit() {

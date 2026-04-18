@@ -68,29 +68,20 @@ permalink: /volunteer-schedule
       align-items: center;
       gap: 14px;
     }
-    .vol-logo {
-      background: var(--rust);
-      border-radius: 10px;
-      width: 46px;
-      height: 46px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 26px;
-    }
+
     .vol-title h1 {
       font-size: 1.5rem;
       font-weight: 800;
       color: var(--text);
       letter-spacing: -0.2px;
     }
-    .vol-title p {
-      font-size: 0.75rem;
-      color: var(--subtext);
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      margin-top: 2px;
-    }
+.vol-title p {
+  font-size: 0.75rem;
+  color: #000000 !important;  
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-top: 2px;
+}
     .vol-back {
       background: var(--white);
       border: 1px solid var(--border);
@@ -152,7 +143,6 @@ permalink: /volunteer-schedule
 <div class="vol-wrap">
   <div class="vol-header">
     <div class="vol-brand">
-      <div class="vol-logo">👥</div>
       <div class="vol-title">
         <h1>Volunteer Crew Schedule</h1>
         <p>Poway–Midland Railroad · Operations Sign-up</p>

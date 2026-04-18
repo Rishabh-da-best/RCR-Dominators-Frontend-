@@ -174,7 +174,7 @@ permalink: /notes
 </div>
 
 <script>
-  const BACKEND = 'http://localhost:8428';
+  const BACKEND = pythonURI;
 
   let ntImageBase64 = null;
   let ntImageType   = null;

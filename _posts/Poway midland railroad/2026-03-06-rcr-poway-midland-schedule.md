@@ -248,7 +248,7 @@ permalink: /schedule
 </div>
 
 <script>
-  const BACKEND = 'http://localhost:8587';
+  const BACKEND = pythonURI;
   const RR_STOPS = ['Depot Station','Oak Grove','Midland Curve','Park Loop','Return to Depot'];
 
   let rrViewDate = null; // null = today

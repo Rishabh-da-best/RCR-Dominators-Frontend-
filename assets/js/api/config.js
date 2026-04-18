@@ -3,7 +3,13 @@
 
 export const baseurl = "{{ site.baseurl }}";
 
-export var pythonURI = "https://rcr-user.opencodingsociety.com";
+export var pythonURI;
+if (location.hostname ==="localhost") {
+    pythonURI = "http://localhost:8428";
+}
+else {
+    pythonURI = "https://rcr-user.opencodingsociety.com";
+}
 
 export var javaURI = "https://spring.opencodingsociety.com";
 
