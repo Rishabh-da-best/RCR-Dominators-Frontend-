@@ -1,5 +1,5 @@
 ---
-layout: base
+layout: opencs
 title: Book a Train Ride
 permalink: /book
 ---

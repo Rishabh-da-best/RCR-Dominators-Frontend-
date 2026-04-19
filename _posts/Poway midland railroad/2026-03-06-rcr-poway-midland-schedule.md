@@ -1,5 +1,5 @@
 ---
-layout: base
+layout: opencs
 title: Train Schedule & Tracker
 permalink: /schedule
 ---

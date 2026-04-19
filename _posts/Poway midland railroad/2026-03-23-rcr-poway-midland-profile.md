@@ -1,5 +1,5 @@
 ---
-layout: base
+layout: opencs
 title: My Profile
 permalink: /profile
 ---
