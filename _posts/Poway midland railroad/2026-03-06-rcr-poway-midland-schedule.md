@@ -6,7 +6,7 @@ permalink: /schedule
 
 <style>
   :root {
-    --rust:  #000000;
+    --rust:  #2A1A0E;
     --gold:  #000000;
     --green: #2d6a4f;
     --amber: #e8a020;
@@ -49,7 +49,7 @@ permalink: /schedule
 
   .rr-header { display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:16px; background:var(--track); border-radius:14px; padding:24px 28px; margin-bottom:12px; border:1px solid var(--border); }
   .rr-header-left { display:flex; align-items:center; gap:14px; }
-  .rr-logo { font-size:32px; background:var(--rust); border-radius:50%; width:52px; height:52px; display:flex; align-items:center; justify-content:center; border:2px solid var(--gold); flex-shrink:0; }
+  .rr-logo { font-size:32px; background:#f0ebe2; border-radius:50%; width:52px; height:52px; display:flex; align-items:center; justify-content:center; border:1px solid var(--gold); flex-shrink:0; }
   .rr-title { font-size:clamp(15px,3vw,20px); font-weight:700; color:#2c1f0e; margin:0; line-height:1.2; }
   .rr-subtitle { font-size:10px; color:var(--gold); letter-spacing:0.15em; text-transform:uppercase; margin-top:3px; }
 
@@ -58,7 +58,7 @@ permalink: /schedule
   .rr-clock .date { font-size:10px; color:var(--smoke); letter-spacing:0.08em; text-transform:uppercase; }
 
   .rr-ticker { background:var(--rust); border-radius:8px; overflow:hidden; white-space:nowrap; padding:7px 0; margin-bottom:20px; }
-  .rr-ticker-inner { display:inline-block; animation:rr-scroll 30s linear infinite; font-family:'Courier New',monospace; font-size:11px; color:#2c1f0e; letter-spacing:0.1em; }
+  .rr-ticker-inner { display:inline-block; animation:rr-scroll 30s linear infinite; font-family:'Courier New',monospace; font-size:18px; color:#fff; letter-spacing:0.1em; }
   @keyframes rr-scroll { from { transform:translateX(100vw); } to { transform:translateX(-100%); } }
 
   .rr-date-switcher { display:flex; align-items:center; gap:10px; background:var(--track); border:1px solid var(--border); border-radius:10px; padding:12px 18px; margin-bottom:16px; flex-wrap:wrap; }
@@ -92,7 +92,7 @@ permalink: /schedule
   .rr-bar-wrap { flex:1; min-width:100px; height:6px; background:rgba(255,255,255,0.1); border-radius:3px; overflow:hidden; }
   .rr-bar-fill { height:100%; border-radius:3px; transition:width 0.6s ease; }
   .rr-seats-text { font-family:'Courier New',monospace; font-size:11px; color:var(--smoke); white-space:nowrap; }
-  .rr-badge { padding:10px 16px; border-radius:8px; font-family:'Courier New',monospace; font-size:12px; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; color:#2c1f0e; text-align:center; white-space:nowrap; }
+  .rr-badge { padding:10px 16px; border-radius:8px; font-family:'Courier New',monospace; font-size:12px; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; color:#fff; text-align:center; white-space:nowrap; }
 
   .rr-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(230px,1fr)); gap:12px; margin-bottom:32px; }
 
@@ -160,14 +160,14 @@ permalink: /schedule
 
   <div class="rr-header">
     <div class="rr-header-left">
-      <div class="rr-logo"></div>
+      <div class="rr-logo">🚂</div>
       <div>
         <div class="rr-title">Poway–Midland Railroad</div>
         <div class="rr-subtitle">Old Poway Park · Schedule &amp; Live Tracker</div>
       </div>
     </div>
     <div style="display:flex;align-items:center;gap:12px;">
-      <a href="{{ "/calendar" | relative_url }}" title="View Operations Calendar" style="display:flex;align-items:center;justify-content:center;width:44px;height:44px;border-radius:10px;background:rgba(201,148,58,0.15);border:1px solid #eca52b;font-size:22px;text-decoration:none;flex-shrink:0;transition:background 0.2s,transform 0.15s;" onmouseover="this.style.background='rgba(201,148,58,0.3)';this.style.transform='translateY(-2px)'" onmouseout="this.style.background='rgba(201,148,58,0.15)';this.style.transform='none'"></a>
+      <a href="{{ "/calendar" | relative_url }}" title="View Operations Calendar" style="display:flex;align-items:center;justify-content:center;width:44px;height:44px;border-radius:10px;background:rgba(201,148,58,0.15);border:1px solid #eca52b;font-size:22px;text-decoration:none;flex-shrink:0;transition:background 0.2s,transform 0.15s;" onmouseover="this.style.background='rgba(201,148,58,0.3)';this.style.transform='translateY(-2px)'" onmouseout="this.style.background='rgba(201,148,58,0.15)';this.style.transform='none'">🗓️</a>
       <div class="rr-clock">
         <div class="time" id="rrTime">--:--:--</div>
         <div class="date" id="rrDate">---</div>

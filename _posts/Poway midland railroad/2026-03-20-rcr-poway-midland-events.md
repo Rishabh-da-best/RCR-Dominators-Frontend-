@@ -113,7 +113,7 @@ permalink: /events
 
 <script>
 const UPDATES = [
-  { id:1, title:"Spring Family Ride Window Expanded",   category:"events",     date:"2026-03-12", summary:"Saturday rides now run until 4:30 PM during spring programming weeks." },
+  { id:1, title:"Steam Every Saturday!",   category:"events",     date:"2026-03-10", summary:"Starting 2026, our beloved 1907 Baldwin Steam Locomotive runs every single Saturday. Come feel the steam and hear the whistle every weekend." },
   { id:2, title:"Volunteer Engineer Orientation",       category:"volunteer",  date:"2026-03-08", summary:"New volunteer orientation includes dispatch basics, safety checks, and guest operations." },
   { id:3, title:"Group Booking Support Added",          category:"service",    date:"2026-02-27", summary:"School and community groups can request planning support through the online form." },
   { id:4, title:"Track Maintenance Complete",           category:"operations", date:"2026-02-15", summary:"Routine maintenance improved ride smoothness and reduced dwell time at turnaround point." },
@@ -147,14 +147,46 @@ function render() {
     listEl.innerHTML = '<div class="rr-empty">No results match your search.</div>';
     return;
   }
-  filtered.forEach(u => {
-    listEl.innerHTML += `
-      <div class="rr-announcement">
-        <div class="rr-ann-title">${u.title}</div>
-        <div class="rr-ann-meta">${u.category.toUpperCase()} · ${u.date}</div>
-        <div class="rr-ann-body">${u.summary}</div>
-      </div>`;
+
+  function escapeHtml(str) {
+  if (!str) return '';
+  return str.replace(/[&<>]/g, function(m) {
+    if (m === '&') return '&amp;';
+    if (m === '<') return '&lt;';
+    if (m === '>') return '&gt;';
+    return m;
   });
+}
+
+filtered.forEach(u => {
+  // 根据 category 生成不同的跳转链接
+  let detailUrl = '#';
+  switch (u.category) {
+    case 'events':
+      detailUrl = `/events/${u.id}`;
+      break;
+    case 'volunteer':
+      detailUrl = `/volunteer/${u.id}`;
+      break;
+    case 'service':
+      detailUrl = `/service/${u.id}`;
+      break;
+    case 'operations':
+      detailUrl = `/operations/${u.id}`;
+      break;
+    default:
+      detailUrl = `/announcement/${u.id}`;
+  }
+  
+  listEl.innerHTML += `
+    <a href="${detailUrl}" class="rr-announcement-link" style="text-decoration: none; display: block; cursor: pointer;">
+      <div class="rr-announcement">
+        <div class="rr-ann-title">${escapeHtml(u.title)}</div>
+        <div class="rr-ann-meta">${u.category.toUpperCase()} · ${u.date}</div>
+        <div class="rr-ann-body">${escapeHtml(u.summary)}</div>
+      </div>
+    </a>`;
+});
 }
 
 searchEl.addEventListener('input', render);

@@ -108,24 +108,24 @@ permalink: /calendar
     <div class="cal-info">
       <div style="margin-bottom: 8px;">
         <div style="font-size: 12px; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: var(--subtext); margin-bottom: 12px;">Operations Guide</div>
-        <div class="legend-item"><div class="legend-dot dot-steam"></div> <span style="font-size: 11px;">Steam Locomotive (Sat 10am–2pm)</span></div>
-        <div class="legend-item"><div class="legend-dot dot-cable"></div> <span style="font-size: 11px;">Cable Car (Sun 11am–2pm)</span></div>
-        <div class="legend-item"><div class="legend-dot dot-speeder"></div> <span style="font-size: 11px;">Speeder w/ Ore Cars (Sun 11am–2pm)</span></div>
+        <div class="legend-item"><div class="legend-dot dot-steam"></div> <span style="font-size: 11px;">🚂 Steam Locomotive (Sat 10am–2pm)</span></div>
+        <div class="legend-item"><div class="legend-dot dot-cable"></div> <span style="font-size: 11px;">🚌 Cable Car (Sun 11am–2pm)</span></div>
+        <div class="legend-item"><div class="legend-dot dot-speeder"></div> <span style="font-size: 11px;">🚃 Speeder w/ Ore Cars (Sun 11am–2pm)</span></div>
         <div class="legend-item"><div class="legend-dot dot-none"></div> <span style="font-size: 11px;">No Operation</span></div>
       </div>
 
       <div class="cal-info-card">
-        <div class="cal-info-label">Steam Locomotive</div>
+        <div class="cal-info-label">🚂 Steam Locomotive</div>
         <div class="cal-info-value">Every Saturday</div>
         <div class="cal-info-sub">10:00am – 2:00pm<br>Up to 65 riders<br>Adult $5 · Child $2</div>
       </div>
       <div class="cal-info-card" style="border-top-color:#3b82f6;">
-        <div class="cal-info-label">Cable Car</div>
+        <div class="cal-info-label">🚌 Cable Car</div>
         <div class="cal-info-value">Select Sundays</div>
         <div class="cal-info-sub">11:00am – 2:00pm<br>Up to 30 riders<br>Adult $5 · Child $2</div>
       </div>
       <div class="cal-info-card" style="border-top-color:#10b981;">
-        <div class="cal-info-label">Speeder w/ Ore Cars</div>
+        <div class="cal-info-label">🚃 Speeder w/ Ore Cars</div>
         <div class="cal-info-value">Select Sundays</div>
         <div class="cal-info-sub">11:00am – 2:00pm<br>Up to 30 riders<br>Adult $4 · Child $2</div>
       </div>
@@ -175,7 +175,7 @@ permalink: /calendar
     '2026-5-30':'steam','2026-5-31':'cable',
   };
   const EVENT_CONFIG = {
-    steam:  {cls:'event-steam',  label:' Steam Locomotive',time:'10am – 2pm'},
+    steam:  {cls:'event-steam',  label:'🚂 Steam Locomotive',time:'10am – 2pm'},
     cable:  {cls:'event-cable',  label:'🚌 Cable Car',       time:'11am – 2pm'},
     speeder:{cls:'event-speeder',label:'🚃 Speeder',         time:'11am – 2pm'},
     none:   {cls:'event-none',   label:'No Operation',       time:''},
