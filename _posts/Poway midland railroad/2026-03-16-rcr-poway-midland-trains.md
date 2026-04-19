@@ -23,7 +23,7 @@ permalink: /trains
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
   .eq-page {
-    background: var(--coal);
+    background: #faf8f5;
     min-height: 100vh;
     font-family: 'Source Serif 4', Georgia, serif;
     color: var(--steam);
@@ -134,6 +134,7 @@ permalink: /trains
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
     gap: 12px;
+    margin-top: 40px;
   }
 
   /* ── Card ── */
@@ -166,7 +167,6 @@ permalink: /trains
     filter: drop-shadow(0 4px 12px rgba(0,0,0,0.5));
     transition: transform 0.3s;
   }
-  .eq-card:hover .eq-card-emoji { transform: scale(1.1) rotate(-3deg); }
 
   .eq-card-body { padding: 0 28px 28px; }
 
@@ -232,6 +232,7 @@ permalink: /trains
     background: rgba(255,255,255,0.95);
     display: flex; align-items: center; justify-content: center;
     padding: 24px;
+    margin-top: 55px;
     opacity: 0; pointer-events: none;
     transition: opacity 0.3s;
   }
@@ -250,7 +251,6 @@ permalink: /trains
   }
   .eq-modal-overlay.open .eq-modal { transform: none; }
 
-  .eq-modal-banner { height: 8px; background: var(--rust); }
   .eq-modal-banner.cable   { background: #3b82f6; }
   .eq-modal-banner.speeder { background: #10b981; }
   .eq-modal-banner.gondola { background: #8b5cf6; }
@@ -259,7 +259,7 @@ permalink: /trains
   .eq-modal-close {
     position: absolute; top: 20px; right: 20px;
     width: 32px; height: 32px; border-radius: 50%;
-    background: rgba(0,0,0,0.08); border: none;
+    background: rgba(0, 0, 0, 0); border: none;
     color: var(--steam); font-size: 18px; cursor: pointer;
     display: flex; align-items: center; justify-content: center;
     transition: background 0.2s;
@@ -357,7 +357,7 @@ permalink: /trains
   <div class="eq-filters">
     <button class="eq-filter-btn active" onclick="eqFilter('all', this)">All Equipment</button>
     <button class="eq-filter-btn" onclick="eqFilter('operational', this)">🟢 Operational</button>
-    <button class="eq-filter-btn" onclick="eqFilter('steam', this)"> Steam</button>
+    <button class="eq-filter-btn" onclick="eqFilter('steam', this)">🚂 Steam</button>
     <button class="eq-filter-btn" onclick="eqFilter('cable', this)">🚌 Cable Car</button>
     <button class="eq-filter-btn" onclick="eqFilter('speeder', this)">🚃 Speeder</button>
     <button class="eq-filter-btn" onclick="eqFilter('static', this)">🏛 Static</button>
@@ -373,7 +373,7 @@ permalink: /trains
     <div class="eq-modal-banner" id="eqModalBanner"></div>
     <button class="eq-modal-close" onclick="eqCloseModal()">✕</button>
     <div id="eqModalPhoto" style="display:none;">
-      <img id="eqModalPhotoImg" src="" alt="" style="width:100%;max-height:340px;object-fit:cover;display:block;">
+      <img id="eqModalPhotoImg" src="" alt="" style="width:100%;max-height:340px;border-radius: 0;">
     </div>
     <div class="eq-modal-header">
       <span class="eq-modal-emoji" id="eqModalEmoji"></span>
@@ -396,7 +396,7 @@ const EQ_DATA = [
   {
     id: 'steam',
     photo: '/assets/images/steam-engine1-1.png',
-    emoji: '',
+    emoji: '🚂',
     type: 'Steam Locomotive',
     name: '1907 Baldwin 0-4-0',
     bannerClass: '',
@@ -582,7 +582,7 @@ const EQ_DATA = [
   },
   {
     id: 'caboose',
-    emoji: '',
+    emoji: '🚂',
     type: 'Static Display',
     name: '1937 Southern Pacific Caboose',
     bannerClass: 'static',
