@@ -4,6 +4,7 @@ title: Train Schedule & Tracker
 permalink: /schedule
 ---
 
+<script src="/assets/js/api/config.js"></script>
 <style>
   :root {
     --rust:  #2A1A0E;
@@ -283,33 +284,43 @@ permalink: /schedule
     const isToday = viewDate.toDateString() === now.toDateString();
 
     if (!apiData || !apiData.operating) {
-      return { open: false, rides: [], trainType: null };
+        return { open: false, rides: [], trainType: null };
     }
 
     const rides = apiData.rides.map(r => {
-      const [hh, mm] = r.time.split(':').map(Number);
-      const dep  = new Date(viewDate);
-      dep.setHours(hh, mm, 0, 0);
-      const diff = Math.round((dep - now) / 60000);
+        const [hh, mm] = r.time.split(':').map(Number);
+        const dep  = new Date(viewDate);
+        dep.setHours(hh, mm, 0, 0);
+        const diff = Math.round((dep - now) / 60000);
 
-      let status;
-      if (r.status === 'full')                     status = 'full';
-      else if (isToday && diff < -15)              status = 'full';
-      else if (isToday && diff < 0)                status = 'boarding';
-      else                                         status = 'ontime';
+        // Map status from API to frontend expected values
+        let status;
+        if (r.status === 'full') {
+            status = 'full';
+        } else if (r.status === 'boarding') {
+            status = 'boarding';
+        } else if (r.status === 'ontime') {
+            status = 'ontime';
+        } else if (isToday && diff < -15) {
+            status = 'full';
+        } else if (isToday && diff < 0) {
+            status = 'boarding';
+        } else {
+            status = 'ontime';
+        }
 
-      return {
-        time:      r.time,
-        h:         hh,
-        diff,
-        status,
-        seats:     r.available,
-        total:     r.capacity,
-        taken:     r.booked,
-        trainType: r.train_type,
-        isToday,
-        dateStr:   apiData.date
-      };
+        return {
+            time:      r.time,
+            h:         hh,
+            diff,
+            status,
+            seats:     r.available,      // available seats
+            total:     r.capacity,       // total capacity
+            taken:     r.booked,         // booked seats
+            trainType: r.train_type || apiData.train_type,
+            isToday,
+            dateStr:   apiData.date
+        };
     });
 
     return { open: true, rides, trainType: apiData.train_type };
@@ -318,7 +329,7 @@ permalink: /schedule
   const SC = {
     ontime:   {label:'On Time',  pill:'pill-ontime',   color:'var(--green)', bar:'#4caf82'},
     boarding: {label:'Boarding', pill:'pill-boarding',  color:'var(--amber)', bar:'var(--amber)'},
-    full:     {label:'Full',     pill:'pill-full',      color:'var(--steel)', bar:'#666'},
+    full:     {label:'Full',     pill:'pill-full',      color:'var(--gold)', bar:'#666'},
   };
 
   // ── Render schedule using API data ─────────────────────────────────────────
@@ -359,10 +370,29 @@ permalink: /schedule
     dot.style.animation  = '';
     txt.innerHTML = `<strong>TRAINS RUNNING</strong> — ${trainType} · Last ride at 1:45pm`;
 
-    // Next departure
-    const upcoming = isToday ? rides.filter(r => r.diff > -5 && r.status !== 'full') : rides;
-    const next = upcoming[0];
+    // Next departure - show next ride or no more rides message
+    let next = null;
+    let noMoreRides = false;
+
+    if (isToday) {
+      // Find upcoming rides within 5 minutes (not departed yet)
+      next = rides.find(r => r.diff > -5 && r.status !== 'full');
+      
+      // If no upcoming rides found, check if there were any rides today
+      if (!next && rides.length > 0) {
+        const lastRide = rides[rides.length - 1];
+        // If last ride has already departed, show "no more rides" message
+        if (lastRide && lastRide.diff < 0) {
+          noMoreRides = true;
+        }
+      }
+    } else {
+      // For future dates, just show first ride
+      next = rides[0];
+    }
+
     if (next) {
+      // Has upcoming ride - display normally
       document.getElementById('rrNextTime').textContent = next.time;
       let sub = '';
       if (isFuture)          sub = `First ride at ${rides[0].time} · ${trainType}`;
@@ -378,6 +408,22 @@ permalink: /schedule
       const cfg = SC[next.status];
       document.getElementById('rrNextBadge').textContent       = cfg.label;
       document.getElementById('rrNextBadge').style.background  = cfg.color;
+    } else if (noMoreRides) {
+      // No more rides today - all trains have departed
+      document.getElementById('rrNextTime').textContent = 'No more rides today';
+      document.getElementById('rrNextSub').textContent = 'All trains have departed for today';
+      document.getElementById('rrNextSeats').textContent = '';
+      document.getElementById('rrNextBar').style.width = '0%';
+      document.getElementById('rrNextBadge').textContent = 'Closed';
+      document.getElementById('rrNextBadge').style.background = 'var(--steel)';
+    } else {
+      // No rides on this date (non-operating day)
+      document.getElementById('rrNextTime').textContent = 'No rides';
+      document.getElementById('rrNextSub').textContent = 'No train rides on this date';
+      document.getElementById('rrNextSeats').textContent = '';
+      document.getElementById('rrNextBar').style.width = '0%';
+      document.getElementById('rrNextBadge').textContent = 'Closed';
+      document.getElementById('rrNextBadge').style.background = 'var(--steel)';
     }
 
     // Ride cards
@@ -403,7 +449,7 @@ permalink: /schedule
         <div class="rr-info-row"><span>Ride Duration</span><span>~10–15 min</span></div>
         <div class="rr-info-row"><span>Adult Fare</span><span>${r.trainType.includes('Speeder')?'$4.00':'$5.00'}</span></div>
         <div class="rr-card-bar"><div class="rr-card-fill" style="width:${pct}%;background:${cfg.bar}"></div></div>
-        ${r.status==='full'?`<div class="rr-alert alert-full">🔒 This ride is fully booked</div>`:''}
+        ${r.status==='full'?`<div class="rr-alert alert-full">This ride is fully booked</div>`:''}
         <a href="${bookUrl}" class="rr-book-btn ${canBook?'':'disabled'}">${canBook?' Book This Ride':'Fully Booked'}</a>
       `;
       grid.appendChild(card);

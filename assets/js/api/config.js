@@ -1,19 +1,17 @@
 ---
 ---
 
-export const baseurl = "{{ site.baseurl }}";
+window.baseurl = "{{ site.baseurl }}";
 
-export var pythonURI;
-if (location.hostname ==="localhost") {
-    pythonURI = "http://localhost:8428";
-}
-else {
-    pythonURI = "https://rcr-user.opencodingsociety.com";
+if (location.hostname === "localhost") {
+    window.pythonURI = "http://localhost:8428";
+} else {
+    window.pythonURI = "https://rcr-user.opencodingsociety.com";
 }
 
-export var javaURI = "https://spring.opencodingsociety.com";
+window.javaURI = "https://spring.opencodingsociety.com";
 
-export const fetchOptions = {
+window.fetchOptions = {
     method: 'GET',
     mode: 'cors',
     cache: 'default',
@@ -24,28 +22,35 @@ export const fetchOptions = {
     },
 };
 
-export function login(options) {
+window.login = function(options) {
     const requestOptions = {
-        ...fetchOptions,
+        ...window.fetchOptions,
         method: options.method || 'POST',
         body: options.method === 'POST' ? JSON.stringify(options.body) : undefined
     };
 
-    document.getElementById(options.message).textContent = "";
+    if (options.message) {
+        document.getElementById(options.message).textContent = "";
+    }
 
     fetch(options.URL, requestOptions)
     .then(response => {
         if (!response.ok) {
             const errorMsg = 'Login error: ' + response.status;
             console.log(errorMsg);
-            document.getElementById(options.message).textContent = errorMsg;
+            if (options.message) {
+                document.getElementById(options.message).textContent = errorMsg;
+            }
             return response;
         }
-        options.callback();
+        if (options.callback) {
+            options.callback();
+        }
     })
     .catch(error => {
         console.log('Possible CORS or Service Down error: ' + error);
-        document.getElementById(options.message).textContent = 'Possible CORS or service down error: ' + error;
+        if (options.message) {
+            document.getElementById(options.message).textContent = 'Possible CORS or service down error: ' + error;
+        }
     });
-}
-EOF
+};
