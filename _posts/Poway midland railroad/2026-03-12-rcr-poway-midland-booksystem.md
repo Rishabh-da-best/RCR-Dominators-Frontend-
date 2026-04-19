@@ -138,18 +138,6 @@ permalink: /book
 <div style="background:#ffffff;display:flex;flex-direction:column;min-height:100vh;">
 <div class="bk-wrap">
 
-  <!-- Header -->
-  <div class="bk-header">
-    <div class="bk-header-left">
-      <div class="bk-logo"></div>
-      <div>
-        <div class="bk-title">Book a Train Ride</div>
-        <div class="bk-subtitle">Poway–Midland Railroad · Old Poway Park</div>
-      </div>
-    </div>
-    <a href="#" id="bkBackBtn" class="bk-back">← Back to Schedule</a>
-  </div>
-
   <!-- Main content area - flex row -->
   <div class="main-content">
     <!-- Left side - Ride summary -->
@@ -270,52 +258,58 @@ permalink: /book
   let bkAdult = 1, bkChild = 0, bkInfant = 0;
   let bkAdultPrice = 5;
   let bkRideDate = '', bkRideTime = '', bkRideType = '';
-  let bkMaxSeats = 99; // set from URL param, enforced in bkChange()
+  let bkMaxSeats = 99;
 
-  function bkInit() {
-    const params = new URLSearchParams(window.location.search);
-    bkRideDate = params.get('date') || '';
-    bkRideTime = params.get('time') || '';
-    bkRideType = params.get('type') || '';
+function bkInit() {
+  const params = new URLSearchParams(window.location.search);
+  bkRideDate = params.get('date') || '';
+  bkRideTime = params.get('time') || '';
+  bkRideType = params.get('type') || '';
 
-    // Back button goes back to schedule with same date
+  // Fix: Check if element exists before setting href
+  const backBtn = document.getElementById('bkBackBtn');
+  if (backBtn) {
     const backUrl = bkRideDate ? `/schedule?date=${bkRideDate}` : '/schedule';
-    document.getElementById('bkBackBtn').href = backUrl;
-
-    // Fill ride summary
-    document.getElementById('bkTime').textContent = bkRideTime || '--:--';
-    document.getElementById('bkType').textContent = bkRideType || 'Train Ride';
-
-    if (bkRideDate) {
-      const d = new Date(bkRideDate + 'T12:00:00');
-      const days   = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
-      const months = ['January','February','March','April','May','June','July','August','September','October','November','December'];
-      document.getElementById('bkDate').textContent = `${days[d.getDay()]}, ${months[d.getMonth()]} ${d.getDate()}, ${d.getFullYear()}`;
-    }
-
-    // Read available seats from URL, show in ride card
-    const seatsParam = parseInt(params.get('seats'));
-    if (!isNaN(seatsParam)) {
-      bkMaxSeats = seatsParam;
-    }
-    const seatsInfoEl = document.getElementById('bkSeatsAvail');
-    if (seatsInfoEl) {
-      seatsInfoEl.textContent = bkMaxSeats >= 99 ? 'Loading...' : `${bkMaxSeats} seat${bkMaxSeats!==1?'s':''} available`;
-      seatsInfoEl.style.color = bkMaxSeats <= 3 ? '#c0392b' : '#2d6a4f';
-    }
-
-    // Speeder is $4 adult
-    if (bkRideType.includes('Speeder')) {
-      bkAdultPrice = 4;
-      document.getElementById('bkFareAdult').textContent = '$4.00';
-      document.getElementById('bkAdultPriceSub').textContent = '$4.00 each';
-    }
-
-    bkUpdateTotals();
+    backBtn.href = backUrl;
   }
 
+  const timeElement = document.getElementById('bkTime');
+  if (timeElement) timeElement.textContent = bkRideTime || '--:--';
+  
+  const typeElement = document.getElementById('bkType');
+  if (typeElement) typeElement.textContent = bkRideType || 'Train Ride';
+
+  if (bkRideDate) {
+    const d = new Date(bkRideDate + 'T12:00:00');
+    const days = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+    const months = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+    const dateElement = document.getElementById('bkDate');
+    if (dateElement) dateElement.textContent = `${days[d.getDay()]}, ${months[d.getMonth()]} ${d.getDate()}, ${d.getFullYear()}`;
+  }
+
+  const seatsParam = parseInt(params.get('seats'));
+  if (!isNaN(seatsParam)) {
+    bkMaxSeats = seatsParam;
+  }
+  const seatsInfoEl = document.getElementById('bkSeatsAvail');
+  if (seatsInfoEl) {
+    seatsInfoEl.textContent = bkMaxSeats >= 99 ? 'Loading...' : `${bkMaxSeats} seat${bkMaxSeats!==1?'s':''} available`;
+    seatsInfoEl.style.color = bkMaxSeats <= 3 ? '#c0392b' : '#2d6a4f';
+  }
+
+  if (bkRideType.includes('Speeder')) {
+    bkAdultPrice = 4;
+    const fareElement = document.getElementById('bkFareAdult');
+    if (fareElement) fareElement.textContent = '$4.00';
+    const priceSubElement = document.getElementById('bkAdultPriceSub');
+    if (priceSubElement) priceSubElement.textContent = '$4.00 each';
+  }
+
+  bkUpdateTotals();
+}
+
   function bkChange(type, delta) {
-    const totalPaid = bkAdult + bkChild; // infants are free and don't take seats
+    const totalPaid = bkAdult + bkChild;
     if (type === 'adult') {
       const next = bkAdult + delta;
       if (next < 1) return;
@@ -344,10 +338,10 @@ permalink: /book
   function bkUpdateTotals() {
     const adultTotal = bkAdult * bkAdultPrice;
     const childTotal = bkChild * 2;
-    const grand      = adultTotal + childTotal;
-    document.getElementById('bkAdultQty').textContent   = bkAdult;
-    document.getElementById('bkChildQty').textContent   = bkChild;
-    document.getElementById('bkInfantQty').textContent  = bkInfant;
+    const grand = adultTotal + childTotal;
+    document.getElementById('bkAdultQty').textContent = bkAdult;
+    document.getElementById('bkChildQty').textContent = bkChild;
+    document.getElementById('bkInfantQty').textContent = bkInfant;
     document.getElementById('bkAdultTotal').textContent = `$${adultTotal.toFixed(2)}`;
     document.getElementById('bkChildTotal').textContent = `$${childTotal.toFixed(2)}`;
     document.getElementById('bkGrandTotal').textContent = `$${grand.toFixed(2)}`;
@@ -355,13 +349,14 @@ permalink: /book
 
   async function bkSubmit() {
     const first = document.getElementById('bkFirstName').value.trim();
-    const last  = document.getElementById('bkLastName').value.trim();
+    const last = document.getElementById('bkLastName').value.trim();
     const email = document.getElementById('bkEmail').value.trim();
     const phone = document.getElementById('bkPhone').value.trim();
 
     const totalTickets = bkAdult + bkChild;
+    
     if (totalTickets > bkMaxSeats) {
-      alert(`Only ${bkMaxSeats} seat(s) available for this ride. Please reduce your ticket count.`);
+      alert(`Only ${bkMaxSeats} seat(s) available. Please reduce your ticket count.`);
       return;
     }
     if (!first || !last || !email || !phone) {
@@ -373,37 +368,35 @@ permalink: /book
       return;
     }
 
-    const btn = document.getElementById('bkSubmitBtn');
-    btn.disabled = true;
-    btn.textContent = 'Submitting...';
+    const submitBtn = document.getElementById('bkSubmitBtn');
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Submitting...';
 
-    // POST to real backend API
     try {
-      const res = await fetch('/api/reservations', {
+      const response = await fetch('http://localhost:8428/api/reservations', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          date:       bkRideDate,
-          time:       bkRideTime,
+          date: bkRideDate,
+          time: bkRideTime,
           train_type: bkRideType,
           first_name: first,
-          last_name:  last,
-          email, phone,
-          adults:   bkAdult,
+          last_name: last,
+          email: email,
+          phone: phone,
+          adults: bkAdult,
           children: bkChild,
-          infants:  bkInfant
+          infants: bkInfant
         })
       });
 
-      const result = await res.json();
+      const result = await response.json();
 
-      if (!res.ok) {
-        // Handle seat conflict (409) or other errors
-        if (res.status === 409) {
+      if (!response.ok) {
+        if (response.status === 409) {
           const avail = result.available ?? 0;
-          alert(`Sorry, only ${avail} seat(s) left for this ride. Please reduce your ticket count.`);
+          alert(`Sorry, only ${avail} seat(s) left.`);
           bkMaxSeats = avail;
-          // Force quantities back down
           if (bkAdult + bkChild > avail) {
             bkAdult = Math.max(1, avail);
             bkChild = Math.max(0, avail - bkAdult);
@@ -412,12 +405,11 @@ permalink: /book
         } else {
           alert('Booking failed: ' + (result.error || 'Unknown error'));
         }
-        btn.disabled = false;
-        btn.textContent = ' Confirm Booking';
+        submitBtn.disabled = false;
+        submitBtn.textContent = ' Confirm Booking';
         return;
       }
 
-      // Success
       const totalPeople = bkAdult + bkChild + bkInfant;
       document.getElementById('bkConfirmCode').textContent = result.confirm_code;
       document.getElementById('bkConfirmDetails').innerHTML = `
@@ -426,18 +418,19 @@ permalink: /book
         <strong>Ride:</strong> ${result.train_type}<br>
         <strong>Date:</strong> ${document.getElementById('bkDate').textContent}<br>
         <strong>Departure:</strong> ${bkRideTime}<br>
-        <strong>Tickets:</strong> ${bkAdult} adult${bkAdult!==1?'s':''}, ${bkChild} child${bkChild!==1?'ren':''}, ${bkInfant} infant${bkInfant!==1?'s':''} (${totalPeople} total)<br>
-        <strong>Seats Remaining After Booking:</strong> ${result.seats_remaining_after}<br>
+        <strong>Tickets:</strong> ${bkAdult} adult${bkAdult !== 1 ? 's' : ''}, ${bkChild} child${bkChild !== 1 ? 'ren' : ''}, ${bkInfant} infant${bkInfant !== 1 ? 's' : ''} (${totalPeople} total)<br>
+        <strong>Seats Remaining:</strong> ${result.seats_remaining_after}<br>
         <strong>Amount Due at Depot:</strong> $${result.total_price.toFixed(2)}
       `;
 
       document.getElementById('bkFormSection').style.display = 'none';
       document.getElementById('bkConfirmSection').classList.add('show');
 
-    } catch(e) {
-      alert('Network error. Please try again.');
-      btn.disabled = false;
-      btn.textContent = ' Confirm Booking';
+    } catch(error) {
+      console.error('Error:', error);
+      alert('Network error: ' + error.message);
+      submitBtn.disabled = false;
+      submitBtn.textContent = ' Confirm Booking';
     }
   }
 
