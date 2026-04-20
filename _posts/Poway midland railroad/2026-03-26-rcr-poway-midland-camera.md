@@ -4,8 +4,6 @@ title: Live Camera & Explorer
 permalink: /camera
 ---
 
-<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pannellum@2.5.6/build/pannellum.css">
 
 <style>
   :root{--coal:#ffffff;--iron:#ffffff;--iron2:#f5f5f5;--rust:#000000;--ember:#333333;--gold:#000000;--steam:#000000;--smoke:#666666;--text:#000000;--subtext:#666666;--background:#ffffff;}
@@ -180,14 +178,25 @@ permalink: /camera
 // ── Data ──────────────────────────────────────────────────────────────────
   const PANO_SCENES = [
     {
-      id: 'porter',
-      title: "Porter's House · Street View",
-      type: 'embed',
+      id: 'porter1',
+      title: "Gazebo View",
+      src: "https://www.google.com/maps/embed?pb=!4v1776718863451!6m8!1m7!1sCAoSF0NJSE0wb2dLRUlDQWdJRDQ2YU9rdVFF!2m2!1d32.96993600442323!2d-117.0370793129599!3f80.74755193883568!4f0!5f0.7820865974627469"
+    },
+    {
+      id: 'porter2',
+      title: "Track View",
+      src: "https://www.google.com/maps/embed?pb=!4v1776719075157!6m8!1m7!1sCAoSFkNJSE0wb2dLRUlDQWdJRDRqUHJwZFE.!2m2!1d32.97003962812893!2d-117.0374035867116!3f52.84635641785955!4f0!5f0.7820865974627469"
+    },
+    {
+      id: 'porter3',
+      title: "Porter's House",
       src: "https://www.google.com/maps/embed?pb=!4v1!6m8!1m7!1sTRGQ3npzCMLCtS2ad2yNNQ!2m2!1d32.9697771!2d-117.0366493!3f114.96!4f7.95!5f0.75"
     },
-    { id:'cars',     title:'Train Cars',          type:'pano', panorama:'https://pannellum.org/images/bma-1.jpg' },
-    { id:'platform', title:'Station Platform',    type:'pano', panorama:'https://pannellum.org/images/cerro-toco-0.jpg' },
-    { id:'tracks',   title:'Tracks Through Park', type:'pano', panorama:'https://pannellum.org/images/jfk.jpg' },
+    {
+      id: 'north',
+      title: "Railroad North End",
+      src: "https://www.google.com/maps/embed?pb=!4v1!6m8!1m7!1s-RJelLThvsiLdgkoscNB_w!2m2!1d32.9711678!2d-117.037117!3f178.1!4f-1.19!5f0.75"
+    },
   ];
 
   const ctrlEl = document.getElementById('panoControls');
