@@ -7,7 +7,7 @@
     const pageLinks = {
         schedule: "/schedule",      // 2026-03-06-rcr-poway-midland-schedule.md
         events: "/events",          // 2026-03-20-rcr-poway-midland-events.md
-        tickets: "/booksystem",     // 2026-03-12-rcr-poway-midland-booksystem.md
+        tickets: "/schedule",     // 2026-03-12-rcr-poway-midland-booksystem.md
         volunteer: "/volunteerschedule", // 2026-03-27-rcr-poway-midland-volunteerschedule.md
         calendar: "/calendar",      // 2026-03-12-rcr-poway-midland-calendar.md
         contact: "/contact",        // 2026-03-20-rcr-poway-midland-contact.md
