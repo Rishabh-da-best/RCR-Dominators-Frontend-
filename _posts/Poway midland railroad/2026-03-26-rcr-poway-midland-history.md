@@ -6,7 +6,7 @@ permalink: /history
 <div class="app-root">
 <style>
 /* ── Color tokens ── */
-.app-root {
+:root {
   --bg:        #ffffff;
   --surface:   #faf9f7;
   --border:    #e8e4de;
@@ -18,8 +18,8 @@ permalink: /history
   --text:      #1a1a18;
   --text2:     #4a4840;
   --text3:     #7a756c;
-  --mono:      'Courier New', monospace;
-  --serif:     'Georgia', serif;
+  --mono:      'Courier New', 'Monaco', 'Menlo', monospace;
+  --serif:     'Georgia', 'Times New Roman', serif;
 }
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
