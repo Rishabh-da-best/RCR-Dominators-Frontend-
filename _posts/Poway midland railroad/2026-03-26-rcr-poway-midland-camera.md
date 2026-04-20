@@ -182,22 +182,33 @@ PANO_SCENES.forEach((s, i) => {
   ctrlEl.appendChild(btn);
 });
 
-// ── Route Data ────────────────────────────────────────────────────────────
+// ── Route Data (PMRR actual loop around Old Poway Park) ───────────────────
 const ROUTE = {
+  // Clockwise loop tracing the actual PMRR track perimeter
   route:[
-    {lat:32.9623,lng:-117.0352},{lat:32.9625,lng:-117.0350},
-    {lat:32.9627,lng:-117.0348},{lat:32.9629,lng:-117.0346},
-    {lat:32.9630,lng:-117.0349},{lat:32.9628,lng:-117.0351},
-    {lat:32.9626,lng:-117.0353}
+    {lat:32.9693, lng:-117.0364}, // Train Depot / Station (start)
+    {lat:32.9696, lng:-117.0358}, // East side, heading north
+    {lat:32.9701, lng:-117.0355}, // NE corner
+    {lat:32.9706, lng:-117.0357}, // North straight
+    {lat:32.9710, lng:-117.0361}, // North side heading west
+    {lat:32.9711, lng:-117.0368}, // NW area
+    {lat:32.9708, lng:-117.0374}, // West side heading south
+    {lat:32.9703, lng:-117.0377}, // SW bend
+    {lat:32.9697, lng:-117.0375}, // South side heading east
+    {lat:32.9694, lng:-117.0371}, // SE curve back toward depot
+    {lat:32.9693, lng:-117.0367}, // approaching depot
+    {lat:32.9693, lng:-117.0364}, // back to Depot (close loop)
   ],
   stops:[
-    {name:'Poway Midland Station', lat:32.9623, lng:-117.0352, type:'start'},
-    {name:'Turnaround Point',      lat:32.9630, lng:-117.0349, type:'turnaround'},
-    {name:'Platform Return',       lat:32.9626, lng:-117.0353, type:'stop'}
+    {name:'Train Depot (Station)',   lat:32.9693, lng:-117.0364, type:'start'},
+    {name:'North Straight',          lat:32.9710, lng:-117.0361, type:'stop'},
+    {name:'West Side / Turnaround',  lat:32.9708, lng:-117.0374, type:'turnaround'},
   ],
   poi:[
-    {name:'Heritage Platform',     lat:32.96245, lng:-117.03505},
-    {name:'Historic Rail Segment', lat:32.96282, lng:-117.03477}
+    {name:"Porter's House",          lat:32.9700, lng:-117.0370},
+    {name:'Train Barn',              lat:32.9695, lng:-117.0366},
+    {name:'Gazebo',                  lat:32.9699, lng:-117.0368},
+    {name:'Nelson House',            lat:32.9704, lng:-117.0363},
   ]
 };
 
