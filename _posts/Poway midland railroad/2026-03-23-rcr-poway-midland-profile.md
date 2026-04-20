@@ -11,6 +11,15 @@ permalink: /profile
     --steam:#000000;--smoke:#666666; --green:#2d6a4f;
     --text:#000000; --subtext:#666666; --background:#ffffff;
   }
+    .page-content {
+    max-width: none !important;
+    padding: 0 !important;
+  }
+
+  .wrapper {
+    max-width: none !important;
+    padding: 0 !important;
+  }
   *, *::before, *::after { box-sizing:border-box; margin:0; padding:0; }
   body { background:var(--coal); color:var(--steam); font-family:'Georgia',serif; padding-top:56px; }
 
@@ -246,43 +255,76 @@ permalink: /profile
   </div>
 </div>
 
-<script>
+<script type="module">
+  import pythonURI from "/assets/js/api/config.module.js";
+  
   const BACKEND = pythonURI;
   let pfUser = null;
-
   async function pfInit() {
-    try {
-      const res  = await fetch(`${BACKEND}/api/auth/status`, { credentials: 'include' });
-      const data = await res.json();
-      if (!data.logged_in) { pfShowGate(); return; }
-      pfUser = data;
-      pfShowProfile(data);
-      pfLoadBookings(data.email);
-    } catch {
-      pfShowGate();
+    // 先检查 localStorage
+    const localLoggedIn = localStorage.getItem('logged_in');
+    
+    if (localLoggedIn === 'true') {
+      // 已登录，直接显示 profile
+      pfUser = {
+        name: localStorage.getItem('user_name'),
+        email: localStorage.getItem('user_email')
+      };
+      pfShowProfile(pfUser);
+      pfLoadBookings(pfUser.email);
+    } else {
+      // 尝试从后端验证
+      try {
+        const res = await fetch(`${BACKEND}/api/auth/status`, { credentials: 'include' });
+        const data = await res.json();
+        if (data.logged_in) {
+          // 同步到 localStorage
+          localStorage.setItem('logged_in', 'true');
+          localStorage.setItem('user_name', data.name);
+          localStorage.setItem('user_email', data.email);
+          pfUser = data;
+          pfShowProfile(pfUser);
+          pfLoadBookings(pfUser.email);
+        } else {
+          pfShowGuest();
+        }
+      } catch {
+        pfShowGuest();
+      }
     }
   }
 
-  function pfShowGate() {
-    document.getElementById('pfGate').classList.add('show');
+  function pfShowGuest() {
+    // 隐藏锁屏，显示 guest 版本
+    document.getElementById('pfGate').classList.remove('show');
+    document.getElementById('pfMain').classList.add('show');
+    document.getElementById('pfAvatar').textContent = '?';
+    document.getElementById('pfName').textContent = 'Guest';
+    document.getElementById('pfEmail').textContent = 'Not signed in';
+    document.getElementById('pfInfoName').textContent = '—';
+    document.getElementById('pfInfoEmail').textContent = '—';
+    
+    const list = document.getElementById('pfBookingList');
+    list.innerHTML = `<div class="pf-empty">Please <a href="{{ "/login" | relative_url }}">sign in</a> to view your booking history.</div>`;
   }
 
   function pfShowProfile(user) {
+    // 确保隐藏锁屏，显示 profile
+    document.getElementById('pfGate').classList.remove('show');
     document.getElementById('pfMain').classList.add('show');
-    document.getElementById('pfAvatar').textContent  = user.name.charAt(0).toUpperCase();
-    document.getElementById('pfName').textContent    = user.name;
-    document.getElementById('pfEmail').textContent   = user.email;
-    document.getElementById('pfInfoName').textContent  = user.name;
+    document.getElementById('pfAvatar').textContent = user.name.charAt(0).toUpperCase();
+    document.getElementById('pfName').textContent = user.name;
+    document.getElementById('pfEmail').textContent = user.email;
+    document.getElementById('pfInfoName').textContent = user.name;
     document.getElementById('pfInfoEmail').textContent = user.email;
   }
 
   async function pfLoadBookings(email) {
     const list = document.getElementById('pfBookingList');
     try {
-      const res  = await fetch(`${BACKEND}/api/reservations`, { credentials: 'include' });
+      const res = await fetch(`${BACKEND}/api/reservations`, { credentials: 'include' });
       const data = await res.json();
 
-      // Filter to this user's bookings by email
       const mine = data.filter(r => r.email && r.email.toLowerCase() === email.toLowerCase());
 
       if (!mine.length) {
@@ -290,7 +332,6 @@ permalink: /profile
         return;
       }
 
-      // Sort newest first
       mine.sort((a,b) => new Date(b.created_at) - new Date(a.created_at));
 
       const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
@@ -320,8 +361,8 @@ permalink: /profile
 
   function pfFeedback(id, msg, type) {
     const el = document.getElementById(id);
-    el.textContent  = msg;
-    el.className    = 'pf-feedback ' + (type === 'ok' ? 'ok' : 'err');
+    el.textContent = msg;
+    el.className = 'pf-feedback ' + (type === 'ok' ? 'ok' : 'err');
   }
 
   async function pfChangePassword() {
@@ -335,7 +376,7 @@ permalink: /profile
     if (nw !== conf)           { pfFeedback(fb, 'New passwords do not match.', 'err'); return; }
 
     try {
-      const res  = await fetch(`${BACKEND}/api/auth/change-password`, {
+      const res = await fetch(`${BACKEND}/api/auth/change-password`, {
         method:      'POST',
         credentials: 'include',
         headers:     { 'Content-Type': 'application/json' },
@@ -352,10 +393,30 @@ permalink: /profile
     }
   }
 
-  async function pfLogout() {
-    try { await fetch(`${BACKEND}/api/auth/logout`, { method: 'POST', credentials: 'include' }); } catch {}
-    window.location.href = '{{ "/login" | relative_url }}';
+async function pfLogout() {
+  // 清除 localStorage
+  localStorage.removeItem('logged_in');
+  localStorage.removeItem('user_name');
+  localStorage.removeItem('user_email');
+  
+  // 调用后端登出
+  try { 
+    await fetch(`${BACKEND}/api/auth/logout`, { 
+      method: 'POST', 
+      credentials: 'include' 
+    }); 
+  } catch(e) {
+    console.log('Logout error:', e);
   }
+  
+  // 跳转到登录页
+  window.location.href = '{{ "/login" | relative_url }}';
+}
 
+  // 把函数挂载到 window，让 HTML 的 onclick 可以调用
+  window.pfChangePassword = pfChangePassword;
+  window.pfLogout = pfLogout;
+
+  // 初始化
   pfInit();
 </script>

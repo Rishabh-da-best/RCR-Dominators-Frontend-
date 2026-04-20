@@ -173,15 +173,14 @@ permalink: /login
 </div>
 
 <script type = "module">
-import pythonURI from "/assets/js/api/config.js"
+import pythonURI from "/assets/js/api/config.module.js"
 
 const BACKEND = pythonURI;
-const REDIRECT_AFTER_LOGIN   = '{{ "/" | relative_url }}';
-const REDIRECT_AFTER_SIGNUP  = '{{ "/" | relative_url }}';
 const validateEmail = e => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(e);
 
 function setFeedback(el, msg, type) {
-  el.textContent = msg; el.className = 'rr-feedback ' + (type==='ok'?'ok':'err');
+  el.textContent = msg; 
+  el.className = 'rr-feedback ' + (type==='ok'?'ok':'err');
 }
 
 function updateView(user) {
@@ -203,73 +202,153 @@ function updateView(user) {
 }
 
 async function checkStatus() {
+  // 1. 先检查 localStorage
+  const localLoggedIn = localStorage.getItem('logged_in');
+  if (localLoggedIn === 'true') {
+    updateView({
+      name: localStorage.getItem('user_name'),
+      email: localStorage.getItem('user_email')
+    });
+    return;
+  }
+  
+  // 2. 再检查后端 API
   try {
     const res = await fetch(`${BACKEND}/api/auth/status`, { credentials: 'include' });
     const data = await res.json();
+    if (data.logged_in) {
+      // 同步到 localStorage
+      localStorage.setItem('logged_in', 'true');
+      localStorage.setItem('user_name', data.name);
+      localStorage.setItem('user_email', data.email);
+    }
     updateView(data.logged_in ? data : null);
-  } catch { updateView(null); }
+  } catch { 
+    updateView(null); 
+  }
 }
 
+// 登录表单
 document.getElementById('loginForm').addEventListener('submit', async e => {
   e.preventDefault();
   const email = document.getElementById('loginEmail').value.trim();
   const pass  = document.getElementById('loginPass').value.trim();
   const fb    = document.getElementById('loginFeedback');
+  
   if (!validateEmail(email) || pass.length < 6) {
-    setFeedback(fb, 'Enter a valid email and password (min 6 chars).', 'err'); return;
+    setFeedback(fb, 'Enter a valid email and password (min 6 chars).', 'err'); 
+    return;
   }
+  
   try {
-    const res  = await fetch(`${BACKEND}/api/auth/login`, {
+    const res = await fetch(`${BACKEND}/api/auth/login`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       credentials: 'include',
-      body: JSON.stringify({ email, password: pass })
+      body: JSON.stringify({ email: email, password: pass })
     });
+    
     const data = await res.json();
-    if (!res.ok) { setFeedback(fb, data.error || 'Login failed.', 'err'); return; }
-    setFeedback(fb, `Welcome back, ${data.name}!  Redirecting...`, 'ok');
-    updateView(data);
-    setTimeout(() => { window.location.href = REDIRECT_AFTER_LOGIN; }, 1000);
-  } catch {
-    setFeedback(fb, 'Could not reach server. Make sure backend is running.', 'err');
+    
+    if (!res.ok) { 
+      setFeedback(fb, data.error || 'Login failed.', 'err'); 
+      return; 
+    }
+    
+    // 保存到 localStorage
+    localStorage.setItem('logged_in', 'true');
+    localStorage.setItem('user_name', data.name);
+    localStorage.setItem('user_email', data.email);
+    
+    // 更新页面显示
+    updateView({name: data.name, email: data.email});
+    
+    // 手动更新头部
+    if (window.rrShowLoggedIn) {
+      window.rrShowLoggedIn({name: data.name, email: data.email});
+    }
+    
+    setFeedback(fb, `Welcome back, ${data.name}!`, 'ok');
+    setTimeout(() => {
+  window.location.reload();
+}, 1000);
+  } catch (error) {
+    console.error('Login error:', error);
+    setFeedback(fb, 'Could not reach server.', 'err');
   }
 });
 
+// 注册表单
 document.getElementById('signupForm').addEventListener('submit', async e => {
   e.preventDefault();
   const name  = document.getElementById('signupName').value.trim();
   const email = document.getElementById('signupEmail').value.trim();
   const pass  = document.getElementById('signupPass').value.trim();
   const fb    = document.getElementById('signupFeedback');
+  
   if (name.length < 2 || !validateEmail(email) || pass.length < 6) {
-    setFeedback(fb, 'Check name, email, and password requirements.', 'err'); return;
+    setFeedback(fb, 'Check name, email, and password requirements.', 'err'); 
+    return;
   }
+  
   try {
-    const res  = await fetch(`${BACKEND}/api/auth/register`, {
+    const res = await fetch(`${BACKEND}/api/auth/register`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       credentials: 'include',
-      body: JSON.stringify({ name, email, password: pass })
+      body: JSON.stringify({ name: name, email: email, password: pass })
     });
+    
     const data = await res.json();
-    if (!res.ok) { setFeedback(fb, data.error || 'Registration failed.', 'err'); return; }
-    setFeedback(fb, `Account created! Welcome aboard, ${data.name}!  Redirecting...`, 'ok');
-    updateView(data);
-    setTimeout(() => { window.location.href = REDIRECT_AFTER_SIGNUP; }, 1000);
-  } catch {
-    setFeedback(fb, 'Could not reach server. Make sure backend is running.', 'err');
+    
+    if (!res.ok) { 
+      setFeedback(fb, data.error || 'Registration failed.', 'err'); 
+      return; 
+    }
+    
+    // 注册成功后自动登录，保存到 localStorage
+    localStorage.setItem('logged_in', 'true');
+    localStorage.setItem('user_name', data.name);
+    localStorage.setItem('user_email', data.email);
+    
+    // 更新页面显示
+    updateView({name: data.name, email: data.email});
+    
+    // 手动更新头部
+    if (window.rrShowLoggedIn) {
+      window.rrShowLoggedIn({name: data.name, email: data.email});
+    }
+    
+    setFeedback(fb, `Account created! Welcome, ${data.name}!`, 'ok');
+    
+  } catch (error) {
+    console.error('Signup error:', error);
+    setFeedback(fb, 'Could not reach server.', 'err');
   }
 });
 
+// 登出
 document.getElementById('logoutBtn').addEventListener('click', async () => {
   try {
     await fetch(`${BACKEND}/api/auth/logout`, { method: 'POST', credentials: 'include' });
   } catch {}
+  
+  // 清除 localStorage
+  localStorage.removeItem('logged_in');
+  localStorage.removeItem('user_name');
+  localStorage.removeItem('user_email');
+  
   document.getElementById('loginForm').reset();
   document.getElementById('signupForm').reset();
   setFeedback(document.getElementById('loginFeedback'), 'Logged out successfully.', 'ok');
   updateView(null);
+  
+  // 手动更新头部
+  if (window.rrShowGuest) {
+    window.rrShowGuest();
+  }
 });
 
+// 初始化检查登录状态
 checkStatus();
 </script>

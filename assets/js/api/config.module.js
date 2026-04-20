@@ -1,15 +1,19 @@
-// /assets/js/api/config.js
-window.baseurl = "{{ site.baseurl }}";
+// /assets/js/api/config.module.js
+// 专门给 ES6 模块使用的配置文件
 
-if (location.hostname === "localhost") {
-    window.pythonURI = "http://localhost:8428";
+let pythonURI, javaURI, baseurl, fetchOptions, login;
+
+// 根据环境设置后端地址
+if (location.hostname === "localhost" || location.hostname === "127.0.0.1") {
+    pythonURI = "http://localhost:8428";
 } else {
-    window.pythonURI = "https://rcr-user.opencodingsociety.com";
+    pythonURI = "https://rcr-user.opencodingsociety.com";
 }
 
-window.javaURI = "https://spring.opencodingsociety.com";
+javaURI = "https://spring.opencodingsociety.com";
+baseurl = "{{ site.baseurl }}";
 
-window.fetchOptions = {
+fetchOptions = {
     method: 'GET',
     mode: 'cors',
     cache: 'default',
@@ -20,9 +24,9 @@ window.fetchOptions = {
     },
 };
 
-window.login = function(options) {
+login = function(options) {
     const requestOptions = {
-        ...window.fetchOptions,
+        ...fetchOptions,
         method: options.method || 'POST',
         body: options.method === 'POST' ? JSON.stringify(options.body) : undefined
     };
@@ -52,3 +56,7 @@ window.login = function(options) {
         }
     });
 };
+
+// 导出所有内容
+export default pythonURI;
+export { pythonURI, javaURI, baseurl, fetchOptions, login };

@@ -272,72 +272,55 @@
             transform: translateY(0px);
         }
         
-        #rrProfileDrop {
-            display: none; 
-            position: absolute; 
-            top: 54px; 
-            right: 0;
-            background: rgba(42,31,24,0.98);
-            border: 1px solid rgba(255,255,255,0.1);
-            border-top: 2px solid #b94a1c;
-            border-radius: 0 0 8px 8px;
-            min-width: 200px;
-            box-shadow: 0 8px 24px rgba(0,0,0,0.5);
-            overflow: hidden; 
-            z-index: 300;
-        }
-        
-        #rrProfileItem.open #rrProfileDrop { 
-            display: block; 
-            animation: rrIn 0.2s ease; 
-        }
-        
-        .rr-profile-name {
-            padding: 14px 20px 10px;
-            font-family: 'Courier New', monospace; 
-            font-size: 13px;
-            color: #e8e0d0;
-            border-bottom: 1px solid rgba(255,255,255,0.08);
-        }
-        
-        .rr-profile-name span { 
-            display: block; 
-            font-size: 10px; 
-            color: #8c7f6e; 
-            margin-top: 2px; 
-        }
-        
-        #rrProfileDrop a, #rrLogoutBtn {
-            display: block; 
-            width: 100%; 
-            text-align: left;
-            padding: 11px 20px;
-            color: #8c7f6e !important; 
-            text-decoration: none !important;
-            font-family: 'Courier New', monospace;
-            font-size: 13px; 
-            letter-spacing: 0.1em; 
-            text-transform: uppercase;
-            transition: all 0.15s; 
-            white-space: nowrap;
-            border-bottom: 1px solid rgba(255,255,255,0.05);
-            background: none; 
-            border-left: none; 
-            border-right: none; 
-            border-top: none;
-            cursor: pointer;
-        }
-        
-        #rrProfileDrop a:last-child, #rrLogoutBtn { 
-            border-bottom: none; 
-        }
-        
-        #rrProfileDrop a:hover, #rrLogoutBtn:hover { 
-            background: rgba(201,148,58,0.15); 
-            color: #eca52b !important; 
-            padding-left: 26px; 
-        }
-        
+        /* Account 下拉菜单 - 必要样式 */
+#rrProfileItem {
+    position: relative;
+}
+
+#rrProfileDrop {
+    display: none;
+    position: absolute;
+    top: 54px;
+    left: 0;
+    background: rgba(42,31,24,0.98);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 0 0 8px 8px;
+    min-width: 200px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.5);
+    overflow: hidden;
+    z-index: 300;
+}
+
+#rrProfileItem.open #rrProfileDrop {
+    display: block;
+    animation: rrIn 0.2s ease;
+}
+
+/* 下拉菜单链接样式 - 和其他菜单一致 */
+#rrProfileDrop a {
+    display: block;
+    padding: 12px 20px;
+    color: #8c7f6e !important;
+    text-decoration: none !important;
+    font-family: 'Courier New', monospace;
+    font-size: 13px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    transition: all 0.15s;
+    white-space: nowrap;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+
+#rrProfileDrop a:last-child {
+    border-bottom: none;
+}
+
+#rrProfileDrop a:hover {
+    background: rgba(201,148,58,0.15);
+    color: #eca52b !important;
+    padding-left: 26px;
+}
+
         #rrLogoutBtn { 
             color: #e07050 !important; 
         }
@@ -653,10 +636,6 @@
                                 <span class="rr-arr">▼</span>
                             </a>
                             <div id="rrProfileDrop">
-                                <div class="rr-profile-name" id="rrDropName">
-                                    Loading...
-                                    <span id="rrDropEmail"></span>
-                                </div>
                                 <a href="{{ site.baseurl }}/profile"> My Profile</a>
                                 <a id="rrLogoutBtn" onclick="rrNavLogout()"> Logout</a>
                             </div>
@@ -779,15 +758,28 @@
             });
         });
 
-        // Check authentication status
-        async function rrCheckAuth() {
-            try {
-                const res = await fetch(`${RR_BACKEND}/api/auth/status`, { credentials: 'include' });
-                const data = await res.json();
-                if (data.logged_in) rrShowLoggedIn(data);
-                else rrShowGuest();
-            } catch { rrShowGuest(); }
-        }
+async function rrCheckAuth() {
+    // 先检查 localStorage
+    const localLoggedIn = localStorage.getItem('logged_in');
+    if (localLoggedIn === 'true') {
+        rrShowLoggedIn({
+            name: localStorage.getItem('user_name'),
+            email: localStorage.getItem('user_email')
+        });
+        return;
+    }
+    
+    // 再检查后端
+    try {
+        const res = await fetch(`${RR_BACKEND}/api/auth/status`, { credentials: 'include' });
+        const data = await res.json();
+        if (data.logged_in) rrShowLoggedIn(data);
+        else rrShowGuest();
+    } catch { 
+        rrShowGuest(); 
+    }
+}
+
 
         // Show logged-in UI
         function rrShowLoggedIn(user) {
@@ -795,50 +787,71 @@
             document.getElementById('rrLoginLink').style.display = 'none';
             const profileItem = document.getElementById('rrProfileItem');
             profileItem.classList.add('visible');
-            document.getElementById('rrNavName').textContent = user.name.split(' ')[0];
+            document.getElementById('rrNavName').textContent = 'Account';
             document.getElementById('rrAvatarInitial').textContent = user.name.charAt(0).toUpperCase();
-            document.getElementById('rrDropName').childNodes[0].textContent = user.name;
-            document.getElementById('rrDropEmail').textContent = user.email;
             
-            // Mobile UI
-            const mobileAuthArea = document.getElementById('mobileAuthArea');
-            mobileAuthArea.innerHTML = `
-                <div class="mobile-dropdown" id="mobileProfileDropdown">
-                    <a class="mobile-dropdown-btn" onclick="toggleMobileDropdown('mobileProfileDropdown')">
-                        ${user.name.split(' ')[0]} <span class="mobile-arr">▼</span>
-                    </a>
-                    <div class="mobile-dropdown-content">
-                        <a href="{{ site.baseurl }}/profile"> My Profile</a>
-                        <a onclick="rrNavLogout(); toggleMobileMenu();" style="width:100%; text-align:left; padding:12px 20px; background:none; border:none; color:#e07050; font-family:'Courier New', monospace; font-size:14px; cursor:pointer;">Logout</a>
-                    </div>
-                </div>
-            `;
+// Mobile UI
+const mobileAuthArea = document.getElementById('mobileAuthArea');
+mobileAuthArea.innerHTML = `
+    <div class="mobile-dropdown" id="mobileProfileDropdown">
+        <a class="mobile-dropdown-btn" onclick="toggleMobileDropdown('mobileProfileDropdown')">
+            Account <span class="mobile-arr">▼</span>  
+        </a>
+        <div class="mobile-dropdown-content">
+            <a href="{{ site.baseurl }}/profile"> My Profile</a>
+            <a onclick="rrNavLogout(); toggleMobileMenu();" style="width:100%; text-align:left; padding:12px 20px; background:none; border:none; color:#e07050; font-family:'Courier New', monospace; font-size:14px; cursor:pointer;">Logout</a>
+        </div>
+    </div>
+`;
         }
 
-        // Show guest UI
-        function rrShowGuest() {
-            // Desktop UI
-            document.getElementById('rrLoginLink').style.display = 'flex';
-            document.getElementById('rrProfileItem').classList.remove('visible');
-            
-            // Mobile UI
-            const mobileAuthArea = document.getElementById('mobileAuthArea');
-            mobileAuthArea.innerHTML = `
-                <a href="{{ site.baseurl }}/login" class="mobile-link" onclick="toggleMobileMenu()">Login</a>
-            `;
-        }
+// Show guest UI
+function rrShowGuest() {
+    // Desktop UI
+    const loginLink = document.getElementById('rrLoginLink');
+    const profileItem = document.getElementById('rrProfileItem');
+    if (loginLink) loginLink.style.display = 'flex';
+    if (profileItem) profileItem.classList.remove('visible');
+    
+    // Mobile UI
+    const mobileAuthArea = document.getElementById('mobileAuthArea');
+    if (mobileAuthArea) {
+        mobileAuthArea.innerHTML = `
+            <a href="{{ site.baseurl }}/login" class="mobile-link" onclick="toggleMobileMenu()">Login</a>
+        `;
+    }
+}
 
-        // Handle logout
-        async function rrNavLogout() {
-            try { await fetch(`${RR_BACKEND}/api/auth/logout`, { method: 'POST', credentials: 'include' }); } catch {}
-            rrShowGuest();
-            const menu = document.getElementById('mobileMenu');
-            const btn = document.getElementById('mobileMenuBtn');
-            menu.classList.remove('active');
-            btn.classList.remove('active');
-            document.body.style.overflow = '';
-            if (window.location.pathname === '{{ site.baseurl }}/profile') window.location.href = '{{ site.baseurl }}/login';
-        }
+// Handle logout
+async function rrNavLogout() {
+    // 清除 localStorage
+    localStorage.removeItem('logged_in');
+    localStorage.removeItem('user_name');
+    localStorage.removeItem('user_email');
+    
+    // 调用后端登出
+    try { 
+        await fetch(`${RR_BACKEND}/api/auth/logout`, { 
+            method: 'POST', 
+            credentials: 'include' 
+        }); 
+    } catch(e) {
+        console.log('Logout error:', e);
+    }
+    
+    // 更新 UI 为未登录状态
+    rrShowGuest();
+    
+    // 关闭移动菜单
+    const menu = document.getElementById('mobileMenu');
+    const btn = document.getElementById('mobileMenuBtn');
+    if (menu) menu.classList.remove('active');
+    if (btn) btn.classList.remove('active');
+    document.body.style.overflow = '';
+    
+    // 刷新页面或跳转
+    window.location.href = '{{ "/" | relative_url }}';
+}
 
         // Dynamically add fallback styles to prevent content overlap
         (function preventContentOverlap() {

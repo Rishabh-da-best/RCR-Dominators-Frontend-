@@ -58,6 +58,7 @@ permalink: /
   }
   /* 图片背景 Hero */
   .rr-hero-image {
+    width: 100%;
     background-image: url('/images/rcr/train1.png');
     background-size: cover;
     background-position: center 30%;
