@@ -1,5 +1,5 @@
 ---
-layout: opencs
+layout: base
 title: Volunteer Schedule
 permalink: /volunteer-schedule
 ---

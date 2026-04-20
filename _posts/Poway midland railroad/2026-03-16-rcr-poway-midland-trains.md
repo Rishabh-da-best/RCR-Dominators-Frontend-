@@ -1,5 +1,5 @@
 ---
-layout: opencs
+layout: base
 title: Our Trains
 permalink: /trains
 ---

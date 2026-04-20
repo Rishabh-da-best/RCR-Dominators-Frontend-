@@ -1,5 +1,5 @@
 ---
-layout: opencs
+layout: base
 title: Contact & Feedback
 permalink: /contact
 ---

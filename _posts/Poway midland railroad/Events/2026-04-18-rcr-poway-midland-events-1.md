@@ -1,5 +1,5 @@
 ---
-layout: opencs
+layout: base
 title: "Steam Every Saturday!"
 permalink: /events/1
 ---

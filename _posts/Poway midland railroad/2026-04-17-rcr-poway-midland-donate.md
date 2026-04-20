@@ -1,5 +1,5 @@
 ---
-layout: opencs
+layout: base
 title: Support Us - Donate & Membership
 permalink: /donate
 ---

@@ -1,5 +1,5 @@
 ---
-layout: opencs
+layout: base
 title: Home page of the project
 permalink: /
 ---
@@ -334,9 +334,3 @@ permalink: /
     <a href="/camera" class="rr-quick-card"><span class="rr-quick-icon">📹</span><div class="rr-quick-label">Live Camera</div><div class="rr-quick-sub">Watch the park live</div></a>
   </div>
 </div>
-
-<div class="rr-footer">
-  <p>© 2026 Poway-Midland Railroad · Old Poway Park · All Aboard!</p>
-</div>
-
-</body>

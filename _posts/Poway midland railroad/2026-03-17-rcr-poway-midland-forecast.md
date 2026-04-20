@@ -1,5 +1,5 @@
 ---
-layout: opencs
+layout: base
 title: Tomorrow's Visitor Forecast
 permalink: /forecast
 ---

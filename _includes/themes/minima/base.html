@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="{{ page.lang | default: site.lang | default: 'en' }}">
 
-
     {%- include head.html -%}
 
     <body>
@@ -17,15 +16,15 @@
           {% include admin_foundation.html %}
         {% endif %}
 
-
         <main class="page-content" aria-label="Content">
-       
               {{ content }}
-
         </main>
 
         {%- include themes/minima/footer.html -%}
-
         {%- include mermaid.html -%}
+        
+        <!-- AI Assistant added here -->
+        {%- include ai-assistant.html -%}
+        
     </body>
 </html>
