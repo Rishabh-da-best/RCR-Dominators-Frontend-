@@ -2,7 +2,8 @@
 @import "colors.scss";
 @import "sizes.scss";
 
-body {
-    font-family: Verdana, sans-serif !important;
+/* ❌ 不再污染全局 body */
+/* ✅ 所有字体限制在 app-root 内 */
+.app-root {
+    font-family: Verdana, sans-serif;
 }
-

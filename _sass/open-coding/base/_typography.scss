@@ -1,32 +1,36 @@
 /**
- * Base Typography Styles
- * Override default code and text formatting with user preferences
+ * Base Typography Styles (SCOPED VERSION)
+ * 所有样式限制在 .app-root 内，避免污染页面
  */
 
-/** Code formatting - override hardcoded dark background */
-pre, code {
-  font-family: "Menlo", "Inconsolata", "Consolas", "Roboto Mono", "Ubuntu Mono", "Liberation Mono", "Courier New", monospace;
-  background-color: var(--panel) !important;
-  color: var(--pref-text-color) !important;
-  padding: 2px 6px;
-  border-radius: 3px;
-}
+.app-root {
 
-pre {
-  padding: 1rem;
-  border: 1px solid var(--ui-border);
-  overflow-x: auto;
-  
-  code {
-    background-color: transparent !important;
-    padding: 0;
+  /** Code formatting */
+  pre, code {
+    font-family: "Menlo", "Inconsolata", "Consolas", "Roboto Mono", "Ubuntu Mono", "Liberation Mono", "Courier New", monospace;
+    background-color: var(--panel);
+    color: var(--pref-text-color);
+    padding: 2px 6px;
+    border-radius: 3px;
   }
-}
 
-/** Inline code in markdown */
-p code,
-li code,
-td code {
-  background-color: var(--panel) !important;
-  color: var(--pref-text-color) !important;
+  pre {
+    padding: 1rem;
+    border: 1px solid var(--ui-border);
+    overflow-x: auto;
+
+    code {
+      background-color: transparent;
+      padding: 0;
+    }
+  }
+
+  /** Inline code */
+  p code,
+  li code,
+  td code {
+    background-color: var(--panel);
+    color: var(--pref-text-color);
+  }
+
 }

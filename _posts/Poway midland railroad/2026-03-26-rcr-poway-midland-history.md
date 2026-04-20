@@ -3,7 +3,7 @@ layout: base
 title: Railroad History
 permalink: /history
 ---
-
+<div class="app-root">
 <style>
 /* ── Color tokens ── */
 :root {
@@ -613,3 +613,4 @@ function showHotspot(i) {
   document.getElementById('hsText').textContent    = HOTSPOTS[i].text;
 }
 </script>
+</div>

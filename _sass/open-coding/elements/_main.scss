@@ -8,3 +8,14 @@
 @import "status-indicators/main.scss";
 @import "buttons/responsive.scss";
 @import "forms/main.scss";
+.app-root table {
+  border-collapse: collapse;
+  background: transparent;
+}
+
+.app-root th,
+.app-root td {
+  background: transparent;
+  color: inherit;
+  border: none;
+}
