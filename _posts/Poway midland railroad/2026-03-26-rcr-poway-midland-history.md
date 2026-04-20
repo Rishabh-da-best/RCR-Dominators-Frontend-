@@ -6,7 +6,7 @@ permalink: /history
 <div class="app-root">
 <style>
 /* ── Color tokens ── */
-:root {
+.app-root {
   --bg:        #ffffff;
   --surface:   #faf9f7;
   --border:    #e8e4de;
