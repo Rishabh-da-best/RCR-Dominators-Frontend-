@@ -55,11 +55,3 @@ window.login = function(options) {
     });
 };
 
-// 添加这一行 - 导出默认配置
-export default {
-    baseurl: window.baseurl,
-    pythonURI: window.pythonURI,
-    javaURI: window.javaURI,
-    fetchOptions: window.fetchOptions,
-    login: window.login
-};

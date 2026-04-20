@@ -1,0 +1,303 @@
+// AI 助手 - 最终修复版
+(function() {
+    // 防止重复加载
+    if (window.__AIAssistantLoaded) return;
+    window.__AIAssistantLoaded = true;
+    
+    // 等待页面加载完成
+    function init() {
+        // 检查是否已存在
+        if (document.getElementById('aiFab')) return;
+        
+        // 添加样式
+        const style = document.createElement('style');
+        style.textContent = `
+            .ai-fab {
+                position: fixed;
+                bottom: 20px;
+                right: 20px;
+                width: 58px;
+                height: 58px;
+                border-radius: 50%;
+                background: #2a1a0e;
+                color: #fff;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 26px;
+                cursor: pointer;
+                z-index: 999999;
+                box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+                transition: transform 0.2s;
+            }
+            .ai-fab:hover {
+                transform: scale(1.05);
+            }
+            .ai-chat {
+                position: fixed;
+                bottom: 90px;
+                right: 20px;
+                width: 360px;
+                height: 480px;
+                background: #fff;
+                border-radius: 16px;
+                display: none;
+                flex-direction: column;
+                z-index: 999999;
+                box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+                border: 1px solid rgba(0,0,0,0.1);
+                overflow: hidden;
+            }
+            .ai-chat.show {
+                display: flex;
+            }
+            .ai-header {
+                background: #2a1a0e;
+                color: #fff;
+                padding: 14px 16px;
+                font-weight: bold;
+                font-size: 16px;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+            .ai-close {
+                background: none;
+                border: none;
+                color: #fff;
+                cursor: pointer;
+                font-size: 20px;
+                padding: 0;
+                width: 28px;
+                height: 28px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                border-radius: 50%;
+                transition: background 0.2s;
+            }
+            .ai-close:hover {
+                background: rgba(255,255,255,0.2);
+            }
+            .ai-messages {
+                flex: 1;
+                padding: 16px;
+                overflow-y: auto;
+                background: #f8f8f8;
+                display: flex;
+                flex-direction: column;
+                gap: 12px;
+            }
+            .ai-msg {
+                padding: 10px 14px;
+                border-radius: 12px;
+                max-width: 85%;
+                word-wrap: break-word;
+                font-size: 14px;
+                line-height: 1.5;
+            }
+            .ai-msg.user {
+                background: #2a1a0e;
+                color: #fff;
+                align-self: flex-end;
+                border-bottom-right-radius: 4px;
+            }
+            .ai-msg.bot {
+                background: #fff;
+                border: 1px solid #e0e0e0;
+                align-self: flex-start;
+                border-bottom-left-radius: 4px;
+            }
+            .ai-msg.bot a {
+                color: #2a1a0e;
+                text-decoration: none;
+                font-weight: bold;
+            }
+            .ai-msg.bot a:hover {
+                text-decoration: underline;
+            }
+            .ai-input-wrap {
+                display: flex;
+                padding: 12px;
+                background: #fff;
+                border-top: 1px solid #e0e0e0;
+                gap: 8px;
+            }
+            .ai-input {
+                flex: 1;
+                padding: 10px 14px;
+                border: 1px solid #ddd;
+                border-radius: 24px;
+                outline: none;
+                font-size: 14px;
+                transition: border-color 0.2s;
+            }
+            .ai-input:focus {
+                border-color: #2a1a0e;
+            }
+            .ai-send {
+                background: #2a1a0e;
+                color: #fff;
+                border: none;
+                padding: 8px 20px;
+                border-radius: 24px;
+                cursor: pointer;
+                font-size: 14px;
+                font-weight: bold;
+                transition: background 0.2s;
+            }
+            .ai-send:hover {
+                background: #3a2415;
+            }
+        `;
+        document.head.appendChild(style);
+        
+        // 创建浮动按钮
+        const fab = document.createElement('div');
+        fab.className = 'ai-fab';
+        fab.id = 'aiFab';
+        fab.textContent = '💬';
+        
+        // 创建聊天窗口
+        const chat = document.createElement('div');
+        chat.className = 'ai-chat';
+        chat.id = 'aiChat';
+        chat.innerHTML = `
+            <div class="ai-header">
+                <span>🚂 铁路助手</span>
+                <button class="ai-close" id="aiCloseBtn">✕</button>
+            </div>
+            <div class="ai-messages" id="aiMessages"></div>
+            <div class="ai-input-wrap">
+                <input class="ai-input" id="aiInput" placeholder="输入您的问题..." autocomplete="off" />
+                <button class="ai-send" id="aiSend">发送</button>
+            </div>
+        `;
+        
+        document.body.appendChild(fab);
+        document.body.appendChild(chat);
+        
+        // 获取元素
+        const msgs = document.getElementById('aiMessages');
+        const input = document.getElementById('aiInput');
+        const sendBtn = document.getElementById('aiSend');
+        const closeBtn = document.getElementById('aiCloseBtn');
+        const chatWindow = document.getElementById('aiChat');
+        
+        // 添加消息函数
+        function addMessage(role, text) {
+            const div = document.createElement('div');
+            div.className = `ai-msg ${role}`;
+            div.innerHTML = text;
+            msgs.appendChild(div);
+            msgs.scrollTop = msgs.scrollHeight;
+        }
+        
+        // 智能回复函数
+        function getReply(message) {
+            const msg = message.toLowerCase();
+            
+            if (msg.includes('ticket') || msg.includes('book') || msg.includes('订票') || msg.includes('买票') || msg.includes('预订')) {
+                return '🎫 您可以在 <a href="/calendar">日历页面</a> 选择日期预订车票。';
+            }
+            if (msg.includes('schedule') || msg.includes('时刻') || msg.includes('时间表')) {
+                return '📅 查看列车时刻表：<a href="/schedule">时刻表页面</a>';
+            }
+            if (msg.includes('train') || msg.includes('火车') || msg.includes('列车') || msg.includes('机车')) {
+                return '🚂 了解我们的列车：<a href="/trains">列车收藏</a>';
+            }
+            if (msg.includes('event') || msg.includes('活动') || msg.includes('节日')) {
+                return '🎉 查看即将举行的活动：<a href="/events">活动页面</a>';
+            }
+            if (msg.includes('history') || msg.includes('历史')) {
+                return '📖 探索铁路历史：<a href="/history">历史页面</a>';
+            }
+            if (msg.includes('volunteer') || msg.includes('志愿') || msg.includes('义工')) {
+                return '🤝 报名志愿者：<a href="/volunteer-schedule">志愿者日程</a>';
+            }
+            if (msg.includes('contact') || msg.includes('联系') || msg.includes('电话') || msg.includes('地址')) {
+                return '📞 联系方式：<a href="/contact">联系页面</a>';
+            }
+            if (msg.includes('camera') || msg.includes('摄像头') || msg.includes('直播')) {
+                return '📹 观看公园直播：<a href="/camera">实时摄像头</a>';
+            }
+            if (msg.includes('forecast') || msg.includes('预测') || msg.includes('拥挤') || msg.includes('人流量')) {
+                return '🌤️ 查看游客预测：<a href="/forecast">预测页面</a>';
+            }
+            if (msg.includes('photo') || msg.includes('照片') || msg.includes('分享')) {
+                return '📸 分享您的体验：<a href="/notes">游客笔记</a>';
+            }
+            if (msg.includes('hello') || msg.includes('hi') || msg.includes('你好') || msg.includes('您好')) {
+                return '👋 您好！欢迎来到铁路公园！有什么可以帮您？';
+            }
+            if (msg.includes('help') || msg.includes('帮助')) {
+                return '💡 我可以帮您解答：\n- 车票预订\n- 列车时刻表\n- 活动信息\n- 志愿者报名\n- 联系方式\n\n试试问我"如何订票"或"列车时刻表"';
+            }
+            
+            return '🚆 我可以帮您解答关于车票预订、列车时刻、活动信息等问题。\n\n试试问：\n• "如何订票"\n• "列车时刻表"\n• "有什么活动"';
+        }
+        
+        // 发送消息函数
+        function sendMessage() {
+            const text = input.value.trim();
+            if (!text) {
+                console.log('请输入内容');
+                return;
+            }
+            
+            console.log('发送消息:', text);
+            addMessage('user', text);
+            
+            // 延迟一下再回复，更像真实对话
+            setTimeout(() => {
+                const reply = getReply(text);
+                addMessage('bot', reply);
+            }, 300);
+            
+            input.value = '';
+        }
+        
+        // 清空对话函数
+        function clearChat() {
+            msgs.innerHTML = '';
+            addMessage('bot', '✨ 对话已清空！有什么可以帮您？');
+        }
+        
+        // 绑定事件
+        fab.onclick = () => {
+            chatWindow.classList.toggle('show');
+        };
+        
+        sendBtn.onclick = sendMessage;
+        
+        input.onkeypress = (e) => {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                sendMessage();
+            }
+        };
+        
+        closeBtn.onclick = () => {
+            chatWindow.classList.remove('show');
+        };
+        
+        // 点击其他地方关闭聊天窗口（可选）
+        document.addEventListener('click', (e) => {
+            if (!chatWindow.contains(e.target) && !fab.contains(e.target) && chatWindow.classList.contains('show')) {
+                chatWindow.classList.remove('show');
+            }
+        });
+        
+        // 欢迎消息
+        addMessage('bot', '👋 您好！我是铁路助手，有什么可以帮您？\n\n💡 试试问我：\n• "如何订票"\n• "列车时刻表"\n• "有什么活动"');
+        
+        console.log('🚂 AI 助手已启动！');
+    }
+    
+    // 启动
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', init);
+    } else {
+        init();
+    }
+})();
