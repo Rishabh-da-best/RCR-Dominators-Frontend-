@@ -128,7 +128,11 @@ permalink: /camera
     <div class="rr-card">
       <p style="font-size:13px;color:var(--smoke);margin-bottom:14px;">Drag with mouse or finger to look around each scene.</p>
       <div class="pano-controls" id="panoControls"></div>
-      <div id="panorama"></div>
+      <div id="pano-wrapper" style="width:100%;height:400px;border-radius:8px;overflow:hidden;border:1px solid #cccccc;">
+        <iframe id="pano-frame" width="100%" height="100%" style="border:0;" allowfullscreen loading="lazy"
+          src="https://www.google.com/maps/embed?pb=!4v1!6m8!1m7!1sTRGQ3npzCMLCtS2ad2yNNQ!2m2!1d32.9697771!2d-117.0366493!3f114.96!4f7.95!5f0.75">
+        </iframe>
+      </div>
       <p class="rr-note">Tip: Replace sample panorama URLs with your own 360° images captured at the station.</p>
     </div>
   </div>
@@ -174,50 +178,33 @@ permalink: /camera
 <script src="https://cdn.jsdelivr.net/npm/pannellum@2.5.6/build/pannellum.js"></script>
 <script>
 // ── Data ──────────────────────────────────────────────────────────────────
-const PANO_SCENES = [
-  { id:'steam',    title:'Steam Locomotive', panorama:'https://pannellum.org/images/alma.jpg' },
-  { id:'cars',     title:'Train Cars',       panorama:'https://pannellum.org/images/bma-1.jpg' },
-  { id:'platform', title:'Station Platform', panorama:'https://pannellum.org/images/cerro-toco-0.jpg' },
-  { id:'tracks',   title:'Tracks Through Park', panorama:'https://pannellum.org/images/jfk.jpg' },
-];
+  const PANO_SCENES = [
+    {
+      id: 'porter',
+      title: "Porter's House · Street View",
+      type: 'embed',
+      src: "https://www.google.com/maps/embed?pb=!4v1!6m8!1m7!1sTRGQ3npzCMLCtS2ad2yNNQ!2m2!1d32.9697771!2d-117.0366493!3f114.96!4f7.95!5f0.75"
+    },
+    { id:'cars',     title:'Train Cars',          type:'pano', panorama:'https://pannellum.org/images/bma-1.jpg' },
+    { id:'platform', title:'Station Platform',    type:'pano', panorama:'https://pannellum.org/images/cerro-toco-0.jpg' },
+    { id:'tracks',   title:'Tracks Through Park', type:'pano', panorama:'https://pannellum.org/images/jfk.jpg' },
+  ];
 
-const ROUTE = {
-  route:[{lat:32.9623,lng:-117.0352},{lat:32.9625,lng:-117.0350},{lat:32.9627,lng:-117.0348},{lat:32.9629,lng:-117.0346},{lat:32.9630,lng:-117.0349},{lat:32.9628,lng:-117.0351},{lat:32.9626,lng:-117.0353}],
-  stops:[{name:'Poway Midland Station',lat:32.9623,lng:-117.0352,type:'start'},{name:'Turnaround Point',lat:32.9630,lng:-117.0349,type:'turnaround'},{name:'Platform Return',lat:32.9626,lng:-117.0353,type:'stop'}],
-  poi:[{name:'Heritage Platform',lat:32.96245,lng:-117.03505},{name:'Historic Rail Segment',lat:32.96282,lng:-117.03477}]
-};
+  const ctrlEl = document.getElementById('panoControls');
+  const frame  = document.getElementById('pano-frame');
 
-const HOTSPOTS = [
-  { title:'Steam Locomotive',     text:'The Poway Midland Railroad opened in 1996 and is run by volunteers who maintain and operate the miniature train for public rides.', left:'44%', top:'40%' },
-  { title:'Railroad Origins',     text:'Planning began in 1995, and by 1996 the railroad welcomed riders at Old Poway Park.', left:'18%', top:'55%' },
-  { title:'Volunteer Engineers',  text:'Volunteer engineers and conductors operate rides and keep equipment in safe, working order for visitors.', left:'72%', top:'45%' },
-  { title:'Miniature Design',     text:'Miniature railroads mirror full-size systems using scaled track, rolling stock, dispatch routines, and station operations.', left:'56%', top:'22%' },
-];
-
-const TIMELINE = [
-  { year:'1995', event:'Railroad planning begins',   caption:'Early planning outlined route alignment, station access, and volunteer support.',   color:'#efb366' },
-  { year:'1996', event:'First train rides offered',   caption:'Public rides started and quickly became a popular weekend attraction in Old Poway Park.', color:'#d97c52' },
-  { year:'2005', event:'Track improvements',          caption:'Maintenance and upgrades improved reliability and expanded event support.',          color:'#679ac8' },
-  { year:'Today',event:'Community weekend rides',    caption:'The railroad continues to host families while sharing local railroad history.',       color:'#6fa46f' },
-];
-
-// ── Panorama ──────────────────────────────────────────────────────────────
-const panoConfig = {
-  default:{ firstScene:PANO_SCENES[0].id, autoLoad:true, showZoomCtrl:true, sceneFadeDuration:750 },
-  scenes: PANO_SCENES.reduce((a,s)=>{ a[s.id]={ title:s.title, type:'equirectangular', panorama:s.panorama }; return a; }, {})
-};
-const viewer = pannellum.viewer('panorama', panoConfig);
-const ctrlEl = document.getElementById('panoControls');
-PANO_SCENES.forEach((s,i)=>{
-  const btn = document.createElement('button');
-  btn.className='pano-btn'; btn.textContent=s.title; btn.setAttribute('aria-pressed', i===0?'true':'false');
-  btn.addEventListener('click',()=>{
-    viewer.loadScene(s.id);
-    ctrlEl.querySelectorAll('.pano-btn').forEach(b=>b.setAttribute('aria-pressed','false'));
-    btn.setAttribute('aria-pressed','true');
+  PANO_SCENES.forEach((s, i) => {
+    const btn = document.createElement('button');
+    btn.className = 'pano-btn';
+    btn.textContent = s.title;
+    btn.setAttribute('aria-pressed', i === 0 ? 'true' : 'false');
+    btn.addEventListener('click', () => {
+      ctrlEl.querySelectorAll('.pano-btn').forEach(b => b.setAttribute('aria-pressed','false'));
+      btn.setAttribute('aria-pressed','true');
+      frame.src = s.src;
+    });
+    ctrlEl.appendChild(btn);
   });
-  ctrlEl.appendChild(btn);
-});
 
 // ── Map ───────────────────────────────────────────────────────────────────
 const map = L.map('routeMap',{scrollWheelZoom:true}).setView([32.9626,-117.035],18);
