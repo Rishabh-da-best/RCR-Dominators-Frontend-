@@ -69,3 +69,26 @@
 
 <!-- Poway Midland Railroad AI Assistant -->
 <script src="/assets/js/ai-assistant.js" defer></script>
+
+<style>
+  /* Railroad pages must keep their own page colors even when user theme is active */
+  .user-theme-active .page-content .app-root,
+  .user-theme-active .page-content .eq-page,
+  .user-theme-active .page-content .contact-page,
+  .user-theme-active .page-content .rr-hero,
+  .user-theme-active .page-content .rr-wrap,
+  .user-theme-active .page-content .rr-card,
+  .user-theme-active .page-content .rr-section,
+  .user-theme-active .page-content dialog,
+  .user-theme-active .page-content .rr-map-sidebar,
+  .user-theme-active .page-content .eq-modal {
+    color: inherit !important;
+    background-color: inherit !important;
+    border-color: inherit !important;
+  }
+  .user-theme-active .page-content .app-root *,
+  .user-theme-active .page-content .eq-page *,
+  .user-theme-active .page-content .contact-page * {
+    color: inherit !important;
+  }
+</style>
