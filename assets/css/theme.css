@@ -1,0 +1,165 @@
+/* ===============================
+   GLOBAL THEME — Poway Railroad
+   Source of truth for ALL pages
+   =============================== */
+
+/* ===== Base Layout Reset ===== */
+body{
+  background:#faf8f5 !important;
+  font-family:'Source Serif 4', Georgia, serif;
+  color:var(--text-main);
+}
+
+.page-content,
+.wrapper{
+  max-width:none !important;
+  padding:0 !important;
+  background:#faf8f5 !important;
+}
+
+/* ===== Design Tokens (VERY IMPORTANT) ===== */
+:root{
+  /* Backgrounds */
+  --bg-main:#faf8f5;
+  --bg-card:#ffffff;
+  --bg-soft:#faf9f7;
+
+  /* Text */
+  --text-main:#1a1a18;
+  --text-sub:#4a4840;
+  --text-muted:#7a756c;
+
+  /* Brand */
+  --accent:#b94a1c;
+  --gold:#c9943a;
+
+  /* Borders */
+  --border:#e8e4de;
+  --border-strong:#d4cec5;
+
+  /* Effects */
+  --shadow-sm:0 2px 8px rgba(0,0,0,0.06);
+  --shadow-md:0 4px 16px rgba(0,0,0,0.08);
+
+  /* Radius */
+  --radius-sm:10px;
+  --radius-md:12px;
+  --radius-lg:16px;
+
+  /* Hero（关键统一控制） */
+  --hero-height:420px;
+  --hero-padding:80px 20px 90px;
+}
+
+/* ===== Typography System ===== */
+.theme-label{
+  font-family:'DM Mono', monospace;
+  font-size:10px;
+  letter-spacing:0.3em;
+  text-transform:uppercase;
+  color:var(--accent);
+}
+
+/* ===== Title System ===== */
+.theme-title{
+  font-family:'Playfair Display', serif;
+  font-weight:700;
+  color:var(--text-main);
+}
+
+/* ===== Card System ===== */
+.theme-card{
+  background:var(--bg-card);
+  border:1px solid var(--border);
+  border-radius:var(--radius-md);
+  box-shadow:var(--shadow-sm);
+  transition:0.25s;
+}
+
+.theme-card:hover{
+  box-shadow:var(--shadow-md);
+  transform:translateY(-2px);
+}
+
+/* ===== Button System ===== */
+.theme-btn{
+  background:#1e1208;
+  color:#fff;
+  border:none;
+  border-radius:12px;
+  padding:14px 20px;
+  font-family:'DM Mono', monospace;
+  letter-spacing:0.1em;
+  cursor:pointer;
+  transition:0.25s;
+}
+
+.theme-btn:hover{
+  background:#140b05;
+  transform:translateY(-1px);
+}
+
+/* ===============================
+   UNIFIED HERO (全站统一关键)
+   =============================== */
+
+.theme-hero{
+  position:relative;
+  text-align:center;
+  background:#1e1208;
+  border-bottom:3px solid var(--accent);
+  overflow:hidden;
+
+  /* 统一高度控制 */
+  min-height:var(--hero-height);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+/* 铁轨纹理 */
+.theme-hero::before{
+  content:'';
+  position:absolute;
+  inset:0;
+  background-image:repeating-linear-gradient(
+    90deg,
+    transparent,
+    transparent 48px,
+    rgba(255,255,255,0.015) 48px,
+    rgba(255,255,255,0.015) 49px
+  );
+}
+
+/* 内容层 */
+.theme-hero-content{
+  position:relative;
+  z-index:2;
+  padding:var(--hero-padding);
+  max-width:900px;
+  margin:0 auto;
+}
+
+/* Hero标题 */
+.theme-hero h1{
+  font-family:'Playfair Display', serif;
+  font-size:48px;
+  color:#fff;
+  margin-bottom:12px;
+}
+
+/* Hero副标题 */
+.theme-hero p{
+  color:#d7d2c8;
+  font-size:16px;
+}
+
+/* ===============================
+   Layout Utility
+   =============================== */
+
+.theme-wrap{
+  max-width:1100px;
+  margin:0 auto;
+  padding:56px 24px 96px;
+}
