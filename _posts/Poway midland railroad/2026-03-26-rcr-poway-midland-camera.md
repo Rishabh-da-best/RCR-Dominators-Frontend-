@@ -76,6 +76,13 @@ permalink: /camera
   .modal-inner{padding:24px;}
   .modal-close{padding:9px 20px;background:var(--rust);border:none;border-radius:6px;color:#fff;cursor:pointer;font-family:'Courier New',monospace;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;}
   .modal-close:hover{background:var(--ember);}
+
+  .rr-wrap p,
+  .rr-map-list li,
+  .rr-card p {
+    color: #666666 !important;
+    opacity: 1 !important;
+}
 </style>
 
 <div class="rr-hero">
