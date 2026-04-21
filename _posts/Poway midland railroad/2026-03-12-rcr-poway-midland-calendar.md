@@ -1,5 +1,5 @@
 ---
-layout: opencs
+layout: base
 title: Railroad Operations Calendar
 permalink: /calendar
 ---

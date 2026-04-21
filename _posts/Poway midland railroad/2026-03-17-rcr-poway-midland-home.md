@@ -1,5 +1,5 @@
 ---
-layout: opencs
+layout: base
 title: Home page of the project
 permalink: /
 ---
