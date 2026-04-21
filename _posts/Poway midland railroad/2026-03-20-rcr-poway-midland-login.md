@@ -3,7 +3,7 @@ layout: base
 title: Login
 permalink: /login
 ---
-
+<script src="/assets/js/api/config.js"></script>
 <style>
   :root {
     --coal:#ffffff;--iron:#ffffff;--iron2:#f5f5f5;
