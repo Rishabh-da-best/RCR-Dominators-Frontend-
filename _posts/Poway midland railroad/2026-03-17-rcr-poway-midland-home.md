@@ -295,7 +295,7 @@ permalink: /
     
     <div class="rr-hero-btns">
       <a href="/calendar" class="rr-btn-primary">Book a Ride</a>
-      <a href="/trains" class="rr-btn-secondary">Our Fleet</a>
+      <a href="/trains" class="rr-btn-secondary">Equipment</a>
     </div>
   </div>
   <div class="rr-hero-track"></div>
@@ -328,7 +328,7 @@ permalink: /
   <div class="rr-quick">
     <a href="/schedule" class="rr-quick-card"><span class="rr-quick-icon">📅</span><div class="rr-quick-label">Schedule</div><div class="rr-quick-sub">View today's rides</div></a>
     <a href="/calendar" class="rr-quick-card"><span class="rr-quick-icon">🎟️</span><div class="rr-quick-label">Book a Ride</div><div class="rr-quick-sub">Reserve your seat</div></a>
-    <a href="/trains" class="rr-quick-card"><span class="rr-quick-icon">🚆</span><div class="rr-quick-label">Our Fleet</div><div class="rr-quick-sub">Meet the trains</div></a>
+    <a href="/trains" class="rr-quick-card"><span class="rr-quick-icon">🚆</span><div class="rr-quick-label">Equipment</div><div class="rr-quick-sub">Meet the trains</div></a>
     <a href="/notes" class="rr-quick-card"><span class="rr-quick-icon">📝</span><div class="rr-quick-label">Notes</div><div class="rr-quick-sub">Share your experience</div></a>
     <a href="/forecast" class="rr-quick-card"><span class="rr-quick-icon">🌤️</span><div class="rr-quick-label">Visitor Forecast</div><div class="rr-quick-sub">ML prediction</div></a>
     <a href="/events" class="rr-quick-card"><span class="rr-quick-icon">🎉</span><div class="rr-quick-label">Events</div><div class="rr-quick-sub">Upcoming activities</div></a>
