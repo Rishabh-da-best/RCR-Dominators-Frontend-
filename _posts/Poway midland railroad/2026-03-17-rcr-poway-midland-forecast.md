@@ -7,10 +7,10 @@ permalink: /forecast
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Mono:wght@400;500&family=Source+Serif+4:wght@300;400;600&display=swap" rel="stylesheet">
 
 <style>
-  :root{--coal:#1e1208;--iron:#ffffff;--iron2:#f5f5f5;--rust:#000000;--ember:#333333;--gold:#000000;--steam:#000000;--smoke:#666666;--text:#000000;--subtext:#666666;--background:#ffffff;}
+  :root{--coal:#faf8f5;--iron:#ffffff;--iron2:#f5f5f5;--rust:#000000;--ember:#333333;--gold:#000000;--steam:#000000;--smoke:#666666;--text:#000000;--subtext:#666666;--background:#ffffff;}
   *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
   html, body { width:100%; height:100%; }
-  body{overflow-x:visible;overflow-y:auto;background:#1e1208; padding-top: 54px !important;}
+  body{overflow-x:visible;overflow-y:auto;background:#faf8f5; padding-top: 54px !important;}
   .page-content, .wrapper { max-width: none !important; padding: 0 !important; }
   .fc-page{background:var(--coal);min-height:100vh;font-family:'Source Serif 4',Georgia,serif;color:var(--steam);width:100%;overflow:visible;}
 

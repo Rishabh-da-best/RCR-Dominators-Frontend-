@@ -7,7 +7,7 @@ permalink: /calendar
 <style>
   :root {
     --rust:#000000; --gold:#333333; --green:#000000;
-    --coal:#1e1208;--iron:#ffffff;--iron2:#f5f5f5;
+    --coal:#faf8f5;--iron:#ffffff;--iron2:#f5f5f5;
     --steam:#000000;--smoke:#666666;
     --border:#cccccc;
     --text:#000000; --subtext:#666666;
@@ -76,7 +76,7 @@ permalink: /calendar
 
   /* Remove Minima width constraints and keep full-screen layout */
   .page-content, .wrapper { max-width: none !important; padding: 0 !important; }
-  body { background: #1e1208; color: #000000; padding-top: 54px !important;
+  body { background: #faf8f5; color: #000000; padding-top: 54px !important;
  }
 
   @media(max-width:580px){
