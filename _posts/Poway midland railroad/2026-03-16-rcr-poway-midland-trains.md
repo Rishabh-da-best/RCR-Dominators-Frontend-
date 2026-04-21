@@ -1,750 +1,297 @@
 ---
 layout: base
-title: Our Trains
-permalink: /trains
+title: Railroad History
+permalink: /history
 ---
 
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Source+Serif+4:ital,wght@0,300;0,400;0,600;1,300&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 
 <style>
-  .eq-page {
-  --coal:    #ffffff;
-  --iron:    #ffffff;
-  --rust:    #000000;
-  --ember:   #333333;
-  --gold:    #000000;
-  --brass:   #333333;
-  --steam:   #000000;
-  --parchment: #f9f9f9;
-  --smoke:   #666666;
-  --rail:    #cccccc;
-}
+.hs-page *,.hs-page *::before,.hs-page *::after{box-sizing:border-box;margin:0;padding:0;}
+body{background:#faf8f5 !important;}
+.page-content{max-width:none !important;padding:0 !important;background:#faf8f5 !important;}
+.wrapper{max-width:none !important;padding:0 !important;}
 
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+.hs-page{background:#faf8f5;min-height:100vh;font-family:'Source Serif 4',Georgia,serif !important;color:#1a1a18;}
 
-  .eq-page {
-    background: #faf8f5;
-    min-height: 100vh;
-    font-family: 'Source Serif 4', Georgia, serif;
-    color: var(--steam);
-    overflow-x: hidden;
-  }
+/* Hero */
+.hs-page .hs-hero{position:relative;padding:72px 24px 52px;text-align:center;background:#1e1208;border-bottom:3px solid #b94a1c;overflow:hidden;}
+.hs-page .hs-hero::before{content:'';position:absolute;inset:0;background-image:repeating-linear-gradient(90deg,transparent,transparent 48px,rgba(255,255,255,0.015) 48px,rgba(255,255,255,0.015) 49px);pointer-events:none;}
+.hs-page .hs-track{position:absolute;bottom:0;left:0;right:0;height:18px;background:repeating-linear-gradient(90deg,rgba(201,148,58,0.4) 0px,rgba(201,148,58,0.4) 28px,transparent 28px,transparent 48px);}
+.hs-page .hs-track::before,.hs-page .hs-track::after{content:'';position:absolute;left:0;right:0;height:2px;background:#c9943a;opacity:0.35;}
+.hs-page .hs-track::before{top:3px;}
+.hs-page .hs-track::after{bottom:3px;}
+.hs-page .hs-hero-tag{font-family:'DM Mono',monospace !important;font-size:10px;letter-spacing:0.35em;text-transform:uppercase;color:#c9943a !important;margin-bottom:14px;}
+.hs-page .hs-hero h1{font-family:'Playfair Display',Georgia,serif !important;font-size:clamp(34px,6vw,64px);font-weight:900;line-height:1.05;margin-bottom:14px;color:#ffffff !important;letter-spacing:-0.02em;}
+.hs-page .hs-hero h1 em{font-style:italic;color:#c9943a !important;display:block;}
+.hs-page .hs-hero p{font-size:15px;color:rgba(255,255,255,0.72) !important;max-width:560px;margin:0 auto;line-height:1.75;font-weight:300;}
 
-  body { background: #ffffff; }
-  .page-content { max-width: none !important; padding: 0 !important; background: #ffffff; padding-top: 54px !important;}
-  .wrapper { max-width: none !important; padding: 0 !important; }
+/* Layout */
+.hs-page .hs-wrap{max-width:1100px;margin:0 auto;padding:56px 24px 96px;}
+.hs-page .hs-section{margin-bottom:72px;}
+.hs-page .hs-label{font-family:'DM Mono',monospace !important;font-size:10px;letter-spacing:0.3em;text-transform:uppercase;color:#b94a1c !important;margin-bottom:28px;display:flex;align-items:center;gap:14px;}
+.hs-page .hs-label::after{content:'';flex:1;height:1px;background:#e8e4de;}
 
-  /* ── Hero ── */
-  .eq-hero {
-    position: relative;
-    padding: 60px 24px 40px;
-    text-align: center;
-    background: #2a1a0e;
-    overflow: hidden;
-    border-bottom: 1px solid #cccccc;
-  }
-  .eq-hero::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background-image: repeating-linear-gradient(
-      90deg, transparent, transparent 40px,
-      rgba(0,0,0,0.02) 40px, rgba(0,0,0,0.02) 41px
-    );
-    pointer-events: none;
-  }
-  .eq-hero-track {
-    position: absolute;
-    bottom: 0; left: 0; right: 0;
-    height: 20px;
-    background: repeating-linear-gradient(
-      90deg,
-      #cccccc 0px, #cccccc 30px,
-      transparent 30px, transparent 50px
-    );
-    opacity: 0.3;
-  }
-  .eq-hero-track::before, .eq-hero-track::after {
-    content: '';
-    position: absolute;
-    left: 0; right: 0;
-    height: 3px;
-    background: #cccccc;
-    opacity: 0.4;
-  }
-  .eq-hero-track::before { top: 4px; }
-  .eq-hero-track::after  { bottom: 4px; }
+/* Timeline */
+.hs-page .hs-timeline{position:relative;padding-left:40px;}
+.hs-page .hs-timeline::before{content:'';position:absolute;left:13px;top:8px;bottom:8px;width:2px;background:#e0d8ce;opacity:0.8;}
+.hs-page .hs-event{position:relative;margin-bottom:16px;cursor:pointer;}
+.hs-page .hs-event-dot{position:absolute;left:-33px;top:20px;width:16px;height:16px;border-radius:50%;background:#faf8f5;border:2px solid #d4cec5;transition:all 0.2s;z-index:2;}
+.hs-page .hs-event:hover .hs-event-dot,.hs-page .hs-event.active .hs-event-dot{background:#b94a1c;border-color:#b94a1c;box-shadow:0 0 0 4px rgba(185,74,28,0.12);transform:scale(1.2);}
+.hs-page .hs-event-card{background:#ffffff;border:1px solid #e8e4de;border-radius:10px;padding:20px 24px;border-left:3px solid #e8e4de;transition:border-color 0.2s,box-shadow 0.2s;}
+.hs-page .hs-event:hover .hs-event-card{border-left-color:#c9943a;box-shadow:0 2px 12px rgba(0,0,0,0.06);}
+.hs-page .hs-event.active .hs-event-card{border-left-color:#b94a1c;box-shadow:0 4px 20px rgba(0,0,0,0.08);}
+.hs-page .hs-event-year{font-family:'DM Mono',monospace !important;font-size:11px;letter-spacing:0.15em;text-transform:uppercase;color:#b94a1c !important;margin-bottom:5px;}
+.hs-page .hs-event-title{font-family:'Playfair Display',serif !important;font-size:20px;font-weight:700;color:#1a1a18 !important;line-height:1.3;}
+.hs-page .hs-expand-hint{font-family:'DM Mono',monospace !important;font-size:10px;color:#9a9590 !important;margin-top:10px;letter-spacing:0.1em;text-transform:uppercase;transition:color 0.2s;}
+.hs-page .hs-event:hover .hs-expand-hint{color:#c9943a !important;}
+.hs-page .hs-event.active .hs-expand-hint{display:none;}
+.hs-page .hs-event-body{font-size:14px;color:#4a4840 !important;line-height:1.8;max-height:0;overflow:hidden;transition:max-height 0.5s ease,opacity 0.3s ease,margin 0.3s ease;opacity:0;margin-top:0;}
+.hs-page .hs-event.active .hs-event-body{max-height:600px;opacity:1;margin-top:14px;}
 
-  .eq-back {
-    position: absolute;
-    top: 24px; left: 24px;
-    display: flex; align-items: center; gap: 8px;
-    color: var(--steam); text-decoration: none;
-    font-family: 'DM Mono', monospace; font-size: 11px;
-    letter-spacing: 0.15em; text-transform: uppercase;
-    opacity: 0.8; transition: opacity 0.2s;
-  }
-  .eq-back:hover { opacity: 1; }
+/* Loco grid */
+.hs-page .hs-loco-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;}
+@media(max-width:700px){.hs-page .hs-loco-grid{grid-template-columns:1fr;}}
+.hs-page .hs-loco-card{background:#ffffff;border:1px solid #e8e4de;border-radius:12px;padding:28px;border-top:3px solid #b94a1c;}
+.hs-page .hs-loco-card h3{font-family:'DM Mono',monospace !important;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:#c9943a !important;margin-bottom:16px;}
+.hs-page .hs-loco-card p{font-size:14px;color:#4a4840 !important;line-height:1.8;}
+.hs-page .hs-loco-card p+p{margin-top:12px;}
+.hs-page .hs-spec-table{width:100%;border-collapse:collapse;font-size:13px;margin-top:4px;}
+.hs-page .hs-spec-table tr{border-bottom:1px solid #e8e4de;}
+.hs-page .hs-spec-table tr:last-child{border-bottom:none;}
+.hs-page .hs-spec-table td{padding:9px 8px;vertical-align:top;color:#4a4840 !important;background:#ffffff !important;}
+.hs-page .hs-spec-table td:first-child{font-family:'DM Mono',monospace !important;font-size:10px;letter-spacing:0.08em;text-transform:uppercase;color:#7a756c !important;width:42%;padding-right:16px;}
+.hs-page .hs-gold-badge{color:#7a3a10 !important;font-family:'DM Mono',monospace !important;font-size:12px;background:#f0e4cc;padding:8px 14px;border-radius:6px;display:inline-block;margin-top:8px;line-height:1.6;}
 
-  .eq-hero-tag {
-    font-family: 'DM Mono', monospace; font-size: 10px;
-    letter-spacing: 0.3em; text-transform: uppercase;
-    color: var(--steam); margin-bottom: 16px; opacity: 0.7; font-weight: 600;
-  }
-  .eq-hero-title {
-    font-family: 'Playfair Display', Georgia, serif;
-    font-size: clamp(42px, 8vw, 88px);
-    font-weight: 900;
-    color: var(--steam);
-    line-height: 0.95;
-    letter-spacing: -0.02em;
-    margin-bottom: 20px;
-  }
-  .eq-hero-title em {
-    font-style: italic;
-    color: var(--steam);
-    display: block;
-  }
-  .eq-hero-sub {
-    font-size: 16px; color: var(--steam);
-    max-width: 520px; margin: 0 auto 40px;
-    line-height: 1.7; font-weight: 300;
-  }
+/* Hotspot */
+.hs-page .hs-stage{position:relative;width:100%;height:200px;background:linear-gradient(135deg,#1e1208,#2a1a0e 60%,#1a1410);border-radius:12px;border:1px solid #e8e4de;overflow:hidden;margin-bottom:16px;}
+.hs-page .hs-stage-track{position:absolute;bottom:28px;left:0;right:0;height:8px;background:repeating-linear-gradient(90deg,#4a3f35 0,#4a3f35 40px,transparent 40px,transparent 60px);opacity:0.6;}
+.hs-page .hs-stage-rail{position:absolute;left:0;right:0;height:2px;background:rgba(201,148,58,0.3);}
+.hs-page .hs-stage-loco{position:absolute;bottom:34px;left:36px;font-size:42px;animation:hs-chug 3s ease-in-out infinite;}
+@keyframes hs-chug{0%,100%{transform:translateX(0);}50%{transform:translateX(3px);}}
+.hs-page .hs-hspot{position:absolute;width:30px;height:30px;border-radius:50%;background:#b94a1c;border:2px solid #c9943a;color:#fff !important;font-family:'DM Mono',monospace !important;font-size:12px;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all 0.2s;z-index:2;}
+.hs-page .hs-hspot:hover,.hs-page .hs-hspot.active{background:#d4581f;transform:scale(1.25);box-shadow:0 0 0 4px rgba(185,74,28,0.2);}
+.hs-page .hs-popup{background:#faf9f7;border:1px solid #e8e4de;border-left:3px solid #c9943a;border-radius:10px;padding:20px 24px;min-height:80px;}
+.hs-page .hs-popup h3{font-family:'DM Mono',monospace !important;font-size:10px;letter-spacing:0.15em;text-transform:uppercase;color:#c9943a !important;margin-bottom:8px;}
+.hs-page .hs-popup p{font-size:14px;color:#4a4840 !important;line-height:1.7;}
 
-  /* ── Filter tabs ── */
-  .eq-filters {
-    display: flex; justify-content: center; gap: 8px;
-    flex-wrap: wrap; padding: 24px; background: #ffffff; border-bottom: 1px solid #cccccc;
-  }
-  .eq-filter-btn {
-    font-family: 'DM Mono', monospace; font-size: 11px;
-    letter-spacing: 0.12em; text-transform: uppercase;
-    padding: 8px 18px; border-radius: 2px;
-    border: 1px solid #cccccc;
-    background: transparent; color: var(--smoke);
-    cursor: pointer; transition: all 0.2s;
-  }
-  .eq-filter-btn:hover { border-color: var(--text); color: var(--text); }
-  .eq-filter-btn.active { background: var(--rust); border-color: var(--rust); color: #fff; }
+/* Quote */
+.hs-page .hs-quote{background:#faf9f7;border:1px solid #e8e4de;border-left:4px solid #c9943a;border-radius:0 10px 10px 0;padding:32px 36px;}
+.hs-page .hs-quote blockquote{font-size:16px;color:#1a1a18 !important;line-height:1.85;font-style:italic;margin-bottom:16px;}
+.hs-page .hs-quote blockquote::before{content:'\201C';font-size:52px;color:#c9943a;line-height:0;vertical-align:-20px;margin-right:4px;font-family:Georgia,serif;}
+.hs-page .hs-quote cite{font-family:'DM Mono',monospace !important;font-size:10px;letter-spacing:0.15em;text-transform:uppercase;color:#7a756c !important;}
 
-  /* ── Grid ── */
-  .eq-grid {
-    max-width: 1200px; margin: 0 auto;
-    padding: 24px;
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
-    gap: 12px;
-    margin-top: 40px;
-  }
-
-  /* ── Card ── */
-  .eq-card {
-    position: relative;
-    background: var(--coal);
-    border: 1px solid #cccccc;
-    cursor: pointer;
-    overflow: hidden;
-    transition: transform 0.3s, box-shadow 0.3s;
-  }
-  .eq-card:hover { transform: translateY(-4px); box-shadow: 0 8px 24px rgba(0,0,0,0.12); z-index: 2; }
-  .eq-card.hidden { display: none; }
-
-  .eq-card-banner {
-    height: 6px;
-    background: var(--rust);
-  }
-  .eq-card-banner.cable  { background: #3b82f6; }
-  .eq-card-banner.speeder { background: #10b981; }
-  .eq-card-banner.gondola { background: #8b5cf6; }
-  .eq-card-banner.coach   { background: var(--rust); }
-  .eq-card-banner.static  { background: #999999; }
-  .eq-card-banner.sold    { background: linear-gradient(90deg, #9b59b6, #c084fc); }
-
-  .eq-card-emoji {
-    font-size: 52px;
-    padding: 32px 28px 8px;
-    display: block;
-    filter: drop-shadow(0 4px 12px rgba(0,0,0,0.5));
-    transition: transform 0.3s;
-  }
-
-  .eq-card-body { padding: 0 28px 28px; }
-
-  .eq-card-type {
-    font-family: 'DM Mono', monospace; font-size: 9px;
-    letter-spacing: 0.25em; text-transform: uppercase;
-    color: var(--rust); margin-bottom: 8px; font-weight: 600;
-  }
-  .eq-card-name {
-    font-family: 'Playfair Display', serif;
-    font-size: clamp(20px, 3vw, 26px); font-weight: 700;
-    color: var(--steam); line-height: 1.15; margin-bottom: 12px;
-  }
-  .eq-card-desc {
-    font-size: 13px; color: var(--smoke);
-    line-height: 1.65; margin-bottom: 20px;
-    font-weight: 300;
-    display: -webkit-box; -webkit-line-clamp: 3;
-    -webkit-box-orient: vertical; overflow: hidden;
-  }
-
-  .eq-card-specs {
-    display: grid; grid-template-columns: 1fr 1fr;
-    gap: 10px; margin-bottom: 20px;
-  }
-  .eq-spec {
-    border-left: 2px solid #cccccc;
-    padding-left: 10px;
-  }
-  .eq-spec-label {
-    font-family: 'DM Mono', monospace; font-size: 8px;
-    letter-spacing: 0.2em; text-transform: uppercase;
-    color: var(--smoke); margin-bottom: 3px; font-weight: 600;
-  }
-  .eq-spec-value { font-size: 12px; color: var(--steam); font-weight: 600; }
-
-  .eq-card-status {
-    display: inline-flex; align-items: center; gap: 6px;
-    font-family: 'DM Mono', monospace; font-size: 10px;
-    letter-spacing: 0.1em; text-transform: uppercase;
-    padding: 5px 10px; border-radius: 2px;
-    margin-bottom: 16px;
-  }
-  .status-operational { background: rgba(16,185,129,0.15); color: #10b981; border: 1px solid rgba(16,185,129,0.3); }
-  .status-static { background: rgba(0,0,0,0.05); color: var(--smoke); border: 1px solid #cccccc; }
-  .status-sold   { background: rgba(192,132,252,0.15); color: #a855f7; border: 1px solid rgba(192,132,252,0.3); }
-  .eq-status-dot { width: 6px; height: 6px; border-radius: 50%; background: currentColor; }
-
-  .eq-card-btn {
-    width: 100%; padding: 11px;
-    background: transparent;
-    border: 1px solid #cccccc;
-    color: var(--steam); font-family: 'DM Mono', monospace;
-    font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase;
-    cursor: pointer; transition: all 0.2s;
-    display: flex; align-items: center; justify-content: center; gap: 8px;
-  }
-  .eq-card-btn:hover { background: var(--rust); border-color: var(--rust); color: #fff; }
-
-  /* ── Modal ── */
-  .eq-modal-overlay {
-    position: fixed; inset: 0; z-index: 1000;
-    background: rgba(255,255,255,0.95);
-    display: flex; align-items: center; justify-content: center;
-    padding: 24px;
-    margin-top: 55px;
-    opacity: 0; pointer-events: none;
-    transition: opacity 0.3s;
-  }
-  .eq-modal-overlay.open { opacity: 1; pointer-events: all; }
-
-  .eq-modal {
-    background: var(--coal);
-    border: 1px solid #cccccc;
-    max-width: 720px; width: 100%;
-    max-height: 90vh; overflow-y: auto;
-    position: relative;
-    transform: translateY(30px) scale(0.97);
-    transition: transform 0.3s;
-    scrollbar-width: thin;
-    scrollbar-color: #cccccc transparent;
-  }
-  .eq-modal-overlay.open .eq-modal { transform: none; }
-
-  .eq-modal-banner.cable   { background: #3b82f6; }
-  .eq-modal-banner.speeder { background: #10b981; }
-  .eq-modal-banner.gondola { background: #8b5cf6; }
-  .eq-modal-banner.coach   { background: var(--rust); }
-
-  .eq-modal-close {
-    position: absolute; top: 20px; right: 20px;
-    width: 32px; height: 32px; border-radius: 50%;
-    background: rgba(0, 0, 0, 0); border: none;
-    color: var(--steam); font-size: 18px; cursor: pointer;
-    display: flex; align-items: center; justify-content: center;
-    transition: background 0.2s;
-  }
-  .eq-modal-close:hover { background: var(--rust); color: #fff; }
-
-  .eq-modal-header { padding: 36px 40px 28px; }
-  .eq-modal-emoji { font-size: 64px; display: block; margin-bottom: 16px; }
-  .eq-modal-type {
-    font-family: 'DM Mono', monospace; font-size: 10px;
-    letter-spacing: 0.25em; text-transform: uppercase;
-    color: var(--rust); margin-bottom: 10px; font-weight: 600;
-  }
-  .eq-modal-title {
-    font-family: 'Playfair Display', serif;
-    font-size: clamp(28px, 5vw, 42px); font-weight: 900;
-    color: var(--steam); line-height: 1.1; margin-bottom: 16px;
-  }
-
-  .eq-modal-body { padding: 0 40px 40px; }
-
-  /* Specs table */
-  .eq-modal-specs {
-    border: 1px solid #cccccc;
-    border-radius: 4px; overflow: hidden; margin-bottom: 32px;
-  }
-  .eq-modal-spec-row {
-    display: grid; grid-template-columns: 160px 1fr;
-    border-bottom: 1px solid #cccccc;
-  }
-  .eq-modal-spec-row:last-child { border-bottom: none; }
-  .eq-modal-spec-key {
-    font-family: 'DM Mono', monospace; font-size: 10px;
-    letter-spacing: 0.12em; text-transform: uppercase;
-    color: var(--smoke); padding: 12px 16px;
-    background: #f9f9f9; font-weight: 600;
-  }
-  .eq-modal-spec-val {
-    font-size: 13px; color: var(--steam);
-    padding: 12px 16px; line-height: 1.5;
-  }
-
-  /* History */
-  .eq-modal-section-title {
-    font-family: 'Playfair Display', serif;
-    font-size: 18px; font-weight: 700;
-    color: var(--rust); margin-bottom: 16px;
-    display: flex; align-items: center; gap: 10px;
-  }
-  .eq-modal-section-title::after {
-    content: ''; flex: 1; height: 1px;
-    background: #cccccc;
-  }
-  .eq-modal-history {
-    font-size: 14px; color: rgba(0,0,0,0.8);
-    line-height: 1.8; font-weight: 300;
-    margin-bottom: 32px;
-  }
-
-  /* Timeline */
-  .eq-timeline { position: relative; padding-left: 24px; margin-bottom: 32px; }
-  .eq-timeline::before {
-    content: ''; position: absolute; left: 6px; top: 0; bottom: 0;
-    width: 2px; background: #cccccc;
-  }
-  .eq-timeline-item { position: relative; margin-bottom: 20px; }
-  .eq-timeline-dot {
-    position: absolute; left: -22px; top: 4px;
-    width: 10px; height: 10px; border-radius: 50%;
-    background: var(--rust); border: 2px solid var(--coal);
-  }
-  .eq-timeline-year {
-    font-family: 'DM Mono', monospace; font-size: 11px;
-    color: var(--rust); font-weight: 600; margin-bottom: 4px;
-  }
-  .eq-timeline-text { font-size: 13px; color: var(--smoke); line-height: 1.6; }
-
-  @media (max-width: 600px) {
-    .eq-modal-header { padding: 28px 24px 20px; }
-    .eq-modal-body { padding: 0 24px 32px; }
-    .eq-modal-spec-row { grid-template-columns: 120px 1fr; }
-    .eq-grid { grid-template-columns: 1fr; }
-  }
+/* People */
+.hs-page .hs-people{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:16px;}
+.hs-page .hs-person{background:#ffffff;border:1px solid #e8e4de;border-radius:10px;padding:20px;border-top:2px solid #c9943a;transition:box-shadow 0.2s,transform 0.2s;}
+.hs-page .hs-person:hover{box-shadow:0 4px 16px rgba(0,0,0,0.07);transform:translateY(-2px);}
+.hs-page .hs-person-era{font-family:'DM Mono',monospace !important;font-size:9px;letter-spacing:0.15em;text-transform:uppercase;color:#b94a1c !important;margin-bottom:7px;}
+.hs-page .hs-person h4{font-family:'Playfair Display',serif !important;font-size:16px;font-weight:700;color:#1a1a18 !important;margin-bottom:8px;}
+.hs-page .hs-person p{font-size:13px;color:#4a4840 !important;line-height:1.65;}
 </style>
 
-<div class="eq-page">
+<div class="hs-page">
 
-  <div class="eq-hero">
-    <div class="eq-hero-tag">Poway–Midland Railroad · Est. 1987</div>
-    <h1 class="eq-hero-title">Our<em>Fleet</em></h1>
-    <p class="eq-hero-sub">Over a century of railroad history, lovingly restored and running every weekend at Old Poway Park.</p>
-    <div class="eq-hero-track"></div>
-  </div>
-
-  <div class="eq-filters">
-    <button class="eq-filter-btn active" onclick="eqFilter('all', this)">All Equipment</button>
-    <button class="eq-filter-btn" onclick="eqFilter('operational', this)">🟢 Operational</button>
-    <button class="eq-filter-btn" onclick="eqFilter('steam', this)">🚂 Steam</button>
-    <button class="eq-filter-btn" onclick="eqFilter('cable', this)">🚌 Cable Car</button>
-    <button class="eq-filter-btn" onclick="eqFilter('speeder', this)">🚃 Speeder</button>
-    <button class="eq-filter-btn" onclick="eqFilter('static', this)">🏛 Static</button>
-  </div>
-
-  <div class="eq-grid" id="eqGrid"></div>
-
+<div class="hs-hero">
+  <div class="hs-hero-tag">Since 1880s · Poway–Midland Railroad</div>
+  <h1>Iron Horse <em>History</em></h1>
+  <p>The Poway-Midland Railroad is a non-profit organization dedicated to preserving and operating historical railroad equipment — run entirely by passionate volunteers.</p>
+  <div class="hs-track"></div>
 </div>
 
-<!-- Modal -->
-<div class="eq-modal-overlay" id="eqModal" onclick="eqCloseModal(event)">
-  <div class="eq-modal" id="eqModalInner">
-    <div class="eq-modal-banner" id="eqModalBanner"></div>
-    <button class="eq-modal-close" onclick="eqCloseModal()">✕</button>
-    <div id="eqModalPhoto" style="display:none;">
-      <img id="eqModalPhotoImg" src="" alt="" style="width:100%;max-height:340px;border-radius: 0;">
-    </div>
-    <div class="eq-modal-header">
-      <span class="eq-modal-emoji" id="eqModalEmoji"></span>
-      <div class="eq-modal-type" id="eqModalType"></div>
-      <div class="eq-modal-title" id="eqModalTitle"></div>
-      <div id="eqModalStatus"></div>
-    </div>
-    <div class="eq-modal-body">
-      <div class="eq-modal-specs" id="eqModalSpecs"></div>
-      <div class="eq-modal-section-title">History</div>
-      <div class="eq-modal-history" id="eqModalHistory"></div>
-      <div class="eq-modal-section-title">Timeline</div>
-      <div class="eq-timeline" id="eqModalTimeline"></div>
-    </div>
+<div class="hs-wrap">
+
+<div class="hs-section">
+<div class="hs-label">Timeline — Click Each Era to Expand</div>
+<div class="hs-timeline">
+
+<div class="hs-event" onclick="toggleEvent(this)">
+  <div class="hs-event-dot"></div>
+  <div class="hs-event-card">
+    <div class="hs-event-year">1880s</div>
+    <div class="hs-event-title">A Valley Full of Promise</div>
+    <div class="hs-expand-hint">▸ Click to read more</div>
+    <div class="hs-event-body">Poway in the 1880s was a prosperous and well-populated valley. Families were settling on farms, planting orchards and vineyards, and growing grain. By 1887, approximately 800 people lived in the area — enough to support a church, school, hotel, and general store. Two railroad lines were expected to pass just west of present-day Midland Road, setting off a real estate boom. Developers Baird and Chapin laid out the Piermont Plan, envisioning a town near today's Old Poway Park.</div>
   </div>
+</div>
+
+<div class="hs-event" onclick="toggleEvent(this)">
+  <div class="hs-event-dot"></div>
+  <div class="hs-event-card">
+    <div class="hs-event-year">1887</div>
+    <div class="hs-event-title">The Railroad That Never Came</div>
+    <div class="hs-expand-hint">▸ Click to read more</div>
+    <div class="hs-event-body">The San Diego Central and Southern Pacific proposed a line from Poway toward Ramona and Julian — but the plans failed. Railroad companies cited insufficient business and unfeasible terrain. The real estate boom collapsed. Instead, a railway was built from Escondido to Oceanside. Railroad interest was renewed in the late 1890s when Poway's peaches and grapes became prized crops shipped east, but another town meeting proposal was again rejected by railroad officials.</div>
+  </div>
+</div>
+
+<div class="hs-event" onclick="toggleEvent(this)">
+  <div class="hs-event-dot"></div>
+  <div class="hs-event-card">
+    <div class="hs-event-year">1907</div>
+    <div class="hs-event-title">The Baldwin Locomotive Is Born</div>
+    <div class="hs-expand-hint">▸ Click to read more</div>
+    <div class="hs-event-body">In April 1907, Baldwin Locomotive Works of Philadelphia completed a small 0-4-0T saddle-tank engine — serial number 30646. Ordered by the Henry Cowell Lime and Cement Company for its narrow-gauge railroad in California, it spent 45 years hauling rock from quarry to crusher. One of 433 identical locomotives built by Baldwin between 1875 and 1925, it ran on 42-inch "bastard gauge" rails with 28-inch driver wheels and could develop 5,160 pounds of tractive force.</div>
+  </div>
+</div>
+
+<div class="hs-event" onclick="toggleEvent(this)">
+  <div class="hs-event-dot"></div>
+  <div class="hs-event-card">
+    <div class="hs-event-year">1952 – 1966</div>
+    <div class="hs-event-title">A Clouded History & A New Identity</div>
+    <div class="hs-expand-hint">▸ Click to read more</div>
+    <div class="hs-event-body">After 45 years of service, the engine was auctioned in 1952 and rescued from a scrap yard in 1960 by Charles B. Pollard of Vista. Pollard spent a year rebuilding it and deliberately falsified its history — removing the builder's plates, claiming it was an 1878 logging locomotive from the Pacific Northwest. He cast new plates reading "1878" with a bogus serial number. The locomotive ran as the "Robert E. Lee" on the P&H Short Line. After Pollard's death in 1966, John S. Porter of Poway purchased the entire railroad.</div>
+  </div>
+</div>
+
+<div class="hs-event" onclick="toggleEvent(this)">
+  <div class="hs-event-dot"></div>
+  <div class="hs-event-card">
+    <div class="hs-event-year">1960s – 1980</div>
+    <div class="hs-event-title">The Poway Village & Rattlesnake Creek Railroad</div>
+    <div class="hs-expand-hint">▸ Click to read more</div>
+    <div class="hs-event-body">John Porter expanded the tracks to include a trestle over Rattlesnake Creek, renaming the operation the Poway Village and Rattlesnake Creek Railroad. He collected a Southern Pacific caboose, gondola cars, speeder cars, and a small flat car. Porter proudly displayed his "1878" locomotive, unaware of Pollard's fabrications. His death in 1980 idled the railroad, and the locomotive sat silent until the City of Poway acquired the property in December 1987.</div>
+  </div>
+</div>
+
+<div class="hs-event" onclick="toggleEvent(this)">
+  <div class="hs-event-dot"></div>
+  <div class="hs-event-card">
+    <div class="hs-event-year">1988 – 1991</div>
+    <div class="hs-event-title">The Truth Is Revealed — Restoration Begins</div>
+    <div class="hs-expand-hint">▸ Click to read more</div>
+    <div class="hs-event-body">Historian Frank Lorey spent three months in 1988 researching the locomotive's true origins. Detailed examinations confirmed it as Baldwin #30646 from April 1907. New authentic builder's plates were restored. In February 1991, volunteers met at the Hamburger Factory in Poway and founded the Poway-Midland Railroad Volunteers. By June 1991, the City Council ratified their contract to restore, operate, and maintain the railroad.</div>
+  </div>
+</div>
+
+<div class="hs-event" onclick="toggleEvent(this)">
+  <div class="hs-event-dot"></div>
+  <div class="hs-event-card">
+    <div class="hs-event-year">1996 – Today</div>
+    <div class="hs-event-title">Steam Returns to Poway</div>
+    <div class="hs-expand-hint">▸ Click to read more</div>
+    <div class="hs-event-body">Public rides began and quickly became a beloved weekend tradition at Old Poway Park. The all-volunteer crew maintains and operates historic trains every Saturday, with cable car and speeder rides on select Sundays. Today the same iron horse that hauled cement in 1907 now carries children and rail enthusiasts through the park.</div>
+  </div>
+</div>
+
+</div>
+</div>
+
+<div class="hs-section">
+<div class="hs-label">The Baldwin Locomotive — #30646</div>
+<div class="hs-loco-grid">
+  <div class="hs-loco-card">
+    <h3>Original Specifications</h3>
+    <table class="hs-spec-table">
+      <tr><td>Built</td><td>April 1907, Philadelphia, PA</td></tr>
+      <tr><td>Builder</td><td>Baldwin Locomotive Works</td></tr>
+      <tr><td>Serial No.</td><td>30646</td></tr>
+      <tr><td>Type</td><td>0-4-0T Saddle Tank</td></tr>
+      <tr><td>Cylinders</td><td>9 × 14 inches</td></tr>
+      <tr><td>Driver Wheels</td><td>28 inches</td></tr>
+      <tr><td>Gauge</td><td>42-inch narrow gauge</td></tr>
+      <tr><td>Boiler Pressure</td><td>150 psi</td></tr>
+      <tr><td>Weight</td><td>24,400 lbs</td></tr>
+      <tr><td>Tractive Force</td><td>5,160 lbs</td></tr>
+      <tr><td>Fuel</td><td>Oil-fired</td></tr>
+    </table>
+  </div>
+  <div class="hs-loco-card">
+    <h3>The Fake History That Almost Held</h3>
+    <p>Charles Pollard was so convincing that his fabricated 1878 story appeared in the published book <em>"A History of Vista."</em> He removed all identifying markings, cast new builder's plates with a false date and serial number, and named the engine the "Robert E. Lee."</p>
+    <p>His one mistake: Baldwin's serial numbers for 1878 ran between 4,273 and 4,564. Pollard assigned number 0491 — an impossible figure that gave historians the first clue.</p>
+    <p>Today, the restored authentic plates read:</p>
+    <div class="hs-gold-badge">Baldwin Locomotive Works · No. 30646 · April 1907 · Philadelphia, U.S.A.</div>
+  </div>
+</div>
+</div>
+
+<div class="hs-section">
+<div class="hs-label">Interactive Hotspots</div>
+<div class="hs-stage">
+  <div class="hs-stage-track"></div>
+  <div class="hs-stage-rail" style="bottom:34px;"></div>
+  <div class="hs-stage-rail" style="bottom:24px;"></div>
+  <div class="hs-stage-loco">🚂</div>
+  <div class="hs-hspot" style="left:44%;top:38%;" onclick="showHotspot(0)">1</div>
+  <div class="hs-hspot" style="left:20%;top:52%;" onclick="showHotspot(1)">2</div>
+  <div class="hs-hspot" style="left:68%;top:42%;" onclick="showHotspot(2)">3</div>
+  <div class="hs-hspot" style="left:55%;top:20%;" onclick="showHotspot(3)">4</div>
+</div>
+<div class="hs-popup">
+  <h3 id="hsHeading">Click a Marker</h3>
+  <p id="hsText">Select any numbered hotspot above to reveal facts about the Poway Midland Railroad.</p>
+</div>
+</div>
+
+<div class="hs-section">
+<div class="hs-quote">
+  <blockquote>The proposed line was to terminate in the area of today's Poway-Midland Railroad, according to Gus Kear's Memoirs of Early Poway. On Irving Avenue had been a reservation of land for a depot and railroad yards for the proposed railroad in the Piermont Plan.</blockquote>
+  <cite>— Kay Prusinskas, Historian, November 1999</cite>
+</div>
+</div>
+
+<div class="hs-section">
+<div class="hs-label">Key Figures in PMRR History</div>
+<div class="hs-people">
+  <div class="hs-person">
+    <div class="hs-person-era">1880s</div>
+    <h4>Baird &amp; Chapin</h4>
+    <p>Developers who laid out the Piermont Plan, envisioning a town near today's Old Poway Park based on expected railroad access.</p>
+  </div>
+  <div class="hs-person">
+    <div class="hs-person-era">1960 – 1966</div>
+    <h4>Charles B. Pollard</h4>
+    <p>Vista machinist who rescued the Baldwin from scrap, rebuilt it, and invented an elaborate false history — calling it an 1878 logging locomotive.</p>
+  </div>
+  <div class="hs-person">
+    <div class="hs-person-era">1966 – 1980</div>
+    <h4>John S. Porter</h4>
+    <p>Poway resident who bought the entire P&amp;H Short Line and expanded it into the Poway Village &amp; Rattlesnake Creek Railroad.</p>
+  </div>
+  <div class="hs-person">
+    <div class="hs-person-era">1988</div>
+    <h4>Frank Lorey</h4>
+    <p>Railroad historian and Charter Member who spent three months uncovering the true identity of the Baldwin locomotive.</p>
+  </div>
+  <div class="hs-person">
+    <div class="hs-person-era">1991 – Present</div>
+    <h4>PMRR Volunteers</h4>
+    <p>Founded February 1991 at the Hamburger Factory. Volunteers restore, operate, and maintain the railroad for the people of Poway every weekend.</p>
+  </div>
+  <div class="hs-person">
+    <div class="hs-person-era">1907</div>
+    <h4>Henry Cowell</h4>
+    <p>Lime &amp; Cement magnate who originally ordered Baldwin #30646 to haul rock on his narrow-gauge quarry railroad near San Francisco.</p>
+  </div>
+</div>
+</div>
+
+</div>
 </div>
 
 <script>
-const EQ_DATA = [
-  {
-    id: 'steam',
-    photo: '/assets/images/steam-engine1-1.png',
-    emoji: '🚂',
-    type: 'Steam Locomotive',
-    name: '1907 Baldwin 0-4-0',
-    bannerClass: '',
-    category: 'steam',
-    status: 'operational',
-    tagline: 'The crown jewel — over 100 years of steam power.',
-    specs: {
-      'Built':          '#30646, April 1907 · Baldwin Locomotive Works, Philadelphia PA',
-      'Classification': '0-4-0 T (Whyte)',
-      'Weight':         '~16 tons (with tender)',
-      'Driver Diameter':'28 inches',
-      'Boiler Pressure':'150 p.s.i.',
-      'Tractive Effort':'5,160 LBS (as built)',
-      'Fuel':           'Diesel #2',
-      'Cylinders':      '9" × 14" bore & stroke',
-    },
-    history: `The centerpiece of the PMRR collection was built in 1907 by the Baldwin Locomotive Works in Philadelphia for the Henry Cowell Lime and Portland Cement Company of Cowell, CA. Originally dubbed "Engine No. 3," it hauled rock from quarry to crushing mill — a distance of three miles.\n\nIn 1952 it was sold to South San Francisco Scrap Metals. In 1960, Charles Pollard of Vista, CA extensively modified it to resemble an 1870s engine, renaming it the "Robert E. Lee." After Pollard's death in 1966, John S. Porter of Poway purchased it and built a small railroad on his land.\n\nIn December 1987 the City of Poway purchased the Porter property — locomotive and all. PMRR volunteers restored it to full operational condition, and on July 4, 1997 it made its inaugural PMRR passenger run.`,
-    timeline: [
-      { year: '1907', text: 'Built by Baldwin Locomotive Works, Philadelphia, PA for Henry Cowell Lime & Cement Co.' },
-      { year: '1952', text: 'Sold to South San Francisco Scrap Metals Company.' },
-      { year: '1960', text: 'Purchased by Charles Pollard; extensively modified to resemble an 1870s engine.' },
-      { year: '1966', text: 'Pollard dies; locomotive sold to John S. Porter of Poway who builds a private railroad.' },
-      { year: '1987', text: 'City of Poway purchases the Porter property, acquiring the locomotive.' },
-      { year: '1997', text: 'Full restoration completed. Makes inaugural PMRR passenger run on July 4th.' },
-    ]
-  },
-  {
-    id: 'cable',
-    photo: '/assets/images/cablecar-17.png',
-    emoji: '🚌',
-    type: 'Historic Cable Car',
-    name: 'SF Cable Car #17',
-    bannerClass: 'cable',
-    category: 'cable',
-    status: 'operational',
-    tagline: 'Born in the ashes of the 1906 earthquake. Now riding the rails of Poway.',
-    specs: {
-      'Built':          'August 1906 · California St. Cable Railroad Co., San Francisco CA',
-      'Construction':   'Wood with iron frame',
-      'Length':         "30' 5\"",
-      'Weight':         '11,500 LBS',
-      'Seating':        '34 passengers',
-      'Original Power': 'Continuous underground cable',
-      'Current Power':  'Battery electric (upgraded 2013)',
-    },
-    history: `Cable Car #17 was donated by the City of San Diego to the City of Poway on October 30, 1997. It was once part of a fleet of 45 cars on the California Street Cable Railroad — a 12-mile line between Market Street and Presidio Avenue in San Francisco.\n\nBuilt in August 1906 to replace stock destroyed in the great San Francisco earthquake and fire, it still bears its original number 17. Constructed to the 1890 design of the original fleet, it is 30′5″ long, 8′ wide and seats 34.\n\nIn 1955 it was sold to Knott's Berry Farm in Orange County. After 33 years of service there, it was retired in 1988 and acquired by the City of San Diego — intended for the Gaslamp District, a plan that never happened. It was found decaying in an MTDB maintenance yard in 1997, and that's how it ended up in Poway.`,
-    timeline: [
-      { year: '1906', text: 'Built to replace cable cars destroyed in the San Francisco earthquake and fire.' },
-      { year: '1952', text: 'City of San Francisco acquires the California Street line; car becomes municipal.' },
-      { year: '1955', text: 'Retired from SF service; sold to Knott\'s Berry Farm amusement park.' },
-      { year: '1988', text: 'Retired from Knott\'s Berry Farm after 33 years of service.' },
-      { year: '1997', text: 'Donated by City of San Diego to City of Poway; cosmetic restoration begins.' },
-      { year: '2013', text: 'Battery-electric drive system upgraded by PMRR Volunteers and City of Poway.' },
-    ]
-  },
-  {
-    id: 'speeder',
-    photo: '/assets/images/speeder.png',
-    emoji: '🚃',
-    type: 'Maintenance Vehicle',
-    name: 'Fairmont Speeder',
-    bannerClass: 'speeder',
-    category: 'speeder',
-    status: 'operational',
-    tagline: 'The workhorse of the line — rebuilt from near-ruin.',
-    specs: {
-      'Built':        '1950 · Fairmont Co., Fairmont, MN',
-      'Rebuilt':      '1992–1994 by PMRR Volunteers at Old Poway Park',
-      'Engine':       '4-cylinder gasoline',
-      'Transmission': '4 forward gears, 1 reverse',
-    },
-    history: `The Speeder was built in 1950 by the Fairmont Company of Fairmont, MN. It was among the railroad equipment purchased from the estate of John Porter in 1987 when the City of Poway acquired the property.\n\nSpeeder cars like this one were used to transport work crews and their supplies down the track to work sites. When acquired by the City it was in very poor condition — but it was the first piece of rolling stock to be restored by PMRR Volunteers, and stands as an example of the terrific results that can be achieved through hard work and dedication.`,
-    timeline: [
-      { year: '1950', text: 'Built by Fairmont Company, Fairmont, MN.' },
-      { year: '1987', text: 'Acquired by City of Poway from the John Porter estate.' },
-      { year: '1992', text: 'Restoration begins — the first piece of rolling stock tackled by PMRR Volunteers.' },
-      { year: '1994', text: 'Restoration complete; enters regular service at Old Poway Park.' },
-    ]
-  },
-  {
-    id: 'gondola',
-    photo: '/assets/images/gondola-cars.png',
-    emoji: '🛤️',
-    type: 'Passenger Cars',
-    name: 'Mining Gondola Cars (×4)',
-    bannerClass: 'gondola',
-    category: 'operational',
-    status: 'operational',
-    tagline: 'Once hauled ore from the mines. Now carries smiling families.',
-    specs: {
-      'Built':      'c. 1880s',
-      'Rebuilt':    '1992–1995 by PMRR Volunteers',
-      'Capacity':   '12 passengers each',
-      'Material':   'Wood-sided',
-      'Count':      '4 cars',
-    },
-    history: `These four wood-sided gondola cars are used today for carrying passengers around the track behind the Fairmont Speeder and behind the Locomotive. They were built in the 1880s for hauling a very different cargo — rocks and ore from the mines. They are typical of the narrow gauge ore cars once used in mining operations throughout the American West.\n\nOriginally the interiors were faced with sheet metal to prolong the life of the wooden planks. All of the wood was in such poor condition when acquired that it was fully replaced, and seats were installed to carry passengers. Each car comfortably seats up to 12 passengers.`,
-    timeline: [
-      { year: '1880s', text: 'Built for hauling ore and rock from western mining operations.' },
-      { year: '1987', text: 'Acquired by City of Poway from the John Porter estate.' },
-      { year: '1992', text: 'Restoration begins; wood replaced and passenger seating installed.' },
-      { year: '1995', text: 'All four cars restored and placed in passenger service.' },
-    ]
-  },
-  {
-    id: 'coach',
-    emoji: '🚋',
-    type: 'Passenger Coach',
-    name: '"Paquay Valley" Coach',
-    bannerClass: 'coach',
-    category: 'operational',
-    status: 'operational',
-    tagline: "The PMRR's primary passenger vehicle — built from scratch in the 1960s.",
-    specs: {
-      'Built':     'c. 1963–1965 by Charles Pollard, Vista CA',
-      'Style':     '1870s replica passenger coach',
-      'Rebuilt':   '1993–1996 by PMRR Volunteers',
-      'Capacity':  '32 passengers',
-      'Frame':     'Steel with clerestory roof',
-      'Named':     '"Paquay Valley" (1999) — old Native American name for Poway Valley',
-    },
-    history: `When Charles Pollard acquired the Baldwin locomotive, he needed something for it to pull. He fabricated an 1870s-style passenger coach entirely from scratch — from the wheels up. The coach was among the rolling stock purchased by John Porter and eventually acquired by the City.\n\nConstructed of plywood on a steel frame, it was in very bad shape when rolled into the train barn for renovation. PMRR Volunteers stripped the wood from the frame and added steel to form a clerestory roof, giving it a more elegant appearance consistent with the vintage of the steam locomotive.\n\nIn 1999 it was repainted and given the name "Paquay Valley," the old Native American name for the Poway Valley.`,
-    timeline: [
-      { year: '1963', text: 'Charles Pollard of Vista, CA fabricates the coach to accompany his Baldwin locomotive.' },
-      { year: '1987', text: 'Acquired by City of Poway along with the rest of the Porter collection.' },
-      { year: '1993', text: 'Restoration begins; wood stripped, steel clerestory roof added.' },
-      { year: '1996', text: 'Restoration complete; enters service as primary passenger vehicle.' },
-      { year: '1999', text: 'Repainted and named "Paquay Valley" — the Native American name for Poway Valley.' },
-    ]
-  },
-  {
-    id: 'trolley',
-    photo: '/assets/images/Exhibit-12A-Trolley-Car-756x1024-1.png',
-    emoji: '🚃',
-    type: 'Historic Trolley Car',
-    name: 'LA Railway Trolley #57',
-    bannerClass: 'sold',
-    category: 'static',
-    status: 'sold',
-    tagline: 'A Hollywood prop, a San Francisco survivor — once a beloved PMRR icon. Sold 2020.',
-    specs: {
-      'Built':          '1894–1897 as Electric Trolley #54',
-      'Converted':      '1912 as Materials Car #9306',
-      'Construction':   'Wood with iron frame',
-      'Length':         "26'",
-      'Weight':         '~24,000 LBS',
-      'Original Power': 'DC electric from overhead wire',
-      'Final Power':    'GM flat 6-cylinder (Corvair), 94 hp',
-      'Status':         '⚠️ Sold 2020 to Samuel Slater Experience, Webster MA',
-    },
-    history: `This trolley has had one of the most fascinating and complicated histories of any vehicle in the PMRR collection. The best research suggests portions of it — mostly the wheel truck frame — could date as far back as 1894, when the Maguire Manufacturing Company of Chicago began building open bench seat trolleys for the Los Angeles Railway Co.\n\nThey ran on two General Electric 25-horsepower electric traction motors. By the late 1890s most had been removed from service as Los Angeles grew. In 1912, many survivors — including this one — were converted into material-hauling cars, renumbered as #9306. They hauled rails, spikes, bolts and rubbish across the expanding city.\n\nIn 1926, #9306 was sold to Lasky Studios (which became Paramount in 1928), where it was remodeled to "cable car" appearance for use in several films. Its last known film appearance was in the 1969 movie "Gaily, Gaily." It then sat on a back lot until 1977 when sold to a private collector, eventually acquired by PMRR Volunteers in early 1993.\n\nAfter years of devoted restoration by PMRR Volunteers — replacing the wheel truck, rebuilding the superstructure, and adding safety features — the trolley became fully operational in Spring 1996 and became a firm favourite with members and visitors alike.\n\nIn 2020, the trolley was sold to the Samuel Slater Experience in Webster, MA, where it continues its remarkable journey.`,
-    timeline: [
-      { year: '1894', text: 'Built by Maguire Manufacturing Co. for the Los Angeles Railway Co. as Electric Trolley #54.' },
-      { year: '1912', text: 'Converted into a materials-hauling car, renumbered #9306.' },
-      { year: '1926', text: 'Sold to Lasky Studios (later Paramount); remodeled as a "cable car" movie prop.' },
-      { year: '1969', text: 'Last known film appearance in "Gaily, Gaily."' },
-      { year: '1977', text: 'Sold from Paramount back lot to a private collector.' },
-      { year: '1993', text: 'Acquired by PMRR Volunteers; restoration begins.' },
-      { year: '1996', text: 'Full restoration complete; enters regular service at Old Poway Park.' },
-      { year: '2020', text: 'Sold to the Samuel Slater Experience, Webster MA — a new chapter begins.' },
-    ]
-  },
-  {
-    emoji: '🔧',
-    type: 'Static Display',
-    name: 'Replica 1900 Handcar',
-    bannerClass: 'static',
-    category: 'static',
-    status: 'static',
-    tagline: 'A tribute to the section gangs who kept the railroads running.',
-    specs: {
-      'Built':  '2012–2013 by PMRR Volunteers',
-      'Style':  'Replica circa 1900',
-      'Status': 'Static display',
-    },
-    history: `Beginning in the late 1800s, handcars emerged as an effective way to travel on the rails without expensive full-size train equipment. Originally powered by a hand crank that spun a wheel, handcars were useful for getting a small crew and light equipment down the line for maintenance.\n\nA typical crew of 4–6 (a "Section Gang") was responsible for a 4–5 mile section of track. Their handcar was loaded with spike tools, shovels, picks, rail-cutting chisels, signal flags, water, oilcans, and small hand tools.\n\nHandcars were quite dangerous — fast-moving trains could come around a blind corner before crews could escape. By 1910 or so, they were gradually replaced by safer gas-powered speeder cars like the Fairmont Speeder here at PMRR.`,
-    timeline: [
-      { year: 'c.1900', text: 'Original handcars widely used by railroad section gangs across the American West.' },
-      { year: '1910s', text: 'Handcars begin to be replaced by safer, faster gas-powered speeder cars.' },
-      { year: '2012', text: 'PMRR Volunteers begin construction of a replica handcar.' },
-      { year: '2013', text: 'Replica completed and placed on static display at Old Poway Park.' },
-    ]
-  },
-  {
-    id: 'caboose',
-    emoji: '🚂',
-    type: 'Static Display',
-    name: '1937 Southern Pacific Caboose',
-    bannerClass: 'static',
-    category: 'static',
-    status: 'static',
-    tagline: 'A classic end-of-train icon from the Southern Pacific era.',
-    specs: {
-      'Built':     '1937',
-      'Railroad':  'Southern Pacific',
-      'Status':    'Static display',
-    },
-    history: `This 1937 Southern Pacific caboose is a classic example of the end-of-train car that was once a familiar sight on American railroads. Cabooses served as the crew car for train conductors and brakemen, providing a workspace, shelter, and observation platform at the rear of freight trains.\n\nThe Southern Pacific Railroad was one of the most significant railroads in the American West, connecting California to the rest of the nation. This caboose stands as a static display at Old Poway Park, representing an important chapter in American railroad history.`,
-    timeline: [
-      { year: '1937', text: 'Built for Southern Pacific Railroad service.' },
-      { year: '1980s', text: 'Cabooses phased out of service on most American railroads.' },
-      { year: 'Present', text: 'On static display at Old Poway Park as part of the PMRR collection.' },
-    ]
-  },
-  {
-    id: 'boxcar',
-    emoji: '📦',
-    type: 'Static Display',
-    name: '1960 Santa Fe Boxcar',
-    bannerClass: 'static',
-    category: 'static',
-    status: 'static',
-    tagline: 'A piece of the legendary Atchison, Topeka and Santa Fe Railway.',
-    specs: {
-      'Built':    '1960',
-      'Railroad': 'Atchison, Topeka and Santa Fe Railway (ATSF)',
-      'Type':     'Boxcar',
-      'Status':   'Static display',
-    },
-    history: `This 1960 boxcar once served the legendary Atchison, Topeka and Santa Fe Railway — one of the most famous and romanticized railroads in American history, known simply as the "Santa Fe." Boxcars like this one were the backbone of American freight transportation for over a century, hauling everything from agricultural products to manufactured goods across the country.\n\nThe Santa Fe Railway was known for its iconic red-and-silver "Warbonnet" paint scheme and its role in connecting the Midwest to California. Today this boxcar stands as a static exhibit at Old Poway Park.`,
-    timeline: [
-      { year: '1860s', text: 'Atchison, Topeka and Santa Fe Railway founded; grows into a major transcontinental railroad.' },
-      { year: '1960', text: 'This boxcar built for Santa Fe freight service.' },
-      { year: 'Present', text: 'On static display at Old Poway Park as part of the PMRR collection.' },
-    ]
-  },
+function toggleEvent(el) {
+  const wasActive = el.classList.contains('active');
+  document.querySelectorAll('.hs-event').forEach(e => e.classList.remove('active'));
+  if (!wasActive) el.classList.add('active');
+}
+
+const HOTSPOTS = [
+  { title: 'Steam Locomotive — Baldwin #30646',
+    text: 'Built in 1907 in Philadelphia, this 0-4-0T saddle-tank locomotive spent 45 years hauling cement before arriving in Poway. Its true identity was hidden for decades behind a false 1878 history.' },
+  { title: 'The Piermont Plan (1887)',
+    text: 'Developers planned a full town here based on expected railroad access. When the railroad companies pulled out, the real estate boom collapsed — but the reservation for a depot yard was never forgotten.' },
+  { title: 'Volunteer Engineers',
+    text: 'Every weekend, trained volunteer engineers and conductors operate the railroad. The all-volunteer crew maintains the equipment, sells tickets, and keeps the tradition alive for families and rail enthusiasts.' },
+  { title: 'Old Poway Park Station',
+    text: 'Today\'s station sits near the exact site where railroad planners in the 1880s had reserved land for a depot. The iron horse finally arrived — just over a century later than originally planned.' },
 ];
 
-// ── Render cards ──────────────────────────────────────────────────────────────
-function eqRender(data) {
-  const grid = document.getElementById('eqGrid');
-  grid.innerHTML = '';
-  data.forEach(eq => {
-    const card = document.createElement('div');
-    card.className = 'eq-card';
-    card.dataset.category = eq.category;
-    card.dataset.status   = eq.status;
-    card.dataset.id       = eq.id;
-
-    const specEntries = Object.entries(eq.specs).slice(0, 4);
-    const specsHtml = specEntries.map(([k, v]) => `
-      <div class="eq-spec">
-        <div class="eq-spec-label">${k}</div>
-        <div class="eq-spec-value">${v.length > 28 ? v.slice(0,28)+'…' : v}</div>
-      </div>`).join('');
-
-    const statusLabel = eq.status === 'operational' ? 'Operational' : eq.status === 'sold' ? '⚠️ Sold — Left PMRR 2020' : 'Static Display';
-    const statusClass = eq.status === 'operational' ? 'status-operational' : eq.status === 'sold' ? 'status-sold' : 'status-static';
-
-    card.innerHTML = `
-      <div class="eq-card-banner ${eq.bannerClass}"></div>
-      <span class="eq-card-emoji">${eq.emoji}</span>
-      <div class="eq-card-body">
-        <div class="eq-card-type">${eq.type}</div>
-        <div class="eq-card-name">${eq.name}</div>
-        <div class="eq-card-status ${statusClass}">
-          <span class="eq-status-dot"></span>${statusLabel}
-        </div>
-        <div class="eq-card-desc">${eq.tagline}</div>
-        <div class="eq-card-specs">${specsHtml}</div>
-        <button class="eq-card-btn" onclick="eqOpenModal('${eq.id}')">
-          View Full Profile →
-        </button>
-      </div>
-    `;
-    grid.appendChild(card);
-  });
+function showHotspot(i) {
+  document.querySelectorAll('.hs-hspot').forEach((b, j) => b.classList.toggle('active', j === i));
+  document.getElementById('hsHeading').textContent = HOTSPOTS[i].title;
+  document.getElementById('hsText').textContent    = HOTSPOTS[i].text;
 }
-
-// ── Filter ────────────────────────────────────────────────────────────────────
-function eqFilter(type, btn) {
-  document.querySelectorAll('.eq-filter-btn').forEach(b => b.classList.remove('active'));
-  btn.classList.add('active');
-
-  document.querySelectorAll('.eq-card').forEach(card => {
-    const show = type === 'all'
-      || card.dataset.category === type
-      || card.dataset.status   === type;
-    card.classList.toggle('hidden', !show);
-  });
-}
-
-// ── Modal ─────────────────────────────────────────────────────────────────────
-function eqOpenModal(id) {
-  const eq = EQ_DATA.find(e => e.id === id);
-  if (!eq) return;
-
-  document.getElementById('eqModalBanner').className = `eq-modal-banner ${eq.bannerClass}`;
-
-  // Photo
-  const photoEl    = document.getElementById('eqModalPhoto');
-  const photoImgEl = document.getElementById('eqModalPhotoImg');
-  if (eq.photo) {
-    photoImgEl.src        = eq.photo;
-    photoImgEl.alt        = eq.name;
-    photoEl.style.display = 'block';
-  } else {
-    photoEl.style.display = 'none';
-    photoImgEl.src        = '';
-  }
-
-  document.getElementById('eqModalEmoji').textContent  = eq.emoji;
-  document.getElementById('eqModalType').textContent   = eq.type;
-  document.getElementById('eqModalTitle').textContent  = eq.name;
-
-  const statusLabel = eq.status === 'operational' ? 'Operational' : eq.status === 'sold' ? '⚠️ Sold — Left PMRR 2020' : 'Static Display';
-  const statusClass = eq.status === 'operational' ? 'status-operational' : eq.status === 'sold' ? 'status-sold' : 'status-static';
-  document.getElementById('eqModalStatus').innerHTML =
-    `<span class="eq-card-status ${statusClass}"><span class="eq-status-dot"></span>${statusLabel}</span>`;
-
-  // Specs
-  const specsHtml = Object.entries(eq.specs).map(([k,v]) => `
-    <div class="eq-modal-spec-row">
-      <div class="eq-modal-spec-key">${k}</div>
-      <div class="eq-modal-spec-val">${v}</div>
-    </div>`).join('');
-  document.getElementById('eqModalSpecs').innerHTML = specsHtml;
-
-  // History
-  document.getElementById('eqModalHistory').innerHTML =
-    eq.history.split('\n\n').map(p => `<p style="margin-bottom:14px">${p}</p>`).join('');
-
-  // Timeline
-  const tlHtml = eq.timeline.map(t => `
-    <div class="eq-timeline-item">
-      <div class="eq-timeline-dot"></div>
-      <div class="eq-timeline-year">${t.year}</div>
-      <div class="eq-timeline-text">${t.text}</div>
-    </div>`).join('');
-  document.getElementById('eqModalTimeline').innerHTML = tlHtml;
-
-  const overlay = document.getElementById('eqModal');
-  overlay.classList.add('open');
-  document.body.style.overflow = 'hidden';
-  // Scroll modal to top
-  document.getElementById('eqModalInner').scrollTop = 0;
-}
-
-function eqCloseModal(e) {
-  if (e && e.target !== document.getElementById('eqModal')) return;
-  document.getElementById('eqModal').classList.remove('open');
-  document.body.style.overflow = '';
-}
-
-document.addEventListener('keydown', e => {
-  if (e.key === 'Escape') eqCloseModal();
-});
-
-// ── Init ──────────────────────────────────────────────────────────────────────
-eqRender(EQ_DATA);
 </script>
