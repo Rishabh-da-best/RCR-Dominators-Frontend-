@@ -421,14 +421,14 @@ permalink: /trains
     margin-bottom: 14px !important;
     opacity: 0.9 !important;
   }
-  .rr-hero h1, .eq-hero-title, .rr-main-title, .fc-hero-title, .hs-hero h1, .pf-name {
-    font-family: 'Playfair Display', Georgia, serif !important;
-    font-size: clamp(34px, 6vw, 64px) !important;
-    font-weight: 900 !important;
-    line-height: 1.05 !important;
-    margin-bottom: 14px !important;
+  .rr-hero h1, .eq-hero-title, .fc-hero-title, .hs-hero h1, .pf-name {
+    font-family: "Goudy Old Style", "Goudy Bold", "Goudy", Georgia, serif !important;
+    font-size: clamp(36px, 6vw, 68px) !important;
+    font-weight: 700 !important;
+    line-height: 1.2 !important;
+    margin-bottom: 12px !important;
     color: #ffffff !important;
-    letter-spacing: -0.02em !important;
+    letter-spacing: -0.01em !important;
   }
   .rr-hero h1 em, .eq-hero-title em, .rr-main-title .orange-part, .rr-hero-title em, .fc-hero-title em, .hs-hero h1 em, .hs-hero h1 span, .pf-name em {
     font-style: italic !important;
