@@ -160,31 +160,31 @@ body {
   font-size: 11px;
   letter-spacing: 0.15em;
   text-transform: uppercase;
-  color: var(--rust);
+  color: var(--rust) !important;
   margin-bottom: 5px;
 }
 .hs-event-title {
   font-size: 18px;
   font-weight: 700;
-  color: var(--text);
+  color: var(--text) !important;
   margin-bottom: 0;
   line-height: 1.3;
 }
 .hs-expand-hint {
   font-family: var(--mono);
   font-size: 10px;
-  color: var(--text3);
+  color: var(--text3) !important;
   margin-top: 10px;
   letter-spacing: 0.1em;
   text-transform: uppercase;
   transition: color 0.2s;
 }
-.hs-event:hover .hs-expand-hint { color: var(--gold); }
+.hs-event:hover .hs-expand-hint { color: var(--gold) !important; }
 .hs-event.active .hs-expand-hint { display: none; }
 
 .hs-event-body {
   font-size: 14px;
-  color: var(--text2);
+  color: var(--text2) !important;
   line-height: 1.8;
   max-height: 0;
   overflow: hidden;
@@ -194,7 +194,7 @@ body {
 }
 .hs-event.active .hs-event-body {
   max-height: 600px;
-  opacity: 1;
+  opacity: 1 !important;
   margin-top: 14px;
 }
 
@@ -218,12 +218,12 @@ body {
   font-size: 10px;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: var(--gold);
+  color: var(--gold) !important;
   margin-bottom: 16px;
 }
 .hs-loco-card p {
   font-size: 14px;
-  color: var(--text2);
+  color: var(--text2) !important;
   line-height: 1.8;
 }
 .hs-loco-card p + p { margin-top: 12px; }
@@ -231,22 +231,23 @@ body {
 .hs-spec-table { width: 100%; border-collapse: collapse; font-size: 13px; margin-top: 4px; }
 .hs-spec-table tr { border-bottom: 1px solid var(--border); }
 .hs-spec-table tr:last-child { border-bottom: none; }
-.hs-spec-table td { padding: 9px 8px; vertical-align: top; color: var(--text2); }
+.hs-spec-table td { padding: 9px 8px; vertical-align: top; color: var(--text2) !important; background: transparent !important; }
 .hs-spec-table td:first-child {
   font-family: var(--mono);
   font-size: 10px;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: var(--text3);
+  color: var(--text3) !important;
+  background: transparent !important;
   width: 42%;
   padding-right: 16px;
 }
 
 .hs-gold-text {
-  color: var(--rust-dark);
+  color: var(--rust-dark) !important;
   font-family: var(--mono);
   font-size: 12px;
-  background: var(--gold-lt);
+  background: var(--gold-lt) !important;
   padding: 6px 12px;
   border-radius: 6px;
   display: inline-block;
@@ -296,7 +297,7 @@ body {
   border-radius: 50%;
   background: var(--rust);
   border: 2px solid var(--gold);
-  color: #fff;
+  color: #fff !important;
   font-family: var(--mono);
   font-size: 12px;
   font-weight: 700;
@@ -326,12 +327,12 @@ body {
   font-size: 10px;
   letter-spacing: 0.15em;
   text-transform: uppercase;
-  color: var(--gold);
+  color: var(--gold) !important;
   margin-bottom: 8px;
 }
 .hs-popup p {
   font-size: 14px;
-  color: var(--text2);
+  color: var(--text2) !important;
   line-height: 1.7;
 }
 
@@ -345,7 +346,7 @@ body {
 }
 .hs-quote blockquote {
   font-size: 16px;
-  color: var(--text);
+  color: var(--text) !important;
   line-height: 1.85;
   font-style: italic;
   margin-bottom: 16px;
@@ -364,7 +365,7 @@ body {
   font-size: 10px;
   letter-spacing: 0.15em;
   text-transform: uppercase;
-  color: var(--text3);
+  color: var(--text3) !important;
 }
 
 /* ── People ── */
@@ -390,18 +391,18 @@ body {
   font-size: 9px;
   letter-spacing: 0.15em;
   text-transform: uppercase;
-  color: var(--rust);
+  color: var(--rust) !important;
   margin-bottom: 7px;
 }
 .hs-person h4 {
   font-size: 15px;
   font-weight: 700;
-  color: var(--text);
+  color: var(--text) !important;
   margin-bottom: 8px;
 }
 .hs-person p {
   font-size: 13px;
-  color: var(--text2);
+  color: var(--text2) !important;
   line-height: 1.65;
 }
 </style>
