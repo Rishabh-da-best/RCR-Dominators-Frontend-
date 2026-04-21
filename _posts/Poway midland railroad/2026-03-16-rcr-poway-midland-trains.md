@@ -7,18 +7,18 @@ permalink: /trains
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Source+Serif+4:ital,wght@0,300;0,400;0,600;1,300&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 
 <style>
-  :root {
-    --coal:    #ffffff;
-    --iron:    #ffffff;
-    --rust:    #000000;
-    --ember:   #333333;
-    --gold:    #000000;
-    --brass:   #333333;
-    --steam:   #000000;
-    --parchment: #f9f9f9;
-    --smoke:   #666666;
-    --rail:    #cccccc;
-  }
+  .eq-page {
+  --coal:    #ffffff;
+  --iron:    #ffffff;
+  --rust:    #000000;
+  --ember:   #333333;
+  --gold:    #000000;
+  --brass:   #333333;
+  --steam:   #000000;
+  --parchment: #f9f9f9;
+  --smoke:   #666666;
+  --rail:    #cccccc;
+}
 
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 

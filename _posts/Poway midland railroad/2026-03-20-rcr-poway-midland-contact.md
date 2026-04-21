@@ -6,14 +6,14 @@ permalink: /contact
 
 <style>
 
-  :root {
-    --rust:#000000; --gold:#333333; --green:#000000;
-    --background:#ffffff; --white:#ffffff; --primary:#000000;
-    --border:#cccccc; --input-bg:#f7f7f7; --input-border:#dddddd;
-    --text:#000000; --subtext:#666666;
-    --accent:#000000; --accent2:#333333;
-    --success:#2d6a4f; --error:#b94a1c;
-  }
+  .contact-page {
+  --rust:#000000; --gold:#333333; --green:#000000;
+  --background:#ffffff; --white:#ffffff; --primary:#000000;
+  --border:#cccccc; --input-bg:#f7f7f7; --input-border:#dddddd;
+  --text:#000000; --subtext:#666666;
+  --accent:#000000; --accent2:#333333;
+  --success:#2d6a4f; --error:#b94a1c;
+}
   *,*::before,*::after { box-sizing: border-box; margin: 0; padding: 0; }
   html, body { width:100%; height:100%; }
   body {
@@ -244,6 +244,12 @@ permalink: /contact
     gap: 8px;
   }
   .rr-contact-info span { color: var(--accent2); }
+
+  .contact-page .rr-contact-info p,
+  .contact-page .rr-contact-info span {
+    color: var(--text) !important;
+    opacity: 1 !important;
+  }
 </style>
 
 <div class="contact-page">
