@@ -5,7 +5,7 @@ let pythonURI, javaURI, baseurl, fetchOptions, login;
 
 // 根据环境设置后端地址
 if (location.hostname === "localhost" || location.hostname === "127.0.0.1") {
-    pythonURI = "http://localhost:8428";
+    pythonURI = "pythonURI";
 } else {
     pythonURI = "https://rcr-user.opencodingsociety.com";
 }

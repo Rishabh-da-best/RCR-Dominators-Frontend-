@@ -327,7 +327,7 @@ If we look closely, we see that login is imported from config.js. Let's take a l
 ```javascript
 export var pythonURI;
 if (location.hostname === "localhost") {
-        pythonURI = "http://localhost:8428";
+        pythonURI = "pythonURI";
 } else if (location.hostname === "127.0.0.1") {
         pythonURI = "http://127.0.0.1:8428";
 } else {

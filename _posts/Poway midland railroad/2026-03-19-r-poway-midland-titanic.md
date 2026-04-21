@@ -329,7 +329,7 @@ permalink: /ml/titanic
 
 <!-- JavaScript -->
 <script>
-const API_URL = 'http://localhost:8428/api/titanic/predict';
+const API_URL = 'pythonURI/api/titanic/predict';
 
 async function predictSurvival() {
     const predictBtn = document.getElementById('predictBtn');

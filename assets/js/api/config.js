@@ -2,7 +2,7 @@
 window.baseurl = "{{ site.baseurl }}";
 
 if (location.hostname === "localhost") {
-    window.pythonURI = "http://localhost:8428";
+    window.pythonURI = "pythonURI";
 } else {
     window.pythonURI = "https://rcr-user.opencodingsociety.com";
 }

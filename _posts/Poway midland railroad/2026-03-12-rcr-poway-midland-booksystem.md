@@ -373,7 +373,7 @@ function bkInit() {
     submitBtn.textContent = 'Submitting...';
 
     try {
-      const response = await fetch('http://localhost:8428/api/reservations', {
+      const response = await fetch('pythonURI/api/reservations', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
