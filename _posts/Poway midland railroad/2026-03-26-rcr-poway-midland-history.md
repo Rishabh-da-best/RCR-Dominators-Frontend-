@@ -405,6 +405,26 @@ body {
   color: var(--text2) !important;
   line-height: 1.65;
 }
+
+/* 修复table斑马纹黑底 */
+.app-root .hs-spec-table tr,
+.app-root .hs-spec-table tr:nth-child(even),
+.app-root .hs-spec-table tr:nth-child(odd) {
+  background: transparent !important;
+}
+.app-root .hs-spec-table td,
+.app-root .hs-spec-table td:nth-child(even),
+.app-root .hs-spec-table td:nth-child(odd) {
+  background: transparent !important;
+  color: inherit !important;
+  opacity: 1 !important;
+}
+
+/* 修复右卡片透明文字 */
+.app-root .hs-loco-card,
+.app-root .hs-loco-card * {
+  opacity: 1 !important;
+}
 </style>
 
 <div class="hs-hero">
