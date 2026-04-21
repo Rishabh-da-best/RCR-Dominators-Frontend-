@@ -1,5 +1,5 @@
 ---
-layout: base
+layout: opencs
 title: Live Camera & Explorer
 permalink: /camera
 ---
