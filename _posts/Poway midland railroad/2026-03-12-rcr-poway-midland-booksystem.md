@@ -3,7 +3,7 @@ layout: base
 title: Book a Train Ride
 permalink: /book
 ---
-
+<script src="/assets/js/api/config.js"></script>
 <style>
   :root {
     --rust:     #000000;
@@ -373,7 +373,7 @@ function bkInit() {
     submitBtn.textContent = 'Submitting...';
 
     try {
-      const response = await fetch('pythonURI/api/reservations', {
+      const response = await fetch(`${window.pythonURI}/api/reservations`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
