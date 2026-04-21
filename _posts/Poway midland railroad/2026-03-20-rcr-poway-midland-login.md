@@ -113,6 +113,7 @@ permalink: /login
     border-radius:20px; background:rgba(201,148,58,0.15); color:var(--gold);
     border:1px solid rgba(201,148,58,0.3); display:inline-block; margin-bottom:8px; }
   .rr-status p { font-size:13px; color:var(--smoke); line-height:1.6; }
+  #authStatusText { color: #000000 !important; }
   /* Unified Poway hero banner */
   .rr-hero, .eq-hero, .pf-hero, .fc-hero, .hs-hero {
     position: relative !important;

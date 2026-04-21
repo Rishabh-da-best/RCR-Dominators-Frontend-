@@ -91,7 +91,7 @@ permalink: /volunteer-schedule
             font-size: 1.9rem;
             font-weight: 700;
             letter-spacing: -0.02em;
-            color: var(--primary-dark);
+            color: #000000 !important;
             margin: 0;
             line-height: 1.2;
         }
@@ -420,7 +420,7 @@ permalink: /volunteer-schedule
 
         .volunteer-info p {
             font-size: 0.8rem;
-            color: var(--text-soft);
+            color: #000000 !important;
             line-height: 1.5;
         }
 

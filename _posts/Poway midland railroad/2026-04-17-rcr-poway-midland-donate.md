@@ -312,7 +312,7 @@ permalink: /donate
   .info-box p {
     margin-bottom: 16px;
     font-size: 13px;
-    color: #543f0d;
+    color: #000000 !important;
     line-height: 1.6;
   }
   

@@ -306,7 +306,7 @@ permalink: /trains
   .eq-modal-section-title {
     font-family: 'Playfair Display', serif;
     font-size: 18px; font-weight: 700;
-    color: var(--rust); margin-bottom: 16px;
+    color: #000000 !important; margin-bottom: 16px;
     display: flex; align-items: center; gap: 10px;
   }
   .eq-modal-section-title::after {
