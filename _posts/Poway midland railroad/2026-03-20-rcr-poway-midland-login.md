@@ -201,6 +201,86 @@ permalink: /login
     padding: 0 !important;
   }
   .rr-hero-content { padding: 0 !important; }
+
+  .rr-hero::before, .eq-hero::before, .pf-hero::before, .fc-hero::before, .hs-hero::before {
+    content: '' !important;
+    position: absolute !important;
+    inset: 0 !important;
+    background-image: repeating-linear-gradient(
+      90deg, transparent, transparent 48px,
+      rgba(255,255,255,0.015) 48px, rgba(255,255,255,0.015) 49px
+    ) !important;
+    pointer-events: none !important;
+  }
+  .rr-hero-track, .eq-hero-track, .pf-track, .fc-track, .hs-track, .hs-hero-track {
+    position: absolute !important;
+    bottom: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    height: 18px !important;
+    background: repeating-linear-gradient(
+      90deg,
+      rgba(201,148,58,0.4) 0px,
+      rgba(201,148,58,0.4) 28px,
+      transparent 28px,
+      transparent 48px
+    ) !important;
+  }
+  .rr-hero-track::before, .rr-hero-track::after,
+  .eq-hero-track::before, .eq-hero-track::after,
+  .pf-track::before, .pf-track::after,
+  .fc-track::before, .fc-track::after,
+  .hs-track::before, .hs-track::after,
+  .hs-hero-track::before, .hs-hero-track::after {
+    content: '' !important;
+    position: absolute !important;
+    left: 0 !important;
+    right: 0 !important;
+    height: 2px !important;
+    background: #c9943a !important;
+    opacity: 0.35 !important;
+  }
+  .rr-hero-track::before, .eq-hero-track::before, .pf-track::before, .fc-track::before, .hs-track::before, .hs-hero-track::before { top: 3px !important; }
+  .rr-hero-track::after, .eq-hero-track::after, .pf-track::after, .fc-track::after, .hs-track::after, .hs-hero-track::after { bottom: 3px !important; }
+
+  .rr-hero-tag, .eq-hero-tag, .pf-hero-tag, .fc-hero-tag, .hs-hero-tag {
+    font-family: 'DM Mono', monospace !important;
+    font-size: 10px !important;
+    letter-spacing: 0.35em !important;
+    text-transform: uppercase !important;
+    color: #c9943a !important;
+    margin-bottom: 14px !important;
+    opacity: 0.9 !important;
+  }
+  .rr-hero h1, .eq-hero-title, .rr-main-title, .fc-hero-title, .hs-hero h1, .pf-name {
+    font-family: 'Playfair Display', Georgia, serif !important;
+    font-size: clamp(34px, 6vw, 64px) !important;
+    font-weight: 900 !important;
+    line-height: 1.05 !important;
+    margin-bottom: 14px !important;
+    color: #ffffff !important;
+    letter-spacing: -0.02em !important;
+  }
+  .rr-hero h1 em, .eq-hero-title em, .rr-main-title .orange-part, .rr-hero-title em, .fc-hero-title em, .hs-hero h1 em, .hs-hero h1 span, .pf-name em {
+    font-style: italic !important;
+    color: #c9943a !important;
+    display: block !important;
+  }
+  .rr-hero p, .eq-hero-sub, .rr-hero-sub, .fc-hero-sub, .hs-hero p {
+    font-size: 15px !important;
+    color: rgba(255,255,255,0.72) !important;
+    max-width: 560px !important;
+    margin: 0 auto !important;
+    line-height: 1.75 !important;
+    font-weight: 300 !important;
+  }
+  .rr-hero-image {
+    background-image: none !important;
+    background-color: #1e1208 !important;
+    min-height: auto !important;
+    padding: 0 !important;
+  }
+  .rr-hero-content { padding: 0 !important; }
 </style>
 
 <div class="rr-hero">
