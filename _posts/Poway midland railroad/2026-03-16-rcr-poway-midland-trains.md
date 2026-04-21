@@ -1,6 +1,6 @@
 ---
 layout: base
-title: Our Trains
+title: Equipment
 permalink: /trains
 ---
 
