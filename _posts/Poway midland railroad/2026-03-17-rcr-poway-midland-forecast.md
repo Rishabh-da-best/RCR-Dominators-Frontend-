@@ -350,7 +350,7 @@ permalink: /forecast
 </div>
 
 <script>
-const BACKEND = pythonURI;
+var BACKEND = window.pythonURI;
 const LAT = 32.9728, LON = -117.0359;
 
 // ── US Federal Holidays + CA observances 2025–2027 ────────────────────────

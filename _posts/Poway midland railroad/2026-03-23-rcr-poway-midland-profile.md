@@ -426,7 +426,7 @@ permalink: /profile
 <script type="module">
   import pythonURI from "/assets/js/api/config.module.js";
   
-  const BACKEND = pythonURI;
+  var BACKEND = window.pythonURI;
   let pfUser = null;
   async function pfInit() {
     // 先检查 localStorage

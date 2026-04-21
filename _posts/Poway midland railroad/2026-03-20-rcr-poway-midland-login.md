@@ -344,7 +344,7 @@ permalink: /login
 <script type = "module">
 import pythonURI from "/assets/js/api/config.module.js"
 
-const BACKEND = pythonURI;
+var BACKEND = window.pythonURI;
 const validateEmail = e => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(e);
 
 function setFeedback(el, msg, type) {
