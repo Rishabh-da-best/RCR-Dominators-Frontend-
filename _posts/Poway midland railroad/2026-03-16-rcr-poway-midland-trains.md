@@ -94,7 +94,10 @@ body{background:#faf8f5 !important;}
 
 <div class="hs-hero">
   <div class="hs-hero-tag">Since 1880s · Poway–Midland Railroad</div>
-  <h1>Iron Horse <em>History</em></h1>
+  <h1 style="font-family:'Playfair Display',Georgia,serif !important;font-size:clamp(34px,6vw,64px);font-weight:900;line-height:1.05;margin-bottom:14px;color:#ffffff !important;letter-spacing:-0.02em;">
+  Iron Horse
+  <span style="font-style:italic;color:#c9943a !important;display:block;">History</span>
+</h1>
   <p>The Poway-Midland Railroad is a non-profit organization dedicated to preserving and operating historical railroad equipment — run entirely by passionate volunteers.</p>
   <div class="hs-track"></div>
 </div>
