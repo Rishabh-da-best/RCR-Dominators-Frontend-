@@ -355,6 +355,13 @@ permalink: /trains
     color: #666666 !important;
     opacity: 1 !important;
   }
+  .eq-modal-title,
+  .eq-card-name,
+  .eq-modal-type,
+  .eq-card-type {
+    color: #000000 !important;
+    opacity: 1 !important;
+  }
 </style>
 
 <div class="eq-page">
