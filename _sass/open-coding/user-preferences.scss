@@ -150,6 +150,16 @@
     color: var(--pref-text-color) !important;
   }
 
+  /* EXCEPTION: Restore native colors in self-contained page modules (railroad, etc.) */
+  .app-root, .app-root p, .app-root span, .app-root div, .app-root li, .app-root h1, .app-root h2, .app-root h3, .app-root h4, .app-root h5, .app-root h6, .app-root small,
+  .eq-page, .eq-page p, .eq-page span, .eq-page div, .eq-page li, .eq-page h1, .eq-page h2, .eq-page h3, .eq-page h4, .eq-page h5, .eq-page h6, .eq-page small,
+  .contact-page, .contact-page p, .contact-page span, .contact-page div, .contact-page li, .contact-page h1, .contact-page h2, .contact-page h3, .contact-page h4, .contact-page h5, .contact-page h6, .contact-page small,
+  .rr-wrap, .rr-wrap p, .rr-wrap span, .rr-wrap div, .rr-wrap li, .rr-hero, .rr-card, .rr-section {
+    color: inherit !important;
+    background-color: inherit !important;
+    border-color: inherit !important;
+  }
+
   /* Muted secondary text */
   .text-neutral-400, .text-neutral-500, .text-gray-400, .text-gray-500,
   .text-slate-400, .text-slate-500, .text-zinc-400, .text-zinc-500,
