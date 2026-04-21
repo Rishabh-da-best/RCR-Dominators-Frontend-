@@ -5,13 +5,13 @@ permalink: /events
 ---
 
 <style>
-  :root{--coal:#ffffff;--iron:#ffffff;--iron2:#f5f5f5;--rust:#000000;--ember:#333333;--gold:#000000;--steam:#000000;--smoke:#666666;--text:#000000;--subtext:#666666;--background:#ffffff;}
+  :root{--coal:#1e1208;--iron:#ffffff;--iron2:#f5f5f5;--rust:#000000;--ember:#333333;--gold:#000000;--steam:#000000;--smoke:#666666;--text:#000000;--subtext:#666666;--background:#ffffff;}
   *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
 
   .ev-page{background:var(--coal);min-height:100vh;font-family:'Georgia',serif;color:var(--steam);}
 
-  body { background: #ffffff; padding-top: 54px !important;}
-  .page-content { max-width: none !important; padding: 0 !important; background: #ffffff; }
+  body { background: #1e1208; padding-top: 54px !important;}
+  .page-content { max-width: none !important; padding: 0 !important; background: #1e1208; }
   .wrapper { max-width: none !important; padding: 0 !important; }
 
   .rr-hero{position:relative;padding:60px 24px 40px;min-height:200px;text-align:center;background:#2a1a0e;border-bottom:1px solid #cccccc;overflow:hidden;}
