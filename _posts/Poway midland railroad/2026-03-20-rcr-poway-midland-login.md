@@ -116,16 +116,11 @@ permalink: /login
   /* Unified Poway hero banner */
   .rr-hero, .eq-hero, .pf-hero, .fc-hero, .hs-hero {
     position: relative !important;
-    width: min(1100px, 100%) !important;
-    max-width: 1100px !important;
-    margin: 0 auto !important;
     padding: 72px 24px 52px !important;
-    min-height: 260px !important;
     text-align: center !important;
     background: #1e1208 !important;
     border-bottom: 3px solid #b94a1c !important;
     overflow: hidden !important;
-    box-sizing: border-box !important;
   }
   .rr-hero::before, .eq-hero::before, .pf-hero::before, .fc-hero::before, .hs-hero::before {
     content: '' !important;
