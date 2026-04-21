@@ -22,8 +22,8 @@ body{background:#faf8f5 !important;}
 .hs-page .hs-track::before{top:3px;}
 .hs-page .hs-track::after{bottom:3px;}
 .hs-page .hs-hero-tag{font-family:'DM Mono',monospace !important;font-size:10px;letter-spacing:0.35em;text-transform:uppercase;color:#c9943a !important;margin-bottom:14px;}
-.hs-page .hs-hero h1{font-family:'Playfair Display',Georgia,serif !important;font-size:clamp(34px,6vw,64px);font-weight:900;line-height:1.05;margin-bottom:14px;color:#ffffff !important;letter-spacing:-0.02em;}
-.hs-page .hs-hero h1 em{font-style:italic;color:#c9943a !important;display:block;}
+.hs-page .hs-hero h1,.hs-page .hs-hero h1 *{font-family:'Playfair Display',Georgia,serif !important;font-size:clamp(34px,6vw,64px);font-weight:900 !important;line-height:1.05 !important;margin-bottom:14px;color:#ffffff !important;letter-spacing:-0.02em;opacity:1 !important;visibility:visible !important;}
+.hs-page .hs-hero h1 em,.hs-page .hs-hero h1 span{font-style:italic;color:#c9943a !important;display:block;opacity:1 !important;visibility:visible !important;}
 .hs-page .hs-hero p{font-size:15px;color:rgba(255,255,255,0.72) !important;max-width:560px;margin:0 auto;line-height:1.75;font-weight:300;}
 
 /* Layout */
@@ -94,10 +94,7 @@ body{background:#faf8f5 !important;}
 
 <div class="hs-hero">
   <div class="hs-hero-tag">Since 1880s · Poway–Midland Railroad</div>
-  <h1 style="font-family:'Playfair Display',Georgia,serif !important;font-size:clamp(34px,6vw,64px);font-weight:900;line-height:1.05;margin-bottom:14px;color:#ffffff !important;letter-spacing:-0.02em;">
-  Iron Horse
-  <span style="font-style:italic;color:#c9943a !important;display:block;">History</span>
-</h1>
+  <h1 style="font-family:'Playfair Display',Georgia,serif !important;font-size:clamp(34px,6vw,64px) !important;font-weight:900 !important;line-height:1.05 !important;margin-bottom:14px !important;color:#ffffff !important;letter-spacing:-0.02em !important;opacity:1 !important;visibility:visible !important;">Iron Horse <span style="font-style:italic !important;color:#c9943a !important;display:block !important;opacity:1 !important;visibility:visible !important;">History</span></h1>
   <p>The Poway-Midland Railroad is a non-profit organization dedicated to preserving and operating historical railroad equipment — run entirely by passionate volunteers.</p>
   <div class="hs-track"></div>
 </div>
