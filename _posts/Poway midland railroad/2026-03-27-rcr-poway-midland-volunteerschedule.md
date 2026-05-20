@@ -474,7 +474,7 @@ permalink: /volunteer-schedule
 <script type="module">
 import pythonURI from "/assets/js/api/config.module.js";
 const BACKEND = window.pythonURI;
-const isLocalhost = false;
+const isLocalhost = true;
 
 let currentUserEmail = null;
 let currentUserName = null;
@@ -720,17 +720,25 @@ async function renderTable() {
         tbody.appendChild(tr);
     }
     
-    document.querySelectorAll('.vol-btn.signup').forEach(btn => {
-        btn.addEventListener('click', async (e) => {
-            const id = parseInt(btn.getAttribute('data-id'));
-            const success = await signUpForShift(id);
-            if (success) {
-                await renderTable();
+document.querySelectorAll('.vol-btn.signup').forEach(btn => {
+    btn.addEventListener('click', async (e) => {
+        const id = parseInt(btn.getAttribute('data-id'));
+        const shift = allShifts.find(s => s.id == id);
+        const success = await signUpForShift(id);
+        if (success) {
+            await renderTable();
+        } else {
+            // 显示具体的错误信息
+            if (shift && shift.assignments && shift.assignments.length >= shift.max_volunteers) {
+                alert('Sign-up failed: This shift is already full.');
+            } else if (shift && shift.assignments && shift.assignments.some(a => a.email === currentUserEmail)) {
+                alert('Sign-up failed: You have already signed up for this shift.');
             } else {
-                alert('Unable to sign up. Shift may be full or you already signed.');
+                alert('Sign-up failed: Server error. Please try again later.');
             }
-        });
+        }
     });
+});
     
     document.querySelectorAll('.vol-btn.cancel').forEach(btn => {
         btn.addEventListener('click', async (e) => {

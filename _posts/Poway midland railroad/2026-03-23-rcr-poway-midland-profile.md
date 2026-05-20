@@ -537,74 +537,103 @@ permalink: /profile
     }
   }
 
-  async function pfLoadVolunteers(email) {
-    const list = document.getElementById('pfVolunteerList');
+async function pfLoadVolunteers(email) {
+  const list = document.getElementById('pfVolunteerList');
+  
+  // 先尝试从 localStorage 读取（本地模式）
+  const localVolunteers = localStorage.getItem('PMRR_Volunteers');
+  if (localVolunteers) {
+    const volunteerData = JSON.parse(localVolunteers);
+    const myShifts = [];
     
-    console.log('pfLoadVolunteers - email:', email);
+    // 从 sampleShifts 获取班次信息
+    const sampleShifts = [
+      { id: 1, date: '2026-05-23', train_type: 'steam', time_start: '10:00', time_end: '14:00', max_volunteers: 4 },
+      { id: 2, date: '2026-05-24', train_type: 'cable', time_start: '11:00', time_end: '15:00', max_volunteers: 4 },
+      { id: 3, date: '2026-05-30', train_type: 'steam', time_start: '10:00', time_end: '14:00', max_volunteers: 4 },
+      { id: 4, date: '2026-05-31', train_type: 'speeder', time_start: '11:00', time_end: '15:00', max_volunteers: 4 },
+      { id: 5, date: '2026-06-06', train_type: 'steam', time_start: '10:00', time_end: '14:00', max_volunteers: 4 },
+      { id: 6, date: '2026-06-07', train_type: 'cable', time_start: '11:00', time_end: '15:00', max_volunteers: 4 },
+    ];
     
-    try {
-      const res = await fetch(`${BACKEND}/api/volunteer/shifts`, { 
-        credentials: 'include' 
-      });
-      
-      if (!res.ok) {
-        console.log('API response not OK:', res.status);
-        list.innerHTML = `<div class="pf-empty">Could not load volunteer shifts. <a href="{{ "/volunteer-schedule" | relative_url }}">Sign up →</a></div>`;
-        return;
-      }
-      
-      const allShifts = await res.json();
-      console.log('All shifts from API:', allShifts);
-      
-      const myShifts = allShifts.filter(shift => {
-        if (!shift.assignments || !Array.isArray(shift.assignments)) return false;
-        return shift.assignments.some(a => a.email && a.email.toLowerCase() === email.toLowerCase());
-      });
-      
-      console.log('My shifts:', myShifts);
-      
-      if (!myShifts.length) {
-        list.innerHTML = `<div class="pf-empty">No volunteer shifts yet. <a href="{{ "/volunteer-schedule" | relative_url }}">Sign up to volunteer →</a></div>`;
-        return;
-      }
-      
-      myShifts.sort((a, b) => new Date(a.date) - new Date(b.date));
-      
-      const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
-      list.innerHTML = myShifts.map(shift => {
-        const d = new Date(shift.date + 'T12:00:00');
-        const dateLabel = `${months[d.getMonth()]} ${d.getDate()}, ${d.getFullYear()}`;
-        
-        let job = 'Volunteer';
-        if (shift.assignments) {
-          const myInfo = shift.assignments.find(a => a.email && a.email.toLowerCase() === email.toLowerCase());
-          if (myInfo && myInfo.job) job = myInfo.job;
+    for (const [date, volunteers] of Object.entries(volunteerData)) {
+      if (volunteers.includes(email)) {
+        const shift = sampleShifts.find(s => s.date === date);
+        if (shift) {
+          myShifts.push({ ...shift, assignments: volunteers.map(e => ({ email: e })) });
         }
-        
-        const trainTypeDisplay = {
-          'steam': 'Steam Locomotive',
-          'cable': 'Cable Car',
-          'speeder': 'Speeder'
-        }[shift.train_type] || shift.train_type || 'Train Operation';
-        
-        const timeRange = shift.time_start && shift.time_end ? `${shift.time_start} - ${shift.time_end}` : '10:00am – 2:00pm';
-        
-        return `
-          <div class="pf-booking-row">
-            <div class="pf-booking-code">${dateLabel}</div>
-            <div class="pf-booking-detail">
-              ${trainTypeDisplay} · ${timeRange}
-              <small>Position: ${job}</small>
-            </div>
-            <div class="pf-booking-price">✅ Registered</div>
-          </div>`;
-      }).join('');
-      
-    } catch (error) {
-      console.error('Error loading volunteers:', error);
-      list.innerHTML = `<div class="pf-empty">Could not load volunteer shifts. Make sure backend is running.</div>`;
+      }
     }
+    
+    if (myShifts.length === 0) {
+      list.innerHTML = `<div class="pf-empty">No volunteer shifts yet. <a href="/volunteer-schedule">Sign up to volunteer →</a></div>`;
+      return;
+    }
+    
+    myShifts.sort((a, b) => new Date(a.date) - new Date(b.date));
+    const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+    list.innerHTML = myShifts.map(shift => {
+      const d = new Date(shift.date + 'T12:00:00');
+      const dateLabel = `${months[d.getMonth()]} ${d.getDate()}, ${d.getFullYear()}`;
+      const trainTypeDisplay = {
+        'steam': 'Steam Locomotive',
+        'cable': 'Cable Car',
+        'speeder': 'Speeder'
+      }[shift.train_type] || shift.train_type;
+      const timeRange = `${shift.time_start} - ${shift.time_end}`;
+      return `
+        <div class="pf-booking-row">
+          <div class="pf-booking-code">${dateLabel}</div>
+          <div class="pf-booking-detail">
+            ${trainTypeDisplay} · ${timeRange}
+            <small>Position: Volunteer</small>
+          </div>
+          <div class="pf-booking-price">✅ Registered</div>
+        </div>`;
+    }).join('');
+    return;
   }
+  
+  // 否则从后端 API 获取
+  try {
+    const res = await fetch(`${BACKEND}/api/volunteer/shifts`, { credentials: 'include' });
+    if (!res.ok) throw new Error();
+    const allShifts = await res.json();
+    const myShifts = allShifts.filter(shift => {
+      if (!shift.assignments || !Array.isArray(shift.assignments)) return false;
+      return shift.assignments.some(a => a.email && a.email.toLowerCase() === email.toLowerCase());
+    });
+    
+    if (!myShifts.length) {
+      list.innerHTML = `<div class="pf-empty">No volunteer shifts yet. <a href="/volunteer-schedule">Sign up to volunteer →</a></div>`;
+      return;
+    }
+    
+    myShifts.sort((a, b) => new Date(a.date) - new Date(b.date));
+    const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+    list.innerHTML = myShifts.map(shift => {
+      const d = new Date(shift.date + 'T12:00:00');
+      const dateLabel = `${months[d.getMonth()]} ${d.getDate()}, ${d.getFullYear()}`;
+      const trainTypeDisplay = {
+        'steam': 'Steam Locomotive',
+        'cable': 'Cable Car',
+        'speeder': 'Speeder'
+      }[shift.train_type] || shift.train_type;
+      const timeRange = shift.time_start && shift.time_end ? `${shift.time_start} - ${shift.time_end}` : '10:00am – 2:00pm';
+      return `
+        <div class="pf-booking-row">
+          <div class="pf-booking-code">${dateLabel}</div>
+          <div class="pf-booking-detail">
+            ${trainTypeDisplay} · ${timeRange}
+            <small>Position: Volunteer</small>
+          </div>
+          <div class="pf-booking-price">✅ Registered</div>
+        </div>`;
+    }).join('');
+  } catch {
+    list.innerHTML = `<div class="pf-empty">Could not load volunteer shifts.</div>`;
+  }
+}
 
   function pfFeedback(id, msg, type) {
     const el = document.getElementById(id);
