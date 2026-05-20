@@ -11,11 +11,10 @@ permalink: /profile
     --steam:#000000;--smoke:#666666; --green:#2d6a4f;
     --text:#000000; --subtext:#666666; --background:#ffffff;
   }
-    .page-content {
+  .page-content {
     max-width: none !important;
     padding: 0 !important;
   }
-
   .wrapper {
     max-width: none !important;
     padding: 0 !important;
@@ -130,8 +129,8 @@ permalink: /profile
   .pf-btn-danger  { background: rgba(185,74,28,0.15); color: #e07050; border: 1px solid rgba(185,74,28,0.3); }
   .pf-btn-danger:hover { background: rgba(185,74,28,0.3); }
 
-  /* Booking history */
-  .pf-bookings { background: var(--iron); border: 1px solid #cccccc; border-radius: 12px; padding: 24px; border-top: 3px solid var(--gold); }
+  /* Booking & Volunteer history */
+  .pf-bookings { background: var(--iron); border: 1px solid #cccccc; border-radius: 12px; padding: 24px; border-top: 3px solid var(--gold); margin-top: 20px; }
   .pf-booking-row {
     display: grid; grid-template-columns: auto 1fr auto;
     gap: 14px; align-items: center;
@@ -413,6 +412,16 @@ permalink: /profile
       </div>
     </div>
 
+    <!-- Volunteer History -->
+    <div class="pf-bookings">
+      <div class="pf-card-title" style="font-family:'Courier New',monospace;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:18px;padding-bottom:10px;border-bottom:1px solid #cccccc;">
+         🤝 My Volunteer Shifts
+      </div>
+      <div id="pfVolunteerList">
+        <div class="pf-empty">Loading volunteer shifts...</div>
+      </div>
+    </div>
+
     <!-- Danger zone -->
     <div style="margin-top:20px;text-align:right;">
       <button class="pf-btn pf-btn-danger" style="width:auto;padding:10px 24px;" onclick="pfLogout()">
@@ -428,31 +437,34 @@ permalink: /profile
   
   var BACKEND = window.pythonURI;
   let pfUser = null;
+  
   async function pfInit() {
-    // 先检查 localStorage
     const localLoggedIn = localStorage.getItem('logged_in');
     
     if (localLoggedIn === 'true') {
-      // 已登录，直接显示 profile
       pfUser = {
         name: localStorage.getItem('user_name'),
         email: localStorage.getItem('user_email')
       };
       pfShowProfile(pfUser);
       pfLoadBookings(pfUser.email);
+      pfLoadVolunteers(pfUser.email);
     } else {
-      // 尝试从后端验证
       try {
-        const res = await fetch(`${BACKEND}/api/auth/status`, { credentials: 'include' });
-        const data = await res.json();
-        if (data.logged_in) {
-          // 同步到 localStorage
-          localStorage.setItem('logged_in', 'true');
-          localStorage.setItem('user_name', data.name);
-          localStorage.setItem('user_email', data.email);
-          pfUser = data;
-          pfShowProfile(pfUser);
-          pfLoadBookings(pfUser.email);
+        const res = await fetch(`${BACKEND}/api/user`, { credentials: 'include' });
+        if (res.ok) {
+          const data = await res.json();
+          if (data.uid) {
+            localStorage.setItem('logged_in', 'true');
+            localStorage.setItem('user_name', data.name);
+            localStorage.setItem('user_email', data.uid);
+            pfUser = { name: data.name, email: data.uid };
+            pfShowProfile(pfUser);
+            pfLoadBookings(pfUser.email);
+            pfLoadVolunteers(pfUser.email);
+          } else {
+            pfShowGuest();
+          }
         } else {
           pfShowGuest();
         }
@@ -463,9 +475,8 @@ permalink: /profile
   }
 
   function pfShowGuest() {
-    // 隐藏锁屏，显示 guest 版本
-    document.getElementById('pfGate').classList.remove('show');
-    document.getElementById('pfMain').classList.add('show');
+    document.getElementById('pfGate').classList.add('show');
+    document.getElementById('pfMain').classList.remove('show');
     document.getElementById('pfAvatar').textContent = '?';
     document.getElementById('pfName').textContent = 'Guest';
     document.getElementById('pfEmail').textContent = 'Not signed in';
@@ -474,10 +485,12 @@ permalink: /profile
     
     const list = document.getElementById('pfBookingList');
     list.innerHTML = `<div class="pf-empty">Please <a href="{{ "/login" | relative_url }}">sign in</a> to view your booking history.</div>`;
+    
+    const volList = document.getElementById('pfVolunteerList');
+    volList.innerHTML = `<div class="pf-empty">Please <a href="{{ "/login" | relative_url }}">sign in</a> to view your volunteer shifts.</div>`;
   }
 
   function pfShowProfile(user) {
-    // 确保隐藏锁屏，显示 profile
     document.getElementById('pfGate').classList.remove('show');
     document.getElementById('pfMain').classList.add('show');
     document.getElementById('pfAvatar').textContent = user.name.charAt(0).toUpperCase();
@@ -492,7 +505,6 @@ permalink: /profile
     try {
       const res = await fetch(`${BACKEND}/api/reservations`, { credentials: 'include' });
       const data = await res.json();
-
       const mine = data.filter(r => r.email && r.email.toLowerCase() === email.toLowerCase());
 
       if (!mine.length) {
@@ -501,7 +513,6 @@ permalink: /profile
       }
 
       mine.sort((a,b) => new Date(b.created_at) - new Date(a.created_at));
-
       const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
       list.innerHTML = mine.map(r => {
         const d = new Date(r.date + 'T12:00:00');
@@ -521,9 +532,77 @@ permalink: /profile
             <div class="pf-booking-price">$${r.total_price.toFixed(2)}</div>
           </div>`;
       }).join('');
-
     } catch {
-      list.innerHTML = `<div class="pf-empty">Could not load bookings. Make sure backend is running.</div>`;
+      list.innerHTML = `<div class="pf-empty">Could not load bookings.</div>`;
+    }
+  }
+
+  async function pfLoadVolunteers(email) {
+    const list = document.getElementById('pfVolunteerList');
+    
+    console.log('pfLoadVolunteers - email:', email);
+    
+    try {
+      const res = await fetch(`${BACKEND}/api/volunteer/shifts`, { 
+        credentials: 'include' 
+      });
+      
+      if (!res.ok) {
+        console.log('API response not OK:', res.status);
+        list.innerHTML = `<div class="pf-empty">Could not load volunteer shifts. <a href="{{ "/volunteer-schedule" | relative_url }}">Sign up →</a></div>`;
+        return;
+      }
+      
+      const allShifts = await res.json();
+      console.log('All shifts from API:', allShifts);
+      
+      const myShifts = allShifts.filter(shift => {
+        if (!shift.assignments || !Array.isArray(shift.assignments)) return false;
+        return shift.assignments.some(a => a.email && a.email.toLowerCase() === email.toLowerCase());
+      });
+      
+      console.log('My shifts:', myShifts);
+      
+      if (!myShifts.length) {
+        list.innerHTML = `<div class="pf-empty">No volunteer shifts yet. <a href="{{ "/volunteer-schedule" | relative_url }}">Sign up to volunteer →</a></div>`;
+        return;
+      }
+      
+      myShifts.sort((a, b) => new Date(a.date) - new Date(b.date));
+      
+      const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+      list.innerHTML = myShifts.map(shift => {
+        const d = new Date(shift.date + 'T12:00:00');
+        const dateLabel = `${months[d.getMonth()]} ${d.getDate()}, ${d.getFullYear()}`;
+        
+        let job = 'Volunteer';
+        if (shift.assignments) {
+          const myInfo = shift.assignments.find(a => a.email && a.email.toLowerCase() === email.toLowerCase());
+          if (myInfo && myInfo.job) job = myInfo.job;
+        }
+        
+        const trainTypeDisplay = {
+          'steam': 'Steam Locomotive',
+          'cable': 'Cable Car',
+          'speeder': 'Speeder'
+        }[shift.train_type] || shift.train_type || 'Train Operation';
+        
+        const timeRange = shift.time_start && shift.time_end ? `${shift.time_start} - ${shift.time_end}` : '10:00am – 2:00pm';
+        
+        return `
+          <div class="pf-booking-row">
+            <div class="pf-booking-code">${dateLabel}</div>
+            <div class="pf-booking-detail">
+              ${trainTypeDisplay} · ${timeRange}
+              <small>Position: ${job}</small>
+            </div>
+            <div class="pf-booking-price">✅ Registered</div>
+          </div>`;
+      }).join('');
+      
+    } catch (error) {
+      console.error('Error loading volunteers:', error);
+      list.innerHTML = `<div class="pf-empty">Could not load volunteer shifts. Make sure backend is running.</div>`;
     }
   }
 
@@ -561,30 +640,25 @@ permalink: /profile
     }
   }
 
-async function pfLogout() {
-  // 清除 localStorage
-  localStorage.removeItem('logged_in');
-  localStorage.removeItem('user_name');
-  localStorage.removeItem('user_email');
-  
-  // 调用后端登出
-  try { 
-    await fetch(`${BACKEND}/api/auth/logout`, { 
-      method: 'POST', 
-      credentials: 'include' 
-    }); 
-  } catch(e) {
-    console.log('Logout error:', e);
+  async function pfLogout() {
+    localStorage.removeItem('logged_in');
+    localStorage.removeItem('user_name');
+    localStorage.removeItem('user_email');
+    
+    try { 
+      await fetch(`${BACKEND}/api/authenticate`, { 
+        method: 'DELETE', 
+        credentials: 'include' 
+      }); 
+    } catch(e) {
+      console.log('Logout error:', e);
+    }
+    
+    window.location.href = '{{ "/login" | relative_url }}';
   }
-  
-  // 跳转到登录页
-  window.location.href = '{{ "/login" | relative_url }}';
-}
 
-  // 把函数挂载到 window，让 HTML 的 onclick 可以调用
   window.pfChangePassword = pfChangePassword;
   window.pfLogout = pfLogout;
 
-  // 初始化
   pfInit();
 </script>
