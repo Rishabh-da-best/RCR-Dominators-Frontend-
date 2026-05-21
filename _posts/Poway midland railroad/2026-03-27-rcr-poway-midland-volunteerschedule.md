@@ -474,164 +474,190 @@ permalink: /volunteer-schedule
 <script type="module">
 import pythonURI from "/assets/js/api/config.module.js";
 const BACKEND = window.pythonURI;
-const isLocalhost = true;
 
 let currentUserEmail = null;
 let currentUserName = null;
-
-async function getCurrentUser() {
-    try {
-        const res = await fetch(`${BACKEND}/api/user`, { credentials: 'include' });
-        if (res.ok) {
-            const data = await res.json();
-            if (data.uid) {
-                currentUserEmail = data.uid;
-                currentUserName = data.name;
-                console.log('Logged in as:', currentUserEmail);
-                return true;
-            }
-        }
-    } catch(e) {
-        console.log('Backend not available:', e);
-    }
-    
-    // 本地环境：从 localStorage 获取
-    if (isLocalhost) {
-        currentUserEmail = localStorage.getItem('user_email') || 'test@local.com';
-        currentUserName = localStorage.getItem('user_name') || 'Test Volunteer';
-        return true;
-    }
-    
-    return false;
-}
-
-// 模拟班次数据（本地测试用）
-const sampleShifts = [
-    { id: 1, date: '2026-05-23', train_type: 'steam', time_start: '10:00', time_end: '14:00', max_volunteers: 4, assignments: [] },
-    { id: 2, date: '2026-05-24', train_type: 'cable', time_start: '11:00', time_end: '15:00', max_volunteers: 4, assignments: [] },
-    { id: 3, date: '2026-05-30', train_type: 'steam', time_start: '10:00', time_end: '14:00', max_volunteers: 4, assignments: [] },
-    { id: 4, date: '2026-05-31', train_type: 'speeder', time_start: '11:00', time_end: '15:00', max_volunteers: 4, assignments: [] },
-    { id: 5, date: '2026-06-06', train_type: 'steam', time_start: '10:00', time_end: '14:00', max_volunteers: 4, assignments: [] },
-    { id: 6, date: '2026-06-07', train_type: 'cable', time_start: '11:00', time_end: '15:00', max_volunteers: 4, assignments: [] },
-];
-
 let allShifts = [];
 let currentFilter = "all";
 let searchQuery = "";
 
-async function loadShifts() {
-    if (isLocalhost) {
-        // 本地测试：使用模拟数据
-        allShifts = JSON.parse(JSON.stringify(sampleShifts));
-        // 从 localStorage 加载报名数据
-        const stored = localStorage.getItem('PMRR_Volunteers');
-        if (stored) {
-            const volunteerData = JSON.parse(stored);
-            for (let shift of allShifts) {
-                const dateKey = shift.date;
-                if (volunteerData[dateKey]) {
-                    shift.assignments = volunteerData[dateKey].map(email => ({ email, name: email.split('@')[0] }));
+// 获取当前登录用户 - 只使用 API，无模拟数据
+async function getCurrentUser() {
+    // 尝试从 localStorage 读取（如果登录时保存了）
+    const savedEmail = localStorage.getItem('user_email');
+    const savedName = localStorage.getItem('user_name');
+    
+    if (savedEmail && savedName) {
+        currentUserEmail = savedEmail;
+        currentUserName = savedName;
+        console.log('Using localStorage user:', currentUserEmail);
+        return true;
+    }
+    
+    // 尝试 API 端点
+    const endpoints = ['/api/user', '/api/id', '/api/auth/status', '/api/me'];
+    
+    for (const endpoint of endpoints) {
+        try {
+            const res = await fetch(`${BACKEND}${endpoint}`, { 
+                credentials: 'include',
+                headers: { 'Content-Type': 'application/json' }
+            });
+            
+            if (res.ok) {
+                const data = await res.json();
+                console.log(`Response from ${endpoint}:`, data);
+                
+                let user = null;
+                if (Array.isArray(data) && data.length > 0) {
+                    user = data[0];
+                } else if (data && typeof data === 'object') {
+                    user = data;
+                }
+                
+                if (user) {
+                    currentUserEmail = user.uid || user.email || user.id;
+                    currentUserName = user.name || user.username || currentUserEmail;
+                    if (currentUserEmail) {
+                        console.log(`Found user via ${endpoint}:`, currentUserEmail);
+                        // 保存到 localStorage 供后续使用
+                        localStorage.setItem('user_email', currentUserEmail);
+                        localStorage.setItem('user_name', currentUserName);
+                        return true;
+                    }
                 }
             }
-        }
-        console.log('Loaded local shifts:', allShifts.length);
-        return true;
-    } else {
-        try {
-            const res = await fetch(`${BACKEND}/api/volunteer/shifts`, { credentials: 'include' });
-            if (!res.ok) throw new Error('Failed to load shifts');
-            allShifts = await res.json();
-            console.log('Loaded API shifts:', allShifts.length);
-            return true;
         } catch(e) {
-            console.error('Failed to load shifts:', e);
-            return false;
+            console.log(`${endpoint} failed:`, e);
         }
+    }
+    
+    console.log('No valid user endpoint found, user not logged in');
+    return false;
+}
+
+// 从后端加载班次数据 - 无模拟数据回退
+async function loadShifts() {
+    try {
+        const res = await fetch(`${BACKEND}/api/volunteer/shifts`, { 
+            credentials: 'include',
+            headers: { 'Content-Type': 'application/json' }
+        });
+        
+        if (!res.ok) {
+            throw new Error(`HTTP ${res.status}: ${res.statusText}`);
+        }
+        
+        allShifts = await res.json();
+        console.log('Loaded API shifts:', allShifts.length);
+        
+        // 确保每个 shift 都有必要字段
+        for (let shift of allShifts) {
+            if (!shift.assignments) shift.assignments = [];
+            if (!shift.max_volunteers) shift.max_volunteers = 4;
+        }
+        return true;
+    } catch(e) {
+        console.error('Failed to load shifts from API:', e);
+        // 显示错误信息，不使用模拟数据
+        const tbody = document.getElementById('tableBody');
+        if (tbody) {
+            tbody.innerHTML = `<tr><td colspan="5" style="text-align:center;padding:48px;color:var(--red);">
+                ❌ Failed to load shifts from server.<br>
+                Please check your connection and try again.<br>
+                <small>${e.message}</small>
+            </td></tr>`;
+        }
+        return false;
     }
 }
 
+// 报名
 async function signUpForShift(shiftId) {
     const shift = allShifts.find(s => s.id == shiftId);
     if (!shift) return false;
     
-    if (isLocalhost) {
-        // 本地模式
-        if (!shift.assignments) shift.assignments = [];
-        if (shift.assignments.length >= shift.max_volunteers) return false;
-        if (shift.assignments.some(a => a.email === currentUserEmail)) return false;
+    if (!currentUserEmail) {
+        alert('Please log in to sign up for shifts.');
+        return false;
+    }
+    
+    try {
+        const res = await fetch(`${BACKEND}/api/volunteer/shifts/${shiftId}/signup`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            credentials: 'include',
+            body: JSON.stringify({ 
+                name: currentUserName,
+                email: currentUserEmail,
+                job: 'Volunteer'
+            })
+        });
         
-        shift.assignments.push({ email: currentUserEmail, name: currentUserName });
-        
-        // 保存到 localStorage
-        const volunteerData = {};
-        for (let s of allShifts) {
-            if (s.assignments && s.assignments.length > 0) {
-                volunteerData[s.date] = s.assignments.map(a => a.email);
-            }
-        }
-        localStorage.setItem('PMRR_Volunteers', JSON.stringify(volunteerData));
-        return true;
-    } else {
-        try {
-            const res = await fetch(`${BACKEND}/api/volunteer/shifts/${shiftId}/signup`, {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                credentials: 'include',
-                body: JSON.stringify({ 
-                    name: currentUserName,
-                    email: currentUserEmail,
-                    job: 'Volunteer'
-                })
-            });
-            return res.ok;
-        } catch(e) {
-            console.error('Signup error:', e);
+        if (!res.ok) {
+            const error = await res.json();
+            console.error('Signup failed:', error);
+            alert(error.error || 'Unable to sign up. Shift may be full or you already signed.');
             return false;
         }
+        alert('✓ Successfully signed up!');
+        return true;
+    } catch(e) {
+        console.error('Signup error:', e);
+        alert('Network error. Please try again.');
+        return false;
     }
 }
 
+// 取消报名
 async function cancelSignUp(shiftId) {
     const shift = allShifts.find(s => s.id == shiftId);
     if (!shift) return false;
     
-    if (isLocalhost) {
-        if (!shift.assignments) return false;
-        const index = shift.assignments.findIndex(a => a.email === currentUserEmail);
-        if (index === -1) return false;
-        shift.assignments.splice(index, 1);
+    if (!currentUserEmail) {
+        alert('Please log in to cancel sign-ups.');
+        return false;
+    }
+    
+    try {
+        const res = await fetch(`${BACKEND}/api/volunteer/shifts/${shiftId}/signup`, {
+            method: 'DELETE',
+            headers: { 'Content-Type': 'application/json' },
+            credentials: 'include',
+            body: JSON.stringify({ email: currentUserEmail })
+        });
         
-        const volunteerData = {};
-        for (let s of allShifts) {
-            if (s.assignments && s.assignments.length > 0) {
-                volunteerData[s.date] = s.assignments.map(a => a.email);
-            }
-        }
-        localStorage.setItem('PMRR_Volunteers', JSON.stringify(volunteerData));
-        return true;
-    } else {
-        try {
-            const res = await fetch(`${BACKEND}/api/volunteer/shifts/${shiftId}/signup`, {
-                method: 'DELETE',
-                headers: { 'Content-Type': 'application/json' },
-                credentials: 'include',
-                body: JSON.stringify({ email: currentUserEmail })
-            });
-            return res.ok;
-        } catch(e) {
-            console.error('Cancel error:', e);
+        if (!res.ok) {
+            const error = await res.json();
+            alert(error.error || 'Failed to cancel sign-up.');
             return false;
         }
+        alert('✓ Successfully cancelled sign-up!');
+        return true;
+    } catch(e) {
+        console.error('Cancel error:', e);
+        alert('Network error. Please try again.');
+        return false;
     }
 }
 
 function isUserSignedUp(shift) {
-    if (!shift.assignments) return false;
-    return shift.assignments.some(a => a.email === currentUserEmail);
+    if (!currentUserEmail) return false;
+    
+    if (shift.assignments && Array.isArray(shift.assignments)) {
+        return shift.assignments.some(a => a.email === currentUserEmail);
+    }
+    return false;
 }
 
 function getVolunteerCount(shift) {
-    return shift.assignments ? shift.assignments.length : 0;
+    if (shift.current_volunteers !== undefined) {
+        return shift.current_volunteers;
+    }
+    if (shift.assignments && Array.isArray(shift.assignments)) {
+        return shift.assignments.length;
+    }
+    return 0;
 }
 
 function getFilteredShifts() {
@@ -663,10 +689,15 @@ function updateStats() {
         totalSigned += taken;
     }
     
-    document.getElementById('totalShifts').innerText = total;
-    document.getElementById('openSpots').innerText = openSpots;
-    document.getElementById('signedUpCount').innerText = totalSigned;
-    document.getElementById('steamCount').innerText = steamDays;
+    const totalShiftsEl = document.getElementById('totalShifts');
+    const openSpotsEl = document.getElementById('openSpots');
+    const signedUpCountEl = document.getElementById('signedUpCount');
+    const steamCountEl = document.getElementById('steamCount');
+    
+    if (totalShiftsEl) totalShiftsEl.innerText = total;
+    if (openSpotsEl) openSpotsEl.innerText = openSpots;
+    if (signedUpCountEl) signedUpCountEl.innerText = totalSigned;
+    if (steamCountEl) steamCountEl.innerText = steamDays;
 }
 
 function formatDate(dateStr) {
@@ -683,14 +714,17 @@ function getTrainLabel(type) {
 }
 
 async function renderTable() {
-    await loadShifts();
+    const success = await loadShifts();
+    if (!success) return;
     
     const filtered = getFilteredShifts();
     const tbody = document.getElementById('tableBody');
+    if (!tbody) return;
+    
     tbody.innerHTML = '';
     
     if (filtered.length === 0) {
-        tbody.innerHTML = `<tr><td colspan="5" style="text-align:center;padding:48px;">✨ No shifts match the current filter. ✨</td></tr>`;
+        tbody.innerHTML = `<tr><td colspan="5" style="text-align:center;padding:48px;">✨ No shifts available. Please check back later. ✨</td></tr>`;
         updateStats();
         return;
     }
@@ -712,39 +746,34 @@ async function renderTable() {
                 ${isFull ? '<div class="slot-full">⚠️ Shift full</div>' : `<div style="margin-top:4px;">✅ ${shift.max_volunteers - taken} spot(s) open</div>`}
             </td>
             <td class="volunteer-buttons">
-                ${(!isSigned && !isFull) ? `<button class="vol-btn signup" data-id="${shift.id}">➕ Sign up</button>` : ''}
-                ${isSigned ? `<button class="vol-btn cancel" data-id="${shift.id}">✖ Cancel</button>` : ''}
-                ${isSigned ? '<span class="vol-status">✓ Signed</span>' : (isFull ? '<span class="vol-status">🔒 Full</span>' : '<span class="vol-status">Open</span>')}
+                ${!currentUserEmail ? '<span class="vol-status">🔐 <a href="/login" style="color: var(--accent-wood);">Login</a> to sign up</span>' : ''}
+                ${(currentUserEmail && !isSigned && !isFull) ? `<button class="vol-btn signup" data-id="${shift.id}">➕ Sign up</button>` : ''}
+                ${(currentUserEmail && isSigned) ? `<button class="vol-btn cancel" data-id="${shift.id}">✖ Cancel</button>` : ''}
+                ${isSigned ? '<span class="vol-status">✓ Signed</span>' : (isFull ? '<span class="vol-status">🔒 Full</span>' : (currentUserEmail ? '<span class="vol-status">Open</span>' : ''))}
             </td>
         `;
         tbody.appendChild(tr);
     }
     
-document.querySelectorAll('.vol-btn.signup').forEach(btn => {
-    btn.addEventListener('click', async (e) => {
-        const id = parseInt(btn.getAttribute('data-id'));
-        const shift = allShifts.find(s => s.id == id);
-        const success = await signUpForShift(id);
-        if (success) {
-            await renderTable();
-        } else {
-            // 显示具体的错误信息
-            if (shift && shift.assignments && shift.assignments.length >= shift.max_volunteers) {
-                alert('Sign-up failed: This shift is already full.');
-            } else if (shift && shift.assignments && shift.assignments.some(a => a.email === currentUserEmail)) {
-                alert('Sign-up failed: You have already signed up for this shift.');
-            } else {
-                alert('Sign-up failed: Server error. Please try again later.');
+    // 绑定报名按钮事件
+    document.querySelectorAll('.vol-btn.signup').forEach(button => {
+        button.addEventListener('click', async (e) => {
+            const id = parseInt(button.getAttribute('data-id'));
+            const success = await signUpForShift(id);
+            if (success) {
+                await renderTable();
             }
-        }
+        });
     });
-});
     
-    document.querySelectorAll('.vol-btn.cancel').forEach(btn => {
-        btn.addEventListener('click', async (e) => {
-            const id = parseInt(btn.getAttribute('data-id'));
-            await cancelSignUp(id);
-            await renderTable();
+    // 绑定取消按钮事件
+    document.querySelectorAll('.vol-btn.cancel').forEach(button => {
+        button.addEventListener('click', async (e) => {
+            const id = parseInt(button.getAttribute('data-id'));
+            const success = await cancelSignUp(id);
+            if (success) {
+                await renderTable();
+            }
         });
     });
     
@@ -760,18 +789,28 @@ function initFilters() {
             renderTable();
         });
     });
-    document.getElementById('searchInput').addEventListener('input', e => {
-        searchQuery = e.target.value;
-        renderTable();
-    });
+    
+    const searchInput = document.getElementById('searchInput');
+    if (searchInput) {
+        searchInput.addEventListener('input', e => {
+            searchQuery = e.target.value;
+            renderTable();
+        });
+    }
 }
 
 async function init() {
+    // 获取用户登录状态
     await getCurrentUser();
+    
+    // 加载并显示班次
     await renderTable();
+    
+    // 初始化筛选器
     initFilters();
 }
 
+// 启动应用
 init();
 </script>
 </body>
