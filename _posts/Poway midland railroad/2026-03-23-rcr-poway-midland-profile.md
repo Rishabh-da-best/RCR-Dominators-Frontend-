@@ -455,7 +455,7 @@ permalink: /profile
     }
   }
 
-  // ========== 加载志愿者班次（只使用后端 API，已删除 localStorage 逻辑）==========
+  // ========== 加载志愿者班次（使用 volunteers 字段）==========
   async function pfLoadVolunteers(email) {
     const list = document.getElementById('pfVolunteerList');
     
@@ -475,9 +475,10 @@ permalink: /profile
       const allShifts = await res.json();
       console.log('All shifts from API:', allShifts);
       
+      // 使用 volunteers 字段
       const myShifts = allShifts.filter(shift => {
-        if (!shift.assignments || !Array.isArray(shift.assignments)) return false;
-        return shift.assignments.some(a => a.email && a.email.toLowerCase() === email.toLowerCase());
+        if (!shift.volunteers || !Array.isArray(shift.volunteers)) return false;
+        return shift.volunteers.some(v => v.email && v.email.toLowerCase() === email.toLowerCase());
       });
       
       console.log('My shifts from API:', myShifts);
@@ -496,8 +497,8 @@ permalink: /profile
         const rowId = `volunteer-${shift.id}-${shift.date.replace(/-/g, '')}`;
         
         let job = 'Volunteer';
-        if (shift.assignments) {
-          const myInfo = shift.assignments.find(a => a.email && a.email.toLowerCase() === email.toLowerCase());
+        if (shift.volunteers) {
+          const myInfo = shift.volunteers.find(v => v.email && v.email.toLowerCase() === email.toLowerCase());
           if (myInfo && myInfo.job) job = myInfo.job;
         }
         

@@ -551,11 +551,10 @@ async function loadShifts() {
         allShifts = await res.json();
         console.log('Loaded API shifts:', allShifts.length);
         
-        // 确保每个 shift 都有必要字段
-        for (let shift of allShifts) {
-            if (!shift.assignments) shift.assignments = [];
-            if (!shift.max_volunteers) shift.max_volunteers = 4;
-        }
+for (let shift of allShifts) {
+    if (!shift.volunteers) shift.volunteers = [];
+    if (!shift.max_volunteers) shift.max_volunteers = 4;
+}
         return true;
     } catch(e) {
         console.error('Failed to load shifts from API:', e);
@@ -644,8 +643,8 @@ async function cancelSignUp(shiftId) {
 function isUserSignedUp(shift) {
     if (!currentUserEmail) return false;
     
-    if (shift.assignments && Array.isArray(shift.assignments)) {
-        return shift.assignments.some(a => a.email === currentUserEmail);
+    if (shift.volunteers && Array.isArray(shift.volunteers)) {
+        return shift.volunteers.some(v => v.email === currentUserEmail);
     }
     return false;
 }
@@ -654,8 +653,8 @@ function getVolunteerCount(shift) {
     if (shift.current_volunteers !== undefined) {
         return shift.current_volunteers;
     }
-    if (shift.assignments && Array.isArray(shift.assignments)) {
-        return shift.assignments.length;
+    if (shift.volunteers && Array.isArray(shift.volunteers)) {
+        return shift.volunteers.length;
     }
     return 0;
 }
@@ -733,7 +732,7 @@ async function renderTable() {
         const taken = getVolunteerCount(shift);
         const isFull = taken >= shift.max_volunteers;
         const isSigned = isUserSignedUp(shift);
-        const volunteersList = shift.assignments?.map(a => a.name || a.email.split('@')[0]).join(', ') || '— no volunteers yet';
+        const volunteersList = shift.volunteers?.map(v => v.name || v.email.split('@')[0]).join(', ') || '— no volunteers yet';
         
         const tr = document.createElement('tr');
         tr.innerHTML = `
