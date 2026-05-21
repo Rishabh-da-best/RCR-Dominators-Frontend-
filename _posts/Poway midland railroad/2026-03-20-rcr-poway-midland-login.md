@@ -436,7 +436,7 @@ document.getElementById('loginForm').addEventListener('submit', async e => {
     
     setFeedback(fb, `Welcome back, ${data.user.name}!`, 'ok');
     setTimeout(() => {
-      window.location.reload();
+      window.location.href = '/profile'; 
     }, 1000);
   } catch (error) {
     console.error('Login error:', error);
