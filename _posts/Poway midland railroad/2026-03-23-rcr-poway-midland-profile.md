@@ -3,7 +3,9 @@ layout: base
 title: My Profile
 permalink: /profile
 ---
+
 <script src="/assets/js/api/config.js"></script>
+
 <style>
   :root {
     --coal:#ffffff;--iron:#ffffff;--iron2:#f5f5f5;
@@ -129,6 +131,23 @@ permalink: /profile
   .pf-btn-danger  { background: rgba(185,74,28,0.15); color: #e07050; border: 1px solid rgba(185,74,28,0.3); }
   .pf-btn-danger:hover { background: rgba(185,74,28,0.3); }
 
+  /* 取消按钮样式 */
+  .pf-cancel-btn {
+    background: rgba(185, 74, 28, 0.15);
+    border: 1px solid rgba(185, 74, 28, 0.3);
+    color: #e07050;
+    padding: 6px 12px;
+    border-radius: 40px;
+    font-size: 11px;
+    font-family: 'Courier New', monospace;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .pf-cancel-btn:hover {
+    background: rgba(185, 74, 28, 0.3);
+    transform: scale(0.97);
+  }
+
   /* Booking & Volunteer history */
   .pf-bookings { background: var(--iron); border: 1px solid #cccccc; border-radius: 12px; padding: 24px; border-top: 3px solid var(--gold); margin-top: 20px; }
   .pf-booking-row {
@@ -173,174 +192,6 @@ permalink: /profile
 
   #pfMain { display: none; }
   #pfMain.show { display: block; }
-  /* Unified Poway hero banner */
-  .rr-hero, .eq-hero, .pf-hero, .fc-hero, .hs-hero {
-    position: relative !important;
-    padding: 72px 24px 52px !important;
-    text-align: center !important;
-    background: #1e1208 !important;
-    border-bottom: 3px solid #b94a1c !important;
-    overflow: hidden !important;
-  }
-  .rr-hero::before, .eq-hero::before, .pf-hero::before, .fc-hero::before, .hs-hero::before {
-    content: '' !important;
-    position: absolute !important;
-    inset: 0 !important;
-    background-image: repeating-linear-gradient(
-      90deg, transparent, transparent 48px,
-      rgba(255,255,255,0.015) 48px, rgba(255,255,255,0.015) 49px
-    ) !important;
-    pointer-events: none !important;
-  }
-  .rr-hero-track, .eq-hero-track, .pf-track, .fc-track, .hs-track, .hs-hero-track {
-    position: absolute !important;
-    bottom: 0 !important;
-    left: 0 !important;
-    right: 0 !important;
-    height: 18px !important;
-    background: repeating-linear-gradient(
-      90deg,
-      rgba(201,148,58,0.4) 0px,
-      rgba(201,148,58,0.4) 28px,
-      transparent 28px,
-      transparent 48px
-    ) !important;
-  }
-  .rr-hero-track::before, .rr-hero-track::after,
-  .eq-hero-track::before, .eq-hero-track::after,
-  .pf-track::before, .pf-track::after,
-  .fc-track::before, .fc-track::after,
-  .hs-track::before, .hs-track::after,
-  .hs-hero-track::before, .hs-hero-track::after {
-    content: '' !important;
-    position: absolute !important;
-    left: 0 !important;
-    right: 0 !important;
-    height: 2px !important;
-    background: #c9943a !important;
-    opacity: 0.35 !important;
-  }
-  .rr-hero-track::before, .eq-hero-track::before, .pf-track::before, .fc-track::before, .hs-track::before, .hs-hero-track::before { top: 3px !important; }
-  .rr-hero-track::after, .eq-hero-track::after, .pf-track::after, .fc-track::after, .hs-track::after, .hs-hero-track::after { bottom: 3px !important; }
-
-  .rr-hero-tag, .eq-hero-tag, .pf-hero-tag, .fc-hero-tag, .hs-hero-tag {
-    font-family: 'DM Mono', monospace !important;
-    font-size: 10px !important;
-    letter-spacing: 0.35em !important;
-    text-transform: uppercase !important;
-    color: #c9943a !important;
-    margin-bottom: 14px !important;
-    opacity: 0.9 !important;
-  }
-  .rr-hero h1, .eq-hero-title, .rr-main-title, .fc-hero-title, .hs-hero h1, .pf-name {
-    font-family: 'Playfair Display', Georgia, serif !important;
-    font-size: clamp(34px, 6vw, 64px) !important;
-    font-weight: 900 !important;
-    line-height: 1.05 !important;
-    margin-bottom: 14px !important;
-    color: #ffffff !important;
-    letter-spacing: -0.02em !important;
-  }
-  .rr-hero h1 em, .eq-hero-title em, .rr-main-title .orange-part, .rr-hero-title em, .fc-hero-title em, .hs-hero h1 em, .hs-hero h1 span, .pf-name em {
-    font-style: italic !important;
-    color: #c9943a !important;
-    display: block !important;
-  }
-  .rr-hero p, .eq-hero-sub, .rr-hero-sub, .fc-hero-sub, .hs-hero p {
-    font-size: 15px !important;
-    color: rgba(255,255,255,0.72) !important;
-    max-width: 560px !important;
-    margin: 0 auto !important;
-    line-height: 1.75 !important;
-    font-weight: 300 !important;
-  }
-  .rr-hero-image {
-    background-image: none !important;
-    background-color: #1e1208 !important;
-    min-height: auto !important;
-    padding: 0 !important;
-  }
-  .rr-hero-content { padding: 0 !important; }
-
-  .rr-hero::before, .eq-hero::before, .pf-hero::before, .fc-hero::before, .hs-hero::before {
-    content: '' !important;
-    position: absolute !important;
-    inset: 0 !important;
-    background-image: repeating-linear-gradient(
-      90deg, transparent, transparent 48px,
-      rgba(255,255,255,0.015) 48px, rgba(255,255,255,0.015) 49px
-    ) !important;
-    pointer-events: none !important;
-  }
-  .rr-hero-track, .eq-hero-track, .pf-track, .fc-track, .hs-track, .hs-hero-track {
-    position: absolute !important;
-    bottom: 0 !important;
-    left: 0 !important;
-    right: 0 !important;
-    height: 18px !important;
-    background: repeating-linear-gradient(
-      90deg,
-      rgba(201,148,58,0.4) 0px,
-      rgba(201,148,58,0.4) 28px,
-      transparent 28px,
-      transparent 48px
-    ) !important;
-  }
-  .rr-hero-track::before, .rr-hero-track::after,
-  .eq-hero-track::before, .eq-hero-track::after,
-  .pf-track::before, .pf-track::after,
-  .fc-track::before, .fc-track::after,
-  .hs-track::before, .hs-track::after,
-  .hs-hero-track::before, .hs-hero-track::after {
-    content: '' !important;
-    position: absolute !important;
-    left: 0 !important;
-    right: 0 !important;
-    height: 2px !important;
-    background: #c9943a !important;
-    opacity: 0.35 !important;
-  }
-  .rr-hero-track::before, .eq-hero-track::before, .pf-track::before, .fc-track::before, .hs-track::before, .hs-hero-track::before { top: 3px !important; }
-  .rr-hero-track::after, .eq-hero-track::after, .pf-track::after, .fc-track::after, .hs-track::after, .hs-hero-track::after { bottom: 3px !important; }
-
-  .rr-hero-tag, .eq-hero-tag, .pf-hero-tag, .fc-hero-tag, .hs-hero-tag {
-    font-family: 'DM Mono', monospace !important;
-    font-size: 10px !important;
-    letter-spacing: 0.35em !important;
-    text-transform: uppercase !important;
-    color: #c9943a !important;
-    margin-bottom: 14px !important;
-    opacity: 0.9 !important;
-  }
-  .rr-hero h1, .eq-hero-title, .rr-main-title, .fc-hero-title, .hs-hero h1, .pf-name {
-    font-family: 'Playfair Display', Georgia, serif !important;
-    font-size: clamp(34px, 6vw, 64px) !important;
-    font-weight: 900 !important;
-    line-height: 1.05 !important;
-    margin-bottom: 14px !important;
-    color: #ffffff !important;
-    letter-spacing: -0.02em !important;
-  }
-  .rr-hero h1 em, .eq-hero-title em, .rr-main-title .orange-part, .rr-hero-title em, .fc-hero-title em, .hs-hero h1 em, .hs-hero h1 span, .pf-name em {
-    font-style: italic !important;
-    color: #c9943a !important;
-    display: block !important;
-  }
-  .rr-hero p, .eq-hero-sub, .rr-hero-sub, .fc-hero-sub, .hs-hero p {
-    font-size: 15px !important;
-    color: rgba(255,255,255,0.72) !important;
-    max-width: 560px !important;
-    margin: 0 auto !important;
-    line-height: 1.75 !important;
-    font-weight: 300 !important;
-  }
-  .rr-hero-image {
-    background-image: none !important;
-    background-color: #1e1208 !important;
-    min-height: auto !important;
-    padding: 0 !important;
-  }
-  .rr-hero-content { padding: 0 !important; }
 </style>
 
 <!-- Not logged in -->
@@ -355,7 +206,7 @@ permalink: /profile
 <div id="pfMain">
   <div class="pf-hero">
     <div class="pf-avatar" id="pfAvatar">?</div>
-    <div class="pf-name"  id="pfName">Loading...</div>
+    <div class="pf-name" id="pfName">Loading...</div>
     <div class="pf-email" id="pfEmail"></div>
     <div class="pf-tag"> Railroad Member</div>
     <div class="pf-track"></div>
@@ -500,6 +351,66 @@ permalink: /profile
     document.getElementById('pfInfoEmail').textContent = user.email;
   }
 
+  // ========== 取消预订 ==========
+  async function pfCancelBooking(confirmCode, rowElement) {
+    const confirmed = confirm('⚠️ Are you sure you want to cancel this booking?\n\nThis action cannot be undone.');
+    if (!confirmed) return;
+    
+    try {
+      const res = await fetch(`${BACKEND}/api/reservations/${confirmCode}`, {
+        method: 'DELETE',
+        credentials: 'include',
+        headers: { 'Content-Type': 'application/json' }
+      });
+      
+      if (res.ok) {
+        alert('✓ Booking cancelled successfully.');
+        if (rowElement && rowElement.remove) rowElement.remove();
+        const remainingRows = document.querySelectorAll('#pfBookingList .pf-booking-row');
+        if (remainingRows.length === 0) {
+          document.getElementById('pfBookingList').innerHTML = `<div class="pf-empty">No bookings yet. <a href="/schedule">Book a ride →</a></div>`;
+        }
+      } else {
+        const data = await res.json();
+        alert('✗ Failed to cancel: ' + (data.error || 'Unknown error'));
+      }
+    } catch (error) {
+      console.error('Cancel error:', error);
+      alert('✗ Network error. Please try again.');
+    }
+  }
+
+  // ========== 取消志愿者报名 ==========
+  async function pfCancelVolunteer(shiftId, dateLabel, rowElement) {
+    const confirmed = confirm(`⚠️ Are you sure you want to cancel your volunteer sign-up for ${dateLabel}?\n\nThis action cannot be undone.`);
+    if (!confirmed) return;
+    
+    try {
+      const res = await fetch(`${BACKEND}/api/volunteer/shifts/${shiftId}/signup`, {
+        method: 'DELETE',
+        credentials: 'include',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email: pfUser?.email })
+      });
+      
+      if (res.ok) {
+        alert('✓ Volunteer sign-up cancelled successfully.');
+        if (rowElement && rowElement.remove) rowElement.remove();
+        const remainingRows = document.querySelectorAll('#pfVolunteerList .pf-booking-row');
+        if (remainingRows.length === 0) {
+          document.getElementById('pfVolunteerList').innerHTML = `<div class="pf-empty">No volunteer shifts yet. <a href="/volunteer-schedule">Sign up to volunteer →</a></div>`;
+        }
+      } else {
+        const data = await res.json();
+        alert('✗ Failed to cancel: ' + (data.error || 'Unknown error'));
+      }
+    } catch (error) {
+      console.error('Cancel error:', error);
+      alert('✗ Network error. Please try again.');
+    }
+  }
+
+  // ========== 加载预订历史（带取消按钮）==========
   async function pfLoadBookings(email) {
     const list = document.getElementById('pfBookingList');
     try {
@@ -508,7 +419,7 @@ permalink: /profile
       const mine = data.filter(r => r.email && r.email.toLowerCase() === email.toLowerCase());
 
       if (!mine.length) {
-        list.innerHTML = `<div class="pf-empty">No bookings yet. <a href="{{ "/schedule" | relative_url }}">Book a ride →</a></div>`;
+        list.innerHTML = `<div class="pf-empty">No bookings yet. <a href="/schedule">Book a ride →</a></div>`;
         return;
       }
 
@@ -522,14 +433,21 @@ permalink: /profile
           r.children ? `${r.children} child${r.children!==1?'ren':''}` : '',
           r.infants  ? `${r.infants} infant${r.infants!==1?'s':''}` : '',
         ].filter(Boolean).join(', ');
+        
+        const rowId = `booking-${r.confirm_code.replace(/[^a-zA-Z0-9]/g, '')}`;
         return `
-          <div class="pf-booking-row">
+          <div class="pf-booking-row" id="${rowId}">
             <div class="pf-booking-code">${r.confirm_code}</div>
             <div class="pf-booking-detail">
               ${r.train_type} · ${dateLabel} at ${r.time}
               <small>${tickets} · Pay at depot</small>
             </div>
-            <div class="pf-booking-price">$${r.total_price.toFixed(2)}</div>
+            <div class="pf-booking-price" style="display: flex; gap: 12px; align-items: center;">
+              <span>$${r.total_price.toFixed(2)}</span>
+              <button class="pf-cancel-btn" onclick="window.pfCancelBooking('${r.confirm_code}', document.getElementById('${rowId}'))">
+                ✖ Cancel
+              </button>
+            </div>
           </div>`;
       }).join('');
     } catch {
@@ -537,103 +455,81 @@ permalink: /profile
     }
   }
 
-async function pfLoadVolunteers(email) {
-  const list = document.getElementById('pfVolunteerList');
-  
-  // 先尝试从 localStorage 读取（本地模式）
-  const localVolunteers = localStorage.getItem('PMRR_Volunteers');
-  if (localVolunteers) {
-    const volunteerData = JSON.parse(localVolunteers);
-    const myShifts = [];
+  // ========== 加载志愿者班次（只使用后端 API，已删除 localStorage 逻辑）==========
+  async function pfLoadVolunteers(email) {
+    const list = document.getElementById('pfVolunteerList');
     
-    // 从 sampleShifts 获取班次信息
-    const sampleShifts = [
-      { id: 1, date: '2026-05-23', train_type: 'steam', time_start: '10:00', time_end: '14:00', max_volunteers: 4 },
-      { id: 2, date: '2026-05-24', train_type: 'cable', time_start: '11:00', time_end: '15:00', max_volunteers: 4 },
-      { id: 3, date: '2026-05-30', train_type: 'steam', time_start: '10:00', time_end: '14:00', max_volunteers: 4 },
-      { id: 4, date: '2026-05-31', train_type: 'speeder', time_start: '11:00', time_end: '15:00', max_volunteers: 4 },
-      { id: 5, date: '2026-06-06', train_type: 'steam', time_start: '10:00', time_end: '14:00', max_volunteers: 4 },
-      { id: 6, date: '2026-06-07', train_type: 'cable', time_start: '11:00', time_end: '15:00', max_volunteers: 4 },
-    ];
+    console.log('pfLoadVolunteers - email:', email);
     
-    for (const [date, volunteers] of Object.entries(volunteerData)) {
-      if (volunteers.includes(email)) {
-        const shift = sampleShifts.find(s => s.date === date);
-        if (shift) {
-          myShifts.push({ ...shift, assignments: volunteers.map(e => ({ email: e })) });
-        }
+    try {
+      const res = await fetch(`${BACKEND}/api/volunteer/shifts`, { 
+        credentials: 'include' 
+      });
+      
+      if (!res.ok) {
+        console.log('API response not OK:', res.status);
+        list.innerHTML = `<div class="pf-empty">Could not load volunteer shifts. <a href="/volunteer-schedule">Sign up →</a></div>`;
+        return;
       }
+      
+      const allShifts = await res.json();
+      console.log('All shifts from API:', allShifts);
+      
+      const myShifts = allShifts.filter(shift => {
+        if (!shift.assignments || !Array.isArray(shift.assignments)) return false;
+        return shift.assignments.some(a => a.email && a.email.toLowerCase() === email.toLowerCase());
+      });
+      
+      console.log('My shifts from API:', myShifts);
+      
+      if (!myShifts.length) {
+        list.innerHTML = `<div class="pf-empty">No volunteer shifts yet. <a href="/volunteer-schedule">Sign up to volunteer →</a></div>`;
+        return;
+      }
+      
+      myShifts.sort((a, b) => new Date(a.date) - new Date(b.date));
+      
+      const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+      list.innerHTML = myShifts.map(shift => {
+        const d = new Date(shift.date + 'T12:00:00');
+        const dateLabel = `${months[d.getMonth()]} ${d.getDate()}, ${d.getFullYear()}`;
+        const rowId = `volunteer-${shift.id}-${shift.date.replace(/-/g, '')}`;
+        
+        let job = 'Volunteer';
+        if (shift.assignments) {
+          const myInfo = shift.assignments.find(a => a.email && a.email.toLowerCase() === email.toLowerCase());
+          if (myInfo && myInfo.job) job = myInfo.job;
+        }
+        
+        const trainTypeDisplay = {
+          'steam': '🔥 Steam Locomotive',
+          'cable': '🚋 Cable Car',
+          'speeder': '🚃 Speeder'
+        }[shift.train_type] || shift.train_type || 'Train Operation';
+        
+        const timeRange = shift.time_start && shift.time_end ? `${shift.time_start} - ${shift.time_end}` : '10:00am – 2:00pm';
+        
+        return `
+          <div class="pf-booking-row" id="${rowId}">
+            <div class="pf-booking-code">${dateLabel}</div>
+            <div class="pf-booking-detail">
+              ${trainTypeDisplay} · ${timeRange}
+              <small>Position: ${job}</small>
+            </div>
+            <div class="pf-booking-price" style="display: flex; gap: 12px; align-items: center;">
+              <span>✅ Registered</span>
+              <button class="pf-cancel-btn" onclick="window.pfCancelVolunteer(${shift.id}, '${dateLabel}', document.getElementById('${rowId}'))">
+                ✖ Cancel
+              </button>
+            </div>
+          </div>`;
+      }).join('');
+      
+    } catch (error) {
+      console.error('Error loading volunteers:', error);
+      list.innerHTML = `<div class="pf-empty">Could not load volunteer shifts. Make sure backend is running.</div>`;
     }
-    
-    if (myShifts.length === 0) {
-      list.innerHTML = `<div class="pf-empty">No volunteer shifts yet. <a href="/volunteer-schedule">Sign up to volunteer →</a></div>`;
-      return;
-    }
-    
-    myShifts.sort((a, b) => new Date(a.date) - new Date(b.date));
-    const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
-    list.innerHTML = myShifts.map(shift => {
-      const d = new Date(shift.date + 'T12:00:00');
-      const dateLabel = `${months[d.getMonth()]} ${d.getDate()}, ${d.getFullYear()}`;
-      const trainTypeDisplay = {
-        'steam': 'Steam Locomotive',
-        'cable': 'Cable Car',
-        'speeder': 'Speeder'
-      }[shift.train_type] || shift.train_type;
-      const timeRange = `${shift.time_start} - ${shift.time_end}`;
-      return `
-        <div class="pf-booking-row">
-          <div class="pf-booking-code">${dateLabel}</div>
-          <div class="pf-booking-detail">
-            ${trainTypeDisplay} · ${timeRange}
-            <small>Position: Volunteer</small>
-          </div>
-          <div class="pf-booking-price">✅ Registered</div>
-        </div>`;
-    }).join('');
-    return;
   }
-  
-  // 否则从后端 API 获取
-  try {
-    const res = await fetch(`${BACKEND}/api/volunteer/shifts`, { credentials: 'include' });
-    if (!res.ok) throw new Error();
-    const allShifts = await res.json();
-    const myShifts = allShifts.filter(shift => {
-      if (!shift.assignments || !Array.isArray(shift.assignments)) return false;
-      return shift.assignments.some(a => a.email && a.email.toLowerCase() === email.toLowerCase());
-    });
-    
-    if (!myShifts.length) {
-      list.innerHTML = `<div class="pf-empty">No volunteer shifts yet. <a href="/volunteer-schedule">Sign up to volunteer →</a></div>`;
-      return;
-    }
-    
-    myShifts.sort((a, b) => new Date(a.date) - new Date(b.date));
-    const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
-    list.innerHTML = myShifts.map(shift => {
-      const d = new Date(shift.date + 'T12:00:00');
-      const dateLabel = `${months[d.getMonth()]} ${d.getDate()}, ${d.getFullYear()}`;
-      const trainTypeDisplay = {
-        'steam': 'Steam Locomotive',
-        'cable': 'Cable Car',
-        'speeder': 'Speeder'
-      }[shift.train_type] || shift.train_type;
-      const timeRange = shift.time_start && shift.time_end ? `${shift.time_start} - ${shift.time_end}` : '10:00am – 2:00pm';
-      return `
-        <div class="pf-booking-row">
-          <div class="pf-booking-code">${dateLabel}</div>
-          <div class="pf-booking-detail">
-            ${trainTypeDisplay} · ${timeRange}
-            <small>Position: Volunteer</small>
-          </div>
-          <div class="pf-booking-price">✅ Registered</div>
-        </div>`;
-    }).join('');
-  } catch {
-    list.innerHTML = `<div class="pf-empty">Could not load volunteer shifts.</div>`;
-  }
-}
 
   function pfFeedback(id, msg, type) {
     const el = document.getElementById(id);
@@ -670,9 +566,13 @@ async function pfLoadVolunteers(email) {
   }
 
   async function pfLogout() {
+    const confirmed = confirm('Are you sure you want to sign out?');
+    if (!confirmed) return;
+    
     localStorage.removeItem('logged_in');
     localStorage.removeItem('user_name');
     localStorage.removeItem('user_email');
+    localStorage.removeItem('PMRR_Volunteers');
     
     try { 
       await fetch(`${BACKEND}/api/authenticate`, { 
@@ -686,6 +586,9 @@ async function pfLoadVolunteers(email) {
     window.location.href = '{{ "/login" | relative_url }}';
   }
 
+  // 挂载到 window 对象，供 onclick 调用
+  window.pfCancelBooking = pfCancelBooking;
+  window.pfCancelVolunteer = pfCancelVolunteer;
   window.pfChangePassword = pfChangePassword;
   window.pfLogout = pfLogout;
 
