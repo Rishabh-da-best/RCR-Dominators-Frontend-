@@ -74,7 +74,7 @@ permalink: /profile
   .pf-tag {
     display: inline-block; margin-top: 10px;
     font-family: 'Courier New', monospace; font-size: 10px; letter-spacing: 0.2em;
-    text-transform: uppercase; color: var(--gold);
+    text-transform: uppercase; color: #f9c24c;
     background: rgba(201,148,58,0.1); border: 1px solid rgba(201,148,58,0.25);
     border-radius: 4px; padding: 4px 14px;
   }
@@ -266,7 +266,7 @@ permalink: /profile
         </div>
         <div class="pf-field">
           <label class="pf-label">New Password</label>
-          <input class="pf-input" type="password" id="pfNewPass" placeholder="At least 6 characters">
+          <input class="pf-input" type="password" id="pfNewPass" placeholder="At least 8 characters">
         </div>
         <div class="pf-field">
           <label class="pf-label">Confirm New Password</label>
@@ -570,7 +570,7 @@ permalink: /profile
     const fb   = 'pfPassFeedback';
 
     if (!cur || !nw || !conf) { pfFeedback(fb, 'Please fill in all password fields.', 'err'); return; }
-    if (nw.length < 6)        { pfFeedback(fb, 'New password must be at least 6 characters.', 'err'); return; }
+    if (nw.length < 6)        { pfFeedback(fb, 'New password must be at least 8 characters.', 'err'); return; }
     if (nw !== conf)           { pfFeedback(fb, 'New passwords do not match.', 'err'); return; }
 
     try {

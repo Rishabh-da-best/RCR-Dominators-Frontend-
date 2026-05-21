@@ -66,7 +66,7 @@ permalink: /login
   .rr-hero h1 { font-size:clamp(28px,5vw,52px); font-weight:700; line-height:1; margin-bottom:10px; color:#ffffff; }
   .rr-hero h1 em { font-style:italic; color:#ffffff; }
   .rr-hero p { font-size:14px; color:#ffffff; max-width:520px; margin:0 auto 6px; line-height:1.7; }
-  .rr-hero-note { font-family:'Courier New',monospace; font-size:11px; color:var(--gold);
+  .rr-hero-note { font-family:'Courier New',monospace; font-size:11px; color:#f9c24c;
     background:rgba(201,148,58,0.1); border:1px solid rgba(201,148,58,0.2);
     border-radius:4px; padding:6px 14px; display:inline-block; margin-top:8px; }
 
