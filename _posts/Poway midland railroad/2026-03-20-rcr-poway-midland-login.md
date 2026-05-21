@@ -324,8 +324,7 @@ permalink: /login
         </div>
         <div class="rr-field">
           <label class="rr-label" for="signupPass">Password</label>
-          <input class="rr-input" id="signupPass" type="password" autocomplete="new-password" required minlength="6">
-        </div>
+          <input class="rr-input" id="signupPass" type="password" autocomplete="new-password" required minlength="8">        </div>
         <div class="rr-feedback" id="signupFeedback"></div>
         <button class="rr-btn rr-btn-primary" type="submit">Register →</button>
       </form>
@@ -453,7 +452,7 @@ document.getElementById('signupForm').addEventListener('submit', async e => {
   const pass  = document.getElementById('signupPass').value.trim();
   const fb    = document.getElementById('signupFeedback');
   
-  if (name.length < 2 || !validateEmail(email) || pass.length < 6) {
+if (name.length < 2 || !validateEmail(email) || pass.length < 8) {
     setFeedback(fb, 'Check name, email, and password requirements.', 'err'); 
     return;
   }
