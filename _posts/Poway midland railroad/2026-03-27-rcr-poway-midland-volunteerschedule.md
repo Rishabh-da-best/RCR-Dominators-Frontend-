@@ -38,7 +38,7 @@ permalink: /volunteer-schedule
         max-width: none !important;
         padding: 0 !important;
         background: var(--bg-base) !important;
-        padding-top: 0 !important;
+        padding-top: 54px !important;
     }
 
     .wrapper {
@@ -63,18 +63,6 @@ permalink: /volunteer-schedule
         display: flex;
         flex-direction: column;
         gap: 24px;
-    }
-
-    .vol-header {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        flex-wrap: wrap;
-        gap: 20px;
-        background: transparent;
-        padding: 0 0 8px 0;
-        border-bottom: 2px solid var(--accent-wood);
-        margin-bottom: 4px;
     }
 
     .vol-brand {
@@ -314,12 +302,14 @@ permalink: /volunteer-schedule
     }
 
     .volunteer-buttons {
-        display: flex;
         gap: 10px;
         flex-wrap: wrap;
         align-items: center;
     }
 
+table tr:nth-child(even) {
+    background-color: transparent !important;
+}
     .vol-btn {
         background: #f4f0ea;
         border: 1px solid var(--border-light);
@@ -415,16 +405,6 @@ permalink: /volunteer-schedule
 
 <div class="vol-page">
 <div class="vol-wrap">
-    <div class="vol-header">
-        <div class="vol-brand">
-            <div class="vol-title">
-                <h1>Volunteer Crew Schedule</h1>
-                <p>Poway–Midland Railroad · Operations Sign-up</p>
-            </div>
-        </div>
-        <a href="{{ "/calendar" | relative_url }}" class="vol-back">← Back to Calendar</a>
-    </div>
-
     <div class="stats-row" id="statsContainer">
         <div class="stat-card"><div class="stat-label">Total Shifts</div><div class="stat-number" id="totalShifts">—</div><div class="stat-sub">2026</div></div>
         <div class="stat-card"><div class="stat-label">Open Spots</div><div class="stat-number" id="openSpots">—</div><div class="stat-sub">volunteers needed</div></div>

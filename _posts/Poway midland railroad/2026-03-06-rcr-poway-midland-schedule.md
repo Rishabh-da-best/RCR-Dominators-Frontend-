@@ -115,9 +115,9 @@ permalink: /schedule
   .rr-alert { margin-top:10px; font-size:11px; font-family:'Courier New',monospace; padding:6px 10px; border-radius:6px; border-left:3px solid; }
   .alert-full { background:rgba(255,255,255,0.04); color:var(--smoke); border-color:#555; }
 
-  .rr-book-btn { display:block; width:100%; margin-top:12px; padding:9px; background:rgba(201,148,58,0.15); border:1px solid var(--gold); color:var(--gold); font-family:'Courier New',monospace; font-size:11px; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; text-align:center; border-radius:7px; text-decoration:none; transition:background 0.2s,transform 0.15s; cursor:pointer; }
-  .rr-book-btn:hover { background:rgba(201,148,58,0.3); transform:translateY(-1px); }
-  .rr-book-btn.disabled { opacity:0.35; pointer-events:none; border-color:var(--smoke); color:var(--smoke); background:transparent; }
+.rr-book-btn { display:block; width:100%; margin-top:12px; padding:9px; background:rgba(201,148,58,0.15); border:1px solid var(--gold); color:#666666 !important; font-family:'Courier New',monospace; font-size:11px; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; text-align:center; border-radius:7px; text-decoration:none; transition:background 0.2s,transform 0.15s; cursor:pointer; }
+.rr-book-btn:hover { background:rgba(201,148,58,0.3); transform:translateY(-1px); color:#000000 !important; }
+.rr-book-btn.disabled { opacity:0.35; pointer-events:none; border-color:var(--smoke); color:#000000 !important; background:transparent; }
 
   .rr-tracker { background:var(--track); border:1px solid var(--border); border-radius:14px; padding:26px 22px; margin-bottom:32px; }
   .rr-track-diagram { position:relative; margin:22px 0 14px; }

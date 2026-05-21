@@ -6,89 +6,140 @@ permalink: /events/1
 
 <style>
   .news-detail {
-    max-width: 800px;
-    margin: 80px auto;
-    padding: 0 20px;
-    font-family: 'Georgia', serif;
+    max-width: 800px !important;
+    margin: 80px auto !important;
+    padding: 0 20px !important;
+    font-family: 'Georgia', serif !important;
   }
   .back-link {
-    display: inline-block;
-    margin-bottom: 30px;
-    color: #c8943a;
-    text-decoration: none;
-    font-family: 'Courier New', monospace;
-    font-size: 12px;
-    letter-spacing: 0.1em;
+    display: inline-block !important;
+    margin-bottom: 30px !important;
+    color: #a05a1a !important;
+    text-decoration: none !important;
+    font-family: 'Courier New', monospace !important;
+    font-size: 12px !important;
+    letter-spacing: 0.1em !important;
+    font-weight: 600 !important;
   }
   .back-link:hover {
-    text-decoration: underline;
+    text-decoration: underline !important;
+    color: #6e3e0f !important;
   }
   .news-detail-date {
-    font-family: 'Courier New', monospace;
-    font-size: 11px;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: #c8943a;
-    margin-bottom: 12px;
+    font-family: 'Courier New', monospace !important;
+    font-size: 11px !important;
+    letter-spacing: 0.1em !important;
+    text-transform: uppercase !important;
+    color: #8b5a2b !important;
+    margin-bottom: 12px !important;
+    font-weight: 600 !important;
   }
   .news-detail h1 {
-    font-size: 42px;
-    margin: 0 0 16px 0;
-    color: #2a1a0e;
+    font-size: 42px !important;
+    margin: 0 0 16px 0 !important;
+    color: #1a1208 !important;
+    font-weight: 800 !important;
+    letter-spacing: -0.01em !important;
   }
   .news-detail-tag {
-    font-family: 'Courier New', monospace;
-    font-size: 9px;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    padding: 5px 12px;
-    background: rgba(201, 148, 58, 0.12);
-    color: #c8943a;
-    border: 1px solid rgba(201, 148, 58, 0.25);
-    display: inline-block;
-    margin-bottom: 30px;
+    font-family: 'Courier New', monospace !important;
+    font-size: 9px !important;
+    letter-spacing: 0.15em !important;
+    text-transform: uppercase !important;
+    padding: 5px 12px !important;
+    background: #f0ebe4 !important;
+    color: #8b5a2b !important;
+    border: 1px solid #d4c5b0 !important;
+    display: inline-block !important;
+    margin-bottom: 30px !important;
+    border-radius: 20px !important;
+    font-weight: 600 !important;
   }
   .news-detail-content {
-    line-height: 1.8;
-    font-size: 17px;
-    color: #333;
+    line-height: 1.8 !important;
+    font-size: 17px !important;
+    color: #1a1a1a !important;
   }
   .news-detail-content p {
-    margin-bottom: 20px;
+    margin-bottom: 20px !important;
+    color: #1a1a1a !important;
   }
   .news-detail-content h2 {
-    font-size: 24px;
-    margin: 40px 0 15px 0;
-    color: #2a1a0e;
+    font-size: 26px !important;
+    margin: 48px 0 16px 0 !important;
+    color: #1a1208 !important;
+    font-weight: 700 !important;
+    border-left: 4px solid #c47a2e !important;
+    padding-left: 16px !important;
   }
   .news-detail-content ul {
-    margin: 15px 0 20px 25px;
+    margin: 15px 0 20px 25px !important;
   }
   .news-detail-content li {
-    margin: 8px 0;
+    margin: 10px 0 !important;
+    color: #1a1a1a !important;
+  }
+  .news-detail-content strong {
+    color: #0f0f0f !important;
   }
   .info-box {
-    background: #f8f5f0;
-    padding: 24px;
-    border-radius: 10px;
-    border-left: 4px solid #c8943a;
-    margin: 40px 0 20px;
+    background: #fef9ef !important;
+    padding: 28px 26px !important;
+    border-radius: 16px !important;
+    border-left: 5px solid #c47a2e !important;
+    margin: 48px 0 24px !important;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.03) !important;
+    font-size: 16px !important;
+    color: #1a1a1a !important;
+  }
+  .info-box strong {
+    color: #0f0f0f !important;
   }
   .schedule-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin: 20px 0;
+    width: 100% !important;
+    border-collapse: collapse !important;
+    margin: 24px 0 !important;
+    background: #ffffff !important;
+    border-radius: 12px !important;
+    overflow: hidden !important;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05) !important;
   }
   .schedule-table th,
   .schedule-table td {
-    padding: 12px;
-    text-align: left;
-    border-bottom: 1px solid #e0e0e0;
+    padding: 14px 16px !important;
+    text-align: left !important;
+    border-bottom: 1px solid #eae3d8 !important;
+    color: #1a1a1a !important;
   }
   .schedule-table th {
-    background: #f5f0eb;
-    font-family: 'Courier New', monospace;
-    font-size: 12px;
+    background: #f6f1ea !important;
+    font-family: 'Courier New', monospace !important;
+    font-size: 12px !important;
+    letter-spacing: 0.08em !important;
+    text-transform: uppercase !important;
+    color: #5a3e1f !important;
+    font-weight: 700 !important;
+  }
+  .schedule-table tr:last-child td {
+    border-bottom: none !important;
+  }
+  .schedule-table td {
+    background: #ffffff !important;
+    font-weight: 500 !important;
+  }
+  /* 响应式优化 */
+  @media (max-width: 640px) {
+    .news-detail h1 {
+      font-size: 32px !important;
+    }
+    .schedule-table th,
+    .schedule-table td {
+      padding: 10px 12px !important;
+      font-size: 14px !important;
+    }
+    .info-box {
+      padding: 20px 18px !important;
+    }
   }
 </style>
 
