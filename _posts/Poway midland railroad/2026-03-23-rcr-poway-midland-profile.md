@@ -82,8 +82,33 @@ permalink: /profile
   .pf-wrap { max-width: 900px; margin: 0 auto; padding: 36px 20px 80px; }
 
   .pf-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 28px; }
-  @media(max-width:680px) { .pf-grid { grid-template-columns: 1fr; } }
 
+@media (max-width: 680px) {
+  .pf-grid {
+    grid-template-columns: 1fr !important; 
+    gap: 12px;
+  }
+}
+
+@media (max-width: 768px) {
+  .pf-booking-row {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: 10px !important;
+    border-bottom: none !important;
+  }
+  
+  .pf-booking-price {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 8px !important;
+    width: 100% !important;
+    padding-top: 8px !important;
+    white-space: normal !important;
+    text-align: left !important;
+  }
+}
   .pf-card {
     background: var(--iron); border: 1px solid #cccccc;
     border-radius: 12px; padding: 24px; border-top: 3px solid var(--rust);
