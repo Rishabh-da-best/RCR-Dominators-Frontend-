@@ -66,7 +66,7 @@ permalink: /login
   .rr-hero h1 { font-size:clamp(28px,5vw,52px); font-weight:700; line-height:1; margin-bottom:10px; color:#ffffff; }
   .rr-hero h1 em { font-style:italic; color:#ffffff; }
   .rr-hero p { font-size:14px; color:#ffffff; max-width:520px; margin:0 auto 6px; line-height:1.7; }
-  .rr-hero-note { font-family:'Courier New',monospace; font-size:11px; color:var(--gold);
+  .rr-hero-note { font-family:'Courier New',monospace; font-size:11px; color:#f9c24c;
     background:rgba(201,148,58,0.1); border:1px solid rgba(201,148,58,0.2);
     border-radius:4px; padding:6px 14px; display:inline-block; margin-top:8px; }
 
@@ -304,7 +304,7 @@ permalink: /login
         </div>
         <div class="rr-field">
           <label class="rr-label" for="loginPass">Password</label>
-          <input class="rr-input" id="loginPass" type="password" autocomplete="current-password" required minlength="6">
+          <input class="rr-input" id="loginPass" type="password" autocomplete="current-password" required minlength="8">
         </div>
         <div class="rr-feedback" id="loginFeedback"></div>
         <button class="rr-btn rr-btn-primary" type="submit">Sign In →</button>
@@ -324,8 +324,7 @@ permalink: /login
         </div>
         <div class="rr-field">
           <label class="rr-label" for="signupPass">Password</label>
-          <input class="rr-input" id="signupPass" type="password" autocomplete="new-password" required minlength="6">
-        </div>
+          <input class="rr-input" id="signupPass" type="password" autocomplete="new-password" required minlength="8">        </div>
         <div class="rr-feedback" id="signupFeedback"></div>
         <button class="rr-btn rr-btn-primary" type="submit">Register →</button>
       </form>
@@ -371,7 +370,6 @@ function updateView(user) {
 }
 
 async function checkStatus() {
-  // 1. 先检查 localStorage
   const localLoggedIn = localStorage.getItem('logged_in');
   if (localLoggedIn === 'true') {
     updateView({
@@ -381,17 +379,19 @@ async function checkStatus() {
     return;
   }
   
-  // 2. 再检查后端 API
   try {
-    const res = await fetch(`${BACKEND}/api/auth/status`, { credentials: 'include' });
-    const data = await res.json();
-    if (data.logged_in) {
-      // 同步到 localStorage
-      localStorage.setItem('logged_in', 'true');
-      localStorage.setItem('user_name', data.name);
-      localStorage.setItem('user_email', data.email);
+    const res = await fetch(`${BACKEND}/api/user`, { credentials: 'include' });
+    if (res.ok) {
+      const data = await res.json();
+      if (data.uid) {
+        localStorage.setItem('logged_in', 'true');
+        localStorage.setItem('user_name', data.name);
+        localStorage.setItem('user_email', data.uid);
+        updateView({name: data.name, email: data.uid});
+        return;
+      }
     }
-    updateView(data.logged_in ? data : null);
+    updateView(null);
   } catch { 
     updateView(null); 
   }
@@ -404,43 +404,40 @@ document.getElementById('loginForm').addEventListener('submit', async e => {
   const pass  = document.getElementById('loginPass').value.trim();
   const fb    = document.getElementById('loginFeedback');
   
-  if (!validateEmail(email) || pass.length < 6) {
-    setFeedback(fb, 'Enter a valid email and password (min 6 chars).', 'err'); 
+  if (!validateEmail(email) || pass.length < 8) {
+    setFeedback(fb, 'Enter a valid email and password (min 8 chars).', 'err'); 
     return;
   }
   
   try {
-    const res = await fetch(`${BACKEND}/api/auth/login`, {
+    const res = await fetch(`${BACKEND}/api/authenticate`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       credentials: 'include',
-      body: JSON.stringify({ email: email, password: pass })
+      body: JSON.stringify({ uid: email, password: pass })
     });
     
     const data = await res.json();
     
     if (!res.ok) { 
-      setFeedback(fb, data.error || 'Login failed.', 'err'); 
+      setFeedback(fb, data.message || 'Login failed.', 'err'); 
       return; 
     }
     
-    // 保存到 localStorage
     localStorage.setItem('logged_in', 'true');
-    localStorage.setItem('user_name', data.name);
-    localStorage.setItem('user_email', data.email);
+    localStorage.setItem('user_name', data.user.name);
+    localStorage.setItem('user_email', data.user.uid);
     
-    // 更新页面显示
-    updateView({name: data.name, email: data.email});
+    updateView({name: data.user.name, email: data.user.uid});
     
-    // 手动更新头部
     if (window.rrShowLoggedIn) {
-      window.rrShowLoggedIn({name: data.name, email: data.email});
+      window.rrShowLoggedIn({name: data.user.name, email: data.user.uid});
     }
     
-    setFeedback(fb, `Welcome back, ${data.name}!`, 'ok');
+    setFeedback(fb, `Welcome back, ${data.user.name}!`, 'ok');
     setTimeout(() => {
-  window.location.reload();
-}, 1000);
+      window.location.href = '/profile'; 
+    }, 1000);
   } catch (error) {
     console.error('Login error:', error);
     setFeedback(fb, 'Could not reach server.', 'err');
@@ -455,37 +452,39 @@ document.getElementById('signupForm').addEventListener('submit', async e => {
   const pass  = document.getElementById('signupPass').value.trim();
   const fb    = document.getElementById('signupFeedback');
   
-  if (name.length < 2 || !validateEmail(email) || pass.length < 6) {
+if (name.length < 2 || !validateEmail(email) || pass.length < 8) {
     setFeedback(fb, 'Check name, email, and password requirements.', 'err'); 
     return;
   }
   
   try {
-    const res = await fetch(`${BACKEND}/api/auth/register`, {
+    const res = await fetch(`${BACKEND}/api/user`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       credentials: 'include',
-      body: JSON.stringify({ name: name, email: email, password: pass })
+      body: JSON.stringify({ 
+        uid: email, 
+        name: name, 
+        email: email, 
+        password: pass 
+      })
     });
     
     const data = await res.json();
     
     if (!res.ok) { 
-      setFeedback(fb, data.error || 'Registration failed.', 'err'); 
+      setFeedback(fb, data.message || 'Registration failed.', 'err'); 
       return; 
     }
     
-    // 注册成功后自动登录，保存到 localStorage
     localStorage.setItem('logged_in', 'true');
     localStorage.setItem('user_name', data.name);
-    localStorage.setItem('user_email', data.email);
+    localStorage.setItem('user_email', data.uid);
     
-    // 更新页面显示
-    updateView({name: data.name, email: data.email});
+    updateView({name: data.name, email: data.uid});
     
-    // 手动更新头部
     if (window.rrShowLoggedIn) {
-      window.rrShowLoggedIn({name: data.name, email: data.email});
+      window.rrShowLoggedIn({name: data.name, email: data.uid});
     }
     
     setFeedback(fb, `Account created! Welcome, ${data.name}!`, 'ok');
@@ -499,10 +498,9 @@ document.getElementById('signupForm').addEventListener('submit', async e => {
 // 登出
 document.getElementById('logoutBtn').addEventListener('click', async () => {
   try {
-    await fetch(`${BACKEND}/api/auth/logout`, { method: 'POST', credentials: 'include' });
+    await fetch(`${BACKEND}/api/authenticate`, { method: 'DELETE', credentials: 'include' });
   } catch {}
   
-  // 清除 localStorage
   localStorage.removeItem('logged_in');
   localStorage.removeItem('user_name');
   localStorage.removeItem('user_email');
@@ -512,12 +510,10 @@ document.getElementById('logoutBtn').addEventListener('click', async () => {
   setFeedback(document.getElementById('loginFeedback'), 'Logged out successfully.', 'ok');
   updateView(null);
   
-  // 手动更新头部
   if (window.rrShowGuest) {
     window.rrShowGuest();
   }
 });
 
-// 初始化检查登录状态
 checkStatus();
 </script>

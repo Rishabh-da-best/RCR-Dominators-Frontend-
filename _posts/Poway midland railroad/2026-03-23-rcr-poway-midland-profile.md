@@ -3,7 +3,9 @@ layout: base
 title: My Profile
 permalink: /profile
 ---
+
 <script src="/assets/js/api/config.js"></script>
+
 <style>
   :root {
     --coal:#ffffff;--iron:#ffffff;--iron2:#f5f5f5;
@@ -11,11 +13,10 @@ permalink: /profile
     --steam:#000000;--smoke:#666666; --green:#2d6a4f;
     --text:#000000; --subtext:#666666; --background:#ffffff;
   }
-    .page-content {
+  .page-content {
     max-width: none !important;
     padding: 0 !important;
   }
-
   .wrapper {
     max-width: none !important;
     padding: 0 !important;
@@ -73,7 +74,7 @@ permalink: /profile
   .pf-tag {
     display: inline-block; margin-top: 10px;
     font-family: 'Courier New', monospace; font-size: 10px; letter-spacing: 0.2em;
-    text-transform: uppercase; color: var(--gold);
+    text-transform: uppercase; color: #f9c24c;
     background: rgba(201,148,58,0.1); border: 1px solid rgba(201,148,58,0.25);
     border-radius: 4px; padding: 4px 14px;
   }
@@ -81,8 +82,33 @@ permalink: /profile
   .pf-wrap { max-width: 900px; margin: 0 auto; padding: 36px 20px 80px; }
 
   .pf-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 28px; }
-  @media(max-width:680px) { .pf-grid { grid-template-columns: 1fr; } }
 
+@media (max-width: 680px) {
+  .pf-grid {
+    grid-template-columns: 1fr !important; 
+    gap: 12px;
+  }
+}
+
+@media (max-width: 768px) {
+  .pf-booking-row {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: 10px !important;
+    border-bottom: none !important;
+  }
+  
+  .pf-booking-price {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 8px !important;
+    width: 100% !important;
+    padding-top: 8px !important;
+    white-space: normal !important;
+    text-align: left !important;
+  }
+}
   .pf-card {
     background: var(--iron); border: 1px solid #cccccc;
     border-radius: 12px; padding: 24px; border-top: 3px solid var(--rust);
@@ -130,8 +156,25 @@ permalink: /profile
   .pf-btn-danger  { background: rgba(185,74,28,0.15); color: #e07050; border: 1px solid rgba(185,74,28,0.3); }
   .pf-btn-danger:hover { background: rgba(185,74,28,0.3); }
 
-  /* Booking history */
-  .pf-bookings { background: var(--iron); border: 1px solid #cccccc; border-radius: 12px; padding: 24px; border-top: 3px solid var(--gold); }
+  /* 取消按钮样式 */
+  .pf-cancel-btn {
+    background: rgba(185, 74, 28, 0.15);
+    border: 1px solid rgba(185, 74, 28, 0.3);
+    color: #e07050;
+    padding: 6px 12px;
+    border-radius: 40px;
+    font-size: 11px;
+    font-family: 'Courier New', monospace;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .pf-cancel-btn:hover {
+    background: rgba(185, 74, 28, 0.3);
+    transform: scale(0.97);
+  }
+
+  /* Booking & Volunteer history */
+  .pf-bookings { background: var(--iron); border: 1px solid #cccccc; border-radius: 12px; padding: 24px; border-top: 3px solid var(--gold); margin-top: 20px; }
   .pf-booking-row {
     display: grid; grid-template-columns: auto 1fr auto;
     gap: 14px; align-items: center;
@@ -174,174 +217,6 @@ permalink: /profile
 
   #pfMain { display: none; }
   #pfMain.show { display: block; }
-  /* Unified Poway hero banner */
-  .rr-hero, .eq-hero, .pf-hero, .fc-hero, .hs-hero {
-    position: relative !important;
-    padding: 72px 24px 52px !important;
-    text-align: center !important;
-    background: #1e1208 !important;
-    border-bottom: 3px solid #b94a1c !important;
-    overflow: hidden !important;
-  }
-  .rr-hero::before, .eq-hero::before, .pf-hero::before, .fc-hero::before, .hs-hero::before {
-    content: '' !important;
-    position: absolute !important;
-    inset: 0 !important;
-    background-image: repeating-linear-gradient(
-      90deg, transparent, transparent 48px,
-      rgba(255,255,255,0.015) 48px, rgba(255,255,255,0.015) 49px
-    ) !important;
-    pointer-events: none !important;
-  }
-  .rr-hero-track, .eq-hero-track, .pf-track, .fc-track, .hs-track, .hs-hero-track {
-    position: absolute !important;
-    bottom: 0 !important;
-    left: 0 !important;
-    right: 0 !important;
-    height: 18px !important;
-    background: repeating-linear-gradient(
-      90deg,
-      rgba(201,148,58,0.4) 0px,
-      rgba(201,148,58,0.4) 28px,
-      transparent 28px,
-      transparent 48px
-    ) !important;
-  }
-  .rr-hero-track::before, .rr-hero-track::after,
-  .eq-hero-track::before, .eq-hero-track::after,
-  .pf-track::before, .pf-track::after,
-  .fc-track::before, .fc-track::after,
-  .hs-track::before, .hs-track::after,
-  .hs-hero-track::before, .hs-hero-track::after {
-    content: '' !important;
-    position: absolute !important;
-    left: 0 !important;
-    right: 0 !important;
-    height: 2px !important;
-    background: #c9943a !important;
-    opacity: 0.35 !important;
-  }
-  .rr-hero-track::before, .eq-hero-track::before, .pf-track::before, .fc-track::before, .hs-track::before, .hs-hero-track::before { top: 3px !important; }
-  .rr-hero-track::after, .eq-hero-track::after, .pf-track::after, .fc-track::after, .hs-track::after, .hs-hero-track::after { bottom: 3px !important; }
-
-  .rr-hero-tag, .eq-hero-tag, .pf-hero-tag, .fc-hero-tag, .hs-hero-tag {
-    font-family: 'DM Mono', monospace !important;
-    font-size: 10px !important;
-    letter-spacing: 0.35em !important;
-    text-transform: uppercase !important;
-    color: #c9943a !important;
-    margin-bottom: 14px !important;
-    opacity: 0.9 !important;
-  }
-  .rr-hero h1, .eq-hero-title, .rr-main-title, .fc-hero-title, .hs-hero h1, .pf-name {
-    font-family: 'Playfair Display', Georgia, serif !important;
-    font-size: clamp(34px, 6vw, 64px) !important;
-    font-weight: 900 !important;
-    line-height: 1.05 !important;
-    margin-bottom: 14px !important;
-    color: #ffffff !important;
-    letter-spacing: -0.02em !important;
-  }
-  .rr-hero h1 em, .eq-hero-title em, .rr-main-title .orange-part, .rr-hero-title em, .fc-hero-title em, .hs-hero h1 em, .hs-hero h1 span, .pf-name em {
-    font-style: italic !important;
-    color: #c9943a !important;
-    display: block !important;
-  }
-  .rr-hero p, .eq-hero-sub, .rr-hero-sub, .fc-hero-sub, .hs-hero p {
-    font-size: 15px !important;
-    color: rgba(255,255,255,0.72) !important;
-    max-width: 560px !important;
-    margin: 0 auto !important;
-    line-height: 1.75 !important;
-    font-weight: 300 !important;
-  }
-  .rr-hero-image {
-    background-image: none !important;
-    background-color: #1e1208 !important;
-    min-height: auto !important;
-    padding: 0 !important;
-  }
-  .rr-hero-content { padding: 0 !important; }
-
-  .rr-hero::before, .eq-hero::before, .pf-hero::before, .fc-hero::before, .hs-hero::before {
-    content: '' !important;
-    position: absolute !important;
-    inset: 0 !important;
-    background-image: repeating-linear-gradient(
-      90deg, transparent, transparent 48px,
-      rgba(255,255,255,0.015) 48px, rgba(255,255,255,0.015) 49px
-    ) !important;
-    pointer-events: none !important;
-  }
-  .rr-hero-track, .eq-hero-track, .pf-track, .fc-track, .hs-track, .hs-hero-track {
-    position: absolute !important;
-    bottom: 0 !important;
-    left: 0 !important;
-    right: 0 !important;
-    height: 18px !important;
-    background: repeating-linear-gradient(
-      90deg,
-      rgba(201,148,58,0.4) 0px,
-      rgba(201,148,58,0.4) 28px,
-      transparent 28px,
-      transparent 48px
-    ) !important;
-  }
-  .rr-hero-track::before, .rr-hero-track::after,
-  .eq-hero-track::before, .eq-hero-track::after,
-  .pf-track::before, .pf-track::after,
-  .fc-track::before, .fc-track::after,
-  .hs-track::before, .hs-track::after,
-  .hs-hero-track::before, .hs-hero-track::after {
-    content: '' !important;
-    position: absolute !important;
-    left: 0 !important;
-    right: 0 !important;
-    height: 2px !important;
-    background: #c9943a !important;
-    opacity: 0.35 !important;
-  }
-  .rr-hero-track::before, .eq-hero-track::before, .pf-track::before, .fc-track::before, .hs-track::before, .hs-hero-track::before { top: 3px !important; }
-  .rr-hero-track::after, .eq-hero-track::after, .pf-track::after, .fc-track::after, .hs-track::after, .hs-hero-track::after { bottom: 3px !important; }
-
-  .rr-hero-tag, .eq-hero-tag, .pf-hero-tag, .fc-hero-tag, .hs-hero-tag {
-    font-family: 'DM Mono', monospace !important;
-    font-size: 10px !important;
-    letter-spacing: 0.35em !important;
-    text-transform: uppercase !important;
-    color: #c9943a !important;
-    margin-bottom: 14px !important;
-    opacity: 0.9 !important;
-  }
-  .rr-hero h1, .eq-hero-title, .rr-main-title, .fc-hero-title, .hs-hero h1, .pf-name {
-    font-family: 'Playfair Display', Georgia, serif !important;
-    font-size: clamp(34px, 6vw, 64px) !important;
-    font-weight: 900 !important;
-    line-height: 1.05 !important;
-    margin-bottom: 14px !important;
-    color: #ffffff !important;
-    letter-spacing: -0.02em !important;
-  }
-  .rr-hero h1 em, .eq-hero-title em, .rr-main-title .orange-part, .rr-hero-title em, .fc-hero-title em, .hs-hero h1 em, .hs-hero h1 span, .pf-name em {
-    font-style: italic !important;
-    color: #c9943a !important;
-    display: block !important;
-  }
-  .rr-hero p, .eq-hero-sub, .rr-hero-sub, .fc-hero-sub, .hs-hero p {
-    font-size: 15px !important;
-    color: rgba(255,255,255,0.72) !important;
-    max-width: 560px !important;
-    margin: 0 auto !important;
-    line-height: 1.75 !important;
-    font-weight: 300 !important;
-  }
-  .rr-hero-image {
-    background-image: none !important;
-    background-color: #1e1208 !important;
-    min-height: auto !important;
-    padding: 0 !important;
-  }
-  .rr-hero-content { padding: 0 !important; }
 </style>
 
 <!-- Not logged in -->
@@ -356,7 +231,7 @@ permalink: /profile
 <div id="pfMain">
   <div class="pf-hero">
     <div class="pf-avatar" id="pfAvatar">?</div>
-    <div class="pf-name"  id="pfName">Loading...</div>
+    <div class="pf-name" id="pfName">Loading...</div>
     <div class="pf-email" id="pfEmail"></div>
     <div class="pf-tag"> Railroad Member</div>
     <div class="pf-track"></div>
@@ -391,7 +266,7 @@ permalink: /profile
         </div>
         <div class="pf-field">
           <label class="pf-label">New Password</label>
-          <input class="pf-input" type="password" id="pfNewPass" placeholder="At least 6 characters">
+          <input class="pf-input" type="password" id="pfNewPass" placeholder="At least 8 characters">
         </div>
         <div class="pf-field">
           <label class="pf-label">Confirm New Password</label>
@@ -413,6 +288,16 @@ permalink: /profile
       </div>
     </div>
 
+    <!-- Volunteer History -->
+    <div class="pf-bookings">
+      <div class="pf-card-title" style="font-family:'Courier New',monospace;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:18px;padding-bottom:10px;border-bottom:1px solid #cccccc;">
+         🤝 My Volunteer Shifts
+      </div>
+      <div id="pfVolunteerList">
+        <div class="pf-empty">Loading volunteer shifts...</div>
+      </div>
+    </div>
+
     <!-- Danger zone -->
     <div style="margin-top:20px;text-align:right;">
       <button class="pf-btn pf-btn-danger" style="width:auto;padding:10px 24px;" onclick="pfLogout()">
@@ -428,31 +313,34 @@ permalink: /profile
   
   var BACKEND = window.pythonURI;
   let pfUser = null;
+  
   async function pfInit() {
-    // 先检查 localStorage
     const localLoggedIn = localStorage.getItem('logged_in');
     
     if (localLoggedIn === 'true') {
-      // 已登录，直接显示 profile
       pfUser = {
         name: localStorage.getItem('user_name'),
         email: localStorage.getItem('user_email')
       };
       pfShowProfile(pfUser);
       pfLoadBookings(pfUser.email);
+      pfLoadVolunteers(pfUser.email);
     } else {
-      // 尝试从后端验证
       try {
-        const res = await fetch(`${BACKEND}/api/auth/status`, { credentials: 'include' });
-        const data = await res.json();
-        if (data.logged_in) {
-          // 同步到 localStorage
-          localStorage.setItem('logged_in', 'true');
-          localStorage.setItem('user_name', data.name);
-          localStorage.setItem('user_email', data.email);
-          pfUser = data;
-          pfShowProfile(pfUser);
-          pfLoadBookings(pfUser.email);
+        const res = await fetch(`${BACKEND}/api/user`, { credentials: 'include' });
+        if (res.ok) {
+          const data = await res.json();
+          if (data.uid) {
+            localStorage.setItem('logged_in', 'true');
+            localStorage.setItem('user_name', data.name);
+            localStorage.setItem('user_email', data.uid);
+            pfUser = { name: data.name, email: data.uid };
+            pfShowProfile(pfUser);
+            pfLoadBookings(pfUser.email);
+            pfLoadVolunteers(pfUser.email);
+          } else {
+            pfShowGuest();
+          }
         } else {
           pfShowGuest();
         }
@@ -463,9 +351,8 @@ permalink: /profile
   }
 
   function pfShowGuest() {
-    // 隐藏锁屏，显示 guest 版本
-    document.getElementById('pfGate').classList.remove('show');
-    document.getElementById('pfMain').classList.add('show');
+    document.getElementById('pfGate').classList.add('show');
+    document.getElementById('pfMain').classList.remove('show');
     document.getElementById('pfAvatar').textContent = '?';
     document.getElementById('pfName').textContent = 'Guest';
     document.getElementById('pfEmail').textContent = 'Not signed in';
@@ -474,10 +361,12 @@ permalink: /profile
     
     const list = document.getElementById('pfBookingList');
     list.innerHTML = `<div class="pf-empty">Please <a href="{{ "/login" | relative_url }}">sign in</a> to view your booking history.</div>`;
+    
+    const volList = document.getElementById('pfVolunteerList');
+    volList.innerHTML = `<div class="pf-empty">Please <a href="{{ "/login" | relative_url }}">sign in</a> to view your volunteer shifts.</div>`;
   }
 
   function pfShowProfile(user) {
-    // 确保隐藏锁屏，显示 profile
     document.getElementById('pfGate').classList.remove('show');
     document.getElementById('pfMain').classList.add('show');
     document.getElementById('pfAvatar').textContent = user.name.charAt(0).toUpperCase();
@@ -487,21 +376,79 @@ permalink: /profile
     document.getElementById('pfInfoEmail').textContent = user.email;
   }
 
+  // ========== 取消预订 ==========
+  async function pfCancelBooking(confirmCode, rowElement) {
+    const confirmed = confirm('⚠️ Are you sure you want to cancel this booking?\n\nThis action cannot be undone.');
+    if (!confirmed) return;
+    
+    try {
+      const res = await fetch(`${BACKEND}/api/reservations/${confirmCode}`, {
+        method: 'DELETE',
+        credentials: 'include',
+        headers: { 'Content-Type': 'application/json' }
+      });
+      
+      if (res.ok) {
+        alert('✓ Booking cancelled successfully.');
+        if (rowElement && rowElement.remove) rowElement.remove();
+        const remainingRows = document.querySelectorAll('#pfBookingList .pf-booking-row');
+        if (remainingRows.length === 0) {
+          document.getElementById('pfBookingList').innerHTML = `<div class="pf-empty">No bookings yet. <a href="/schedule">Book a ride →</a></div>`;
+        }
+      } else {
+        const data = await res.json();
+        alert('✗ Failed to cancel: ' + (data.error || 'Unknown error'));
+      }
+    } catch (error) {
+      console.error('Cancel error:', error);
+      alert('✗ Network error. Please try again.');
+    }
+  }
+
+  // ========== 取消志愿者报名 ==========
+  async function pfCancelVolunteer(shiftId, dateLabel, rowElement) {
+    const confirmed = confirm(`⚠️ Are you sure you want to cancel your volunteer sign-up for ${dateLabel}?\n\nThis action cannot be undone.`);
+    if (!confirmed) return;
+    
+    try {
+      const res = await fetch(`${BACKEND}/api/volunteer/shifts/${shiftId}/signup`, {
+        method: 'DELETE',
+        credentials: 'include',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email: pfUser?.email })
+      });
+      
+      if (res.ok) {
+        alert('✓ Volunteer sign-up cancelled successfully.');
+        if (rowElement && rowElement.remove) rowElement.remove();
+        const remainingRows = document.querySelectorAll('#pfVolunteerList .pf-booking-row');
+        if (remainingRows.length === 0) {
+          document.getElementById('pfVolunteerList').innerHTML = `<div class="pf-empty">No volunteer shifts yet. <a href="/volunteer-schedule">Sign up to volunteer →</a></div>`;
+        }
+      } else {
+        const data = await res.json();
+        alert('✗ Failed to cancel: ' + (data.error || 'Unknown error'));
+      }
+    } catch (error) {
+      console.error('Cancel error:', error);
+      alert('✗ Network error. Please try again.');
+    }
+  }
+
+  // ========== 加载预订历史（带取消按钮）==========
   async function pfLoadBookings(email) {
     const list = document.getElementById('pfBookingList');
     try {
       const res = await fetch(`${BACKEND}/api/reservations`, { credentials: 'include' });
       const data = await res.json();
-
       const mine = data.filter(r => r.email && r.email.toLowerCase() === email.toLowerCase());
 
       if (!mine.length) {
-        list.innerHTML = `<div class="pf-empty">No bookings yet. <a href="{{ "/schedule" | relative_url }}">Book a ride →</a></div>`;
+        list.innerHTML = `<div class="pf-empty">No bookings yet. <a href="/schedule">Book a ride →</a></div>`;
         return;
       }
 
       mine.sort((a,b) => new Date(b.created_at) - new Date(a.created_at));
-
       const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
       list.innerHTML = mine.map(r => {
         const d = new Date(r.date + 'T12:00:00');
@@ -511,19 +458,102 @@ permalink: /profile
           r.children ? `${r.children} child${r.children!==1?'ren':''}` : '',
           r.infants  ? `${r.infants} infant${r.infants!==1?'s':''}` : '',
         ].filter(Boolean).join(', ');
+        
+        const rowId = `booking-${r.confirm_code.replace(/[^a-zA-Z0-9]/g, '')}`;
         return `
-          <div class="pf-booking-row">
+          <div class="pf-booking-row" id="${rowId}">
             <div class="pf-booking-code">${r.confirm_code}</div>
             <div class="pf-booking-detail">
               ${r.train_type} · ${dateLabel} at ${r.time}
               <small>${tickets} · Pay at depot</small>
             </div>
-            <div class="pf-booking-price">$${r.total_price.toFixed(2)}</div>
+            <div class="pf-booking-price" style="display: flex; gap: 12px; align-items: center;">
+              <span>$${r.total_price.toFixed(2)}</span>
+              <button class="pf-cancel-btn" onclick="window.pfCancelBooking('${r.confirm_code}', document.getElementById('${rowId}'))">
+                ✖ Cancel
+              </button>
+            </div>
           </div>`;
       }).join('');
-
     } catch {
-      list.innerHTML = `<div class="pf-empty">Could not load bookings. Make sure backend is running.</div>`;
+      list.innerHTML = `<div class="pf-empty">Could not load bookings.</div>`;
+    }
+  }
+
+  // ========== 加载志愿者班次（使用 volunteers 字段）==========
+  async function pfLoadVolunteers(email) {
+    const list = document.getElementById('pfVolunteerList');
+    
+    console.log('pfLoadVolunteers - email:', email);
+    
+    try {
+      const res = await fetch(`${BACKEND}/api/volunteer/shifts`, { 
+        credentials: 'include' 
+      });
+      
+      if (!res.ok) {
+        console.log('API response not OK:', res.status);
+        list.innerHTML = `<div class="pf-empty">Could not load volunteer shifts. <a href="/volunteer-schedule">Sign up →</a></div>`;
+        return;
+      }
+      
+      const allShifts = await res.json();
+      console.log('All shifts from API:', allShifts);
+      
+      // 使用 volunteers 字段
+      const myShifts = allShifts.filter(shift => {
+        if (!shift.volunteers || !Array.isArray(shift.volunteers)) return false;
+        return shift.volunteers.some(v => v.email && v.email.toLowerCase() === email.toLowerCase());
+      });
+      
+      console.log('My shifts from API:', myShifts);
+      
+      if (!myShifts.length) {
+        list.innerHTML = `<div class="pf-empty">No volunteer shifts yet. <a href="/volunteer-schedule">Sign up to volunteer →</a></div>`;
+        return;
+      }
+      
+      myShifts.sort((a, b) => new Date(a.date) - new Date(b.date));
+      
+      const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+      list.innerHTML = myShifts.map(shift => {
+        const d = new Date(shift.date + 'T12:00:00');
+        const dateLabel = `${months[d.getMonth()]} ${d.getDate()}, ${d.getFullYear()}`;
+        const rowId = `volunteer-${shift.id}-${shift.date.replace(/-/g, '')}`;
+        
+        let job = 'Volunteer';
+        if (shift.volunteers) {
+          const myInfo = shift.volunteers.find(v => v.email && v.email.toLowerCase() === email.toLowerCase());
+          if (myInfo && myInfo.job) job = myInfo.job;
+        }
+        
+        const trainTypeDisplay = {
+          'steam': '🔥 Steam Locomotive',
+          'cable': '🚋 Cable Car',
+          'speeder': '🚃 Speeder'
+        }[shift.train_type] || shift.train_type || 'Train Operation';
+        
+        const timeRange = shift.time_start && shift.time_end ? `${shift.time_start} - ${shift.time_end}` : '10:00am – 2:00pm';
+        
+        return `
+          <div class="pf-booking-row" id="${rowId}">
+            <div class="pf-booking-code">${dateLabel}</div>
+            <div class="pf-booking-detail">
+              ${trainTypeDisplay} · ${timeRange}
+              <small>Position: ${job}</small>
+            </div>
+            <div class="pf-booking-price" style="display: flex; gap: 12px; align-items: center;">
+              <span>✅ Registered</span>
+              <button class="pf-cancel-btn" onclick="window.pfCancelVolunteer(${shift.id}, '${dateLabel}', document.getElementById('${rowId}'))">
+                ✖ Cancel
+              </button>
+            </div>
+          </div>`;
+      }).join('');
+      
+    } catch (error) {
+      console.error('Error loading volunteers:', error);
+      list.innerHTML = `<div class="pf-empty">Could not load volunteer shifts. Make sure backend is running.</div>`;
     }
   }
 
@@ -540,7 +570,7 @@ permalink: /profile
     const fb   = 'pfPassFeedback';
 
     if (!cur || !nw || !conf) { pfFeedback(fb, 'Please fill in all password fields.', 'err'); return; }
-    if (nw.length < 6)        { pfFeedback(fb, 'New password must be at least 6 characters.', 'err'); return; }
+    if (nw.length < 6)        { pfFeedback(fb, 'New password must be at least 8 characters.', 'err'); return; }
     if (nw !== conf)           { pfFeedback(fb, 'New passwords do not match.', 'err'); return; }
 
     try {
@@ -561,30 +591,32 @@ permalink: /profile
     }
   }
 
-async function pfLogout() {
-  // 清除 localStorage
-  localStorage.removeItem('logged_in');
-  localStorage.removeItem('user_name');
-  localStorage.removeItem('user_email');
-  
-  // 调用后端登出
-  try { 
-    await fetch(`${BACKEND}/api/auth/logout`, { 
-      method: 'POST', 
-      credentials: 'include' 
-    }); 
-  } catch(e) {
-    console.log('Logout error:', e);
+  async function pfLogout() {
+    const confirmed = confirm('Are you sure you want to sign out?');
+    if (!confirmed) return;
+    
+    localStorage.removeItem('logged_in');
+    localStorage.removeItem('user_name');
+    localStorage.removeItem('user_email');
+    localStorage.removeItem('PMRR_Volunteers');
+    
+    try { 
+      await fetch(`${BACKEND}/api/authenticate`, { 
+        method: 'DELETE', 
+        credentials: 'include' 
+      }); 
+    } catch(e) {
+      console.log('Logout error:', e);
+    }
+    
+    window.location.href = '{{ "/login" | relative_url }}';
   }
-  
-  // 跳转到登录页
-  window.location.href = '{{ "/login" | relative_url }}';
-}
 
-  // 把函数挂载到 window，让 HTML 的 onclick 可以调用
+  // 挂载到 window 对象，供 onclick 调用
+  window.pfCancelBooking = pfCancelBooking;
+  window.pfCancelVolunteer = pfCancelVolunteer;
   window.pfChangePassword = pfChangePassword;
   window.pfLogout = pfLogout;
 
-  // 初始化
   pfInit();
 </script>
