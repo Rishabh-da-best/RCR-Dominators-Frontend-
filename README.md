@@ -188,3 +188,11 @@ python app.py
 | Full LLM-Powered AI Assistant | LLM API key + live park data feed |
 | Push Departure Notifications | GPS tracker + notification infrastructure |
 | School & Group Booking Portal | Coordination with PMRR booking staff |
+
+## License
+
+This project is licensed under the GNU General Public License v3.0.
+
+See the [LICENSE](LICENSE) file for details.
+
+Copyright (C) 2026 Rebecca, Cyrus, Rishabh
